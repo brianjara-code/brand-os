@@ -1,0 +1,2654 @@
+{
+  "meta": {
+    "lastUpdated": "2026-05-25",
+    "version": "1.0",
+    "lastAutoUpdate": "2026-06-27T17:00:02.370Z",
+    "commentsStatus": {
+      "lastFetch": "2026-06-27T17:00:04.087Z",
+      "youtube": "error",
+      "instagram": "falta permiso",
+      "facebook": "error",
+      "tiktok": "no disponible"
+    }
+  },
+  "googleCalendarId": "",
+  "analytics": {
+    "weekLabels": [
+      "Sem 1",
+      "Sem 2",
+      "Sem 3",
+      "Sem 4",
+      "Sem 5",
+      "Sem 6",
+      "Sem 7",
+      "Sem 8"
+    ],
+    "substackClicks": [
+      128,
+      165,
+      198,
+      172,
+      231,
+      298,
+      274,
+      341
+    ],
+    "conversionRate": [
+      1.7,
+      1.9,
+      1.8,
+      2.1,
+      1.95,
+      2.3,
+      2.1,
+      2.6
+    ],
+    "currentWeek": {
+      "totalViews": 0,
+      "substackClicks": 341,
+      "newSubscribers": 52,
+      "conversionRate": 2.6,
+      "deltaViews": 0,
+      "deltaClicks": 24.5,
+      "deltaSubs": 11.8,
+      "deltaConversion": 0.5
+    }
+  },
+  "urgentComments": [
+    {
+      "id": "18099975236144523",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Mágico",
+      "timestamp": "2026-06-16T22:39:53+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18541815775074797",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Ya las personas con dinero tienen Algo así como tres computadores y ellos juegan con eso como si Estuvieran en un game. A mi me toco verlo Ella casa de un millonario que trabaje por casualidad  eso cr",
+      "timestamp": "2026-06-16T21:46:16+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18078170834285452",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "@orlando_ramos_72 está en el internet democratizado para todos",
+      "timestamp": "2026-06-16T21:23:49+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18109034749798595",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "@luisgerardo69 desglosemos tu comentario:1. IPDA significa Institutional Price Delivery Algorithm es un concepto de la comunidad de ICT/Smart Money es una teoría de análisis técnico sobre cómo los mar",
+      "timestamp": "2026-06-16T21:23:23+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "17944753410208502",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Puedes saber programar eso, pero si no sabes hacer trading de nada sirve.",
+      "timestamp": "2026-06-16T17:52:41+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18055793831576399",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "A ver",
+      "timestamp": "2026-06-16T15:11:02+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18105566882063042",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Me interesa",
+      "timestamp": "2026-06-16T15:01:07+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18082000235558715",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Interesante información",
+      "timestamp": "2026-06-16T11:43:52+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "17954709228152383",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Es la manera en que Warren Buffet hizo su dinero, pero ahora está al alcance de cualquiera...",
+      "timestamp": "2026-06-16T10:31:43+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "17874461364674634",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Me interesa cómo funciona",
+      "timestamp": "2026-06-16T09:40:21+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18366082954230687",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Qué bárbaro",
+      "timestamp": "2026-06-16T05:13:14+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18155075806481702",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Como se hace eso?",
+      "timestamp": "2026-06-16T04:00:00+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18393745153092226",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Desde el 2010 eso existe…. O como crees que los grandes crecieron? Escribe en Google: cuando crearon los algoritmos IPDA? Y lee que son saludos!",
+      "timestamp": "2026-06-16T02:31:07+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18100328738331359",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Que Interesante 😮",
+      "timestamp": "2026-06-16T02:25:30+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18221193112319803",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "En el espacio ya hace bastante frío ni nesecitamos nada para enfriarlo@mas year solo estar allí y listo",
+      "timestamp": "2026-06-16T00:43:21+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "17911985211226228",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Como la vamos a hackear ?",
+      "timestamp": "2026-06-16T00:40:32+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18577840972021414",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Nokia es mas que telefonos, los movilrs eran silo una division mas, nokia sí mpre a sido un gigante de las telecomunicaciones",
+      "timestamp": "2026-05-03T02:21:34+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18337272976172417",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Wow!! Que buen reto, lo voy a intentar 🤯",
+      "timestamp": "2026-04-16T02:30:25+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "18322320028302041",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Send me this post 📩",
+      "timestamp": "2026-03-30T18:36:31+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "17904614637225654",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Muy probablemente algún agente lo use para manipular y otros para evolucionar.",
+      "timestamp": "2026-03-30T18:28:11+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "17852818830689216",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Que más mijo como estas cuando no hablamos en video llamada",
+      "timestamp": "2026-03-25T01:46:36+0000",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "17854483743685142",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Amazing can I share it ❤️",
+      "timestamp": "2026-03-21T18:09:48+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18347884006235134",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "send me this post",
+      "timestamp": "2026-03-10T19:36:50+0000",
+      "priority": "low",
+      "status": "pending"
+    },
+    {
+      "id": "18116899642625045",
+      "platform": "Instagram",
+      "user": "(usuario)",
+      "comment": "Así es",
+      "timestamp": "2026-02-28T18:39:35+0000",
+      "priority": "low",
+      "status": "pending"
+    }
+  ],
+  "kanban": {
+    "todo": [
+      {
+        "id": "k1",
+        "title": "Video: Cómo construir tu marca personal desde cero",
+        "platform": "TikTok",
+        "priority": "high",
+        "date": "2026-05-30"
+      },
+      {
+        "id": "k2",
+        "title": "Newsletter: Los 5 errores que cometen los creators",
+        "platform": "Substack",
+        "priority": "medium",
+        "date": "2026-06-01"
+      }
+    ],
+    "inProduction": [
+      {
+        "id": "k3",
+        "title": "Video: DCA para principiantes — Guía visual animada",
+        "platform": "Instagram",
+        "priority": "urgent",
+        "date": "2026-05-27"
+      },
+      {
+        "id": "k4",
+        "title": "Tutorial: Mi setup de grabación completo (2026)",
+        "platform": "YouTube",
+        "priority": "high",
+        "date": "2026-05-29"
+      }
+    ],
+    "scheduled": [
+      {
+        "id": "k5",
+        "title": "Reel: 3 apps que uso para crear contenido",
+        "platform": "Instagram",
+        "priority": "medium",
+        "date": "2026-05-28"
+      }
+    ],
+    "published": [
+      {
+        "id": "k6",
+        "title": "TikTok: Por qué dejé mi trabajo para hacer contenido",
+        "platform": "TikTok",
+        "priority": "low",
+        "date": "2026-05-20"
+      },
+      {
+        "id": "k7",
+        "title": "Newsletter #12: Estrategia de crecimiento Q2",
+        "platform": "Substack",
+        "priority": "low",
+        "date": "2026-05-18"
+      }
+    ]
+  },
+  "scripts": [
+    {
+      "id": "s1",
+      "title": "Cómo construir tu marca personal desde cero",
+      "platform": "TikTok",
+      "date": "2026-05-25",
+      "status": "draft",
+      "docUrl": ""
+    },
+    {
+      "id": "s2",
+      "title": "DCA para principiantes — Guía visual",
+      "platform": "Instagram",
+      "date": "2026-05-23",
+      "status": "filming",
+      "docUrl": ""
+    },
+    {
+      "id": "s3",
+      "title": "Mi setup de grabación completo",
+      "platform": "YouTube",
+      "date": "2026-05-20",
+      "status": "editing",
+      "docUrl": ""
+    },
+    {
+      "id": "s4",
+      "title": "3 apps que uso para crear contenido",
+      "platform": "Instagram",
+      "date": "2026-05-18",
+      "status": "scheduled",
+      "docUrl": ""
+    },
+    {
+      "id": "s5",
+      "title": "Por qué dejé mi trabajo para hacer contenido",
+      "platform": "TikTok",
+      "date": "2026-05-15",
+      "status": "published",
+      "docUrl": ""
+    }
+  ],
+  "sop": [
+    {
+      "id": "sop1",
+      "title": "Revisar métricas en TikTok Studio",
+      "description": "TikTok Studio → Analíticas → Esta semana. Captura: Views totales, Clicks en bio, Follows ganados.",
+      "tag": "tiktok",
+      "completed": false
+    },
+    {
+      "id": "sop2",
+      "title": "Revisar métricas en Instagram Professional",
+      "description": "Instagram → Panel Profesional → Últimos 7 días. Anotar: Alcance, Visitas al perfil, Clics en enlace.",
+      "tag": "analytics",
+      "completed": false
+    },
+    {
+      "id": "sop3",
+      "title": "Revisar métricas en YouTube Studio",
+      "description": "YouTube Studio → Analytics → Últimos 7 días. Views, Suscriptores ganados, Clics en links.",
+      "tag": "analytics",
+      "completed": false
+    },
+    {
+      "id": "sop4",
+      "title": "Revisar conversiones en Substack",
+      "description": "Dashboard de Substack → Nuevos suscriptores esta semana. Identificar origen de tráfico (UTM).",
+      "tag": "analytics",
+      "completed": false
+    },
+    {
+      "id": "sop5",
+      "title": "Actualizar brand_os_data.json",
+      "description": "Con los datos recopilados, actualizar analytics.currentWeek y agregar nueva entrada en analytics.weekLabels / substackClicks / conversionRate.",
+      "tag": "json",
+      "completed": false
+    },
+    {
+      "id": "sop6",
+      "title": "Mover tarjetas en el Kanban",
+      "description": "Actualizar estado del tablero: mover contenido publicado a [Publicado], planificar nuevo contenido en [Por Hacer].",
+      "tag": "content",
+      "completed": false
+    },
+    {
+      "id": "sop7",
+      "title": "Responder comentarios urgentes",
+      "description": "Ir a Analytics → Comentarios Urgentes. Responder todos los 'urgent' antes de cerrar la sesión del domingo.",
+      "tag": "analytics",
+      "completed": false
+    },
+    {
+      "id": "sop8",
+      "title": "Planificar contenido de la próxima semana",
+      "description": "Definir mínimo 3 ideas de contenido. Crear tarjetas en Kanban con fechas y plataforma.",
+      "tag": "content",
+      "completed": false
+    },
+    {
+      "id": "sop9",
+      "title": "Revisar y actualizar estrategia ICP",
+      "description": "¿Resonó el contenido esta semana con tu ICP? Ajusta el perfil si encontraste nueva información sobre tu audiencia.",
+      "tag": "strategy",
+      "completed": false
+    },
+    {
+      "id": "sop10",
+      "title": "Registrar compras DCA de la semana",
+      "description": "Si hiciste compras de cripto, agregar en la pestaña Inversiones DCA con fecha, monto, precio de compra y comisión.",
+      "tag": "json",
+      "completed": false
+    }
+  ],
+  "dca": {
+    "transactions": [
+      {
+        "id": "d1",
+        "date": "2026-05-05",
+        "asset": "BTC",
+        "amount": 100,
+        "price": 62000,
+        "fee": 1.5,
+        "currentPrice": 65500
+      },
+      {
+        "id": "d2",
+        "date": "2026-05-12",
+        "asset": "BTC",
+        "amount": 100,
+        "price": 64000,
+        "fee": 1.5,
+        "currentPrice": 65500
+      },
+      {
+        "id": "d3",
+        "date": "2026-05-19",
+        "asset": "BTC",
+        "amount": 100,
+        "price": 63500,
+        "fee": 1.5,
+        "currentPrice": 65500
+      },
+      {
+        "id": "d4",
+        "date": "2026-05-05",
+        "asset": "ETH",
+        "amount": 50,
+        "price": 2800,
+        "fee": 0.75,
+        "currentPrice": 3150
+      },
+      {
+        "id": "d5",
+        "date": "2026-05-12",
+        "asset": "ETH",
+        "amount": 50,
+        "price": 2950,
+        "fee": 0.75,
+        "currentPrice": 3150
+      },
+      {
+        "id": "d6",
+        "date": "2026-05-05",
+        "asset": "SOL",
+        "amount": 50,
+        "price": 145,
+        "fee": 0.5,
+        "currentPrice": 172
+      }
+    ]
+  },
+  "icp": {
+    "title": "Creator Latinoamericano en Crecimiento",
+    "age": "24-35 años",
+    "location": "Latinoamérica (México, Colombia, Argentina)",
+    "profession": "Emprendedor digital, freelancer, creator en crecimiento",
+    "income": "$500 - $3,000 USD/mes",
+    "painPoints": [
+      "No sabe cómo monetizar su conocimiento",
+      "Crea contenido sin estrategia clara",
+      "Siente que 'ya es tarde' para empezar",
+      "No tiene consistencia, se rinde fácil",
+      "Invierte en cripto sin conocimiento real del mercado"
+    ],
+    "desires": [
+      "Libertad financiera y de tiempo",
+      "Marca personal reconocida en su nicho",
+      "Audiencia comprometida que compra",
+      "Sistema de ingresos pasivos escalable",
+      "Comunidad de personas que piensan igual"
+    ],
+    "platforms": [
+      "TikTok",
+      "Instagram",
+      "YouTube",
+      "Substack"
+    ],
+    "messaging": "Habla su idioma: práctico, sin rodeos, con humor y autenticidad. No teoría — ejemplos reales de lo que funciona hoy.",
+    "contentConsumed": "Videos de 60-90 segundos con tips accionables. Newsletters cortos con frameworks. Casos de estudio reales.",
+    "biggestFear": "Invertir tiempo y dinero en algo que no funcione. El ridículo público. Fracasar de nuevo."
+  },
+  "platformMetrics": {
+    "instagram": {
+      "views": 8744,
+      "reach": 6867,
+      "followers": 530,
+      "posts": [
+        {
+          "id": "18139975405548968",
+          "caption": "La IA ya puede tradear en Robinhood sin que toques la app. Agentic Trading acaba",
+          "type": "VIDEO",
+          "timestamp": "2026-06-14T19:08:37+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/723228913_18120706468666686_3767455006131996719_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NvXIlZ03LYcQ7kNvwGtEVbe&_nc_oc=AdptXmB6_-uW3gNMHIvBq1FExDc83hrdloRL-v6OlKaf5Sb7e3KPAznk9bOoSPHkSjmi5CWdX2X9EIkLKUI0lOgg&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQF3u8R1sz6JdRYon9pXTx4rJXyUijrPfbGtX02DhDFm-h0FMoSKQg4kDUNaE3j1cnQhs1BrLwxf8w&oh=00_Af8lSmX79IsDy_FZ3k01I57Tgf1bhDnhGzsMpQj2aveeOA&oe=6A3C4761",
+          "views": 8233,
+          "reach": 6758,
+          "saves": 219,
+          "shares": 170,
+          "likes": 282,
+          "comments": 17
+        },
+        {
+          "id": "17931293265334184",
+          "caption": "SpaceX acaba de cambiar las reglas del juego para siempre ??\n\nImagina una comput",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-06-12T18:30:48+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/719351062_18120511885666686_900816491365356327_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=gxaYBU1ciwIQ7kNvwFugzAe&_nc_oc=AdoCKMSPvnDr6Gnb4ZKEst-slmIp37uCZYxSBNZL9UvZT1-DVXH0VGHjPRd40kp5QxWweBNb1JXhrc7lnJcL7M_f&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af-2ejuaue-TnDPB5CezAdA3iUHXFbwsDfdfRBJXt2GjpA&oe=6A3C6112",
+          "views": 126,
+          "reach": 45,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18113977739476449",
+          "caption": "SpaceX está construyendo data centers en el espacio.\n\nNo es ciencia ficción. Es ",
+          "type": "VIDEO",
+          "timestamp": "2026-06-11T18:31:22+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/721995067_1000545195697201_4580277353256177789_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Aw40iYWOfQAQ7kNvwGfiEQb&_nc_oc=AdpS4p2t_O3SHiFgCeUrP73nlZDTS5vvdXYGWtIUPRPZ00K9pZoU7XGCoQsnm6UDljPcVT_N9Ai7JCNWvJZ_ZjKy&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFq_OqVBYJw3QvQW1ZTuuuaz36pesUC76TzbYZq8BrXaVH_hKv3AUNYuzSZg3QEhpc3_Wng-3pGZg&oh=00_Af-I1xBEEfVI4GhOCOmPHNJnNJjzEmEvPkBZ6LRVgGEJBA&oe=6A3C6C17",
+          "views": 91,
+          "reach": 72,
+          "saves": 0,
+          "shares": 0,
+          "likes": 10,
+          "comments": 1
+        },
+        {
+          "id": "17962828527088432",
+          "caption": "Esta semana Irán lanzó seguros marítimos pagados en Bitcoin para el Estrecho de ",
+          "type": "VIDEO",
+          "timestamp": "2026-05-18T23:39:46+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/701470462_2813621605690655_8969271736013227031_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=kljk5_AQHyQQ7kNvwEoOF6d&_nc_oc=Adoiw8GW_-oajTuN7J4aWPQXp8L9al_MGUijQ-i21WdK8LUgClH3kiW4HgVnbdT7P7pRLat8C6ffpYPCDaG60sLC&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFbAzKwENyuuZf8VwVHgaPofygHumUKD9AbweBd7bx8D6b3Pb8DKf5eRKJXej7O8KpVRljjAy8o2g&oh=00_Af_PeDxJ4yI_BfmK6LkYrPmbT_l7WHbBOaySKu2Zw98rBA&oe=6A3C471F",
+          "views": 235,
+          "reach": 184,
+          "saves": 1,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "18528903193078815",
+          "caption": "Esta semana Irán lanzó seguros marítimos pagados en Bitcoin para el Estrecho de ",
+          "type": "VIDEO",
+          "timestamp": "2026-05-18T23:34:51+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/687519903_27363427279949455_5761159737860089218_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=KJv1Hgbi3gcQ7kNvwHh87_0&_nc_oc=AdqZOsmpik53R9D9U0VYm1P2zMABEuWdTn5ydKPWzlkd6Wq27zMvQTGmnRaNvkkjWCuprFbsxGhDrPgmH5wyToLY&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEaPLUiwvgMMCcwbac1P7ky29efOVBgRi2lZhdC2lsALWyHRZKEbWoJBDfDl80zAgXzZ0q-WB-PHQ&oh=00_Af8hTjk97ZwPoUYie2V-oPdgI7K-dq_DaOGW8F5nwWEIRQ&oe=6A3C5B83",
+          "views": 208,
+          "reach": 183,
+          "saves": 2,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18098951875944776",
+          "caption": "El Senado de EE.UU. acaba de hacer algo histórico para el mundo cripto y blockch",
+          "type": "VIDEO",
+          "timestamp": "2026-05-15T17:40:34+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t15.5256-10/698464042_3406174576230616_4937164743830403231_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=P3g3whq-SsQQ7kNvwGA8rub&_nc_oc=AdqcaLDbfuKiC5s2Z7jtQtwBGC_Kukt10hmlgqUS3cVvnaYWFlW5jg3z16llD5aeeGKP8YqquPBKJ3eAltpZtVB_&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQHhiwwElqoiti7QD3zaXd9Inqc-IopPWal6v5-rgdZZn77qa7CQSCuhyifADxGMFzl0jtMK87QngA&oh=00_Af8cqKLc37ztKdpXkajFsRsvkk0NgIeQpi6G_pXXyU1PTQ&oe=6A3C6F18",
+          "views": 201,
+          "reach": 164,
+          "saves": 1,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18093812069234146",
+          "caption": "Tu Bitcoin es tuyo... o del banco? 👀\n\nEsta semana el Senado americano vota la C",
+          "type": "VIDEO",
+          "timestamp": "2026-05-12T16:19:08+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/689186768_979816784537378_8083629181140118990_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=xmutGTMMn48Q7kNvwHBWqbO&_nc_oc=AdrYoy7e-MuDov-7aKeSKTjQPQlZtEy43cBJpMLY1VqL7hoCk4mLIp_8iZkkIJ6qspKg2jdhxRbVkN91q87EWUW6&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFCyzCLL5csVY5PKjuhD0q0JjWDL_wwKHIWECXGBi3Pk-UMI9XpiSF-3zh18tpKbJ4ovJ0ip7ObRw&oh=00_Af_78e-iqnlb1qNlv4wyaHamvCc570MxyrRjgFAWDplcnw&oe=6A3C462A",
+          "views": 232,
+          "reach": 195,
+          "saves": 0,
+          "shares": 0,
+          "likes": 8,
+          "comments": 0
+        },
+        {
+          "id": "18107638024928897",
+          "caption": "Los mejores inversores del mundo acaban de decir que el AI no viene a ayudarte e",
+          "type": "VIDEO",
+          "timestamp": "2026-05-11T02:13:13+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.71878-15/671171890_2107116326804264_8072952795702836578_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=1tbkkV_7ovYQ7kNvwE1C4EY&_nc_oc=Ado7eAPEc_Kc0VEK06VJCsQVdoNGuIQk2bL2zMqYhdwNAaENGD37r9FgeB_6X1xurh7JaSqsFg_yyrlwiR7-HeYb&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGcwJulxtbD2z2RprEN40U0eHps3_oAsm3Q7V62yXFPBapvQjgtdpRLEyRv7ge3xReyDrlwbDQyoA&oh=00_Af8z5aFmqC4bJsP_iYAqn4QB34ESQztGprqQU6k9GX5KLw&oe=6A3C69E9",
+          "views": 189,
+          "reach": 166,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "18468186472099494",
+          "caption": "Telegram revoluciona tu móvil con IA: consultas rápidas en chat, bots que se coo",
+          "type": "VIDEO",
+          "timestamp": "2026-05-08T18:41:49+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/688940399_958283073579165_5638560915417711172_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=f4obIvw-CA4Q7kNvwEqEBKW&_nc_oc=AdqcWzsPTaAZwlQToUbJ0yBq3dcSYPtvm_6jT3fqXjK7Amjj6GWQz0lNZLSz4ahgLwsLP4f9o0ZmJveaZ0f0rxlp&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEb1VbY2khPBIosFXMoB76XXkrCP2qV7RWMNNxWmOJuYiG2n5vI3t8_G0y9vzmhL1cPjdXIsQ1zug&oh=00_Af9J9cHB5Km3bbIeuxqAQ9CLBAlXRnqfs86vJJKJWOkotw&oe=6A3C4D7F",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "17885367600519678",
+          "caption": "Nokia: De muerta a socio de NVIDIA y Anduril en 2026 | El comeback que nadie vio",
+          "type": "VIDEO",
+          "timestamp": "2026-05-01T17:29:37+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/671786906_27690215320566915_1064668993262375870_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=kOXA5PdOWI0Q7kNvwGfJPF3&_nc_oc=Adp5w6UN7-Le2Ivf2tWQVH0S2u6R5HvWbm_Ap2a90EMGRsMbyK4soKEYagtYS8EvVsxtYvlNEjP088XfBxxlJIuT&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGKgNozjd_-mrZLs9TY2yXNFbrbur3uDr5ZQ7zGJgmW0mwRDROSx3hNHmLcm6sK_SLuo2GNqDQh4w&oh=00_Af_e3Vx4mlXl7QxhYzgIpYSsGLmBbxt4Mtfd5ZwZxN4t3g&oe=6A3C6BF7",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 19,
+          "comments": 1
+        },
+        {
+          "id": "18085347245579413",
+          "caption": "La IA no viene por tu jefe, viene por tu puesto de junior! 📉🤖 Los datos de Sta",
+          "type": "VIDEO",
+          "timestamp": "2026-04-25T18:59:02+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/681205657_1462679508991969_1645161070253194974_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=HsLOIvFJrPMQ7kNvwFj6Mbl&_nc_oc=Adpb0DhZu8YX_vv3o9Y-7jhIUIQ2zmhPQ37NpZu6qbtB3uUCQfcCbMG9GtqyxNAF_C6wPeheboqqPAVdKIWY79rE&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGXOYfjhznjvHJSDhd6ar4LS-piD7g8fVjEkqJLQcyiRVy_o2RWc8kqvQ0fIqTStkjSsnbDNFGziQ&oh=00_Af_1h0al4cQY5gX8JjWvAGIbo2YgovfJryXVE_CbZ_3IvA&oe=6A3C6A9C",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18352787242214692",
+          "caption": "Tether acaba de crear 3 mil millones de dólares digitales en días... y eso dice ",
+          "type": "VIDEO",
+          "timestamp": "2026-04-22T13:54:21+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t15.5256-10/677698749_986473503817147_7090867447328502177_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=AkrZaU73W4kQ7kNvwHRFxav&_nc_oc=Adqk2SIQNh6w0xAZQoaT50RECprOrJ5Ng4714lJfQeGCV9Gx8aSJV0ikwfizENTZtxwN_qoXDyNCptBKAAt9cP40&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQHlfrOs7qqMOJ-PMPjZZ1XXHDQg-STxd96amqwIpq3vm2TpxOQoN1N1y0uFTgnqZr91hsuiJ3IdTA&oh=00_Af_GdOtT_K2LVgyiyOgfAV4Bupk_95D10Hj174r0sS3zIw&oe=6A3C4155",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18058836374471838",
+          "caption": "4 patentes reales publicadas esta semana revelan cómo funciona la mano del Optim",
+          "type": "VIDEO",
+          "timestamp": "2026-04-18T23:40:25+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/677565503_2475861746197840_4267987293646796206_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=KUYVRpQOVdsQ7kNvwHsN35w&_nc_oc=AdphQLE6-jMqUBu3ATGfOJq-q_ccw4tRg89r-76uqcXw-IZeNFH2dozM9u1sCWQQot_mQmt6LDo1qVXSgHl3bDiI&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEifKnXLgy2LR3GZEJKHcpk3IMBl59scND3a0ON7WgYz9cmLf4WdJHK-WbtEMbPCMSImhZq76X-PA&oh=00_Af-_MK_YvYnw7Xn8Eep9WQiTETTBINPmyrARjV8Hb9slnQ&oe=6A3C7132",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 9,
+          "comments": 0
+        },
+        {
+          "id": "18571916977053669",
+          "caption": "Las redes sociales son el azúcar 🍭, los libros son la proteína 💪. A veces nos ",
+          "type": "VIDEO",
+          "timestamp": "2026-04-15T17:00:03+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t15.5256-10/673104263_1252447103712294_804540911845265066_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=hJcpQ63VdZUQ7kNvwEWHpYU&_nc_oc=AdqQbmlXxpffl0-zDxn4bQ-qKnwtDxmB17xP72jNFBka8ExHBGsxPBsQ1TvC4kWEMXdyjhQibuUJBJA9OnQmmZ1u&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQE2icvdpfGowDP7A1Llt7kZUM7cRuwI6qwJvYUl2QALMSRTCnVYZ6dpTf4h9Lpo7dMkLZcvFJOmqQ&oh=00_Af-gjG7Q4LZpwqqVEqfudQ43TvXBlqT15_ybxbB-4FHZiA&oe=6A3C6555",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 1
+        },
+        {
+          "id": "17879367243554022",
+          "caption": "Una empresa de software a punto de superar a BlackRock en Bitcoin. Michael Saylo",
+          "type": "VIDEO",
+          "timestamp": "2026-04-12T18:56:08+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.71878-15/669954508_1221667939779063_2574213861199445129_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=WHJPuQDIOVwQ7kNvwGlzNbL&_nc_oc=AdoKVFaOS6e9cNCKRZTSLX9SAl_dzgebepmusvU5Y3uvULqU0krbRWvuSUeYOFDgbCfF-vopuek3O079hjqkrh_g&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGtfZS-526K3vcn0j6Q1dKP1Low6XiHGzP6f0gs-1oQOf-DAVIDFbO9FVjygfKbBIIz1LvjehkLnQ&oh=00_Af8c7OXom1pFEe-UpjrBZhq4xFpjZFKF2CQ98Ik4_us-rQ&oe=6A3C4B12",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 0
+        },
+        {
+          "id": "17853376827644577",
+          "caption": "La historia no se repite, pero rima.\nRockefeller controló el petróleo. Musk cont",
+          "type": "VIDEO",
+          "timestamp": "2026-04-11T17:46:28+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/669848000_26843345511940114_4291420357046239798_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=MtLUsZxq8BwQ7kNvwHGfzh5&_nc_oc=Adq0bZrnjXBbwGy6uokQpWRUARoD8qCIplNdQnNDAbatau3AKK91eoOHW68jD7LJPAhYO2RIFa0YYthBfK7wBLoZ&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQHpbLeeiRFo0B83Ain_oDpgb6mIBxUsfFe1Vc5xAmfBiT7YTwzOszPhK-zmHsi8uAYuN3zNJsT5_A&oh=00_Af8jKL4OKpw-kfzNJQ1AhV-qyMCd-nUIvjOiYLuueNTr_w&oe=6A3C414C",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 1,
+          "comments": 1
+        },
+        {
+          "id": "18060457811428388",
+          "caption": "Elon Musk demanda a Sam Altman por supuesta traición a la misión original de Ope",
+          "type": "VIDEO",
+          "timestamp": "2026-04-10T18:48:04+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/662742869_2073384950276059_3890044685208785324_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=sBH1sDYdUwkQ7kNvwHZ-5Ts&_nc_oc=AdoyysbDaBPtndCQyi1UdxV-f83vk9a2NwZcW9Y3REoS447GXFco5yerWIHoo-5jOUNSKLpFPFLDjK4W0KzrGm-Z&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGYnZVJ4SzLgH3XjXhQDUWn7-ykyh3xox5rHacUTUG5YMe1kmxqb-xAzx4L608GN9eTEJdNPOVUSQ&oh=00_Af96XnfWpsfkS-78V7y2kMX9KyAoqg8-00kTb8pzQ6DlPg&oe=6A3C6608",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 10,
+          "comments": 0
+        },
+        {
+          "id": "17942851281164780",
+          "caption": "Irán cobra peajes de petróleo en Bitcoin para sortear las sanciones de EE.UU. El",
+          "type": "VIDEO",
+          "timestamp": "2026-04-09T18:46:34+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.71878-15/669698032_872768499113679_8558012580634722731_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=G_JOlZviDMkQ7kNvwFCCYUJ&_nc_oc=AdoFf9skxTkgBxPSoddmXC50V0bn83_dljN81ommR04LKHOZEOugxTIMNWFvG7FKQqXH4nfbRk7CpNQ5bm7a1DOC&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFp2082gZHE3Hz_KACj9hnOMMGove3bYb82ndGXwXYYJOgAYLfsnYt5KJ4jMwUvaniEGVUJQxrBeQ&oh=00_Af8fIIa7ZOW4ITF30PEC7g4HKpHA7vJ1CHwqR3h8DaVHpg&oe=6A3C4F36",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "18087469313241848",
+          "caption": "Todo cambiará drásticamente! Tesla va más allá de los coches. Está redefiniendo ",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-04-08T13:25:04+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/662005452_18114157255666686_2335128852563782235_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_50NCxwhaQsQ7kNvwEYelIB&_nc_oc=Ado2IEw2OkREfHBGR4O7dcHQT7GRokWxFMd67dGNhrEcUwjbAs-njx2-qXdWge6avvC9T3Glbuut84OnKoUq3wLM&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af9eWdshcttxOx6-4r9yVZMmR8wBoV5PfcYfscELNiTjvA&oe=6A3C567A",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "18142196464496258",
+          "caption": "Google lanzó IA en tu celular que funciona SIN internet ni nube! 🤯 Google AI Ed",
+          "type": "VIDEO",
+          "timestamp": "2026-04-06T18:40:05+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/659706760_1132335875700245_2684087476532440536_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=IunlJBiBvZYQ7kNvwGzmK8q&_nc_oc=AdrIXciDPjkdaleppBrIlWV5WBFj-Won_IAPT02CrRmDqgu0KGBpP7dJSERhw1eCtoNAuBHeNeX3tLOvJch_WyF8&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGKNKr92e_2eqQRgCo8asDryzLyRfcc9uo2HhyF5ZBUVuohuuGL5g7pD-xkr5hOjp45kyOEY6jpmQ&oh=00_Af_uTMCx5GDBVoAiDh-cPjMC9OTX9cX2VTCouiKTFsbyjg&oe=6A3C68CA",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "17893179420441693",
+          "caption": "Uber cometio el error mas caro de Silicon Valley.\n\nDara llamo a Tesla un proveed",
+          "type": "VIDEO",
+          "timestamp": "2026-04-05T18:35:58+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/658837961_2064684914105623_3171778043643062124_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=sJNNs-E6vL8Q7kNvwFpLote&_nc_oc=AdoXCdkjhqLpybIjhJG3VGHnQxABy3B63jK-nYpoRPA6XPsU8sKgINftgFyHQP9xUOf3c8tGD1bQwqncEuS_ZPx5&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGfBOYf-YeYBlCDp58Z2CNaomXdU09_3lQ1nPiO2ksB87LkrdIIEfXL42rcUxUlTW1DckFbQcMnFA&oh=00_Af_dZX40o3Ttjao673vDUFdDGmjhfPWAhPW3MVHIX-mLmQ&oe=6A3C72C7",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 16,
+          "comments": 1
+        },
+        {
+          "id": "18160489759428566",
+          "caption": "Uber cometio el error mas caro de Silicon Valley.\n\nDara llamo a Tesla un proveed",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-04-05T18:35:22+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t39.30808-6/666806887_1610507200233498_210008786750545135_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Sc5K3_yrhXEQ7kNvwFlisUm&_nc_oc=Adpsnyp9HhuewGPGTVwY6GKkgMkYGMnlsjStqIBWVfChIM0qsrvYDP8WAMwlF1VjxHpZwybx52IRyuhxZG3mFQWE&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af9v6OBbu0kc8JQVhQjOETVUjVEcdaWRe_CmWr3qihzVWg&oe=6A3C6F20",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "17958059847094738",
+          "caption": "El CEO de Uber firmó su propio obituario. Piensa que facilita los robotaxis, per",
+          "type": "VIDEO",
+          "timestamp": "2026-04-03T18:44:04+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/657721757_1544157663981449_7845190143599674497_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=U1d72plm-YoQ7kNvwEdQaCQ&_nc_oc=AdpvuHOglHLQW3dlXBLIf29A2YfGYHdCe54JDts3mJcKxeQ-LLX6EDDgOkDex11GrsGacqVubXHW6yxWy-3h8knR&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFjnMlMdqikPRG4sYAwtFHfh1kL_aN-QqQt-h9icyX7k4xD4diK8yo8zpQDKmxM7Io8Ha6-xQkuHg&oh=00_Af_zx1B6o3gMEjNY5LoCSApvmSZvjPyZVK3EqFEqHuQH3Q&oe=6A3C60EF",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "18121515964547619",
+          "caption": "Anthropic se filtra a sí misma! Olvidaron una contraseña y expusieron 3,000 docu",
+          "type": "VIDEO",
+          "timestamp": "2026-04-02T02:42:08+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/660298493_1597629988156642_6839149674657411921_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=3axUWqYH54kQ7kNvwGTA7zd&_nc_oc=AdpA9rYpjMv5bhkR81-akhr-xPCGxVCoK3RmVLurcsICIQKXswuT9gJ0HkHRZatkClRnu1mdmxBaFtk_kbbgbCP5&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEidI9Cc6Q0gWLH6-CWTCwSEO86dUEe36kn8llYPtjnBu-rNS1Aqls6TShNeik5Q1g4eY97plvbhw&oh=00_Af8lTqNvWLUKdmZmnzeRzbcFOnRFqmORVDl5rVBRk5dvMQ&oe=6A3C5909",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "18097946938977259",
+          "caption": "Meta creó una IA que predice tu reacción cerebral a imágenes y sonidos. Es más p",
+          "type": "VIDEO",
+          "timestamp": "2026-03-30T18:07:58+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t15.5256-10/659798853_727946000312336_1268149141187103956_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=6yY9t_eMVXwQ7kNvwGgO0gB&_nc_oc=Adoky0wdokx2YgC85sGDNhTOshPdE18gBIGd0vDY2m-ebCGvOAEwB2jItYLBD7K0sTMbLtMQJqIJoFmP5d2vqp_O&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGL8st4nZ6C1u1ZYIMzjgfLWm7Dl2UPhn1eHUT8QaRSAhNC5rgkbMLueJxiRrL_ePIpwea4ReSDIg&oh=00_Af8_5KQVjqR3l5HGUJyIl8WNm8zRUzxjJLKdhsC82zRJYg&oe=6A3C4548",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 9,
+          "comments": 4
+        },
+        {
+          "id": "17884039284377628",
+          "caption": "Por primera vez, se construyen más centros de IA que oficinas. La inversión en c",
+          "type": "VIDEO",
+          "timestamp": "2026-03-25T18:17:08+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t15.5256-10/655067657_3267662653406694_4183617966477341314_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Be1569vYd5kQ7kNvwE-VjYr&_nc_oc=AdoihHLpEkkBKVf_he-guEnk3FXO6yD0rXx58lAqWeGl3z7vyqI6dcQHff-1ExhFrMTq0KupY8_hZd8N16b_vWxr&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQG7G9Lccjb7vBdQwL0XZV9cV34bT9zAtprXJvqBj_Dg9iK_Zfl9H3EOmN-N8S3f8pFMpnyHycnSCA&oh=00_Af-4Ivjbcx3iLpT4u6Myek-d-uteuwfHPJ7Peksf9XIauA&oe=6A3C5430",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "18081201095612883",
+          "caption": "Las empresas que sigan comprando camiones diésel en 2026 están tomando una decis",
+          "type": "VIDEO",
+          "timestamp": "2026-03-24T16:20:29+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/656512246_1272604038296888_1592283965987951205_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=8mbGBIFUCMkQ7kNvwHDGtJf&_nc_oc=AdopZCUnBPwdfCrbszuX3a985ATUfOqcCOQDegvjAw_YgD-EgMsn4MjaVRz-pRax6ZaXS78dIXhfRgxDxCuTU76o&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGLl5FAqdm5Ra8n9iyBi_nMPsR777X4YnJX4mXFtmj5-qRGfgVrvrO_2NQ0ZxGfgc7jnZBWyDxLuw&oh=00_Af9BqiPqM4O9ZWcpkRBWkCDuV2jRc6unCo1EFiF9ADrUAg&oe=6A3C769C",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 2
+        },
+        {
+          "id": "17853045261650345",
+          "caption": "DoorDash acaba de lanzar una app llamada \"Tasks\" 🚣🤖\n\nLes pagan a repartidores ",
+          "type": "VIDEO",
+          "timestamp": "2026-03-22T19:01:22+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/658016153_1546759034120444_765999244911526066_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=j4P2g3yWPxgQ7kNvwElzhAT&_nc_oc=Adpu2oK9ePzdby6lGZwo0P2FlnP0lhaCRLNu9a7os1Roc4CqXi1EZF4aY6rSb2_BGeYHOhlqWDIwXDI4n7zmm80-&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQF_hbk_zfWZMasgOmEf8jGeBEZ_h1QA8Ez1qI7ChexBwPIXlXigqEBCpH4tPge-Ys-G2po4oaVmoQ&oh=00_Af8QDesA1KrnBTs883QzN71UjxR0kPaXFncLPIA7Ij4pJw&oe=6A3C5640",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "id": "18093838457034442",
+          "caption": "DoorDash is paying people to film tasks for AI training... to replace those jobs",
+          "type": "VIDEO",
+          "timestamp": "2026-03-21T17:20:42+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t15.5256-10/653698976_2121760218364127_8571492202651195212_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=m-RqUo3OOKsQ7kNvwHi6XCF&_nc_oc=AdqJOo-e0r_MInxLSaZJCXlWxSWkJ9xENVng-XWQyh9DyVu2VOWa_fylsnecRkfRa7fBrSwFZSwvNgrqdeAgzNRf&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQH02-ch6mATHVga-Dry76JgKHKqde_SOIfS3a-RyVz54RnJ8MLcoJ-59aZuRNCFUW8lMQ5vwz8ILQ&oh=00_Af_DrN5i3OoqEOpC8djOn2MIkjqyVmUj3DYqirKshwu91Q&oe=6A3C63E4",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 2
+        },
+        {
+          "id": "17909874444182819",
+          "caption": "Sabías que al jugar Pokémon GO contribuiste a entrenar IA? Niantic recolectó 30 ",
+          "type": "VIDEO",
+          "timestamp": "2026-03-19T18:51:22+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/653724664_1663881698373480_3846566802412228302_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=r5se5OfRgIUQ7kNvwFMWOOY&_nc_oc=AdpusOHkie7pQZ25xW2A3-JuXHjklXdT5JOYAcJ0O5LUpuYnxomK_4s48ke4E7NJ6C-LAwAYf8guZXOehcvjaIMK&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFTuvSKTZYyIqCdryVePf7DFAS-FFgF40KA_BIylgCFJplz5ZY7cPOYZSE7A8yDxL_zhlXM6dTifA&oh=00_Af-oWFXTG8OkPSv9dUWu186dyu2PyTig6nmoGyiicRrIXQ&oe=6A3C4151",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 1
+        },
+        {
+          "id": "18076475777570125",
+          "caption": "La IA está transformando la forma en que trabajamos, permitiendo hazañas de efic",
+          "type": "VIDEO",
+          "timestamp": "2026-03-15T20:07:57+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/652627520_1244233551218430_3122125672831578325_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=6QQxuMY6wCIQ7kNvwGvvkE8&_nc_oc=AdplQ6PkZIp-nbV-zOlCll5ZdKGVnWUldiEifMRxRUs3aJY-E5ReFoCe6J-4cTWsuagHeEKeiIzlDGPam5Y1ufzL&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGbd-aB9qerWmSTx56y1uUav4wLtRFWSPCpvCbLXSTSxfz-GBoTo2utdu4DOXhHK7_xFBZsG4F1hw&oh=00_Af98XuY6yRDVU0I0fzc60jfiQiUO4UXg3N3c2Thke_HLTg&oe=6A3C6BC2",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "17970369132007381",
+          "caption": "70 guerras. 30 años. El mercado subió 1,200%.\n\nLos que vendieron por miedo perdi",
+          "type": "IMAGE",
+          "timestamp": "2026-03-14T17:39:02+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.82787-15/651939645_18111560035666686_5885724820554728187_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zPL-YbFjQdYQ7kNvwFCwaE9&_nc_oc=AdpdDHYkgpgmNnHySsI459jrXm-zBd84NT2Ct88HDHfF2raDVLM8a8gZA8MSZrEZjcO8GOTtyePoY3xrA732T2w2&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af9RHK5WCj_616UfXFTVxUN2DFkgHCdudX6yBgiqHKF5qw&oe=6A3C5487",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "18078547460615589",
+          "caption": "Una coordinó 900 ataques militares en 12 horas. Palantir Maven: el Google Maps d",
+          "type": "VIDEO",
+          "timestamp": "2026-03-10T19:16:04+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t15.5256-10/648976262_889589640582531_4535237065731142486_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=HXL8GRZ0_TUQ7kNvwF7_cbW&_nc_oc=AdrleHsTfkmvseyaiCMeROMxoGLHJ2osS-8U1yxi_gsislJ5egdsmkM544sJY_ZKA6qPMamUSW1szAHRuO9Xjthb&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGFvSo8J1iQD6fRMwrFVYqbmdc1XOrs6ipAouXJr6jAMdr7PdXHIR3R_NOzUp5OTOHvd5u6yjkPPA&oh=00_Af-tVKpbJnXiG4U8ZWSoWmVzbySn_f5I7hzn-9y0caNG9A&oe=6A3C4C7D",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 2
+        },
+        {
+          "id": "18105046762798394",
+          "caption": "¡Científicos pusieron 200,000 neuronas humanas vivas en un chip y las enseñaron ",
+          "type": "VIDEO",
+          "timestamp": "2026-03-08T19:45:51+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.71878-15/649539634_2107526750021874_8597203071667804011_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=JB-cgnlfGYkQ7kNvwEW_JST&_nc_oc=AdpqVWmG-V95v3lTfQOpyDfJY_dH6rYyC8omUpPpaygqjabIM-bEEkYf1wyvxGSoFgwYpqh_w_ogGoSamzwHzwjQ&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEkHR4lz73ZMxr89H5Ywr8UNUFBCNPsaEW6cWbNKucUqDFuBcWavgkG0NWTDdiTdISM6vYPfg-2RA&oh=00_Af8odas2gc-zDPhKReviT1skl0BVMuhDx64-2Xi8cgnFoA&oe=6A3C7522",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "17922504303268995",
+          "caption": "Sam Altman en Stanford: \"La idea importa más que la ejecución\". Las mejores idea",
+          "type": "VIDEO",
+          "timestamp": "2026-03-06T18:47:31+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/642752443_1613882729657396_526487826043104063_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=4SyeGyjomwUQ7kNvwFHHEeb&_nc_oc=AdoCLP9-va6Mcyhf60kTgZMw1pb3_egh4fm9VVqphxo7eAtPZgjmBor6enVTBENkahRDsLRLc9MC25JrtboVCct6&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFYuYzZAfNkdlQ6CnMbdNffR9OevKYQnP2ZeIjf1TrnGmvOKbGaR6Deoy6A8Mgf5QiIeifPrqg-og&oh=00_Af8RMnNc-v5gP97hpVcU7Sw5mqDzMCKJDjglRmauupR7VA&oe=6A3C6BAA",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 1
+        },
+        {
+          "id": "18004490519887179",
+          "caption": "#InteligenciaArtificial #Bitcoin #futurodeldinero",
+          "type": "VIDEO",
+          "timestamp": "2026-03-05T19:36:17+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/641786775_802652452315903_3364731194318327814_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Wbp_2ethFngQ7kNvwHf5D9m&_nc_oc=AdrINGbJc-2p4Z-xBY-PWrogEWHNbmufoxdHp1dICk7j6yvKvQAte-IBL7mtz5g5PlkqTfrJd8G9ZL4dNRtj6LHK&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEc7qWX88dB2ROrQYrFvni5lSMcdGWoDUkxki-im4pjghrBPYvqJbu6OX7CpinvcOU5Q0dxJcj_mw&oh=00_Af9XYjvt0o7QpY3emyZImCfRM0ffnEa7zqfaUvl8h3f1Rw&oe=6A3C4182",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 2,
+          "comments": 0
+        },
+        {
+          "id": "18041548292733137",
+          "caption": "Bitcoin desafía las expectativas, subiendo mientras otros mercados caen. ¿El nue",
+          "type": "VIDEO",
+          "timestamp": "2026-03-04T18:22:47+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/642666497_947359271177330_9147016466269845159_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Og8v5rs4QxsQ7kNvwHXsE16&_nc_oc=AdpPgsCNGGamRXvzw19c-fjhQtcDei8Zk3PaVTM0c-lKdBws56GYW3xKr98FgPvh0qV-oze0cC3jkv0rOfmRmpQ7&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQG7P6pOZfytAlZCPA8Xi9l_UANH8z3QAXaC43AvdIcZdIF2Dre33chE-yjCnZ3pma1Doa2vwJBmrg&oh=00_Af-Vz3i4Ma9XHxJ9HgbQpjyRHoa4CRzWVZnqFJsYRzayMA&oe=6A3C6C31",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 2,
+          "comments": 2
+        },
+        {
+          "id": "18091358222033615",
+          "caption": "¿Sabías que Robinhood evoluciona? De simple broker a potencia financiera con 11 ",
+          "type": "VIDEO",
+          "timestamp": "2026-03-03T23:02:14+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/642518342_1633814097652415_3346390149825170183_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=bD4tHd4c6ZEQ7kNvwFVWxS6&_nc_oc=AdprSTpezf4HnlpLlujlKWNecYbdjHskobE4moHUeGOAC0HmLWUEwjZpo4LiIFHZz7AqMmQazPP33NBPNIfZdKBn&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQFOm_kFBXdTfO90xgFo8OVYjRZ66kIaxYDhCj2f-naPDA8zBQ1q1YdKFDcBNXS32AT9aolNNKjxog&oh=00_Af-Gno_LuvTepCnGJ_polyDbQEHBVsVj64xnORRd3JpR1w&oe=6A3C6A4E",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "17939827575150497",
+          "caption": "porque los mejores momentos de aprendizaje pasan cuando menos te lo esperas.\nUna",
+          "type": "VIDEO",
+          "timestamp": "2026-03-02T15:41:32+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t15.5256-10/645120836_1644195283423679_8404373671785227825_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=W_GvM_SBtVUQ7kNvwF6cEFJ&_nc_oc=AdrOyMKelh-hxRzMCZBqgaHUpjFpgDNFBoD5uNmCZwqqcJVJRxdG_JBR2fxoq0ODEcYNT8FIxf1J2PMUDChjdGqS&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGsClDg05UrJwWOA4ww-dHT6dkiwOUI9QUP0tL-W1z6TCd5KCMh6mof8byYszrIW5DfY1P09Qg5sA&oh=00_Af__8q2j-ETc6xPnofvMjqHy28BUSFbVwXYRpDHFrdzr9g&oe=6A3C7674",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 1,
+          "comments": 1
+        },
+        {
+          "id": "18080647127353814",
+          "caption": "La mano del robot Optimus de Tesla representa el 50% de toda la complejidad de i",
+          "type": "IMAGE",
+          "timestamp": "2026-03-01T01:00:28+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/640441555_18110010688666686_926818171287448881_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=6JbUlwDWkQsQ7kNvwF2kidH&_nc_oc=Adp24pXHv8TMGoCf7DRw06qOHh_NHDjLrE4Qcrhme19YE5dtbNOoF14YzSvhnUlz-Qyp1Zjo-Q-USx0RdZhDeD6J&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af-yhTTgb6YsaZAHcfqmG6uZXKxwKGpemm7L_MDYpXz_wg&oe=6A3C4941",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "18080122469340276",
+          "caption": "🤖 Tesla no compró piezas — las INVENTÓ. Optimus es el reto de ingeniería más am",
+          "type": "VIDEO",
+          "timestamp": "2026-02-27T18:54:33+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/628971941_939104958574359_2904297999753149643_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=HQeygyzLFisQ7kNvwEg0jsy&_nc_oc=Adomutg7K2IZQbp5UBpSvTSKdIAMDN0BKANZ6ytbyc6Dpa1BgOit8GqD6vcdcmQG2LomQwkgiJNxmURG_QptQA7y&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEKhLVYGYGFiBAxSsDoIfUdGREVv015OROwaLYmRWdzqEoLjaGmVrz8nqyDYMekjSOONkLVtwb2Qg&oh=00_Af8-4VrXD2bkTp1cErKdsP0HtxXyBsPTT0ooz6PtuQZSww&oe=6A3C6819",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "18093556199079703",
+          "caption": "Conducimos con dos ojos, no con un radar en la cabeza. Y esa es exactamente la a",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-02-26T23:00:50+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.82787-15/640411581_18109836010666686_3915326003716990698_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=PMNcvlkRLMsQ7kNvwHPmpsm&_nc_oc=AdoB817he03ZMiewejpxgJZtokZ9Ce4rK7SlsnATAel0qsBqjCdr8uIQGPKf_Mu5mKJx4h6tmsTwuwTEmXNEt8Jo&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af_UENX48ey_NqEDKOdSHUWfHBJtyCnntZc_QATkrPF72A&oe=6A3C4601",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "17870633742454054",
+          "caption": "Nos han mentido sobre la conducción autónoma. No se trata de más sensores, sino ",
+          "type": "VIDEO",
+          "timestamp": "2026-02-26T17:28:57+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/642449192_1570970760846252_1140247964775493630_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=3oRrJ7XNofQQ7kNvwGBdhGL&_nc_oc=Adr5sOe8cUisZREqkXnHBE75FJzi6oxUzsEbGZjfCveo8vAEyho5toyXdqXKLXB52j2xh4SIX_9tXTrA5_A2bhfQ&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEO7VssBV-a1Xc9mO6v_82HO6b9h7hsSpK21xVvxLaN43WFhYBqEAkOlfG0MaP8UvWjbwvc4JU-ug&oh=00_Af8zrS35vgeaEplF5gyzEnw6NwyB6bVa0vhmn__3QG_Rkw&oe=6A3C7466",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "18122828740582204",
+          "caption": "I've been going deep on Claude Code lately, and these 6 tips genuinely changed h",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-02-23T13:42:33+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/638294461_18109536367666686_8988836929023064810_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=tAuIsds3BeMQ7kNvwEE_zYh&_nc_oc=AdpjiQUo8915EbvAJEOvLMDovfQR1dvE0zNn2tAkGxNCgmOMRU2iygzts8Q7qh_v8UInTxHQh6IODyZabC0ni2xw&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af9Ooku6P62K_IFvgkZFJwqog4KAkexKbN6RYQBfAG77Pg&oe=6A3C57BD",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "17888197548433993",
+          "caption": "Olvídate de las horas perdidas en traslados y trabajos agotadores. Se acerca la ",
+          "type": "VIDEO",
+          "timestamp": "2026-02-22T18:42:12+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/639768899_890322477152043_5616165245630980583_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=h-CT-st8e0gQ7kNvwFeBEUD&_nc_oc=AdoptyiuKwWmJhHx3XnogsMmIG58X6b6rcDLIWHd9lCOF2-7Tu7bt2ry-5Bm2Z4GvLqxMORlUkSr-tvdgjHUlDtY&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGiA2uSdE9tiQZPjSfVjrAUmXGpGML8rwsrnv0F0nH9nH2hOd8kvBltXuISUO6aQ3DR6FP7-H7iPA&oh=00_Af9l1QOsUpA9WvwUEIVELtw_8Ngc4HhbGG4pW50yp0jzaA&oe=6A3C59C0",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 8,
+          "comments": 1
+        },
+        {
+          "id": "18102369634895634",
+          "caption": "Lo que el banco NO quiere que sepas sobre tu dinero 👀🔥\n\nMientras tú tienes tu ",
+          "type": "VIDEO",
+          "timestamp": "2026-02-21T23:43:47+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/641732930_2104143187049590_2932154588333489901_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=isU0P76ukxgQ7kNvwFb8MoC&_nc_oc=AdqjqHFfulXuo8vj0e8KaoYodoWPK3D6fPphyJxPdwylaWJ_QAV0UjadqmjATzWOhWfZDL2NeG_kzxKqM3abr4iC&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGqclMhZVZtxg7HvxmmCNLF9-uoYzryk2-tROlzN2yRTm8ZF--jm1bGWudi_GfgkkeOvCzHJphyBQ&oh=00_Af-rJVjo87C6ghwGR4LWFm2DhoSkyXlRRfa8-dlg0KAnJQ&oe=6A3C62AE",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "18056878463398584",
+          "caption": "Why validators are crypto's real power plants 🔌\n\nIf you're holding $SOL and not",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-02-21T18:01:00+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/639714410_18109388716666686_6375686014289368952_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=-7u_1FcNjqgQ7kNvwFeSLUr&_nc_oc=AdoU0UfqwtPvS7w0nhl03pBRXFRyC0h1q1RMzX5iQ7i8CSjueiR0c4rUOvHVsyoDuusgKS_cvs3tF62h61UHE7m6&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&oh=00_Af8ZJQCdzZrFIJongYYVWuFOlghowkvryQQ3iegJeTopew&oe=6A3C7271",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 2,
+          "comments": 1
+        },
+        {
+          "id": "18124179412563141",
+          "caption": "El modelo SaaS (Software as a Service) que dominó los últimos 15 años está herid",
+          "type": "VIDEO",
+          "timestamp": "2026-02-19T23:00:49+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/639759137_18109224013666686_2487244721652819819_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=8PgPFZOw1m0Q7kNvwHVixaP&_nc_oc=Ado3KVRNDy08NnkQO4_RmqKLhkNUaye0-Rz_ULZa4wrsiwC14OGFeWp8S9HgGDsSb0SWmWOpoKs0MBAblYh3jJ98&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQHqsNbGpzUqmRKQCW5wGIKy2k2fOc2x9skJOz89nGWuaih20UCMDFg-xGcZxDA3H8jP6e2jpRGeIg&oh=00_Af9ESgs3SqE0RxvWK3nEuAbd8Ez2w90VOhaphUMQ2H10bA&oe=6A3C7165",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 4,
+          "comments": 1
+        },
+        {
+          "id": "18066831596268254",
+          "caption": "Bitcoin's brutal drop while stocks are stable? It's the global economy's fire al",
+          "type": "VIDEO",
+          "timestamp": "2026-02-18T16:43:48+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/632281384_2454993958284718_5772961494848799295_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=CqIJOZ0-D7wQ7kNvwGwTqBD&_nc_oc=Adqqeaukn-3njFj1Pj0v4b4iH58HiSRBkQ8tjP6BmIY--1a0YOtX8-g4dLv0qQSa81ci8MOmNmLYUgXgPwdGDSkx&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQEK_-WX2L_ZPXoUbBDq3yceLLZ6czR5kEO6Omz3vugFKQqSXPLROjwIFqnHolCq-PT36MiG0Q-b_A&oh=00_Af9XMbhRNxrsqrb0vJU2GtOiuL740svOysXnEf4wEBLczA&oe=6A3C4FB4",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "18050802368701745",
+          "caption": "La mayoría pierde dinero por fentanilo mental, no por falta de capital. Tu porta",
+          "type": "VIDEO",
+          "timestamp": "2026-02-14T20:38:22+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t15.5256-10/629837552_1456657992683518_6885428792489757275_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=H1AbFRKwQVgQ7kNvwHiToNg&_nc_oc=Adpix5OudxCAQyBeNghp8e9E3xOAM_SQJpmIlbVbfGiPkPhNQ09qLlaa8XWl7bEO4YxykiEMw8lohOQ8LAWEyyiN&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=OsTEIfJJ8ngsAeY4Yhm5iw&_nc_tpa=Q5bMBQGIQZ9JETt1CZmGvZy7WmpgXkTkyzV-pZDGNF-OC5kFruD6MI0AZ9jcnaT0-DWeoeoiwDX-I1jadw&oh=00_Af82XvP-2gMgDz4ySJVR2x1DnavQgUmD4kvC9Zs6rZY5Eg&oe=6A3C5ED9",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 5,
+          "comments": 1
+        },
+        {
+          "id": "17989475453929504",
+          "caption": "La mayoría pierde dinero por fentanilo mental, no por falta de capital. Tu porta",
+          "type": "VIDEO",
+          "timestamp": "2026-02-14T18:06:15+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.82787-15/629460052_18108745873666686_4516699802190214512_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=lJn2wH_wEI8Q7kNvwE6Gp4w&_nc_oc=Adp6hEhXub9y6zk99eONcduD9w2BoK6rw_99NqkNkZl6BXrssyqWqUvUeqg-na0YNXCpqbxruC6MtujiZXfMx_p6&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQGHJkO7jfLahibdX7kNUjNPOzziJmZ8bEHMgmeot4Osg5OzobgVuRcQoPIcXnThzRpTvgF6lVcCKg&oh=00_Af9Q0TyEb6rWc0fru-zYdMIsmEAf0Ro-LyAwMgXzxrSbag&oe=6A3C75E1",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "18144734743461624",
+          "caption": "Fondos indexados deben comprar acciones del índice. Demanda artificial masiva di",
+          "type": "VIDEO",
+          "timestamp": "2026-02-12T15:03:35+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/632038023_1927211944821881_5311472883662394050_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=d4gA2-g4ILYQ7kNvwH-dwSF&_nc_oc=AdoEUCp86yeDPO3ZVsCkNENVDfw9ip4FwG18gpSLzkgRVxfervkmKGuiipkF3pff35wVBCeApTvCqrtVR2IckNzX&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEwzCt6MPQyTvivIdO1y75g3nP541pR2cuyhdr1XrMmEtNIzcrKRLk3OyF2-bGMkupVa5Rb504DpQ&oh=00_Af-fFqREYTwpz8IY1qV5bQRy9_My7TzD_9A29NXOo4jcLA&oe=6A3C47D1",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "17926674087209760",
+          "caption": "Elon Musk vs. El Sistema: ¿Reglas a medida? 🧐\n\nEl Nasdaq está a punto de permit",
+          "type": "VIDEO",
+          "timestamp": "2026-02-11T17:56:49+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/633995631_18108473506666686_686819544683924211_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=U7qwltS4FMkQ7kNvwFpdNm8&_nc_oc=AdoBsne13jjz0qOJz4-z8c6eHdVaUKzapNztqYLJHWpImuxlNZN3sIz1XY6X-0lPnDzA0uqNiJPszMAdVTd-eS-M&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQGcrd4FzYXPgjaRVT0ERnsy1XfoBvz_l6b_phaxcf-HSMg0ByH_vqvyMQWYOL448G3SVhyylaEwcA&oh=00_Af_G8_vDTkdx8p_C1GpouExBDAtQVVdLXHicWECdN4Zwwg&oe=6A3C4EC2",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 9,
+          "comments": 2
+        },
+        {
+          "id": "18082737901970924",
+          "caption": "🚀 ¿Trabajas mucho o trabajas de forma inteligente?\nEl sentimiento de \"no me da ",
+          "type": "CAROUSEL_ALBUM",
+          "timestamp": "2026-02-09T19:03:52+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.82787-15/629781330_18108314593666686_6352880781298025635_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=cLn9ZF09KbEQ7kNvwG9vhJK&_nc_oc=Adrjmmoodlz9JpaCKEWb6iL4lgqE3du2ZTlB5l4ZuozL7GYVWJfqig9A4Gze8pPw_ZC6Ic2m4pEOYGTz5pz-4lkg&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&oh=00_Af9LvgEtKevqnBO3PmsTdeFEurIhYz3Y9MLag1H409oAiQ&oe=6A3C53A9",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "18419759251189707",
+          "caption": "¿300 personas pueden vencer a un gigante de 300,000? 🏦 vs 💻\n\nLa mayoría cree q",
+          "type": "VIDEO",
+          "timestamp": "2026-02-07T15:23:23+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.71878-15/627647231_1553990540059856_2129688576057788529_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=FtntapoiWI0Q7kNvwGRbGha&_nc_oc=Adop0uMyRyJv71PZHVy_y40GVDiv3OE8Ux8k_254Fc_xS33pJZ17E0mWlSNX_nJl79EAotpH83wZbBcuKvJkRRB7&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQHi-VBmPvb4M2S5aXN2h0X0FBefkfdBg7wKDSva0AQxVJm7Iw6PQ5YZVEXOtYHI2zA7J2Nj8o4jZw&oh=00_Af_qkGnQnooj3YZfUhPqd27tULu3sI6PNqVY84fsRjUYlQ&oe=6A3C5F50",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 4
+        },
+        {
+          "id": "18000920543895647",
+          "caption": "Estamos viviendo el momento \"iPhone\" del desarrollo de software. 📱✨\nLa gráfica ",
+          "type": "VIDEO",
+          "timestamp": "2026-02-04T15:05:27+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.82787-15/625971978_18107890447666686_8984227752346916458_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=CP8UUyLF-0YQ7kNvwFWbxX8&_nc_oc=AdoFvk4FfgAddYtxgTtsO61gOxmhGwIrvbaM8f6kT6QsSpYi0ACYmEKa5vv4SzN9XSA_jD3Q4zmHhcKXpFIw_u90&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQFaOoa2FNA57e0k1WfmdegCaTlhsAiaURWK_bIG9NrP5Q9c2kUpYhJEKxzUOYpeW8RTxGRgZP1hbg&oh=00_Af86HrHD4z-7rH2qiYhLdbnINGUgmom78IK7bj3nOeg7gA&oe=6A3C452D",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 12,
+          "comments": 7
+        },
+        {
+          "id": "18085467089274729",
+          "caption": "🤯 ¿Tesla a $8,000 por acción?\n​Tom Nash acaba de soltar una bomba de análisis y",
+          "type": "VIDEO",
+          "timestamp": "2026-02-01T14:19:09+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.82787-15/625014240_18107638060666686_7694961443828773867_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=r3pJVeVs28kQ7kNvwEb0IY1&_nc_oc=AdoOFSFLNxE9ZgLwvvEmuxZXZEVF_XbaOAGVGPcrOVBPSeCYGLwd_ywaXirs3javvYglK93pIY0Uah9NZw-S8qNB&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQHSeoC_L-jRiKJpWxyaeItQmjGKMBDfB4uRWzUj_wcjYEPaljKFZ52oiLr2SkQqZ2gObu2YO424rQ&oh=00_Af9wMPh3b-RbAd8ZwlmvXbVRA9WXafkWUfpziSVWCA2Mng&oe=6A3C4273",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 22,
+          "comments": 6
+        },
+        {
+          "id": "18345763192230061",
+          "caption": "¿El robot de Tesla tiene REFLEJOS humanos? 🤖🧠\n​Muchos creen que Optimus es sol",
+          "type": "VIDEO",
+          "timestamp": "2026-01-29T14:30:13+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.82787-15/624122260_18107372665666686_2236788180811832727_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=wKMyZt8sQ8gQ7kNvwG0Nf_D&_nc_oc=AdpXp83mC0ABqI0iffLwwpEyALMSgIy8mDEbtPSGATelMa3862HZbekrVAk6-dojjOXo5kqGAngGgsuMOhbHbwMR&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQG0ifqIPU_O_1Ifkyenjr6RFzdtx5so9TYm49BC29Mnfwo3cP_SM25JVD2nDHfInVwJAmaPue_A3g&oh=00_Af9rnRGPK5Sido3AHdJDejboiIHNFRIu43tz1gkjsSigZA&oe=6A3C752C",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 14,
+          "comments": 0
+        },
+        {
+          "id": "17999675171886629",
+          "caption": "¿El fin de los servidores en la Tierra? 🌍🚀\nSpaceX acaba de lanzar la misión Tw",
+          "type": "VIDEO",
+          "timestamp": "2026-01-24T22:49:59+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.82787-15/622155777_18106859008666686_7950500602940001669_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=gWwYztoo8ZoQ7kNvwG-QVXZ&_nc_oc=AdrEuqsIvhIc9VAswtux0ULSuczqgyRRUfNzoo3GMkO_zczQFbAq7UeBx18ib2y-WTWojZSEnoInxk4C_7o3uVuJ&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEM4Dnrr6dQnL_pBR7kgRF4FbjX0N_ZDkmHYXLelCou3SYf09h5g81-bgd3jtxBZ_vkSJFMcEA2Sw&oh=00_Af-hk7iJS6Kt835Rviq-VTkuUxl0rU9u-aeNFOsAzpmn-w&oe=6A3C46AD",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 11,
+          "comments": 2
+        },
+        {
+          "id": "18145451767457483",
+          "caption": "​¿El fin de la era del Silicio? 📉💻\n​NVIDIA y Apple han dominado el juego, pero",
+          "type": "VIDEO",
+          "timestamp": "2026-01-21T15:16:10+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/620499733_18106451245666686_7088706487077467077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=s0Stz_jovOAQ7kNvwFmFvy3&_nc_oc=AdpIVcEqWIYt2dql3HJIUgrd-aEORS6hVzdUn7u8P2idlIDsVnVqH3jgQ7UKB-fEKdPCOHrjQKFrBCTu6B0fL7zd&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEwnbS9iVddsB_ePT5J0BKevhOdrQ-SzN4moKoEGPGpMRnk8OFHlntyoQo0Lb84xvoOfrCfsdnY8w&oh=00_Af8xe1PhHuPr_CGWto8pz0xs-KhISME-ZNbruuCCpZvSog&oe=6A3C709D",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 12,
+          "comments": 7
+        },
+        {
+          "id": "18551904085009055",
+          "caption": "¿Va a destruir la Computación Cuántica a Bitcoin? 💻❌\nMuchos medios venden el fi",
+          "type": "VIDEO",
+          "timestamp": "2026-01-16T14:35:47+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.82787-15/616980369_18105900358666686_6736585185052946322_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=ATxm7iGg3PsQ7kNvwEQmrss&_nc_oc=AdrjTl8jwzRjiusDTU1eLe8e9YR9BVjtgqBXJwUGqh5emyvUvODr-mZ1ZnZnE_IbUNbqZQhFVQi6oQRDgpYFZnlJ&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEeKbMoyYBn2IbdHH_w9wSytmFLboAYMByIddaan00d7JQEb7LZRMu92phQnGyCFmAdbsp8PtVKjQ&oh=00_Af8is7BKwBi53399ye6jkOzitSZFpYuOR-aBC670olnaiA&oe=6A3C5A02",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 0
+        },
+        {
+          "id": "17861092758569305",
+          "caption": "La gente en 1997 también pensaba que “llegó tarde” a Internet… ¿te suena familia",
+          "type": "VIDEO",
+          "timestamp": "2026-01-10T14:47:49+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.82787-15/613068033_18105389869666686_6722450385627870957_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=CEDyD7N8aFQQ7kNvwHqCKUf&_nc_oc=AdoMmRNc_8S7FlX4v8pM3TwPtEC90-9365EQZrMinUo_kVk6y7eGQb-XcLpem_P9nDQJpyj9aJSbh1ajXHPzCIiT&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQF02WQyVIxNOZ_Rn37skrrpNQhBD-nEpgau9p1JgH1gWaYA4jTfkTZffL7DU7wVFPKrazKcRzFc3w&oh=00_Af-FMt8XI6G65ZjsQIqJ5_GjMZPSDyorY6R2TIxmf6AwBw&oe=6A3C6CEF",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 13,
+          "comments": 1
+        },
+        {
+          "id": "17931856131161427",
+          "caption": "Tesla no compite con otras automotrices. Compite con industrias completas. \n\nGig",
+          "type": "VIDEO",
+          "timestamp": "2026-01-06T01:50:03+0000",
+          "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.82787-15/612463000_18105029317666686_5826780912197052484_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=eeV6ChdVq20Q7kNvwFHmPdS&_nc_oc=AdqDhk99MT206XvFGaH2wVRJ-LifH8jqCIPzrl5U7OtOKgdsJ8ZGDbJ4RT272ROQjI7qxoIplRrGRdepiac-B_nA&_nc_zt=23&_nc_ht=scontent-mia3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQHYBB7ypDVtHjnL_cDmMw8pUAlopR8GxXC6KRVd4etYoUsEpSIH6Ma1DkSksK_wpsoZgOe4EMS8Sg&oh=00_Af-7eE3xe_hUse-TE53RH5hEKdaPtQAbL9mg4xZeBIMeLA&oe=6A3C458A",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 16,
+          "comments": 3
+        },
+        {
+          "id": "18110039944620438",
+          "caption": "❌ NO mires el precio de Bitcoin. Mira las REGLAS. 🤯\nLa mayoría de la gente solo",
+          "type": "VIDEO",
+          "timestamp": "2025-12-19T03:07:58+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/603098617_18103419799666686_6566674183493150299_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=mg9h220qTqoQ7kNvwHOs2Z4&_nc_oc=AdpWXMMIiCpqbtI7jq_ujxz1d9MmAdl6eCUi8Wy43ucrrlSS2d0G1wtjjbs3u6PWn4OWv5Y30eAHNvwN3jKSO7kx&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEUDNzm5RHWxdbLsjdMoD706cZbRqmpJCG2d6fBEwLZtpm5b-MgGyPK9EaAOF5AZ0mG6uq6Tg25Ng&oh=00_Af-ABqC-FZpXVKSlAlMjbcb67R3Ha-5G_6KCYdPfgKPiaw&oe=6A3C7667",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 6,
+          "comments": 0
+        },
+        {
+          "id": "17954771634017941",
+          "caption": "La Capitulación ante Bitcoin y lo que significa para el mercado.\n​\n​Esta no es u",
+          "type": "VIDEO",
+          "timestamp": "2025-12-11T02:20:48+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/590407786_18102719122666686_8536831113028012183_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=lP35_Pq0YCQQ7kNvwGi2J_i&_nc_oc=AdruPcKG2H2j8nqM7wG3bCMQzc6PB5RwKzTWWbQaVZNMRuldfCrsxUFj54s9BcViOvw-h-CIWIhjFScMBIfetykS&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQH9wuvSmRkXnKF11ixaNDecoLX-BhsDnjDqDTaHcPk0SQzpvftbtjHNNvRsfKRCy0Mv0TuxKxAoiA&oh=00_Af__Kp1Pleqds4HyWMGvQ7dD1pE2W9sSaMX3TZUms9O25g&oe=6A3C42C4",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 14,
+          "comments": 1
+        },
+        {
+          "id": "17868021795489220",
+          "caption": "El mundo dejó de ser lineal. Tu portafolio también debería dejar de serlo. 📈\n\n​",
+          "type": "VIDEO",
+          "timestamp": "2025-12-06T02:06:40+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/591167787_18102277447666686_4416263612119550368_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=F1SrbL_Wpc8Q7kNvwGnom02&_nc_oc=AdqHWf-KXjHXCpPlC7yhWanatZF1RGgDQr9rEmD_INZv47wU5ibIJYE1w6mhaiKoXbsICSXn1ivYAnqM2VB8kMj4&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQF5U5wdhmYakQi88mya2zAf_NOG-FoAix_NGY1HtOkrmG68DPPe4rNx3Up8a2T3DoMC448lx8h5XQ&oh=00_Af9Vb8Up2CxVF2oQauic-sGxXpHAJT0Wqvt5ZOTVwXpgLQ&oe=6A3C725E",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 11,
+          "comments": 3
+        },
+        {
+          "id": "17949757302051968",
+          "caption": "¿Y  si tu cuenta de banco se midiera en Kilovatios? ⚡📉\n\nElon Musk soltó una bom",
+          "type": "VIDEO",
+          "timestamp": "2025-12-04T03:14:01+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.82787-15/591143606_18102104794666686_8784297475882225758_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=S6DydRn_k2QQ7kNvwEfNXyF&_nc_oc=Ado72BCxlg5uLQV5zpiw0PykwYY2mwFvrM6k-XzB8yMtGMCIo9QMSiz4LfTsBPvH1ZJco_bs1sCMat7VgzzGB9vs&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEAanTMogHTJrsUoMBSHby5QMhUhyvYRVTbpGtrPxOZFlNFccogLQCie6k2Lcj2jlZ_a0QHIu7E3g&oh=00_Af9bayDSpLt4g1q-L79zOlX1eQYJ8bxdJb8y7nEdvHGUGw&oe=6A3C6BAD",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 12,
+          "comments": 2
+        },
+        {
+          "id": "17987332139748717",
+          "caption": "Alguna vez has sentido que juegas en un campo de juego inclinado? Mientras tu di",
+          "type": "VIDEO",
+          "timestamp": "2025-11-29T01:57:43+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.82787-15/590424242_18101665483666686_9059120414336012961_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=W0_CIHOoCQYQ7kNvwEiqCxV&_nc_oc=AdoQLL46_ORC3lVBTier5rmty7pzMtULObrA4LolHGu1eHBPQPUckcRQdT0iVlwTqQVWgnfPoyQyv9DYr094g-9w&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQHmLXjSwP1wNp0UWvqhsuBcyj5U745kPUETIzNlwzYlee8eK_oeOyzdwS8m7FJiaaXmeCr31IapeQ&oh=00_Af9beYRD6nGE0koCMhkgpshwFWpYctIFUzXAwAHw7Bv67Q&oe=6A3C41BC",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 10,
+          "comments": 0
+        },
+        {
+          "id": "18104301193583101",
+          "caption": "Lloyd's vs. $MSTR: 350 Años vs. 5 Años. ¿Quién gana el juego del capital?\nLa ins",
+          "type": "VIDEO",
+          "timestamp": "2025-11-27T13:47:13+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/590413125_26008019858785616_1454167217800180278_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=cIFIdKaFfwUQ7kNvwEowEj8&_nc_oc=AdqtdfO8mR0mWhQ_6o8OD6gAV6-H_MoeE_Iib14iEN0lB8vK2xq0iIk2dKEgHYvTPZyxD8xWHIt184Vvwi4jNK7R&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQEq9LL9958YBv7K5C1OmHEGYgFRi4piS0ZZYT2hZpjYg49sgza9_OSep4J54uEfg2v4Mf7l0twDvA&oh=00_Af9ht10cYD1Y6_KtmXn0Vj5HRZB8sF83fSIMuSq-VT253Q&oe=6A3C735A",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 8,
+          "comments": 0
+        },
+        {
+          "id": "18085154425824207",
+          "caption": "🚨 ¡ALERTA GEOPOLÍTICA! OpenAI expone la verdadera amenaza a la hegemonía de la ",
+          "type": "VIDEO",
+          "timestamp": "2025-11-15T23:09:07+0000",
+          "thumbnail": "https://scontent-mia5-2.cdninstagram.com/v/t51.71878-15/581897336_1169912441233252_1076731017201802812_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=vGyhJ_RBtUIQ7kNvwEarY43&_nc_oc=Adoljjb-XuWN2wjAAuLEfIm-rY37ZdaGE8V8JyeFQLcTHdKjok8MpCkWLhzutP6yUIawFYxHMfqJnexRYRGDGO2n&_nc_zt=23&_nc_ht=scontent-mia5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQFZTZFdK5k80e4by7XQfaWEtSaJfD2RCW17KRuLl3N2_Ub1GgE6kCmZVC3EXakRWN2A1fp21hF8LA&oh=00_Af8q5yYPVvdsfHBe29BeFANiawmMuPg-WeU5-Pl8sGkZtA&oe=6A3C7651",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 9,
+          "comments": 1
+        },
+        {
+          "id": "18043178936487677",
+          "caption": "​¿Es la Digitalización del Dólar la SOLUCIÓN... o la Trampa Definitiva? 🤔\n\n​Hay",
+          "type": "VIDEO",
+          "timestamp": "2025-11-15T04:01:02+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.82787-15/582094473_18100499548666686_6407664760401173209_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=uZ3SQF9UTMYQ7kNvwESQuIu&_nc_oc=Ado9YKSvP2DSx1YpvNbBolLyqWZxAmpX4mhezaYitlWFyUI1FAxui4k0Y9VXPJ43Z3jdEOlFYVJgj__RvE2ujsk9&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQHaqRsbB4Xac1UBNryv8sNzNykFxEAJA_cxvcRR-7XPST0wMQGLKOlinx_7jea5FAAzwLpIVMd_9A&oh=00_Af-KZ1mbIVRAZ4gZPqxZ7HC1VUVYbvM8PHiXDb997GxmNQ&oe=6A3C74C0",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 14,
+          "comments": 5
+        },
+        {
+          "id": "17902428300127584",
+          "caption": "En un mundo donde la educación tradicional se queda corta, el modelo de Alphasch",
+          "type": "VIDEO",
+          "timestamp": "2025-09-14T01:08:36+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.71878-15/546518918_1088031006788249_4810437729410189223_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=u8MjZox1sM8Q7kNvwFA3L4I&_nc_oc=AdpOPTSimfBeN6fDNpXhRYsXINjrxcKd1g0DTj9NZ1js-7rCrOsCTVL3Q_-po2emlQDKHVDcf-1RQ_kCLKyiYpAf&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQGRk2w85N6BY4wan9TIgyOXPUiICKmjudufxPYUpYpVzCY_FaCEmVaFaK0df5pB2UkBxARPPAkp4A&oh=00_Af_dpokCw5780bLD6OYDXosMb7ObXk4eozxnEGMCCh5OGA&oe=6A3C463C",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 8,
+          "comments": 1
+        },
+        {
+          "id": "18101313106560419",
+          "caption": "Olvídate de los bancos. Olvídate de las fronteras.\nHoy puedes cambiar hasta la m",
+          "type": "VIDEO",
+          "timestamp": "2025-07-07T01:11:57+0000",
+          "thumbnail": "https://scontent-mia3-1.cdninstagram.com/v/t51.71878-15/517772732_1050950210474770_1584890736696008574_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=LV6apfQr-nkQ7kNvwHvxrcb&_nc_oc=AdoKsM0bwaVssQz5jSyNDLl5GVAbHGGd7NVggW4-5rSZt-Th6cbsB3o-K4P1UxAojhafN5sBZp3bHVudw26ELpsQ&_nc_zt=23&_nc_ht=scontent-mia3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQE3VSPMYL2M67W_PjLnfugZVnMaZc0a_c0Ub2-tE0Lh5Gyb0ohhuxtdNJ4g2JY1AMStM1MeqQ4c5w&oh=00_Af9cW79CNB7rnD90R8zyRqLhjyTP5Syy1ieya7jaEf8teg&oe=6A3C5C91",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 11,
+          "comments": 1
+        },
+        {
+          "id": "18360941830197705",
+          "caption": "📉 ¿Quieres empezar con Bitcoin? El DCA es tu mejor amigo\n\n DCA: Tu aliado para ",
+          "type": "VIDEO",
+          "timestamp": "2025-07-02T07:48:51+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/504081058_1226656065875263_2613184394770117934_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=JUVgIPRl45QQ7kNvwHrrR0U&_nc_oc=Adott3q2pN1jrrJGeZ8TFbIA2qQU_0emLCneLQ7Kn3Q-65-SK3o-Y7e6tAtbsWjkec6vB25hUt7L3Xk5k3XifBbu&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQFtNchyuXDuRwevjE-UmU-tLKt_AO6fC8NhfFE7gIXE3hHC-PTzT4eb-g6k9ITCI2d7inOGdbFG0Q&oh=00_Af_GEhc5Nm4Eja9QyjOCM_kw8_a6L2Xa6CLYs5VtUapsZg&oe=6A3C4424",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 16,
+          "comments": 9
+        },
+        {
+          "id": "17988386021681307",
+          "caption": "-El impacto de la IA en los negocios: Lo que estoy aprendiendo y lo que viene\n #",
+          "type": "VIDEO",
+          "timestamp": "2025-06-30T22:15:35+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/504327055_1039989044784136_7368320033036134895_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=vgiqdIWFOJ4Q7kNvwF73KKa&_nc_oc=Adrrb02PhVdXR0Vek3Nhw_-HwGf2Ep0xWhM3yokEjxzD0fcfWcccpstZl9QmCxvMrNfQ3CUp-5NBcROxMSa678KQ&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQE9DwborWEjkdIaH9kFgfnE8y8nu-_Ygr6hqLNal3---uW_8vBzsf__VCVao-EF0IspxmCdQzRQpA&oh=00_Af9EkAcf5toIhPTNX3Nf7P0KpfsYsXua-moW3Mx3J65NJg&oe=6A3C705E",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 23,
+          "comments": 9
+        },
+        {
+          "id": "18047215049517658",
+          "caption": "🧘‍♂️ A quiet life\n\n👋 Hello everyone, in this video share a day with me.\n\nI hop",
+          "type": "VIDEO",
+          "timestamp": "2025-02-21T17:01:02+0000",
+          "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.71878-15/503289966_1075990991117914_5113537921770031143_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=ZbYDrwnt8zwQ7kNvwES9tD6&_nc_oc=AdrkVKqXqr-PHDLaQHoN2CgDhHIzBFhkOwV2rl_apUF-79Eft_zldIJgtBIte4tgBCZxGJYyyYXqip4HeF29eEUp&_nc_zt=23&_nc_ht=scontent-mia5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQF9CCO5W_Y24M-Q_MKYkdxqmQGLv_Xnm_9PKhtMo-qryRTSCpnsPo_BrNPeUpsxBm6ToG7cnot_Gw&oh=00_Af9rms0PDc5_2lejE94ZCLrqHDv9PfWH3Iyxmzf8EYplkQ&oe=6A3C536D",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "18487544701062224",
+          "caption": "Rise and shine!!!",
+          "type": "VIDEO",
+          "timestamp": "2025-02-01T09:51:10+0000",
+          "thumbnail": "https://scontent-mia3-3.cdninstagram.com/v/t51.71878-15/502972777_1252198439894582_2549354089637453714_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=zQL5DkNs1JUQ7kNvwHNj4FS&_nc_oc=AdopA1e2ev9wZXG9bc10E_kruGCIRPybypGd_p9LtxIeeMBvtfY3ErhidjbZ8eaAnhAHTUmkxg5CQ3ApdTQ_nzKd&_nc_zt=23&_nc_ht=scontent-mia3-3.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=ptameu_k2whdovsjL-7Evw&_nc_tpa=Q5bMBQFubt5xlrjo8FCMuc9sVgUBB2-mu6MdNdrt4jIecTNilpTJBFEyEPYL7bneDlXUl-fN-5dN74dOxg&oh=00_Af_UaOR6dbwLG9kR9-skC8bvmSOZwdSsY7a-x3O2kwoMiQ&oe=6A3C49CE",
+          "views": 0,
+          "reach": 0,
+          "saves": 0,
+          "shares": 0,
+          "likes": 9,
+          "comments": 3
+        }
+      ]
+    },
+    "facebook": {
+      "views": 0,
+      "followers": 286,
+      "videos": [
+        {
+          "id": "989598520235178",
+          "title": "El Senado de EE.UU. acaba de hacer algo histórico para el mundo cripto y blockch",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/700235958_1378826167626012_8157183500103343312_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=101&ccb=1-7&_nc_sid=200999&_nc_ohc=hc-PAk4MlNUQ7kNvwHc1e5j&_nc_oc=AdrrfyDp-413WwrOlcJZyr-1nC3RWLx7_z4mn_e3G_t8sUpk6qDBIxRkFgxzTxsJSP97kqEvbrvJzUSarYQDsd5q&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQGB9PDMVQIM8TNC157ufhUAKhluuYrKlVrJrbt0nLsF1ti0bEityTLsYb2-4chZy_NSXHldyv0Gww&oh=00_Af_ppp409qlfQrvfO6MjndVRJWnMg7n5REmEALWRELynCA&oe=6A3C6427",
+          "publishedAt": "2026-05-15T17:34:09+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/989598520235178/",
+          "isReel": false
+        },
+        {
+          "id": "1010609788305741",
+          "title": "Tu Bitcoin es tuyo... o del banco? 👀\n\nEsta semana el Senado americano vota la C",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/689186768_979816784537378_8083629181140118990_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=102&ccb=1-7&_nc_sid=200999&_nc_ohc=xmutGTMMn48Q7kNvwHBWqbO&_nc_oc=AdrYoy7e-MuDov-7aKeSKTjQPQlZtEy43cBJpMLY1VqL7hoCk4mLIp_8iZkkIJ6qspKg2jdhxRbVkN91q87EWUW6&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQEB1oW_BwgegZojomK8YZ_Dn9mD6eiYylg6d73O6v25msmVMLc1km79cuuSNNxDJjuOLoOWNlLJqw&oh=00_Af_RpoKYgV9TWlPAEqMT9SHQ5nNdSpxkx0vu2EHZaqBZuw&oe=6A3C71EE",
+          "publishedAt": "2026-05-12T16:19:10+0000",
+          "views": 0,
+          "likes": 3,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1010609788305741/",
+          "isReel": false
+        },
+        {
+          "id": "957692567170042",
+          "title": "(sin título)",
+          "thumbnail": "https://scontent-mia3-2.xx.fbcdn.net/v/t51.71878-10/695816189_954750840499652_5456476367145367443_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=105&ccb=1-7&_nc_sid=200999&_nc_ohc=EF4QJzWbgqkQ7kNvwGwigrq&_nc_oc=AdoSUNwBcGhaIRe9qrlVBUnV70G-msDNf2glvasP1yFqQV_CI-NOVCXYM6IU7r0VokDE7XRYTQ1Kp7IvuG15gRhi&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQH5YoSjIRUfXZEQ4fbynRFB_zQlK18ZBBC6kgfcUo9Rbo5ml_k-SVdig56pk5vS5GptpPdAEQil0w&oh=00_Af8WmIyGaDvg6Yd_i2ARu4GaDrHXAOV7xG0ywZZwjRfm0w&oe=6A3C4A58",
+          "publishedAt": "2026-05-12T16:16:59+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/952214821193667/videos/957692567170042",
+          "isReel": false
+        },
+        {
+          "id": "2946792482318625",
+          "title": "Los mejores inversores del mundo acaban de decir que el AI no viene a ayudarte e",
+          "thumbnail": "https://scontent-mia3-1.xx.fbcdn.net/v/t51.71878-10/671171890_2107116326804264_8072952795702836578_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=106&ccb=1-7&_nc_sid=200999&_nc_ohc=1tbkkV_7ovYQ7kNvwE1C4EY&_nc_oc=Ado7eAPEc_Kc0VEK06VJCsQVdoNGuIQk2bL2zMqYhdwNAaENGD37r9FgeB_6X1xurh7JaSqsFg_yyrlwiR7-HeYb&_nc_zt=23&_nc_ht=scontent-mia3-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQFGS5MCyeqoRJpl_3awmxn_ZjiMlfF6aSudyFZ-3Cyv1H3fq8Ug1oKpn88DhaULEZNlw2BA-ts0Mg&oh=00_Af93YOy-5uksDwnhV32mNSFZ28loCQoqRkOZH0kzRcGcNQ&oe=6A3C4E07",
+          "publishedAt": "2026-05-11T02:13:18+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/2946792482318625/",
+          "isReel": false
+        },
+        {
+          "id": "1744195500293682",
+          "title": "Los mejores inversores del mundo acaban de decir que el AI no viene a ayudarte e",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t15.5256-10/696258805_962691229696988_30386895650151582_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=102&ccb=1-7&_nc_sid=810293&_nc_ohc=dfowA0Snq4wQ7kNvwHaZJub&_nc_oc=AdpyaU1NeDczUf_re1CgZV1wMMDza_Yc_Ki7GKWPfdRPKFpBhvmns_0B0GfD6FwTewxWqdsAAsNCJryxUsDIAiR3&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQGVE4p2fpPM5b5TQIKVvQaDcmgkrqz9GrJtSUBm3omJHztWsh1pcqOQ_TQHpTjLiUOxC47n8rih2g&oh=00_Af8PI6TTX0775rOSpt7kQg2UnXfhwLyYvSQZoQ9nY10eOg&oe=6A3C5E22",
+          "publishedAt": "2026-05-10T17:05:53+0000",
+          "views": 0,
+          "likes": 7,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1744195500293682/",
+          "isReel": false
+        },
+        {
+          "id": "1782613319377763",
+          "title": "Telegram: IA revoluciona chats y asistentes conectados",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t15.5256-10/691781713_1302705831994098_112875197621302075_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=110&ccb=1-7&_nc_sid=200999&_nc_ohc=nzHcXHxwt_YQ7kNvwEeJRoL&_nc_oc=Adqgs72hKPWHzERRusx3gDj07qhzeAax0BIOqSyGGFL3XuSiaC65wzf_9zXqQx1w7lbhw_f0kMriDNmi7p_2eCSa&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQGPoQ3rODlEADAlJzyF5tRVg1hkqrvluNUXg85XXNfR1tCVPCEiuK2IHKjB4ZO8GSbGIxgdWfU7BA&oh=00_Af8uuuIlGbquYzDDB-KJ5k9Rx0WogvJUyychAhs2mgLLPQ&oe=6A3C5E2C",
+          "publishedAt": "2026-05-08T18:41:01+0000",
+          "views": 0,
+          "likes": 2,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1782613319377763/",
+          "isReel": false
+        },
+        {
+          "id": "2360411264455750",
+          "title": "Nokia: De muerta a socio de NVIDIA y Anduril en 2026 | El comeback que nadie vio",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/671786906_27690215320566915_1064668993262375870_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=101&ccb=1-7&_nc_sid=200999&_nc_ohc=kOXA5PdOWI0Q7kNvwGfJPF3&_nc_oc=Adp5w6UN7-Le2Ivf2tWQVH0S2u6R5HvWbm_Ap2a90EMGRsMbyK4soKEYagtYS8EvVsxtYvlNEjP088XfBxxlJIuT&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQFzQMjVwbbNwNAsXrztc1JQvXhvpZ_wVRvZsxNvD-ujjhrVU7051rbPQj_w1U9cnlrA8Dba8yQy3g&oh=00_Af8DNrEwrpau9I7lWSdzX5EXruVCYLBn2Z8zj2t8jwrAsg&oe=6A3C6FA7",
+          "publishedAt": "2026-05-01T17:29:38+0000",
+          "views": 0,
+          "likes": 7,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/2360411264455750/",
+          "isReel": false
+        },
+        {
+          "id": "979736594619762",
+          "title": "La historia no se repite, pero rima.\nRockefeller controló el petróleo. Musk cont",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/669848000_26843345511940114_4291420357046239798_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=104&ccb=1-7&_nc_sid=200999&_nc_ohc=MtLUsZxq8BwQ7kNvwHGfzh5&_nc_oc=Adq0bZrnjXBbwGy6uokQpWRUARoD8qCIplNdQnNDAbatau3AKK91eoOHW68jD7LJPAhYO2RIFa0YYthBfK7wBLoZ&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQGIOFKAkyNhHP8q4TscFd_FfiaywsEmKmWdJhkZYo9S5dm768UCEtQbYLpvMX-TpU1LE2C4UvRfCQ&oh=00_Af-_aaiFgedsqaQyuGEfkce1CBmR04uRyrPB3IvSoCoUkg&oe=6A3C615C",
+          "publishedAt": "2026-04-11T17:46:36+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/979736594619762/",
+          "isReel": false
+        },
+        {
+          "id": "1673619400725852",
+          "title": "Uber cometio el error mas caro de Silicon Valley.\n\nDara llamo a Tesla un proveed",
+          "thumbnail": "https://scontent-mia3-2.xx.fbcdn.net/v/t51.71878-10/658837961_2064684914105623_3171778043643062124_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=200999&_nc_ohc=sJNNs-E6vL8Q7kNvwFpLote&_nc_oc=AdoXCdkjhqLpybIjhJG3VGHnQxABy3B63jK-nYpoRPA6XPsU8sKgINftgFyHQP9xUOf3c8tGD1bQwqncEuS_ZPx5&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQEqYRIpMXtUG4DkSABWaJ3Klx9T2IYC29HAAyiCRjmVuEC8vVIH2gXOqMtorB_y5Ybqq4qgVhfitQ&oh=00_Af83j2L-X150x7JhWcNxkZ7npqap9fTR0eJpiDNbZ-Hbqg&oe=6A3C4F69",
+          "publishedAt": "2026-04-05T18:36:05+0000",
+          "views": 0,
+          "likes": 3,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1673619400725852/",
+          "isReel": false
+        },
+        {
+          "id": "1582808223313017",
+          "title": "Anthropic se filtra a sí misma! Olvidaron una contraseña y expusieron 3,000 docu",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/660298493_1597629988156642_6839149674657411921_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=102&ccb=1-7&_nc_sid=200999&_nc_ohc=3axUWqYH54kQ7kNvwGTA7zd&_nc_oc=AdpA9rYpjMv5bhkR81-akhr-xPCGxVCoK3RmVLurcsICIQKXswuT9gJ0HkHRZatkClRnu1mdmxBaFtk_kbbgbCP5&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHK-trAqdQW1BPwI1F6HeptwkQjPFlNtNpl2GUvjz83hlkopBmIuRM2Xv5kk-6Z-aGiel_yiWlUcw&oh=00_Af83V0dul49otX1nDNFLj6LI51ns6d5E-Gdp_rqjwTvoeA&oe=6A3C4FE7",
+          "publishedAt": "2026-04-02T02:42:09+0000",
+          "views": 0,
+          "likes": 9,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1582808223313017/",
+          "isReel": false
+        },
+        {
+          "id": "1251338726538693",
+          "title": "Sabías que al jugar Pokémon GO contribuiste a entrenar IA? Niantic recolectó 30 ",
+          "thumbnail": "https://scontent-mia3-2.xx.fbcdn.net/v/t51.71878-10/653724664_1663881698373480_3846566802412228302_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=200999&_nc_ohc=r5se5OfRgIUQ7kNvwFMWOOY&_nc_oc=AdpusOHkie7pQZ25xW2A3-JuXHjklXdT5JOYAcJ0O5LUpuYnxomK_4s48ke4E7NJ6C-LAwAYf8guZXOehcvjaIMK&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHbxubvJbcZgp0e_aJORVDJ4jzDvyuMDVe0ZsQAevvrvjG2Oo7hY7UzsJZgdwxblGDThnNdAQ-i3w&oh=00_Af-iRaGRtt1aOHZ-CZ7D2DTeFrvuV9VfgG5NJNAqELWogg&oe=6A3C463F",
+          "publishedAt": "2026-03-19T18:51:29+0000",
+          "views": 0,
+          "likes": 5,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1251338726538693/",
+          "isReel": false
+        },
+        {
+          "id": "1498748131602161",
+          "title": "La IA está transformando la forma en que trabajamos, permitiendo hazañas de efic",
+          "thumbnail": "https://scontent-mia5-2.xx.fbcdn.net/v/t15.5256-10/651523914_1636408774255240_2326042560579680548_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=100&ccb=1-7&_nc_sid=200999&_nc_ohc=Z0WvJGOIRR0Q7kNvwEsYEiI&_nc_oc=AdqC5o-CZzALe7rCA_VRPjgBMTmDhLiF7fhy6wYaCTJFO0nqQz7z12fkwQKo85N-kkR8egLnJzAnVUy6CpQ1aV4T&_nc_zt=23&_nc_ht=scontent-mia5-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQExtOjYUz-Cl2ny54ifc7lc6NHuPMcow3c3uPBnwqfXSi8ZS9mnvrn-BtqN5tL1ytA11uy22s0xsg&oh=00_Af-5QSItYvjkX-EbF5oTIHG6qFaIiX5o1yZT2__acLbg_w&oe=6A3C7457",
+          "publishedAt": "2026-03-15T19:55:37+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1498748131602161/",
+          "isReel": false
+        },
+        {
+          "id": "1236520235271658",
+          "title": "Científicos Enseñan Neuronas Vivas a Jugar Doom en Chip",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t15.5256-10/646466577_2524161757999353_4923537434240335940_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=108&ccb=1-7&_nc_sid=200999&_nc_ohc=uPSs42kFxnoQ7kNvwEc7Gna&_nc_oc=Ado5K_gL9mzmt71cEysb3vxbuFxpeR4N0ubsBvVOXplhtoi0l6LU8N9w8JIi5W_cQLAnvvKWvQS_4gf9A9EF8ssH&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQFEQ5h-hTasClQJxrkf6XkKwY0HhBKRt_f3q0B4kY3z_dJM-rM-R9YhKedHVNIwNOk6yAKPSPMhvQ&oh=00_Af_1t2s2pYGHTjzMBCAtK94VlMJ-RKa9ARc2-IoV6brsjA&oe=6A3C5FB1",
+          "publishedAt": "2026-03-08T19:45:03+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1236520235271658/",
+          "isReel": false
+        },
+        {
+          "id": "917481040870820",
+          "title": "Sam Altman: La Idea SÍ Importa en Negocios",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t15.5256-10/646201382_1075357174788407_6689506437667961982_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=108&ccb=1-7&_nc_sid=200999&_nc_ohc=1gY9cSZjd6EQ7kNvwHTqc3O&_nc_oc=AdoFsCFnDfaYlEBKur6zQkZ3l3e0BKkluB4njkiuSVJmBoEtxbz24BuEUyvugh3PDeBeZsE8Ha14kr5RU9tKbheW&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHDyzuo28yWGSSh5LTtiYaTLYmSg8_k8NU4plcYm3Ch9sk-c9GVGl0N6teSO0QnFdMfAOpGPxWskg&oh=00_Af-JhTdSg88kQI6EySuDUH7RGbesPbdEKPdXCaP51JE0uQ&oe=6A3C5D6E",
+          "publishedAt": "2026-03-06T18:46:58+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/917481040870820/",
+          "isReel": false
+        },
+        {
+          "id": "3981098082189827",
+          "title": "#InteligenciaArtificial #Bitcoin #futurodeldinero",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t51.71878-10/641786775_802652452315903_3364731194318327814_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=110&ccb=1-7&_nc_sid=200999&_nc_ohc=Wbp_2ethFngQ7kNvwHf5D9m&_nc_oc=AdrINGbJc-2p4Z-xBY-PWrogEWHNbmufoxdHp1dICk7j6yvKvQAte-IBL7mtz5g5PlkqTfrJd8G9ZL4dNRtj6LHK&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQFdQmYbnR8M-2HkVsHWRG6VGd3QhGK8D_do0HeW-DM4EClnbnMbx8DKPW3wG05r2_RXUOv60qzWLw&oh=00_Af9mdUeXw_I13YjJt6wWeE065xIx6M5ANk3VuvV9zd1-LQ&oe=6A3C60C6",
+          "publishedAt": "2026-03-05T19:36:33+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/3981098082189827/",
+          "isReel": false
+        },
+        {
+          "id": "2307432996431637",
+          "title": "📖☕ Leyendo la biografía de Elon Musk de Walter Isaacson mientras me preparo el ",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t51.82787-10/642533799_18110088793666686_1598121670706390819_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=110&ccb=1-7&_nc_sid=200999&_nc_ohc=W6AlFHWTMbIQ7kNvwHcymlR&_nc_oc=AdqHowyfMjguGgHArQZluI0mPOSGjzPpXF0aVgwKubxzAwRY_1m2SUB0cnbCBGTAg7W61tu-fpDgyX5HnmoN83Cr&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQFQyHjOgqnXLZpJ86-RT8RhSyN16dvtGx16Ohw74HMz-5xf_DbarRcZ7tHU3iF-UvmRmXTLYMbumQ&oh=00_Af8JRhBDu6cuj_7rcfoWu77m0A89WaZtOgYAOw7DZkekDg&oe=6A3C41D4",
+          "publishedAt": "2026-03-01T21:31:20+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/2307432996431637/",
+          "isReel": false
+        },
+        {
+          "id": "1238604521803734",
+          "title": "🤖 Tesla no compró piezas — las INVENTÓ. Optimus es el reto de ingeniería más am",
+          "thumbnail": "https://scontent-mia5-1.xx.fbcdn.net/v/t51.71878-10/628971941_939104958574359_2904297999753149643_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=101&ccb=1-7&_nc_sid=200999&_nc_ohc=HQeygyzLFisQ7kNvwEg0jsy&_nc_oc=Adomutg7K2IZQbp5UBpSvTSKdIAMDN0BKANZ6ytbyc6Dpa1BgOit8GqD6vcdcmQG2LomQwkgiJNxmURG_QptQA7y&_nc_zt=23&_nc_ht=scontent-mia5-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQE9__rxt66NtDuxxCXD8v-MOmTal0TyAXZYxEZkX8hIPwcYPN6dnFrX8JNS2LLqfoXM2rrfaaXPGA&oh=00_Af9-a4b1tX0KlB0qLEBXrhV4JGS--uWzlxW90teq-pshpQ&oe=6A3C43DD",
+          "publishedAt": "2026-02-27T18:54:50+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1238604521803734/",
+          "isReel": false
+        },
+        {
+          "id": "25930752163242550",
+          "title": "Si usas Claude Code y todavía haces todo manual... estás perdiendo el tiempo.\n\nE",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t15.5256-10/639673934_918708697407869_893123021133403963_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=108&ccb=1-7&_nc_sid=200999&_nc_ohc=SkTJdhduwmcQ7kNvwHRH505&_nc_oc=Adq25-4SBim5_j9fCILHXkSBXctVIPFzOmol0_V2PETrKEmox1OwUpJESfrA-gwf9lfhKVkaK91RJ_MIdLte7uBE&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQEwxpBWZ-ke8iCbJKwhPTISyg81rZBOQ4sbvjZSCn0zwsUezN-Ve7aXnIh82b1jrAfeJfEs0FJQ5g&oh=00_Af-TLROfQ_csaKguZJTEBGKOSUWEFRqenUIYVWG11QeDaQ&oe=6A3C4D8C",
+          "publishedAt": "2026-02-24T23:00:01+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/25930752163242550/",
+          "isReel": false
+        },
+        {
+          "id": "2087753002042150",
+          "title": "El modelo SaaS (Software as a Service) que dominó los últimos 15 años está herid",
+          "thumbnail": "https://scontent-mia3-1.xx.fbcdn.net/v/t15.5256-10/633591941_1742663286707221_6256038490284156283_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=111&ccb=1-7&_nc_sid=200999&_nc_ohc=XRUKTATjbm8Q7kNvwFrU3ZC&_nc_oc=AdqtnD5dgsY8LeUIVuYaqh88gCpGeiA2fP23lE7daR7FKdNiOao3MVYOeL9wg_RBl_KkLlcsvv4GZ0eP-114SkJ1&_nc_zt=23&_nc_ht=scontent-mia3-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHwSfeHn7Bdd9rbiXgVnGVmn7QHXSlMzHhc_zjpf_ehn1XPsQ-AOv-4WsqI17LboDrvQdf-Z1jxzQ&oh=00_Af8vHF4qPpJmmEUm70xiQUmBRys8b2CzzI2z8jaNAIbAlA&oe=6A3C47F6",
+          "publishedAt": "2026-02-19T23:00:18+0000",
+          "views": 0,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/2087753002042150/",
+          "isReel": false
+        },
+        {
+          "id": "1483460089864244",
+          "title": "BTC: Crisis y oportunidad.mp4",
+          "thumbnail": "https://scontent-mia3-2.xx.fbcdn.net/v/t15.5256-10/638992583_1230785265850997_2044647764676558560_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=105&ccb=1-7&_nc_sid=200999&_nc_ohc=w4evG3Z9Td0Q7kNvwF9clvY&_nc_oc=Adr6xF7m376k_3QA_qzBe30pZ5XMl9nEC0LgQZ6ZL10gcOiRellGe-HGlo9HLh4jpXnQ_x82UeWLN5yi8uUATD6-&_nc_zt=23&_nc_ht=scontent-mia3-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQG5mzd_OZkXiXiIbstQMDf3TI-LPc20rb9Vj9MTVkyZQ0cH-mgQYvH27jUZduDnC_4XXBA2MQemBA&oh=00_Af9hOxb9cueoopstnreqjK3y_E7KZdD0yP5l-eEdJbkoTQ&oe=6A3C5158",
+          "publishedAt": "2026-02-18T16:43:16+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1483460089864244/",
+          "isReel": false
+        },
+        {
+          "id": "933997842644038",
+          "title": "Dieta de Información: Opera Como Profesional de Inversión",
+          "thumbnail": "https://scontent-mia3-1.xx.fbcdn.net/v/t15.5256-10/636913403_1554891512405344_932475028232187611_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=106&ccb=1-7&_nc_sid=200999&_nc_ohc=JjHgjsk_gTgQ7kNvwFZKy1X&_nc_oc=AdqOTuVE4YqDc-VHQu_jb9o1VMem467pxeL3nWVNYvFN-zg3MhwEU74_ZuPr4M8Ze6203tByNgYIMVdA0ofrI_7a&_nc_zt=23&_nc_ht=scontent-mia3-1.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQEM4mLlJMSjhfNm9A6EjwQRGmkPVQMISuFh-r33jiyEe8St3LQ3wf4ygkJQRqEtMN2KQcFlKjVMQA&oh=00_Af9EkB5iDv_frOYOnoqP43V1AXiJ2RFwe7N2uG052RPocA&oe=6A3C635E",
+          "publishedAt": "2026-02-14T18:04:42+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/933997842644038/",
+          "isReel": false
+        },
+        {
+          "id": "1634290254418307",
+          "title": "Elon Musk vs. El Sistema: ¿Reglas a medida? 🧐\n\nEl Nasdaq está a punto de permit",
+          "thumbnail": "https://scontent-mia3-3.xx.fbcdn.net/v/t51.82787-10/633995631_18108473506666686_686819544683924211_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=110&ccb=1-7&_nc_sid=200999&_nc_ohc=U7qwltS4FMkQ7kNvwFpdNm8&_nc_oc=AdoBsne13jjz0qOJz4-z8c6eHdVaUKzapNztqYLJHWpImuxlNZN3sIz1XY6X-0lPnDzA0uqNiJPszMAdVTd-eS-M&_nc_zt=23&_nc_ht=scontent-mia3-3.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQEPQpO_HuKmznU6hpF1kn60lGIDG3fiq1rPg1e9HinSXQIiSt3LdQVCnLV_BEW5agNY8hSftmA5tg&oh=00_Af8guRP0mdM9VDx6rY8PTVuRvjXwPBk32gmBTUIJc89Lfw&oe=6A3C40B0",
+          "publishedAt": "2026-02-11T17:56:54+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1634290254418307/",
+          "isReel": false
+        },
+        {
+          "id": "929757756141280",
+          "title": "¿300 personas pueden vencer a un gigante de 300,000? 🏦 vs 💻\n\nLa mayoría cree q",
+          "thumbnail": "https://scontent-mia5-2.xx.fbcdn.net/v/t51.71878-10/627647231_1553990540059856_2129688576057788529_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=100&ccb=1-7&_nc_sid=200999&_nc_ohc=FtntapoiWI0Q7kNvwGRbGha&_nc_oc=Adop0uMyRyJv71PZHVy_y40GVDiv3OE8Ux8k_254Fc_xS33pJZ17E0mWlSNX_nJl79EAotpH83wZbBcuKvJkRRB7&_nc_zt=23&_nc_ht=scontent-mia5-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQGFPXy63fFOaYeQPqsdVy-GwuWXAO71rsAxLREYVywE9amArwrCWDnI1TPANjARPXx2fIdcljbIpQ&oh=00_Af_a12BeZ6fcLvfbvb5sa67xiXCgMlIpMm_2JVTv04PWVg&oe=6A3C75A2",
+          "publishedAt": "2026-02-07T15:23:28+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/929757756141280/",
+          "isReel": false
+        },
+        {
+          "id": "1961585447775125",
+          "title": "¿El robot de Tesla tiene REFLEJOS humanos? 🤖🧠\n​Muchos creen que Optimus es sol",
+          "thumbnail": "https://scontent-mia5-2.xx.fbcdn.net/v/t51.82787-10/624122260_18107372665666686_2236788180811832727_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=100&ccb=1-7&_nc_sid=200999&_nc_ohc=wKMyZt8sQ8gQ7kNvwG0Nf_D&_nc_oc=AdpXp83mC0ABqI0iffLwwpEyALMSgIy8mDEbtPSGATelMa3862HZbekrVAk6-dojjOXo5kqGAngGgsuMOhbHbwMR&_nc_zt=23&_nc_ht=scontent-mia5-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHtkY8Dq-J4ny95e0iFdYXFFdJW1H79xA69hUqtv2PaCm9CM-f56O7QQ2S8C_OYtl20aEviRMJF0w&oh=00_Af-wcg_Kwwee2imzoKRsBDLOFkNOP_1DJkZFlzuW8gC2Gg&oe=6A3C673C",
+          "publishedAt": "2026-01-29T14:30:21+0000",
+          "views": 0,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1961585447775125/",
+          "isReel": false
+        },
+        {
+          "id": "1384982233307557",
+          "title": "¿El fin de los servidores en la Tierra? 🌍🚀\nSpaceX acaba de lanzar la misión Tw",
+          "thumbnail": "https://scontent-mia5-2.xx.fbcdn.net/v/t51.82787-10/622155777_18106859008666686_7950500602940001669_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=100&ccb=1-7&_nc_sid=200999&_nc_ohc=gWwYztoo8ZoQ7kNvwG-QVXZ&_nc_oc=AdrEuqsIvhIc9VAswtux0ULSuczqgyRRUfNzoo3GMkO_zczQFbAq7UeBx18ib2y-WTWojZSEnoInxk4C_7o3uVuJ&_nc_zt=23&_nc_ht=scontent-mia5-2.xx&edm=AGz5Y0wEAAAA&_nc_gid=nADv-EVIxDATi0xRFO6FCw&_nc_tpa=Q5bMBQHZ0YpxY-NkfHtQSKS0AlASZdjtJVDSzaOQN2PjXYwDAoCcCQ6Awmlu6xcD_bYE25IwQJaDQpaj4g&oh=00_Af9pVz0Sl2_n6PR-y-PJUfWzL-4PIXJxvX16oLLSXBaZZg&oe=6A3C4CBD",
+          "publishedAt": "2026-01-24T22:50:03+0000",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.facebook.com/reel/1384982233307557/",
+          "isReel": false
+        }
+      ]
+    },
+    "youtube": {
+      "views": 526,
+      "watchTimeMinutes": 216,
+      "subscribersGained": 3,
+      "totalSubscribers": 60,
+      "channelId": "UCfntjKzAYI_omssXcP83Fcw",
+      "videos": [
+        {
+          "id": "Mej7YH7urbQ",
+          "title": "La AI ya puede tradeae en Robin Hood",
+          "thumbnail": "https://i.ytimg.com/vi/Mej7YH7urbQ/mqdefault.jpg",
+          "publishedAt": "2026-06-14T19:13:06Z",
+          "views": 750,
+          "likes": 23,
+          "comments": 0
+        },
+        {
+          "id": "gRGQNv2qm4g",
+          "title": "SpaceX construye data centers en órbita. El costo de IA en el espacio: casi",
+          "thumbnail": "https://i.ytimg.com/vi/gRGQNv2qm4g/mqdefault.jpg",
+          "publishedAt": "2026-06-11T19:00:41Z",
+          "views": 3,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "0mX4FO0nu5g",
+          "title": "Es el sistema que construí para no depender de la motivación para crear contenido. Adentro tiene:",
+          "thumbnail": "https://i.ytimg.com/vi/0mX4FO0nu5g/mqdefault.jpg",
+          "publishedAt": "2026-06-07T18:38:45Z",
+          "views": 6,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "xRB8TlpNeL4",
+          "title": "Es el sistema que construí para no depender de la motivación para crear contenido",
+          "thumbnail": "https://i9.ytimg.com/vi/xRB8TlpNeL4/mqdefault.jpg?sqp=CJCly9EG&rs=AOn4CLAbsquwTJR_e2zHs4xmPLsiqz6cKA",
+          "publishedAt": "2026-06-07T18:27:17Z",
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "Ug3u9mZyMbI",
+          "title": "¿Quién produce más por fábrica?",
+          "thumbnail": "https://i.ytimg.com/vi/Ug3u9mZyMbI/mqdefault.jpg",
+          "publishedAt": "2026-06-04T19:21:34Z",
+          "views": 1205,
+          "likes": 15,
+          "comments": 5
+        },
+        {
+          "id": "dHQMBhp-kC0",
+          "title": "CLARITY ACT",
+          "thumbnail": "https://i.ytimg.com/vi/dHQMBhp-kC0/mqdefault.jpg",
+          "publishedAt": "2026-05-15T17:41:53Z",
+          "views": 55,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "YCSNCOYo_WU",
+          "title": "Tu Bitcoin es tuyo... o del banco? 👀",
+          "thumbnail": "https://i.ytimg.com/vi/YCSNCOYo_WU/mqdefault.jpg",
+          "publishedAt": "2026-05-12T18:13:14Z",
+          "views": 48,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "IUO6w7LxIwI",
+          "title": "Telegram: IA revoluciona chats y asistentes conectados #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/IUO6w7LxIwI/mqdefault.jpg",
+          "publishedAt": "2026-05-08T18:39:26Z",
+          "views": 544,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "e5mBQ5DsTw4",
+          "title": "Solana aplica first principles thinking",
+          "thumbnail": "https://i.ytimg.com/vi/e5mBQ5DsTw4/mqdefault.jpg",
+          "publishedAt": "2026-05-06T17:26:44Z",
+          "views": 390,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "75eAgFaTAn0",
+          "title": "Nokia: De muerta a socio de NVIDIA y Anduril en 2026 | El comeback que nadie vio venir",
+          "thumbnail": "https://i.ytimg.com/vi/75eAgFaTAn0/mqdefault.jpg",
+          "publishedAt": "2026-05-01T15:53:43Z",
+          "views": 2084,
+          "likes": 88,
+          "comments": 2
+        },
+        {
+          "id": "FI2oZgcUaOo",
+          "title": "La IA no viene por tu jefe, viene por tu puesto de junior!",
+          "thumbnail": "https://i.ytimg.com/vi/FI2oZgcUaOo/mqdefault.jpg",
+          "publishedAt": "2026-04-25T20:06:14Z",
+          "views": 1133,
+          "likes": 21,
+          "comments": 0
+        },
+        {
+          "id": "UBYqgcgJni4",
+          "title": "La IA no viene por tu jefe, viene por tu puesto de junior!",
+          "thumbnail": "https://i9.ytimg.com/vi/UBYqgcgJni4/mqdefault.jpg?sqp=CJCly9EG&rs=AOn4CLBVp91jVU480u8cY6EyD94le1kOew",
+          "publishedAt": "2026-04-25T19:58:14Z",
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "Aejry-Whx5o",
+          "title": "Adiós a los Jóvenes. La Verdad Sorprendente!",
+          "thumbnail": "https://i9.ytimg.com/vi/Aejry-Whx5o/mqdefault.jpg?sqp=CJCly9EG&rs=AOn4CLALw6whz_dkydlwkuHbSUM6YMGTdQ",
+          "publishedAt": "2026-04-25T19:53:10Z",
+          "views": 0,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "ZYOgWKGUFV4",
+          "title": "Tether Imprime $3 Mil Millones: ¿Se Acerca el Bull Run? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/ZYOgWKGUFV4/mqdefault.jpg",
+          "publishedAt": "2026-04-22T14:00:33Z",
+          "views": 1559,
+          "likes": 30,
+          "comments": 0
+        },
+        {
+          "id": "sBGnaZhbXYc",
+          "title": "El Secreto de las Manos Robóticas de Tesla Revelado #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/sBGnaZhbXYc/mqdefault.jpg",
+          "publishedAt": "2026-04-19T01:55:45Z",
+          "views": 1915,
+          "likes": 62,
+          "comments": 3
+        },
+        {
+          "id": "_phUxYcLfdw",
+          "title": "SaylorVsBlackRock.mp4_OpusClip Reframe #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/_phUxYcLfdw/mqdefault.jpg",
+          "publishedAt": "2026-04-13T18:44:29Z",
+          "views": 393,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "fp6xjt0VO-8",
+          "title": "Empresa de Software Superará a BlackRock en Bitcoin #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/fp6xjt0VO-8/mqdefault.jpg",
+          "publishedAt": "2026-04-12T18:54:38Z",
+          "views": 1184,
+          "likes": 18,
+          "comments": 0
+        },
+        {
+          "id": "052qrY5n8oc",
+          "title": "Juicio Histórico: ¿Elon Musk vs OpenAI? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/052qrY5n8oc/mqdefault.jpg",
+          "publishedAt": "2026-04-10T18:47:23Z",
+          "views": 1014,
+          "likes": 27,
+          "comments": 0
+        },
+        {
+          "id": "obZs0qLjnkA",
+          "title": "Irán USA Bitcoin: ¿El Fin del Dólar? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/obZs0qLjnkA/mqdefault.jpg",
+          "publishedAt": "2026-04-09T18:47:22Z",
+          "views": 1393,
+          "likes": 36,
+          "comments": 0
+        },
+        {
+          "id": "FTbI-AVNK8U",
+          "title": "¡La IA de Google que FUNCIONA SIN INTERNET! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/FTbI-AVNK8U/mqdefault.jpg",
+          "publishedAt": "2026-04-06T18:49:21Z",
+          "views": 853,
+          "likes": 22,
+          "comments": 0
+        },
+        {
+          "id": "m39_PJdgfPE",
+          "title": "Uber: ¿El Nuevo Nokia por la IA? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/m39_PJdgfPE/mqdefault.jpg",
+          "publishedAt": "2026-04-03T18:40:37Z",
+          "views": 1028,
+          "likes": 39,
+          "comments": 0
+        },
+        {
+          "id": "ZyzAsaUpb08",
+          "title": "Anthropic filtra sus propios documentos de seguridad de IA #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/ZyzAsaUpb08/mqdefault.jpg",
+          "publishedAt": "2026-04-01T18:43:29Z",
+          "views": 133,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "M6Dt3fEPdQE",
+          "title": "Meta TRIBE V2: ¿Predicción Cerebral o Manipulación? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/M6Dt3fEPdQE/mqdefault.jpg",
+          "publishedAt": "2026-03-30T18:00:09Z",
+          "views": 907,
+          "likes": 14,
+          "comments": 2
+        },
+        {
+          "id": "iyxZO53oJOc",
+          "title": "IA Supera Oficinas: La Revolución del Cemento y Ladrillo #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/iyxZO53oJOc/mqdefault.jpg",
+          "publishedAt": "2026-03-25T18:48:26Z",
+          "views": 845,
+          "likes": 18,
+          "comments": 3
+        },
+        {
+          "id": "HDn7GDBBLtE",
+          "title": "Tesla Semi: ¡Destruye Costos vs. Camión Diésel! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/HDn7GDBBLtE/mqdefault.jpg",
+          "publishedAt": "2026-03-24T18:41:29Z",
+          "views": 954,
+          "likes": 33,
+          "comments": 1
+        },
+        {
+          "id": "EGGWxj4Acd8",
+          "title": "Get Paid to Train Robots to Replace Your Job! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/EGGWxj4Acd8/mqdefault.jpg",
+          "publishedAt": "2026-03-21T18:49:15Z",
+          "views": 15,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "qZ-Do7kyV7M",
+          "title": "Pokémon GO: Trabajaste Gratis Para IA Gigante #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/qZ-Do7kyV7M/mqdefault.jpg",
+          "publishedAt": "2026-03-18T16:41:03Z",
+          "views": 1438,
+          "likes": 24,
+          "comments": 4
+        },
+        {
+          "id": "pcQVQhQ1PUA",
+          "title": "Anthropic: Marketing de IA con una Sola Persona #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/pcQVQhQ1PUA/mqdefault.jpg",
+          "publishedAt": "2026-03-15T19:46:51Z",
+          "views": 332,
+          "likes": 9,
+          "comments": 0
+        },
+        {
+          "id": "TOuIfl3SNi0",
+          "title": "Robinhood: La Revolución Bancaria en tu Bolsillo #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/TOuIfl3SNi0/mqdefault.jpg",
+          "publishedAt": "2026-03-13T01:58:24Z",
+          "views": 909,
+          "likes": 16,
+          "comments": 0
+        },
+        {
+          "id": "lLVYHeLL58A",
+          "title": "Elon Musk Presenta IA que Ve tu Pantalla y Trabaja #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/lLVYHeLL58A/mqdefault.jpg",
+          "publishedAt": "2026-03-11T19:47:26Z",
+          "views": 833,
+          "likes": 19,
+          "comments": 0
+        },
+        {
+          "id": "OAxEhl_5SAY",
+          "title": "IA coordina 900 ataques: El futuro militar llegó #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/OAxEhl_5SAY/mqdefault.jpg",
+          "publishedAt": "2026-03-10T18:35:55Z",
+          "views": 12,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "VqwRZYYapGo",
+          "title": "iPhone de las Finanzas: ¡El Futuro del Trading Hoy! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/VqwRZYYapGo/mqdefault.jpg",
+          "publishedAt": "2026-03-09T17:26:08Z",
+          "views": 12,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "By8E-Sx9exY",
+          "title": "Científicos Enseñan Neuronas Vivas a Jugar Doom en Chip #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/By8E-Sx9exY/mqdefault.jpg",
+          "publishedAt": "2026-03-08T19:45:25Z",
+          "views": 1347,
+          "likes": 51,
+          "comments": 2
+        },
+        {
+          "id": "1QT2Cw8Y_CU",
+          "title": "Sam Altman: La Idea SÍ Importa en Negocios #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/1QT2Cw8Y_CU/mqdefault.jpg",
+          "publishedAt": "2026-03-06T18:47:20Z",
+          "views": 87,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "qBavRR8keus",
+          "title": "Bitcoin Sorprende: ¿El Nuevo Oro Digital? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/qBavRR8keus/mqdefault.jpg",
+          "publishedAt": "2026-03-04T18:22:25Z",
+          "views": 1080,
+          "likes": 16,
+          "comments": 0
+        },
+        {
+          "id": "dz8WkF-Qt2U",
+          "title": "Robinhood: De Broker a Gigante Financiero #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/dz8WkF-Qt2U/mqdefault.jpg",
+          "publishedAt": "2026-03-03T22:56:42Z",
+          "views": 3,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "q8Q_n9fzcs4",
+          "title": "La Verdad Oculta de la Conducción Autónoma #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/q8Q_n9fzcs4/mqdefault.jpg",
+          "publishedAt": "2026-02-26T17:27:45Z",
+          "views": 7,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "H4LGW0Nn4YQ",
+          "title": "Tesla: Robotaxis y Optimus Crean Abundancia Global #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/H4LGW0Nn4YQ/mqdefault.jpg",
+          "publishedAt": "2026-02-22T18:41:54Z",
+          "views": 637,
+          "likes": 15,
+          "comments": 0
+        },
+        {
+          "id": "Z3p1jN86_xw",
+          "title": "Solana stacking.mp4 #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/Z3p1jN86_xw/mqdefault.jpg",
+          "publishedAt": "2026-02-21T23:29:22Z",
+          "views": 176,
+          "likes": 1,
+          "comments": 0
+        },
+        {
+          "id": "MwZwYypoUvk",
+          "title": "Dinero: La Verdad Energética Detrás de Tu Riqueza #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/MwZwYypoUvk/mqdefault.jpg",
+          "publishedAt": "2026-02-20T14:24:03Z",
+          "views": 1199,
+          "likes": 16,
+          "comments": 0
+        },
+        {
+          "id": "4nBSwfvvCVM",
+          "title": "El Modelo SaaS ha Muerto: La Era de la AI y el Colapso #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/4nBSwfvvCVM/mqdefault.jpg",
+          "publishedAt": "2026-02-20T00:04:13Z",
+          "views": 324,
+          "likes": 6,
+          "comments": 1
+        },
+        {
+          "id": "rdSWkjNrMaA",
+          "title": "BTC: Crisis y oportunidad.mp4 #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/rdSWkjNrMaA/mqdefault.jpg",
+          "publishedAt": "2026-02-18T16:43:43Z",
+          "views": 263,
+          "likes": 3,
+          "comments": 0
+        },
+        {
+          "id": "uz6e4saiDAw",
+          "title": "Bitcoin: No es Acción, es Ciudad Digital. ¡Invierte Inteligente! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/uz6e4saiDAw/mqdefault.jpg",
+          "publishedAt": "2026-02-17T23:00:26Z",
+          "views": 234,
+          "likes": 5,
+          "comments": 0
+        },
+        {
+          "id": "IRqGs8VwpgY",
+          "title": "¡Tesla dominará 3 industrias masivas (no son autos)! #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/IRqGs8VwpgY/mqdefault.jpg",
+          "publishedAt": "2026-02-15T15:07:33Z",
+          "views": 1570,
+          "likes": 7,
+          "comments": 0
+        },
+        {
+          "id": "njpNB-iMKAY",
+          "title": "Dieta de Información: Opera Como Profesional de Inversión #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/njpNB-iMKAY/mqdefault.jpg",
+          "publishedAt": "2026-02-14T18:05:21Z",
+          "views": 127,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "rCxO8se-XYQ",
+          "title": "Autonomous Cars: More Sensors vs. Better AI? #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/rCxO8se-XYQ/mqdefault.jpg",
+          "publishedAt": "2026-02-13T23:00:10Z",
+          "views": 130,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "CXG0K6RJyV8",
+          "title": "IPO SpaceX: Inversión Pasiva Obligatoria Impulsa Acciones #shorts",
+          "thumbnail": "https://i.ytimg.com/vi/CXG0K6RJyV8/mqdefault.jpg",
+          "publishedAt": "2026-02-12T14:54:33Z",
+          "views": 90,
+          "likes": 0,
+          "comments": 0
+        },
+        {
+          "id": "aOTd_H2cIZ0",
+          "title": "Karaoke",
+          "thumbnail": "https://i.ytimg.com/vi/aOTd_H2cIZ0/mqdefault.jpg",
+          "publishedAt": "2019-02-24T18:22:01Z",
+          "views": 54,
+          "likes": 1,
+          "comments": 0
+        }
+      ]
+    },
+    "tiktok": {
+      "views": 0,
+      "likes": 0,
+      "followers": 0,
+      "source": "mock",
+      "videos": [
+        {
+          "id": "mock-1",
+          "title": "(Ejemplo) Así se verán tus videos de TikTok cuando la app sea aprobada",
+          "thumbnail": "",
+          "publishedAt": "2026-06-09T12:00:00.000Z",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "shares": 0,
+          "shareUrl": ""
+        },
+        {
+          "id": "mock-2",
+          "title": "(Ejemplo) Cada video mostrará views, likes, comentarios y shares",
+          "thumbnail": "",
+          "publishedAt": "2026-06-07T12:00:00.000Z",
+          "views": 0,
+          "likes": 0,
+          "comments": 0,
+          "shares": 0,
+          "shareUrl": ""
+        }
+      ]
+    },
+    "substack": {
+      "subscribers": 2,
+      "opens": 0,
+      "clicks": 0,
+      "source": "csv"
+    }
+  },
+  "goals": {
+    "shortTerm": [],
+    "longTerm": []
+  },
+  "contentStrategy": {
+    "buckets": [
+      {
+        "id": "bucket-1",
+        "name": "Contenido Personal",
+        "color": "#7c6fff",
+        "icon": "👤",
+        "description": "Historias personales, day-in-the-life, behind the scenes"
+      },
+      {
+        "id": "bucket-2",
+        "name": "Historias",
+        "color": "#4fc3f7",
+        "icon": "📖",
+        "description": "Storytelling, casos de estudio, narrativas"
+      },
+      {
+        "id": "bucket-3",
+        "name": "Reels Edu-entertainment",
+        "color": "#00e676",
+        "icon": "🎬",
+        "description": "Tips rápidos, tutoriales cortos, contenido educativo entretenido"
+      }
+    ],
+    "weeklySchedule": {
+      "monday": "bucket-1",
+      "tuesday": "bucket-2",
+      "wednesday": "bucket-3",
+      "thursday": "bucket-1",
+      "friday": "bucket-2",
+      "saturday": "bucket-3",
+      "sunday": null
+    }
+  },
+  "expenses": {
+    "categories": [
+      {
+        "id": "cat-1",
+        "name": "Equipo & Software",
+        "emoji": "💻",
+        "color": "#7c6fff",
+        "group": "negocio",
+        "budget": 500,
+        "subcategories": [
+          {
+            "id": "cat-1-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-2",
+        "name": "Marketing & Ads",
+        "emoji": "📣",
+        "color": "#4fc3f7",
+        "group": "negocio",
+        "budget": 300,
+        "subcategories": [
+          {
+            "id": "cat-2-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-3",
+        "name": "Suscripciones",
+        "emoji": "🔁",
+        "color": "#ff9100",
+        "group": "negocio",
+        "budget": 100,
+        "subcategories": [
+          {
+            "id": "cat-3-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-4",
+        "name": "Educación",
+        "emoji": "🎓",
+        "color": "#00e676",
+        "group": "negocio",
+        "budget": 200,
+        "subcategories": [
+          {
+            "id": "cat-4-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-5",
+        "name": "Vivienda & Servicios",
+        "emoji": "🏢",
+        "color": "#ffd740",
+        "group": "negocio",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-5-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-6",
+        "name": "Otros",
+        "emoji": "📦",
+        "color": "#9898bb",
+        "group": "negocio",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-6-1",
+            "name": "General"
+          }
+        ]
+      },
+      {
+        "id": "cat-7",
+        "name": "Vivienda y Hogar",
+        "emoji": "🏠",
+        "color": "#ff7043",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-7-1",
+            "name": "Alquiler/Hipoteca"
+          },
+          {
+            "id": "cat-7-2",
+            "name": "Servicios Públicos (Electricidad, Agua, Gas)"
+          },
+          {
+            "id": "cat-7-3",
+            "name": "Internet/Wifi"
+          },
+          {
+            "id": "cat-7-4",
+            "name": "Mantenimiento/Reparaciones"
+          },
+          {
+            "id": "cat-7-5",
+            "name": "Artículos del Hogar"
+          }
+        ]
+      },
+      {
+        "id": "cat-8",
+        "name": "Transporte y Vehículo",
+        "emoji": "🚗",
+        "color": "#29b6f6",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-8-1",
+            "name": "Gasolina"
+          },
+          {
+            "id": "cat-8-2",
+            "name": "Seguros"
+          },
+          {
+            "id": "cat-8-3",
+            "name": "Mantenimiento/Lavado"
+          },
+          {
+            "id": "cat-8-4",
+            "name": "Peajes/Parqueaderos"
+          },
+          {
+            "id": "cat-8-5",
+            "name": "Apps de Transporte (Uber/Lyft)"
+          },
+          {
+            "id": "cat-8-6",
+            "name": "Plataformas de Trabajo (Amazon Flex, etc.)"
+          }
+        ]
+      },
+      {
+        "id": "cat-9",
+        "name": "Alimentación y Comidas",
+        "emoji": "🍽️",
+        "color": "#66bb6a",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-9-1",
+            "name": "Mercado/Supermercado"
+          },
+          {
+            "id": "cat-9-2",
+            "name": "Restaurantes/Salidas"
+          },
+          {
+            "id": "cat-9-3",
+            "name": "Cafés"
+          },
+          {
+            "id": "cat-9-4",
+            "name": "Comida Rápida/Antojos"
+          }
+        ]
+      },
+      {
+        "id": "cat-10",
+        "name": "Salud y Bienestar",
+        "emoji": "💪",
+        "color": "#ec407a",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-10-1",
+            "name": "Gimnasio/Suscripciones Fitness"
+          },
+          {
+            "id": "cat-10-2",
+            "name": "Suplementos/Proteínas"
+          },
+          {
+            "id": "cat-10-3",
+            "name": "Gastos Médicos/Farmacia"
+          },
+          {
+            "id": "cat-10-4",
+            "name": "Cuidado Personal (Barbería/Estética)"
+          }
+        ]
+      },
+      {
+        "id": "cat-11",
+        "name": "Suscripciones y Herramientas Digitales",
+        "emoji": "🤖",
+        "color": "#ab47bc",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-11-1",
+            "name": "Herramientas de IA y Automatización (ChatGPT, Claude, Claude Code, OpusClip, Obsidian, etc.)"
+          },
+          {
+            "id": "cat-11-2",
+            "name": "Software/Hosting"
+          },
+          {
+            "id": "cat-11-3",
+            "name": "Entretenimiento (Netflix, Spotify, etc.)"
+          }
+        ]
+      },
+      {
+        "id": "cat-12",
+        "name": "Estilo de Vida y Entretenimiento",
+        "emoji": "🎭",
+        "color": "#ffa726",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-12-1",
+            "name": "Cine/Salidas a Teatro"
+          },
+          {
+            "id": "cat-12-2",
+            "name": "Conciertos/Eventos"
+          },
+          {
+            "id": "cat-12-3",
+            "name": "Hobbies (Música/Cuerdas/Ukulele)"
+          },
+          {
+            "id": "cat-12-4",
+            "name": "Compras Personales (Ropa/Calzado)"
+          }
+        ]
+      },
+      {
+        "id": "cat-13",
+        "name": "Inversión y Ahorro",
+        "emoji": "📈",
+        "color": "#26a69a",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-13-1",
+            "name": "Fondos para Cripto (Bitcoin, Solana)"
+          },
+          {
+            "id": "cat-13-2",
+            "name": "Estrategias de Opciones"
+          },
+          {
+            "id": "cat-13-3",
+            "name": "Ahorro para Viajes/Proyectos"
+          },
+          {
+            "id": "cat-13-4",
+            "name": "Fondo de Emergencia"
+          }
+        ]
+      },
+      {
+        "id": "cat-14",
+        "name": "Familia, Pareja y Mascotas",
+        "emoji": "❤️",
+        "color": "#ef5350",
+        "group": "personal",
+        "budget": 0,
+        "subcategories": [
+          {
+            "id": "cat-14-1",
+            "name": "Gastos Compartidos/Salidas en Pareja"
+          },
+          {
+            "id": "cat-14-2",
+            "name": "Apoyo Familiar/Regalos"
+          },
+          {
+            "id": "cat-14-3",
+            "name": "Gastos de la Mascota (Veterinaria, Comida, Juguetes)"
+          }
+        ]
+      }
+    ],
+    "entries": []
+  },
+  "budgets": {
+    "2026-06": {
+      "cat-1-1": 500,
+      "cat-2-1": 300,
+      "cat-3-1": 100,
+      "cat-4-1": 200
+    }
+  },
+  "remittances": {
+    "entries": []
+  }
+}
