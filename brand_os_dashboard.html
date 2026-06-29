@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brand OS — Control Center</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 /* ================================================
    VARIABLES & RESET
@@ -1992,6 +1993,7 @@ async function loadData() {
     try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     restoreFinance();
+    await pullFromCloud(); // jalar datos más recientes de la nube
     // Notas por video: el navegador manda; fusiona el respaldo del JSON y resincroniza
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     document.getElementById('sync-time').textContent = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
@@ -2010,6 +2012,7 @@ async function loadData() {
     try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     restoreFinance();
+    await pullFromCloud(); // jalar datos más recientes de la nube
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
   }
@@ -2294,6 +2297,58 @@ function saveGoals() {
   try { localStorage.setItem(GOALS_KEY, JSON.stringify(D.goals)); } catch(_) {}
 }
 
+// ============================================================
+//  SUPABASE SYNC — sincronización entre celular y PC
+// ============================================================
+const SUPABASE_URL = 'https://xbnzizzvvzadlhfagnjn.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhibnppenp2dnphZGxoZmFnbmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NzI2NDAsImV4cCI6MjA5ODE0ODY0MH0.PeuucODjxz1KVtuVSL3_4d979ZHHzFygDzKAQ-yngq4';
+const SYNC_ROW_ID  = 'brian_finance';
+let _sbClient = null;
+
+function getSB() {
+  if (!_sbClient && window.supabase && SUPABASE_URL.startsWith('https://')) {
+    _sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+  return _sbClient;
+}
+
+async function pushToCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    await sb.from('finance_sync').upsert({
+      id: SYNC_ROW_ID,
+      data: {
+        entries:      (D.expenses && D.expenses.entries) || [],
+        budgets:      D.budgets      || {},
+        remittances:  D.remittances  || { entries:[] },
+        income:       D.income       || { monthlyGoal:0, channels:[], entries:[] },
+        debts:        D.debts        || { cards:[], extraPayment:0, preferredMethod:'snowball' },
+        debitBalance: D.debitBalance || 0
+      },
+      updated_at: new Date().toISOString()
+    });
+  } catch(e) { console.warn('[Sync] push failed:', e.message); }
+}
+
+async function pullFromCloud() {
+  const sb = getSB(); if (!sb) return false;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', SYNC_ROW_ID).maybeSingle();
+    if (error || !row) return false;
+    const f = row.data;
+    if (!D.expenses) D.expenses = { categories:[], entries:[] };
+    if (Array.isArray(f.entries))    D.expenses.entries = f.entries;
+    if (f.budgets)     D.budgets     = f.budgets;
+    if (f.remittances) D.remittances = f.remittances;
+    if (f.income)      D.income      = f.income;
+    if (f.debts)       D.debts       = f.debts;
+    if (f.debitBalance != null) D.debitBalance = f.debitBalance;
+    try { localStorage.setItem(FINANCE_KEY, JSON.stringify(f)); } catch(_) {}
+    return true;
+  } catch(e) { console.warn('[Sync] pull failed:', e.message); return false; }
+}
+// ============================================================
+
 // Finanzas: gastos, remesas y presupuestos proyectados se guardan en el navegador
 // para que NO se borren con el auto-update de las 7am (mismo patrón que las Metas).
 const FINANCE_KEY = 'brandos_finance';
@@ -2311,6 +2366,7 @@ function saveFinance() {
       debitBalance: D.debitBalance || 0
     }));
   } catch(_) {}
+  pushToCloud(); // sincronizar en segundo plano
 }
 // Restaura los datos del usuario por encima del JSON recién cargado.
 function restoreFinance() {
