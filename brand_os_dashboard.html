@@ -1469,6 +1469,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <div class="fin-form-row">
         <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="rem-date"></div>
         <div class="i-group"><label class="i-label">Monto USD</label><input type="number" id="rem-usd" placeholder="500" step="0.01" min="0" oninput="calcCOP()"></div>
+        <div class="i-group"><label class="i-label">Comisión USD</label><input type="number" id="rem-fee" placeholder="0.00" step="0.01" min="0"></div>
         <div class="i-group"><label class="i-label">Tipo de Cambio</label><input type="number" id="rem-rate" placeholder="4300" step="1" min="0" oninput="calcCOP()"></div>
         <div class="i-group"><label class="i-label">Monto COP</label><input type="number" id="rem-cop" placeholder="Auto" step="1" readonly style="opacity:.7"></div>
         <div class="i-group"><label class="i-label">Destinatario</label><input type="text" id="rem-recip" placeholder="Mamá - Bancolombia"></div>
@@ -1485,7 +1486,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <div class="tbl-wrap">
         <table>
           <thead><tr>
-            <th>Fecha</th><th>USD</th><th>COP</th><th>Tasa</th><th>Destinatario</th><th>Notas</th><th></th>
+            <th>Fecha</th><th>USD</th><th>Comisión</th><th>COP</th><th>Tasa</th><th>Destinatario</th><th>Notas</th><th></th>
           </tr></thead>
           <tbody id="remit-body"></tbody>
         </table>
@@ -4365,22 +4366,25 @@ function renderRemittances() {
   body.innerHTML = sorted.length ? sorted.map(r => `<tr>
     <td>${r.date}</td>
     <td style="font-weight:700">$${(r.amountUSD||0).toFixed(2)}</td>
+    <td style="color:var(--red)">${r.fee ? '$'+r.fee.toFixed(2) : '—'}</td>
     <td>$${(r.amountCOP||0).toLocaleString('es-CO')}</td>
     <td>${r.exchangeRate||'—'}</td>
     <td>${esc(r.recipient||'')}</td>
     <td style="color:var(--text-3)">${esc(r.notes||'—')}</td>
     <td><button class="btn-d" onclick="deleteRemittance('${r.id}')">✕</button></td>
-  </tr>`).join('') : '<tr><td colspan="7" class="empty">Sin remesas registradas</td></tr>';
+  </tr>`).join('') : '<tr><td colspan="8" class="empty">Sin remesas registradas</td></tr>';
 }
 
 function addRemittance() {
   const usd = parseFloat(document.getElementById('rem-usd').value);
   if (isNaN(usd) || usd <= 0) { showToast('Monto USD requerido', true); return; }
   const rate = parseFloat(document.getElementById('rem-rate').value) || 0;
+  const fee = parseFloat(document.getElementById('rem-fee').value) || 0;
   D.remittances.entries.push({
     id: 'rem' + Date.now(),
     date: document.getElementById('rem-date').value || today(),
     amountUSD: usd,
+    fee: fee || 0,
     amountCOP: rate ? Math.round(usd * rate) : 0,
     exchangeRate: rate || null,
     recipient: document.getElementById('rem-recip').value.trim(),
@@ -4388,6 +4392,7 @@ function addRemittance() {
     notes: document.getElementById('rem-notes').value.trim()
   });
   document.getElementById('rem-usd').value = '';
+  document.getElementById('rem-fee').value = '';
   document.getElementById('rem-rate').value = '';
   document.getElementById('rem-cop').value = '';
   document.getElementById('rem-recip').value = '';
@@ -5205,4 +5210,3 @@ init();
 </script>
 </body>
 </html>
-
