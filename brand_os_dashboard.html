@@ -1267,6 +1267,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     <!-- Scripts -->
     <div class="sec-hdr" style="margin-bottom:14px">
       <div class="card-title" style="margin-bottom:0">Historial de Guiones</div>
+      <button class="btn-p" onclick="addScript()">+ Nuevo Guión</button>
     </div>
     <div class="card" style="padding:0;overflow:hidden">
       <div class="tbl-wrap">
@@ -1748,7 +1749,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <input type="hidden" id="nc-col" value="todo">
       <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px">
         <button class="btn-s" onclick="closeModal('modal-card')">Cancelar</button>
-        <button class="btn-p" onclick="saveCard()">Agregar Tarjeta</button>
+        <button class="btn-p" onclick="saveKanbanCard()">Agregar Tarjeta</button>
       </div>
     </div>
   </div>
@@ -2315,17 +2316,20 @@ function getSB() {
 async function pushToCloud() {
   const sb = getSB(); if (!sb) return;
   try {
+    const savedAt = new Date().toISOString();
+    const payload = {
+      entries:      (D.expenses && D.expenses.entries) || [],
+      budgets:      D.budgets      || {},
+      remittances:  D.remittances  || { entries:[] },
+      income:       D.income       || { monthlyGoal:0, channels:[], entries:[] },
+      debts:        D.debts        || { cards:[], extraPayment:0, preferredMethod:'snowball' },
+      debitBalance: D.debitBalance || 0,
+      savedAt
+    };
     await sb.from('finance_sync').upsert({
       id: SYNC_ROW_ID,
-      data: {
-        entries:      (D.expenses && D.expenses.entries) || [],
-        budgets:      D.budgets      || {},
-        remittances:  D.remittances  || { entries:[] },
-        income:       D.income       || { monthlyGoal:0, channels:[], entries:[] },
-        debts:        D.debts        || { cards:[], extraPayment:0, preferredMethod:'snowball' },
-        debitBalance: D.debitBalance || 0
-      },
-      updated_at: new Date().toISOString()
+      data: payload,
+      updated_at: savedAt
     });
   } catch(e) { console.warn('[Sync] push failed:', e.message); }
 }
@@ -2336,6 +2340,12 @@ async function pullFromCloud() {
     const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', SYNC_ROW_ID).maybeSingle();
     if (error || !row) return false;
     const f = row.data;
+    // Solo aplicar datos de la nube si son más recientes que los locales
+    const localRaw = localStorage.getItem(FINANCE_KEY);
+    const local = localRaw ? (() => { try { return JSON.parse(localRaw); } catch(_) { return null; } })() : null;
+    const cloudTime = f.savedAt ? new Date(f.savedAt).getTime() : 0;
+    const localTime = local && local.savedAt ? new Date(local.savedAt).getTime() : 0;
+    if (cloudTime <= localTime) return false; // datos locales son más recientes, no sobreescribir
     if (!D.expenses) D.expenses = { categories:[], entries:[] };
     if (Array.isArray(f.entries))    D.expenses.entries = f.entries;
     if (f.budgets)     D.budgets     = f.budgets;
@@ -2363,7 +2373,8 @@ function saveFinance() {
       remittances: D.remittances || { entries: [] },
       income: D.income || { monthlyGoal:0, channels:[], entries:[] },
       debts: D.debts || { cards:[], extraPayment:0, preferredMethod:'snowball' },
-      debitBalance: D.debitBalance || 0
+      debitBalance: D.debitBalance || 0,
+      savedAt: new Date().toISOString()
     }));
   } catch(_) {}
   pushToCloud(); // sincronizar en segundo plano
@@ -2947,7 +2958,7 @@ function renderKanban() {
       <div class="k-cards" data-col="${col.key}">
         ${(D.kanban[col.key]||[]).map(renderCard).join('')}
       </div>
-      <button class="btn-add-card" onclick="openCardModal('${col.key}')">+ Agregar tarjeta</button>
+      <button class="btn-add-card" onclick="openKanbanModal('${col.key}')">+ Agregar tarjeta</button>
     </div>`).join('');
 
   // Drag on cards
@@ -2998,7 +3009,7 @@ function dropCard(e, toCol) {
   showToast('Tarjeta movida a "' + COLS.find(c=>c.key===toCol)?.label + '"');
 }
 
-function openCardModal(col) {
+function openKanbanModal(col) {
   document.getElementById('nc-col').value   = col;
   document.getElementById('nc-title').value = '';
   document.getElementById('nc-date').value  = '';
@@ -3007,14 +3018,15 @@ function openCardModal(col) {
   openModal('modal-card');
 }
 
-function saveCard() {
+function saveKanbanCard() {
   const title = document.getElementById('nc-title').value.trim();
   if (!title) { showToast('El título es requerido', true); return; }
   const col = document.getElementById('nc-col').value;
+  const platform = document.getElementById('nc-platform').value;
   const card = {
     id: 'k' + Date.now(),
     title,
-    platform: document.getElementById('nc-platform').value,
+    platform,
     priority: document.getElementById('nc-priority').value,
     date:     document.getElementById('nc-date').value
   };
@@ -3023,10 +3035,16 @@ function saveCard() {
   if (startTime) card.startTime = startTime;
   if (endTime)   card.endTime   = endTime;
   D.kanban[col].push(card);
+
+  if (!D.scripts) D.scripts = [];
+  D.scripts.unshift({ id: 's' + Date.now(), title, platform, date: today(), status: 'draft', docUrl: '' });
+  persistScripts();
+
   closeModal('modal-card');
   renderKanban();
+  renderScripts();
   renderCalendar();
-  showToast('Tarjeta agregada en "' + COLS.find(c=>c.key===col)?.label + '"');
+  showToast('Tarjeta agregada en "' + COLS.find(c=>c.key===col)?.label + '" y en Historial de Guiones');
 }
 
 /* ============================================================
@@ -5187,3 +5205,4 @@ init();
 </script>
 </body>
 </html>
+
