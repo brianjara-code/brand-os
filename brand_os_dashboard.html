@@ -1381,6 +1381,16 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
             style="font-size:28px;font-weight:800;color:var(--green);background:none;border:none;border-bottom:2px solid rgba(0,230,118,.25);padding:2px 0;width:200px;outline:none;font-family:inherit"
             oninput="updateDebitBalance()">
         </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn-s" type="button" onclick="toggleDebitAdjust(-1)">− Gasté</button>
+          <button class="btn-s" type="button" onclick="toggleDebitAdjust(1)">+ Recibí</button>
+          <span id="debit-adjust-box" style="display:none;align-items:center;gap:6px">
+            <input type="number" id="debit-adjust-amount" step="0.01" min="0" placeholder="0.00" style="width:110px;font-size:13px;padding:6px 8px"
+              onkeydown="if(event.key==='Enter')applyDebitAdjust()">
+            <button class="btn-p" type="button" onclick="applyDebitAdjust()">OK</button>
+            <button class="btn-s" type="button" onclick="hideDebitAdjust()">Cancelar</button>
+          </span>
+        </div>
       </div>
     </div>
 
@@ -1428,6 +1438,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div class="i-group"><label class="i-label">Categoría</label><select id="fin-cat" onchange="onFinCatChange()"></select></div>
         <div class="i-group"><label class="i-label">Subcategoría</label><select id="fin-subcat"></select></div>
         <div class="i-group"><label class="i-label">Monto (USD)</label><input type="number" id="fin-amount" placeholder="50.00" step="0.01" min="0"></div>
+        <div class="i-group"><label class="i-label">Pagado con</label><select id="fin-payment"><option value="debito">💳 Débito</option><option value="credito">🏦 Crédito</option><option value="efectivo">💵 Efectivo</option><option value="otro">🔁 Otro</option></select></div>
         <button class="btn-p" style="align-self:flex-end" onclick="addExpense()">+ Agregar</button>
       </div>
     </div>
@@ -3912,6 +3923,31 @@ function updateDebitBalance() {
   saveFinance();
 }
 
+// Ajuste rápido del saldo de débito (+1 = recibí, -1 = gasté)
+let debitAdjustSign = -1;
+function toggleDebitAdjust(sign) {
+  debitAdjustSign = sign;
+  const box = document.getElementById('debit-adjust-box');
+  const amt = document.getElementById('debit-adjust-amount');
+  box.style.display = 'inline-flex';
+  amt.placeholder = sign < 0 ? 'Monto gastado' : 'Monto recibido';
+  amt.value = '';
+  amt.focus();
+}
+function hideDebitAdjust() {
+  document.getElementById('debit-adjust-box').style.display = 'none';
+  document.getElementById('debit-adjust-amount').value = '';
+}
+function applyDebitAdjust() {
+  const amt = parseFloat(document.getElementById('debit-adjust-amount').value);
+  if (isNaN(amt) || amt <= 0) { showToast('Monto inválido', true); return; }
+  D.debitBalance = (D.debitBalance || 0) + debitAdjustSign * amt;
+  saveFinance();
+  renderDebitBalance();
+  hideDebitAdjust();
+  showToast(debitAdjustSign < 0 ? 'Saldo reducido' : 'Saldo aumentado');
+}
+
 function connectBank() {
   const badge = document.getElementById('bank-badge');
   badge.textContent = '⏳ Conectando…';
@@ -4297,12 +4333,14 @@ function renderExpenses() {
 
   const body = document.getElementById('fin-expenses-body');
   if (!body) return;
+  const payTags = { debito:'💳 Débito', credito:'🏦 Crédito', efectivo:'💵 Efectivo', otro:'🔁 Otro' };
   body.innerHTML = filtered.length ? filtered.map(e => {
     const c = catMap[e.categoryId];
     const s = subMap[e.subcategoryId];
+    const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}</span>` : '';
     return `<tr>
       <td>${e.date}</td>
-      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}</td>
+      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}</td>
       <td><span class="tag" style="background:${c ? c.color+'20' : 'var(--bg-3)'};color:${c ? c.color : 'var(--text-3)'};border:1px solid ${c ? c.color+'40' : 'var(--border)'}">${c ? (c.emoji?c.emoji+' ':'')+c.name : '?'}</span></td>
       <td style="color:var(--text-3)">${s ? esc(s.name) : '—'}</td>
       <td style="font-weight:700">$${(e.amount||0).toFixed(2)}</td>
@@ -4316,27 +4354,34 @@ function addExpense() {
   const amount = parseFloat(document.getElementById('fin-amount').value);
   if (!desc) { showToast('Descripción requerida', true); return; }
   if (isNaN(amount) || amount <= 0) { showToast('Monto inválido', true); return; }
+  const paymentMethod = document.getElementById('fin-payment')?.value || 'debito';
   D.expenses.entries.push({
     id: 'exp' + Date.now(),
     date: document.getElementById('fin-date').value || today(),
     description: desc,
     amount,
     categoryId: document.getElementById('fin-cat').value,
-    subcategoryId: document.getElementById('fin-subcat')?.value || ''
+    subcategoryId: document.getElementById('fin-subcat')?.value || '',
+    paymentMethod
   });
+  // Si se pagó con débito, el saldo disponible baja solo
+  if (paymentMethod === 'debito') D.debitBalance = (D.debitBalance || 0) - amount;
   document.getElementById('fin-desc').value = '';
   document.getElementById('fin-amount').value = '';
   saveFinance();
   renderFinanzas();
-  showToast('Gasto agregado');
+  showToast(paymentMethod === 'debito' ? 'Gasto agregado · saldo actualizado' : 'Gasto agregado');
 }
 
 function deleteExpense(id) {
   if (!confirm('¿Eliminar este gasto?')) return;
+  // Si el gasto era de débito, se devuelve el monto al saldo disponible
+  const gasto = D.expenses.entries.find(e => e.id === id);
+  if (gasto && gasto.paymentMethod === 'debito') D.debitBalance = (D.debitBalance || 0) + (gasto.amount || 0);
   D.expenses.entries = D.expenses.entries.filter(e => e.id !== id);
   saveFinance();
   renderFinanzas();
-  showToast('Gasto eliminado');
+  showToast(gasto && gasto.paymentMethod === 'debito' ? 'Gasto eliminado · saldo devuelto' : 'Gasto eliminado');
 }
 
 function calcCOP() {
@@ -5143,70 +5188,4 @@ function renderSurplus() {
       <div class="surplus-row"><span class="sr-name">💸 Gastos del Mes</span><span class="sr-amt" style="color:var(--red)">−$${expenses.toFixed(2)}</span></div>
       <div class="surplus-row"><span class="sr-name">💳 Pagos Mínimos Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${minPayments.toFixed(2)}</span></div>
       ${extraDebt > 0 ? `<div class="surplus-row"><span class="sr-name">💳 Pago Extra Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${extraDebt.toFixed(2)}</span></div>` : ''}
-      <div class="surplus-row" style="border:2px solid ${surplus >= 0 ? 'rgba(0,230,118,.25)' : 'rgba(255,82,82,.25)'}"><span class="sr-name" style="font-weight:700;color:var(--text-1)">= Excedente Calculado</span><span class="sr-amt" style="color:${surplus >= 0 ? 'var(--green)' : 'var(--red)'}">$${surplus.toFixed(2)}</span></div>
-      ${debitBal > 0 ? `<div class="surplus-row" style="border:2px solid rgba(0,180,216,.25)"><span class="sr-name" style="font-weight:700;color:var(--text-1)">🏦 Saldo Real en Banco</span><span class="sr-amt" style="color:var(--teal)">$${debitBal.toFixed(2)}</span></div>` : ''}`;
-  }
-
-  // Trend chart
-  renderSurplusTrend();
-}
-
-function renderSurplusTrend() {
-  const canvas = document.getElementById('chart-surplus');
-  if (!canvas) return;
-  const labels = [], data = [], bgColors = [], borderColors = [];
-  const now = new Date();
-  for (let i = 5; i >= 0; i--) {
-    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const m = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-    const monthNames = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    labels.push(monthNames[d.getMonth()]);
-    const inc = getMonthIncome(m);
-    const exp = getMonthExpenses(m);
-    const minP = getMonthlyDebtPayments();
-    const extra = D.debts?.extraPayment || 0;
-    const surplus = inc.gross - exp - minP - extra;
-    data.push(surplus);
-    bgColors.push(surplus >= 0 ? 'rgba(0,230,118,.3)' : 'rgba(255,82,82,.3)');
-    borderColors.push(surplus >= 0 ? 'rgba(0,230,118,.85)' : 'rgba(255,82,82,.85)');
-  }
-  buildChart('chart-surplus', 'bar', labels, data, '$', bgColors, borderColors);
-}
-
-/* ============================================================
-   MODALS
-============================================================ */
-function openModal(id)  { document.getElementById(id).classList.add('open') }
-function closeModal(id) { document.getElementById(id).classList.remove('open') }
-function openProjection(){ /* already defined above */ }
-
-document.querySelectorAll('.modal-ov').forEach(el =>
-  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); })
-);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.querySelectorAll('.modal-ov').forEach(m => m.classList.remove('open'));
-});
-
-/* ============================================================
-   UTILITIES
-============================================================ */
-function today() { return new Date().toISOString().split('T')[0]; }
-function esc(s)  { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function showToast(msg, isErr=false) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.style.borderColor = isErr ? 'var(--red)' : 'var(--teal)';
-  el.style.color        = isErr ? 'var(--red)' : 'var(--teal)';
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 3200);
-}
-// global alias so inline onclick="toast(...)" works too
-function toast(msg) { showToast(msg); }
-
-/* ============================================================
-   BOOT
-============================================================ */
-init();
-</script>
-</body>
-</html>
+      <div class="surplus-row" style="border:2px solid ${surplus >= 0 ? 'rgba(0,230,118,.25)' : 'rgba(255,82,82,.25)'}"><span class="sr-name" style="font-weight:700;color
