@@ -89,7 +89,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
   background:none;border:none;color:var(--text-3);padding:0 16px;
   cursor:pointer;font-size:12.5px;font-weight:500;white-space:nowrap;
   border-bottom:2px solid transparent;transition:var(--t);
-  display:flex;align-items:center;gap:6px
+  display:flex;align-items:center;gap:6px;touch-action:manipulation
 }
 .tab-btn:hover{color:var(--text-1)}
 .tab-btn.active{color:var(--purple);border-bottom-color:var(--purple)}
@@ -944,8 +944,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   #hdr .btn-export:last-child{display:none}
 
   /* Navegación de pestañas */
-  #tab-nav{padding:0 6px;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .tab-btn{padding:0 10px;font-size:11px;min-height:42px;gap:4px}
+  #tab-nav{padding:0 6px;gap:0;overflow-x:auto}
+  .tab-btn{padding:0 10px;font-size:11px;min-height:42px;gap:4px;touch-action:manipulation}
 
   /* Grids → 1 o 2 columnas */
   .g2,.g3,.g4{grid-template-columns:1fr}
@@ -5188,4 +5188,4 @@ function renderSurplus() {
       <div class="surplus-row"><span class="sr-name">💸 Gastos del Mes</span><span class="sr-amt" style="color:var(--red)">−$${expenses.toFixed(2)}</span></div>
       <div class="surplus-row"><span class="sr-name">💳 Pagos Mínimos Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${minPayments.toFixed(2)}</span></div>
       ${extraDebt > 0 ? `<div class="surplus-row"><span class="sr-name">💳 Pago Extra Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${extraDebt.toFixed(2)}</span></div>` : ''}
-      <div class="surplus-row" style="border:2px solid ${surplus >= 0 ? 'rgba(0,230,118,.25)' : 'rgba(255,82,82,.25)'}"><span class="sr-name" style="font-weight:700;color
+      <div class="surplus-row" style="border:2px solid ${surplus >= 0 ? 'rgba(0,230,118,.25)' : 'rgba(255,82,82,.25)'}"><span class="sr-name" style="fo
