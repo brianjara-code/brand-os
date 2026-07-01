@@ -2153,9 +2153,17 @@ function setupTabs() {
       document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
     };
     btn.addEventListener('click', doSwitch);
-    // touchstart: respuesta inmediata en móvil, antes de cualquier detección de scroll
-    // preventDefault: evita que el contenedor lo interprete como scroll y suprime el click doble
-    btn.addEventListener('touchstart', (e) => { e.preventDefault(); doSwitch(); }, {passive: false});
+    // Detectar tap vs. swipe: solo cambia pestaña si el dedo no se desplazó
+    let startX = 0, startY = 0, moved = false;
+    btn.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY; moved = false;
+    }, {passive: true});
+    btn.addEventListener('touchmove', (e) => {
+      if (Math.abs(e.touches[0].clientX - startX) > 8 || Math.abs(e.touches[0].clientY - startY) > 8) moved = true;
+    }, {passive: true});
+    btn.addEventListener('touchend', (e) => {
+      if (!moved) { e.preventDefault(); doSwitch(); }
+    }, {passive: false});
   });
 }
 
