@@ -1064,7 +1064,65 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .video-list{grid-template-columns:1fr;padding:10px}
   .video-card{flex-direction:column}
   .video-thumb,.video-thumb-icon{width:100%;height:150px}
+
+  /* Botones de cámara en móvil */
+  .photo-btn-row{flex-direction:column;gap:8px}
+  .photo-capture-btn{min-height:48px;font-size:13px}
 }
+
+/* ── Captura de fotos en Agregar Gasto ── */
+.photo-btn-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+.photo-capture-group{position:relative;display:flex;flex-direction:column;gap:6px;flex:1;min-width:160px}
+.photo-capture-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3)}
+.photo-capture-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 16px;border-radius:var(--rs);border:1.5px dashed var(--border);
+  background:var(--bg-2);color:var(--text-2);cursor:pointer;
+  font-size:12px;font-weight:600;transition:var(--t);min-height:44px;
+  touch-action:manipulation
+}
+.photo-capture-btn:hover{border-color:var(--purple);color:var(--purple);background:rgba(109,93,252,.06)}
+.photo-capture-btn.has-photo{border-color:var(--green);color:var(--green);border-style:solid}
+.photo-preview-thumb{
+  width:56px;height:56px;object-fit:cover;border-radius:6px;
+  border:1.5px solid var(--green);cursor:pointer;display:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.4)
+}
+.photo-clear-btn{
+  position:absolute;top:-8px;right:-8px;width:20px;height:20px;
+  background:var(--red,#ff4757);color:#fff;border:none;border-radius:50%;
+  font-size:11px;line-height:1;cursor:pointer;display:none;
+  align-items:center;justify-content:center;z-index:2;touch-action:manipulation
+}
+.photo-clear-btn.visible{display:flex}
+
+/* ── Modal de foto grande ── */
+#photo-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9000;
+  background:rgba(0,0,0,.85);align-items:center;justify-content:center;
+  padding:20px;animation:fadeUp .2s ease
+}
+#photo-modal-overlay.open{display:flex}
+#photo-modal-box{
+  position:relative;max-width:min(800px,90vw);max-height:90vh;
+  background:var(--bg-1);border-radius:var(--r);overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.6)
+}
+#photo-modal-title{
+  padding:12px 16px;font-size:13px;font-weight:700;
+  color:var(--text-2);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between
+}
+#photo-modal-img{
+  display:block;max-width:100%;max-height:calc(90vh - 52px);
+  object-fit:contain;background:var(--bg-2)
+}
+.photo-icon-btn{
+  background:none;border:none;cursor:pointer;font-size:16px;
+  padding:2px 4px;border-radius:4px;transition:var(--t);touch-action:manipulation;
+  line-height:1
+}
+.photo-icon-btn:hover{background:var(--bg-3)}
 </style>
 </head>
 <body>
@@ -1440,6 +1498,37 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div class="i-group"><label class="i-label">Monto (USD)</label><input type="number" id="fin-amount" placeholder="50.00" step="0.01" min="0"></div>
         <div class="i-group"><label class="i-label">Pagado con</label><select id="fin-payment"><option value="debito">💳 Débito</option><option value="credito">🏦 Crédito</option><option value="efectivo">💵 Efectivo</option><option value="otro">🔁 Otro</option></select></div>
         <button class="btn-p" style="align-self:flex-end" onclick="addExpense()">+ Agregar</button>
+      </div>
+
+      <!-- Captura de fotos -->
+      <div class="photo-btn-row">
+        <!-- Foto del recibo (todas las categorías) -->
+        <div class="photo-capture-group">
+          <span class="photo-capture-label">Foto del Recibo</span>
+          <div style="display:flex;align-items:center;gap:8px;position:relative">
+            <button type="button" class="photo-capture-btn" id="receipt-btn" onclick="document.getElementById('receipt-file-input').click()">
+              📸 Tomar Foto Recibo
+            </button>
+            <img id="receipt-preview" class="photo-preview-thumb" onclick="openPhotoModal(this.src,'Recibo')">
+            <button type="button" class="photo-clear-btn" id="receipt-clear-btn" onclick="clearReceiptFile()" title="Quitar foto">✕</button>
+          </div>
+          <input type="file" id="receipt-file-input" accept="image/*" capture="environment"
+            style="display:none" onchange="onReceiptFileChange(this)">
+        </div>
+
+        <!-- Foto de la comida (supermercado) -->
+        <div class="photo-capture-group">
+          <span class="photo-capture-label">Foto Comida / Supermercado</span>
+          <div style="display:flex;align-items:center;gap:8px;position:relative">
+            <button type="button" class="photo-capture-btn" id="grocery-btn" onclick="document.getElementById('grocery-file-input').click()">
+              🛒 Tomar Foto Comida
+            </button>
+            <img id="grocery-preview" class="photo-preview-thumb" onclick="openPhotoModal(this.src,'Comida / Supermercado')">
+            <button type="button" class="photo-clear-btn" id="grocery-clear-btn" onclick="clearGroceryFile()" title="Quitar foto">✕</button>
+          </div>
+          <input type="file" id="grocery-file-input" accept="image/*" capture="environment"
+            style="display:none" onchange="onGroceryFileChange(this)">
+        </div>
       </div>
     </div>
 
@@ -2064,9 +2153,9 @@ function setupTabs() {
       document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
     };
     btn.addEventListener('click', doSwitch);
-    // Refuerzo táctil: touchend garantiza respuesta inmediata en móvil
-    // e.preventDefault() evita que el 'click' se dispare doble
-    btn.addEventListener('touchend', (e) => { e.preventDefault(); doSwitch(); });
+    // touchstart: respuesta inmediata en móvil, antes de cualquier detección de scroll
+    // preventDefault: evita que el contenedor lo interprete como scroll y suprime el click doble
+    btn.addEventListener('touchstart', (e) => { e.preventDefault(); doSwitch(); }, {passive: false});
   });
 }
 
@@ -2312,6 +2401,78 @@ const VIDEO_NOTES_KEY = 'brandos_video_notes';
 const GOALS_KEY = 'brandos_goals';
 function saveGoals() {
   try { localStorage.setItem(GOALS_KEY, JSON.stringify(D.goals)); } catch(_) {}
+}
+
+// ============================================================
+//  FOTOS DE GASTOS — captura y subida a Supabase Storage
+// ============================================================
+let _pendingReceiptFile  = null;
+let _pendingGroceryFile  = null;
+const PHOTOS_BUCKET = 'receipts-and-groceries';
+
+async function uploadExpensePhoto(file, folder) {
+  const sb = getSB();
+  if (!sb || !file) return null;
+  try {
+    const ext  = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const path = `${folder}/${Date.now()}_${Math.random().toString(36).slice(2,8)}.${ext}`;
+    const { error } = await sb.storage.from(PHOTOS_BUCKET).upload(path, file, {
+      contentType: file.type || 'image/jpeg',
+      cacheControl: '3600'
+    });
+    if (error) { console.error('Upload error:', error); return null; }
+    const { data } = sb.storage.from(PHOTOS_BUCKET).getPublicUrl(path);
+    return data?.publicUrl || null;
+  } catch(e) { console.error(e); return null; }
+}
+
+function onReceiptFileChange(input) {
+  _pendingReceiptFile = input.files[0] || null;
+  const preview = document.getElementById('receipt-preview');
+  const btn     = document.getElementById('receipt-btn');
+  const clear   = document.getElementById('receipt-clear-btn');
+  if (_pendingReceiptFile) {
+    const url = URL.createObjectURL(_pendingReceiptFile);
+    preview.src = url; preview.style.display = 'block';
+    btn.classList.add('has-photo'); clear.classList.add('visible');
+  } else {
+    preview.style.display = 'none'; btn.classList.remove('has-photo'); clear.classList.remove('visible');
+  }
+}
+function onGroceryFileChange(input) {
+  _pendingGroceryFile = input.files[0] || null;
+  const preview = document.getElementById('grocery-preview');
+  const btn     = document.getElementById('grocery-btn');
+  const clear   = document.getElementById('grocery-clear-btn');
+  if (_pendingGroceryFile) {
+    const url = URL.createObjectURL(_pendingGroceryFile);
+    preview.src = url; preview.style.display = 'block';
+    btn.classList.add('has-photo'); clear.classList.add('visible');
+  } else {
+    preview.style.display = 'none'; btn.classList.remove('has-photo'); clear.classList.remove('visible');
+  }
+}
+function clearReceiptFile() {
+  _pendingReceiptFile = null;
+  const inp = document.getElementById('receipt-file-input'); if (inp) inp.value = '';
+  onReceiptFileChange({ files: [] });
+}
+function clearGroceryFile() {
+  _pendingGroceryFile = null;
+  const inp = document.getElementById('grocery-file-input'); if (inp) inp.value = '';
+  onGroceryFileChange({ files: [] });
+}
+
+function openPhotoModal(url, title) {
+  if (!url) return;
+  document.getElementById('photo-modal-img').src   = url;
+  document.getElementById('photo-modal-label').textContent = title || 'Foto';
+  document.getElementById('photo-modal-overlay').classList.add('open');
+}
+function closePhotoModal(e) {
+  if (e && e.target !== document.getElementById('photo-modal-overlay') && e.target !== document.querySelector('#photo-modal-title .photo-icon-btn')) return;
+  document.getElementById('photo-modal-overlay').classList.remove('open');
+  document.getElementById('photo-modal-img').src = '';
 }
 
 // ============================================================
@@ -4342,24 +4503,29 @@ function renderExpenses() {
     const c = catMap[e.categoryId];
     const s = subMap[e.subcategoryId];
     const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}</span>` : '';
+    const photoIcons = [
+      e.receiptUrl      ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.receiptUrl}','Recibo — ${esc(e.description)}')" title="Ver recibo">🧾</button>` : '',
+      e.groceryItemsUrl ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.groceryItemsUrl}','Comida — ${esc(e.description)}')" title="Ver foto de comida">🛒</button>` : ''
+    ].filter(Boolean).join('');
     return `<tr>
       <td>${e.date}</td>
       <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}</td>
       <td><span class="tag" style="background:${c ? c.color+'20' : 'var(--bg-3)'};color:${c ? c.color : 'var(--text-3)'};border:1px solid ${c ? c.color+'40' : 'var(--border)'}">${c ? (c.emoji?c.emoji+' ':'')+c.name : '?'}</span></td>
       <td style="color:var(--text-3)">${s ? esc(s.name) : '—'}</td>
       <td style="font-weight:700">$${(e.amount||0).toFixed(2)}</td>
-      <td><button class="btn-d" onclick="deleteExpense('${e.id}')">✕</button></td>
+      <td style="white-space:nowrap">${photoIcons}<button class="btn-d" onclick="deleteExpense('${e.id}')">✕</button></td>
     </tr>`;
   }).join('') : '<tr><td colspan="6" class="empty">Sin gastos registrados</td></tr>';
 }
 
-function addExpense() {
+async function addExpense() {
   const desc = document.getElementById('fin-desc').value.trim();
   const amount = parseFloat(document.getElementById('fin-amount').value);
   if (!desc) { showToast('Descripción requerida', true); return; }
   if (isNaN(amount) || amount <= 0) { showToast('Monto inválido', true); return; }
   const paymentMethod = document.getElementById('fin-payment')?.value || 'debito';
-  D.expenses.entries.push({
+
+  const entry = {
     id: 'exp' + Date.now(),
     date: document.getElementById('fin-date').value || today(),
     description: desc,
@@ -4367,10 +4533,26 @@ function addExpense() {
     categoryId: document.getElementById('fin-cat').value,
     subcategoryId: document.getElementById('fin-subcat')?.value || '',
     paymentMethod
-  });
+  };
+
   // Si se pagó con débito, el saldo disponible baja solo
   if (paymentMethod === 'debito') D.debitBalance = (D.debitBalance || 0) - amount;
-  document.getElementById('fin-desc').value = '';
+
+  // Subir fotos si hay seleccionadas
+  if (_pendingReceiptFile || _pendingGroceryFile) {
+    showToast('Subiendo foto(s)…');
+    const [rUrl, gUrl] = await Promise.all([
+      _pendingReceiptFile  ? uploadExpensePhoto(_pendingReceiptFile,  'recibos') : Promise.resolve(null),
+      _pendingGroceryFile  ? uploadExpensePhoto(_pendingGroceryFile,  'comida')  : Promise.resolve(null)
+    ]);
+    if (rUrl) entry.receiptUrl      = rUrl;
+    if (gUrl) entry.groceryItemsUrl = gUrl;
+    clearReceiptFile();
+    clearGroceryFile();
+  }
+
+  D.expenses.entries.push(entry);
+  document.getElementById('fin-desc').value  = '';
   document.getElementById('fin-amount').value = '';
   saveFinance();
   renderFinanzas();
@@ -5257,5 +5439,16 @@ function toast(msg) { showToast(msg); }
 ============================================================ */
 init();
 </script>
+
+<!-- ── Modal: Ver Foto Grande ── -->
+<div id="photo-modal-overlay" onclick="closePhotoModal(event)">
+  <div id="photo-modal-box">
+    <div id="photo-modal-title">
+      <span id="photo-modal-label">Foto</span>
+      <button class="photo-icon-btn" onclick="closePhotoModal()" title="Cerrar" style="font-size:18px;color:var(--text-2)">✕</button>
+    </div>
+    <img id="photo-modal-img" src="" alt="foto">
+  </div>
+</div>
 </body>
 </html>
