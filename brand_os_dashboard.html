@@ -6,38 +6,69 @@
 <title>Brand OS — Control Center</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
 <style>
 /* ================================================
    VARIABLES & RESET
 ================================================ */
-:root {
-  --bg-0: #05050f;
-  --bg-1: #0b0b18;
-  --bg-2: #10101f;
-  --bg-3: #18182e;
-  --bg-card: #141428;
-  --bg-hover: #1e1e38;
+/* ---- TEMA OSCURO (por defecto, estilo Robinhood) ---- */
+:root, html[data-theme="dark"] {
+  --bg-0: #0a0b0d;
+  --bg-1: #101216;
+  --bg-2: #16181d;
+  --bg-3: #1e2127;
+  --bg-card: #131519;
+  --bg-hover: #1c1f26;
 
-  --purple: #7c6fff;
-  --blue:   #4fc3f7;
+  /* Acento principal = verde eléctrico Robinhood (antes morado) */
+  --purple: #00e676;
+  --blue:   #4fd1a1;
   --green:  #00e676;
   --gold:   #ffd740;
   --orange: #ff9100;
   --red:    #ff5252;
   --teal:   #64ffda;
 
-  --text-1: #eeeeff;
-  --text-2: #9898bb;
-  --text-3: #555577;
+  --text-1: #f5f7fa;
+  --text-2: #9aa0ac;
+  --text-3: #5f6672;
 
-  --border:       rgba(124,111,255,0.13);
-  --border-hover: rgba(124,111,255,0.38);
+  --border:       rgba(255,255,255,0.08);
+  --border-hover: rgba(0,230,118,0.38);
 
-  --r: 12px;
-  --rs: 8px;
+  --r: 14px;
+  --rs: 9px;
   --t: 0.22s cubic-bezier(.4,0,.2,1);
-  --shadow: 0 4px 28px rgba(0,0,0,0.5);
-  --glow: 0 0 22px rgba(124,111,255,0.28);
+  --shadow: 0 2px 14px rgba(0,0,0,0.45);
+  --glow: 0 4px 18px rgba(0,230,118,0.16);
+}
+
+/* ---- TEMA CLARO (alto contraste) ---- */
+html[data-theme="light"] {
+  --bg-0: #f6f7f9;
+  --bg-1: #ffffff;
+  --bg-2: #f0f2f5;
+  --bg-3: #e5e8ec;
+  --bg-card: #ffffff;
+  --bg-hover: #eef1f5;
+
+  --purple: #00b45a;
+  --blue:   #06a870;
+  --green:  #00a552;
+  --gold:   #c99700;
+  --orange: #e07800;
+  --red:    #e03b3b;
+  --teal:   #009e8e;
+
+  --text-1: #14171c;
+  --text-2: #4a505b;
+  --text-3: #858c99;
+
+  --border:       rgba(0,0,0,0.10);
+  --border-hover: rgba(0,180,90,0.40);
+
+  --shadow: 0 2px 14px rgba(0,0,0,0.08);
+  --glow: 0 4px 18px rgba(0,180,90,0.15);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -57,9 +88,15 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
    HEADER
 ================================================ */
 #hdr{
-  background:linear-gradient(90deg,var(--bg-1),var(--bg-2));
+  background:var(--bg-1);
   border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 24px;gap:16px
+  display:flex;align-items:center;padding:0 24px;gap:14px
+}
+.profile-pic{
+  width:34px;height:34px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--green);flex-shrink:0;background:var(--bg-3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:var(--green);letter-spacing:.5px
 }
 .logo{
   font-size:17px;font-weight:800;letter-spacing:-.5px;
@@ -67,6 +104,12 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
 }
 .logo span{font-weight:300}
+.theme-toggle{
+  background:var(--bg-2);border:1px solid var(--border);color:var(--text-1);
+  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;
+  display:flex;align-items:center;justify-content:center;transition:var(--t);flex-shrink:0
+}
+.theme-toggle:hover{border-color:var(--border-hover);background:var(--bg-hover)}
 .hdr-gap{flex:1}
 #sync-label{font-size:11px;color:var(--text-3)}
 #sync-time{color:var(--teal);font-weight:600}
@@ -1124,6 +1167,15 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 }
 .photo-icon-btn:hover{background:var(--bg-3)}
 </style>
+<script>
+/* Aplica el tema guardado ANTES de pintar la página (evita parpadeo) */
+(function(){
+  try {
+    var t = localStorage.getItem('brandos_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch(_) { document.documentElement.setAttribute('data-theme','dark'); }
+})();
+</script>
 </head>
 <body>
 <div id="app">
@@ -1132,8 +1184,11 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
      HEADER
 ====================================================== -->
 <header id="hdr">
+  <img id="profile-pic" class="profile-pic" src="perfil.jpg" alt="Foto de perfil"
+       onerror="this.onerror=null;this.replaceWith(Object.assign(document.createElement('div'),{className:'profile-pic',textContent:'BJ'}))">
   <div class="logo">BRAND OS <span>/ Control Center</span></div>
   <div class="hdr-gap"></div>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema claro/oscuro">🌙</button>
   <span id="auto-update-badge" style="display:none;font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.25);color:var(--green)">
     🤖 Auto-update: <span id="auto-update-time">—</span>
   </span>
@@ -1418,13 +1473,14 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     </div>
 
     <div class="fin-subtab-panel active" id="fin-sub-presupuesto">
-    <!-- Mock Banking Sync -->
+    <!-- Conexión bancaria real (Plaid) -->
     <div class="bank-mock" id="bank-mock">
       <div class="bank-icon">🏦</div>
       <div class="bank-info">
-        <div class="bank-name">Bancolombia</div>
+        <div class="bank-name" id="bank-name">Banco</div>
         <div class="bank-status" id="bank-status-text">No conectado</div>
       </div>
+      <button class="btn-s" id="bank-sync-btn" style="display:none" onclick="syncBankNow()">🔄 Sincronizar</button>
       <span class="bank-badge disconnected" id="bank-badge">Conectar</span>
     </div>
 
@@ -1907,6 +1963,26 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 ====================================================== -->
 <script>
 'use strict';
+
+/* ============================================================
+   TEMA (oscuro / claro)
+============================================================ */
+function applyThemeIcon() {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.textContent = cur === 'light' ? '☀️' : '🌙';
+    btn.title = cur === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro';
+  }
+}
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('brandos_theme', next); } catch(_) {}
+  applyThemeIcon();
+}
+applyThemeIcon();
 
 /* ============================================================
    STATE
@@ -4106,23 +4182,39 @@ function renderFinanzas() {
   renderSurplus();
 }
 
-function renderBankMock() {
-  const connected = localStorage.getItem('brandos_bank_connected') === '1';
+async function renderBankMock() {
   const badge = document.getElementById('bank-badge');
   const statusText = document.getElementById('bank-status-text');
+  const nameEl = document.getElementById('bank-name');
+  const syncBtn = document.getElementById('bank-sync-btn');
   if (!badge) return;
-  if (connected) {
+
+  let st = null;
+  try {
+    const r = await fetch('/api/plaid/status');
+    st = await r.json();
+  } catch (_) { /* sin servidor local (ej. GitHub Pages) */ }
+
+  if (st && st.connected) {
     badge.className = 'bank-badge connected';
     badge.textContent = '✓ Conectado';
-    statusText.textContent = 'Sincronizado (demo)';
     badge.style.cursor = 'default';
     badge.onclick = null;
+    nameEl.textContent = (st.institution || 'Banco') + (st.env === 'sandbox' ? ' (práctica)' : '');
+    statusText.textContent = st.lastSync
+      ? 'Última sincronización: ' + new Date(st.lastSync).toLocaleString('es-MX')
+      : 'Conectado — aún sin sincronizar';
+    syncBtn.style.display = 'inline-flex';
   } else {
     badge.className = 'bank-badge disconnected';
     badge.textContent = 'Conectar';
     badge.style.cursor = 'pointer';
-    statusText.textContent = 'No conectado';
     badge.onclick = connectBank;
+    nameEl.textContent = 'Banco';
+    syncBtn.style.display = 'none';
+    if (!st) statusText.textContent = 'Requiere el servidor local (ABRIR DASHBOARD.bat)';
+    else if (!st.configured) statusText.textContent = 'Falta configurar Plaid en .env';
+    else statusText.textContent = 'No conectado' + (st.env === 'sandbox' ? ' · modo práctica' : '');
   }
 }
 
@@ -4161,15 +4253,125 @@ function applyDebitAdjust() {
   showToast(debitAdjustSign < 0 ? 'Saldo reducido' : 'Saldo aumentado');
 }
 
-function connectBank() {
+async function connectBank() {
   const badge = document.getElementById('bank-badge');
   badge.textContent = '⏳ Conectando…';
   badge.style.cursor = 'default';
-  setTimeout(() => {
-    localStorage.setItem('brandos_bank_connected', '1');
+  badge.onclick = null;
+
+  // Método principal: Hosted Link (Plaid aloja la página segura — funciona
+  // con bancos OAuth como Chase, que exigen HTTPS en production)
+  try {
+    const h = await fetch('/api/plaid/hosted-link', { method: 'POST' }).then(x => x.json());
+    if (h.ok && h.url) {
+      window.open(h.url, '_blank');
+      showToast('Se abrió la ventana segura de Plaid — completa la conexión ahí');
+      pollHostedLink();
+      return;
+    }
+    if (h.error && /PLAID_CLIENT_ID|\.env/.test(h.error)) throw new Error(h.error);
+    // Si Hosted Link no está disponible en el plan, seguimos al método clásico
+  } catch (e) {
+    if (/\.env/.test(e.message)) { showToast('Error: ' + e.message, true); renderBankMock(); return; }
+  }
+
+  // Método de respaldo: ventana integrada de Plaid Link
+  try {
+    const r = await fetch('/api/plaid/link-token', { method: 'POST' });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || 'No se pudo crear el enlace');
+    if (typeof Plaid === 'undefined') throw new Error('No cargó Plaid — revisa tu internet');
+
+    const handler = Plaid.create({
+      token: j.linkToken,
+      onSuccess: async (publicToken, metadata) => {
+        try {
+          const inst = metadata?.institution?.name || null;
+          const ex = await fetch('/api/plaid/exchange', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ public_token: publicToken, institution: inst }),
+          }).then(x => x.json());
+          if (!ex.ok) throw new Error(ex.error || 'No se pudo guardar la conexión');
+          showToast('✓ ' + (inst || 'Banco') + ' conectado');
+          await renderBankMock();
+          await syncBankNow();
+        } catch (e) {
+          showToast('Error al guardar conexión: ' + e.message, true);
+          renderBankMock();
+        }
+      },
+      onExit: (err) => {
+        if (err) showToast('Conexión cancelada: ' + (err.display_message || err.error_code || ''), true);
+        renderBankMock();
+      },
+    });
+    handler.open();
+  } catch (e) {
+    showToast('Error: ' + e.message, true);
     renderBankMock();
-    showToast('✓ Bancolombia conectado (demo)');
-  }, 2000);
+  }
+}
+
+// Espera a que el usuario termine la conexión en la ventana de Plaid (Hosted Link).
+// Consulta cada 4 segundos, hasta 10 minutos.
+let hostedPollTimer = null;
+function pollHostedLink() {
+  if (hostedPollTimer) clearInterval(hostedPollTimer);
+  const badge = document.getElementById('bank-badge');
+  const started = Date.now();
+  hostedPollTimer = setInterval(async () => {
+    if (Date.now() - started > 10 * 60_000) {
+      clearInterval(hostedPollTimer); hostedPollTimer = null;
+      showToast('Tiempo agotado — vuelve a intentar con "Conectar"', true);
+      renderBankMock();
+      return;
+    }
+    try {
+      const s = await fetch('/api/plaid/hosted-status').then(x => x.json());
+      if (s.connected) {
+        clearInterval(hostedPollTimer); hostedPollTimer = null;
+        showToast('✓ ' + (s.institution || 'Banco') + ' conectado');
+        await renderBankMock();
+        await syncBankNow();
+      } else if (!s.pending) {
+        // No hay sesión pendiente y no está conectado → el usuario cerró sin terminar
+        clearInterval(hostedPollTimer); hostedPollTimer = null;
+        renderBankMock();
+      }
+    } catch (_) { /* servidor ocupado — reintenta en el próximo tick */ }
+  }, 4000);
+  if (badge) badge.textContent = '⏳ Esperando…';
+}
+
+// Trae saldos + transacciones nuevas desde Plaid y actualiza el saldo de débito
+async function syncBankNow() {
+  const syncBtn = document.getElementById('bank-sync-btn');
+  const prevLabel = syncBtn ? syncBtn.textContent : '';
+  if (syncBtn) { syncBtn.disabled = true; syncBtn.textContent = '⏳ Sincronizando…'; }
+  try {
+    const j = await fetch('/api/plaid/sync', { method: 'POST' }).then(x => x.json());
+    if (!j.ok) throw new Error(j.error || 'Error al sincronizar');
+
+    // Actualizar el Saldo de Débito con la cuenta checking (o la primera de depósito)
+    const checking = (j.balances || []).find(a => a.subtype === 'checking')
+                  || (j.balances || []).find(a => a.type === 'depository');
+    if (checking) {
+      const bal = checking.available != null ? checking.available : checking.current;
+      if (bal != null) {
+        D.debitBalance = bal;
+        saveFinance();
+        renderDebitBalance();
+      }
+    }
+    D.bank = { balances: j.balances, transactions: j.transactions, lastSync: j.lastSync };
+    showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas`);
+    renderBankMock();
+  } catch (e) {
+    showToast('Error al sincronizar: ' + e.message, true);
+  } finally {
+    if (syncBtn) { syncBtn.disabled = false; syncBtn.textContent = prevLabel || '🔄 Sincronizar'; }
+  }
 }
 
 /* ============================================================
