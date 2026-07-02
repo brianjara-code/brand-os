@@ -2096,6 +2096,7 @@ async function loadData() {
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
+    await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
     // Notas por video: el navegador manda; fusiona el respaldo del JSON y resincroniza
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     document.getElementById('sync-time').textContent = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
@@ -2115,6 +2116,7 @@ async function loadData() {
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
+    await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
   }
@@ -2489,6 +2491,7 @@ function closePhotoModal(e) {
 const SUPABASE_URL = 'https://xbnzizzvvzadlhfagnjn.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhibnppenp2dnphZGxoZmFnbmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NzI2NDAsImV4cCI6MjA5ODE0ODY0MH0.PeuucODjxz1KVtuVSL3_4d979ZHHzFygDzKAQ-yngq4';
 const SYNC_ROW_ID  = 'brian_finance';
+const SCRIPTS_SYNC_ID = 'brian_scripts';
 let _sbClient = null;
 
 function getSB() {
@@ -2541,6 +2544,38 @@ async function pullFromCloud() {
     try { localStorage.setItem(FINANCE_KEY, JSON.stringify(f)); } catch(_) {}
     return true;
   } catch(e) { console.warn('[Sync] pull failed:', e.message); return false; }
+}
+// ============================================================
+
+// ── SCRIPTS SYNC — respaldo de guiones en la nube ──────────────────────────
+async function pushScriptsToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: SCRIPTS_SYNC_ID,
+      data: { scripts: D.scripts || [], savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] scripts push failed:', e.message); }
+}
+
+async function pullScriptsFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', SCRIPTS_SYNC_ID).maybeSingle();
+    if (error || !row || !row.data || !Array.isArray(row.data.scripts)) return;
+    const cloudTime = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs = localStorage.getItem(SCRIPTS_KEY + '_ts');
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) {
+      D.scripts = row.data.scripts;
+      try {
+        localStorage.setItem(SCRIPTS_KEY, JSON.stringify(row.data.scripts));
+        localStorage.setItem(SCRIPTS_KEY + '_ts', row.data.savedAt);
+      } catch(_) {}
+    }
+  } catch(e) { console.warn('[Sync] scripts pull failed:', e.message); }
 }
 // ============================================================
 
@@ -3240,7 +3275,12 @@ const STATUS_ORDER = ['draft','filming','editing','scheduled','published'];
 const SCRIPTS_KEY = 'brandos_scripts';
 
 function persistScripts() {
-  try { localStorage.setItem(SCRIPTS_KEY, JSON.stringify(D.scripts)); } catch(_) {}
+  const savedAt = new Date().toISOString();
+  try {
+    localStorage.setItem(SCRIPTS_KEY, JSON.stringify(D.scripts));
+    localStorage.setItem(SCRIPTS_KEY + '_ts', savedAt);
+  } catch(_) {}
+  pushScriptsToCloud(savedAt);
 }
 
 function renderScripts() {
