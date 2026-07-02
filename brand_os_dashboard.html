@@ -4174,6 +4174,7 @@ function renderFinanzas() {
 
   renderBankMock();
   renderDebitBalance();
+  syncPlaidCardsToDebts();   // refleja saldos de tarjetas del banco (ej. auto-update 7am)
   renderBudgetTable();
   renderExpenses();
   renderRemittances();
@@ -4365,13 +4366,65 @@ async function syncBankNow() {
       }
     }
     D.bank = { balances: j.balances, transactions: j.transactions, lastSync: j.lastSync };
-    showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas`);
+
+    // Volcar las tarjetas de crédito del banco a la sección de Deudas
+    const nCards = syncPlaidCardsToDebts();
+    saveFinance();
+    renderDebts();
+    renderSurplus();
+
+    showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas${nCards ? ` · ${nCards} tarjeta(s) actualizada(s)` : ''}`);
     renderBankMock();
   } catch (e) {
     showToast('Error al sincronizar: ' + e.message, true);
   } finally {
     if (syncBtn) { syncBtn.disabled = false; syncBtn.textContent = prevLabel || '🔄 Sincronizar'; }
   }
+}
+
+// Mapea las cuentas de tarjeta de crédito que trajo Plaid (D.bank.balances)
+// a las tarjetas de la sección Deudas (D.debts.cards).
+// - Empareja por plaidAccountId (o por últimos 4 dígitos si Brian la creó a mano).
+// - Actualiza SOLO los datos que da el banco: saldo, cupo y últimos 4.
+// - Conserva lo que Brian escribe a mano: APR, pago mínimo, día de corte, etiqueta.
+//   (Plaid con el producto "Transactions" no entrega APR ni pago mínimo.)
+function syncPlaidCardsToDebts() {
+  if (!D.bank || !Array.isArray(D.bank.balances)) return 0;
+  if (!D.debts) D.debts = { cards:[], extraPayment:0, preferredMethod:'snowball' };
+  if (!Array.isArray(D.debts.cards)) D.debts.cards = [];
+
+  let n = 0;
+  D.bank.balances.filter(a => a.type === 'credit').forEach(a => {
+    const balance = a.current != null ? a.current : 0;               // saldo adeudado
+    const limit = (a.current != null && a.available != null) ? (a.current + a.available) : 0; // cupo total
+    let card = D.debts.cards.find(c => c.plaidAccountId === a.accountId);
+    if (!card && a.mask) card = D.debts.cards.find(c => !c.plaidAccountId && c.last4 === a.mask);
+
+    if (card) {
+      card.plaidAccountId = a.accountId;
+      card.balance = balance;
+      if (limit > 0) card.creditLimit = limit;
+      if (a.mask && !card.last4) card.last4 = a.mask;
+    } else {
+      D.debts.cards.push({
+        id: 'card_' + a.accountId,
+        plaidAccountId: a.accountId,
+        name: a.name || 'Tarjeta',
+        last4: a.mask || '',
+        balance,
+        creditLimit: limit,
+        apr: 0,           // Brian lo completa a mano (Plaid no lo da con Transactions)
+        minPayment: 0,    // idem
+        dueDay: 1,
+        label: 'personal',
+        hasPromo: false, promoApr: 0, promoEndDate: null,
+        payments: [],
+        fromPlaid: true
+      });
+      n++;
+    }
+  });
+  return n;
 }
 
 /* ============================================================
