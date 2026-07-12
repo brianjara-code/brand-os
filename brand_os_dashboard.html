@@ -1473,7 +1473,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     </div>
 
     <div class="fin-subtab-panel active" id="fin-sub-presupuesto">
-    <!-- Conexión bancaria real (Plaid) -->
+    <!-- Conexión bancaria real (Plaid) — personal (Chase) -->
     <div class="bank-mock" id="bank-mock">
       <div class="bank-icon">🏦</div>
       <div class="bank-info">
@@ -1484,8 +1484,20 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <span class="bank-badge disconnected" id="bank-badge">Conectar</span>
     </div>
 
-    <!-- Saldo Tarjeta de Débito -->
-    <div style="background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(100,255,218,.05));border:1px solid rgba(0,230,118,.2);border-radius:var(--r);padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:14px">
+    <!-- Conexión bancaria real (Plaid) — negocios (Bluevine) -->
+    <div class="bank-mock" id="bank-mock-biz">
+      <div class="bank-icon">🏢</div>
+      <div class="bank-info">
+        <div class="bank-name" id="bank-name-biz">Banco de Negocios</div>
+        <div class="bank-status" id="bank-status-text-biz">No conectado</div>
+      </div>
+      <button class="btn-s" id="bank-sync-btn-biz" style="display:none" onclick="syncBankNow()">🔄 Sincronizar</button>
+      <span class="bank-badge disconnected" id="bank-badge-biz">Conectar</span>
+    </div>
+
+    <!-- Saldos: Tarjeta de Débito (personal) + Cuenta de Negocios (Bluevine) -->
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+    <div style="background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(100,255,218,.05));border:1px solid rgba(0,230,118,.2);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;flex:1;min-width:300px">
       <div style="font-size:28px">💳</div>
       <div style="flex:1">
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:4px">Saldo Disponible — Tarjeta de Débito</div>
@@ -1508,6 +1520,30 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       </div>
     </div>
 
+    <div style="background:linear-gradient(135deg,rgba(100,255,218,.07),rgba(79,209,161,.05));border:1px solid rgba(100,255,218,.22);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;flex:1;min-width:300px">
+      <div style="font-size:28px">🏢</div>
+      <div style="flex:1">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:4px">Saldo Disponible — Negocio (Bluevine)</div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:28px;font-weight:800;color:var(--teal)">$</span>
+          <input type="number" id="biz-balance-input" step="0.01" min="0" placeholder="0.00"
+            style="font-size:28px;font-weight:800;color:var(--teal);background:none;border:none;border-bottom:2px solid rgba(100,255,218,.25);padding:2px 0;width:200px;outline:none;font-family:inherit"
+            oninput="updateBizBalance()">
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn-s" type="button" onclick="toggleBizAdjust(-1)">− Gasté</button>
+          <button class="btn-s" type="button" onclick="toggleBizAdjust(1)">+ Recibí</button>
+          <span id="biz-adjust-box" style="display:none;align-items:center;gap:6px">
+            <input type="number" id="biz-adjust-amount" step="0.01" min="0" placeholder="0.00" style="width:110px;font-size:13px;padding:6px 8px"
+              onkeydown="if(event.key==='Enter')applyBizAdjust()">
+            <button class="btn-p" type="button" onclick="applyBizAdjust()">OK</button>
+            <button class="btn-s" type="button" onclick="hideBizAdjust()">Cancelar</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    </div>
+
     <!-- Budget Overview: Proyectado vs. Real -->
     <div class="fin-budget-hdr">
       <div class="card-title" style="margin-bottom:0">Presupuesto Mensual — Proyectado vs. Real</div>
@@ -1527,7 +1563,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       </div>
     </div>
 
-    <div class="fin-hint">Escribe en la columna <b>Proyectado</b> cuánto planeas gastar este mes en cada renglón. La columna <b>Real</b> se llena sola con los gastos que registres abajo. Las filas se ponen <span style="color:var(--orange)">ámbar</span> cerca del límite y <span style="color:var(--red)">rojas</span> si te pasas.</div>
+    <div class="fin-hint">Escribe en la columna <b>Proyectado</b> cuánto planeas gastar este mes en cada renglón. La columna <b>Real</b> se llena sola con los gastos que registres abajo <b>y con los que entran automáticamente desde tu banco</b> (aparecen con la insignia <span style="color:var(--green)">🏦 Auto</span> en la tabla de Gastos — usa el ✏️ si quieres corregirles la categoría). Las filas se ponen <span style="color:var(--orange)">ámbar</span> cerca del límite y <span style="color:var(--red)">rojas</span> si te pasas.</div>
     <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px">
       <div class="tbl-wrap">
         <table class="fin-budget-table">
@@ -2104,6 +2140,9 @@ async function init() {
   await loadData();
   renderAll();
   startPolling();
+  // Banco "en vivo": sincroniza al abrir el dashboard y cada hora mientras esté abierto
+  autoBankSync();
+  setInterval(autoBankSync, 60 * 60_000);
 }
 
 /* ============================================================
@@ -2588,6 +2627,7 @@ async function pushToCloud() {
       income:       D.income       || { monthlyGoal:0, channels:[], entries:[] },
       debts:        D.debts        || { cards:[], extraPayment:0, preferredMethod:'snowball' },
       debitBalance: D.debitBalance || 0,
+      bizBalance:   D.bizBalance   || 0,
       savedAt
     };
     await sb.from('finance_sync').upsert({
@@ -2617,6 +2657,7 @@ async function pullFromCloud() {
     if (f.income)      D.income      = f.income;
     if (f.debts)       D.debts       = f.debts;
     if (f.debitBalance != null) D.debitBalance = f.debitBalance;
+    if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
     try { localStorage.setItem(FINANCE_KEY, JSON.stringify(f)); } catch(_) {}
     return true;
   } catch(e) { console.warn('[Sync] pull failed:', e.message); return false; }
@@ -2670,6 +2711,8 @@ function saveFinance() {
       income: D.income || { monthlyGoal:0, channels:[], entries:[] },
       debts: D.debts || { cards:[], extraPayment:0, preferredMethod:'snowball' },
       debitBalance: D.debitBalance || 0,
+      bizBalance: D.bizBalance || 0,
+      bankIgnored: D.bankIgnored || [],   // gastos del banco que Brian eliminó (no re-importar)
       savedAt: new Date().toISOString()
     }));
   } catch(_) {}
@@ -2689,6 +2732,8 @@ function restoreFinance() {
     if (f.income)      D.income      = f.income;
     if (f.debts)       D.debts       = f.debts;
     if (f.debitBalance != null) D.debitBalance = f.debitBalance;
+    if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
+    if (Array.isArray(f.bankIgnored)) D.bankIgnored = f.bankIgnored;
   } catch(_) {}
 }
 
@@ -4172,8 +4217,14 @@ function renderFinanzas() {
   if (!D.budgets) D.budgets = {};
   migrateFinance();
 
+  // Puente banco → gastos: vuelca las transacciones de Plaid al presupuesto
+  // (cubre también las que trajo la tarea de las 7am sin abrir el dashboard)
+  const _imp = importBankTransactions();
+  if (_imp.added || _imp.updated) saveFinance();
+
   renderBankMock();
   renderDebitBalance();
+  renderBizBalance();
   syncPlaidCardsToDebts();   // refleja saldos de tarjetas del banco (ej. auto-update 7am)
   renderBudgetTable();
   renderExpenses();
@@ -4184,11 +4235,7 @@ function renderFinanzas() {
 }
 
 async function renderBankMock() {
-  const badge = document.getElementById('bank-badge');
-  const statusText = document.getElementById('bank-status-text');
-  const nameEl = document.getElementById('bank-name');
-  const syncBtn = document.getElementById('bank-sync-btn');
-  if (!badge) return;
+  if (!document.getElementById('bank-badge')) return;
 
   let st = null;
   try {
@@ -4196,22 +4243,38 @@ async function renderBankMock() {
     st = await r.json();
   } catch (_) { /* sin servidor local (ej. GitHub Pages) */ }
 
-  if (st && st.connected) {
+  // Cada fila de banco tiene su ranura: personal (Chase) y business (Bluevine)
+  renderBankRow('personal', '', 'Banco', st);
+  renderBankRow('business', '-biz', 'Banco de Negocios', st);
+}
+
+// Pinta una fila de conexión bancaria. suffix = '' (personal) | '-biz' (negocios)
+function renderBankRow(slot, suffix, defaultName, st) {
+  const badge = document.getElementById('bank-badge' + suffix);
+  const statusText = document.getElementById('bank-status-text' + suffix);
+  const nameEl = document.getElementById('bank-name' + suffix);
+  const syncBtn = document.getElementById('bank-sync-btn' + suffix);
+  if (!badge) return;
+
+  const item = st && st.items ? st.items[slot]
+    : (st && slot === 'personal' ? st : null);   // compat: status viejo sin "items"
+
+  if (st && item && item.connected) {
     badge.className = 'bank-badge connected';
     badge.textContent = '✓ Conectado';
     badge.style.cursor = 'default';
     badge.onclick = null;
-    nameEl.textContent = (st.institution || 'Banco') + (st.env === 'sandbox' ? ' (práctica)' : '');
-    statusText.textContent = st.lastSync
-      ? 'Última sincronización: ' + new Date(st.lastSync).toLocaleString('es-MX')
+    nameEl.textContent = (item.institution || defaultName) + (st.env === 'sandbox' ? ' (práctica)' : '');
+    statusText.textContent = item.lastSync
+      ? 'Última sincronización: ' + new Date(item.lastSync).toLocaleString('es-MX')
       : 'Conectado — aún sin sincronizar';
     syncBtn.style.display = 'inline-flex';
   } else {
     badge.className = 'bank-badge disconnected';
     badge.textContent = 'Conectar';
     badge.style.cursor = 'pointer';
-    badge.onclick = connectBank;
-    nameEl.textContent = 'Banco';
+    badge.onclick = () => connectBank(slot);
+    nameEl.textContent = defaultName;
     syncBtn.style.display = 'none';
     if (!st) statusText.textContent = 'Requiere el servidor local (ABRIR DASHBOARD.bat)';
     else if (!st.configured) statusText.textContent = 'Falta configurar Plaid en .env';
@@ -4254,8 +4317,46 @@ function applyDebitAdjust() {
   showToast(debitAdjustSign < 0 ? 'Saldo reducido' : 'Saldo aumentado');
 }
 
-async function connectBank() {
-  const badge = document.getElementById('bank-badge');
+// ── Saldo del negocio (Bluevine) — espejo de las funciones de débito ────────
+function renderBizBalance() {
+  const el = document.getElementById('biz-balance-input');
+  if (el && document.activeElement !== el) el.value = D.bizBalance || '';
+}
+
+function updateBizBalance() {
+  D.bizBalance = parseFloat(document.getElementById('biz-balance-input').value) || 0;
+  saveFinance();
+}
+
+// Ajuste rápido del saldo del negocio (+1 = recibí, -1 = gasté)
+let bizAdjustSign = -1;
+function toggleBizAdjust(sign) {
+  bizAdjustSign = sign;
+  const box = document.getElementById('biz-adjust-box');
+  const amt = document.getElementById('biz-adjust-amount');
+  box.style.display = 'inline-flex';
+  amt.placeholder = sign < 0 ? 'Monto gastado' : 'Monto recibido';
+  amt.value = '';
+  amt.focus();
+}
+function hideBizAdjust() {
+  document.getElementById('biz-adjust-box').style.display = 'none';
+  document.getElementById('biz-adjust-amount').value = '';
+}
+function applyBizAdjust() {
+  const amt = parseFloat(document.getElementById('biz-adjust-amount').value);
+  if (isNaN(amt) || amt <= 0) { showToast('Monto inválido', true); return; }
+  D.bizBalance = (D.bizBalance || 0) + bizAdjustSign * amt;
+  saveFinance();
+  renderBizBalance();
+  hideBizAdjust();
+  showToast(bizAdjustSign < 0 ? 'Saldo del negocio reducido' : 'Saldo del negocio aumentado');
+}
+
+async function connectBank(slot) {
+  slot = slot === 'business' ? 'business' : 'personal';
+  const suffix = slot === 'business' ? '-biz' : '';
+  const badge = document.getElementById('bank-badge' + suffix);
   badge.textContent = '⏳ Conectando…';
   badge.style.cursor = 'default';
   badge.onclick = null;
@@ -4263,11 +4364,15 @@ async function connectBank() {
   // Método principal: Hosted Link (Plaid aloja la página segura — funciona
   // con bancos OAuth como Chase, que exigen HTTPS en production)
   try {
-    const h = await fetch('/api/plaid/hosted-link', { method: 'POST' }).then(x => x.json());
+    const h = await fetch('/api/plaid/hosted-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slot }),
+    }).then(x => x.json());
     if (h.ok && h.url) {
       window.open(h.url, '_blank');
       showToast('Se abrió la ventana segura de Plaid — completa la conexión ahí');
-      pollHostedLink();
+      pollHostedLink(slot);
       return;
     }
     if (h.error && /PLAID_CLIENT_ID|\.env/.test(h.error)) throw new Error(h.error);
@@ -4278,7 +4383,11 @@ async function connectBank() {
 
   // Método de respaldo: ventana integrada de Plaid Link
   try {
-    const r = await fetch('/api/plaid/link-token', { method: 'POST' });
+    const r = await fetch('/api/plaid/link-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slot }),
+    });
     const j = await r.json();
     if (!j.ok) throw new Error(j.error || 'No se pudo crear el enlace');
     if (typeof Plaid === 'undefined') throw new Error('No cargó Plaid — revisa tu internet');
@@ -4291,7 +4400,7 @@ async function connectBank() {
           const ex = await fetch('/api/plaid/exchange', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ public_token: publicToken, institution: inst }),
+            body: JSON.stringify({ public_token: publicToken, institution: inst, slot }),
           }).then(x => x.json());
           if (!ex.ok) throw new Error(ex.error || 'No se pudo guardar la conexión');
           showToast('✓ ' + (inst || 'Banco') + ' conectado');
@@ -4317,9 +4426,10 @@ async function connectBank() {
 // Espera a que el usuario termine la conexión en la ventana de Plaid (Hosted Link).
 // Consulta cada 4 segundos, hasta 10 minutos.
 let hostedPollTimer = null;
-function pollHostedLink() {
+function pollHostedLink(slot) {
+  slot = slot === 'business' ? 'business' : 'personal';
   if (hostedPollTimer) clearInterval(hostedPollTimer);
-  const badge = document.getElementById('bank-badge');
+  const badge = document.getElementById('bank-badge' + (slot === 'business' ? '-biz' : ''));
   const started = Date.now();
   hostedPollTimer = setInterval(async () => {
     if (Date.now() - started > 10 * 60_000) {
@@ -4329,7 +4439,7 @@ function pollHostedLink() {
       return;
     }
     try {
-      const s = await fetch('/api/plaid/hosted-status').then(x => x.json());
+      const s = await fetch('/api/plaid/hosted-status?slot=' + slot).then(x => x.json());
       if (s.connected) {
         clearInterval(hostedPollTimer); hostedPollTimer = null;
         showToast('✓ ' + (s.institution || 'Banco') + ' conectado');
@@ -4345,8 +4455,9 @@ function pollHostedLink() {
   if (badge) badge.textContent = '⏳ Esperando…';
 }
 
-// Trae saldos + transacciones nuevas desde Plaid y actualiza el saldo de débito
-async function syncBankNow() {
+// Trae saldos + transacciones nuevas desde Plaid, actualiza el saldo de débito
+// y vuelca los gastos nuevos al presupuesto. quiet=true (auto-sync) solo avisa si hay novedades.
+async function syncBankNow(quiet) {
   const syncBtn = document.getElementById('bank-sync-btn');
   const prevLabel = syncBtn ? syncBtn.textContent : '';
   if (syncBtn) { syncBtn.disabled = true; syncBtn.textContent = '⏳ Sincronizando…'; }
@@ -4354,29 +4465,54 @@ async function syncBankNow() {
     const j = await fetch('/api/plaid/sync', { method: 'POST' }).then(x => x.json());
     if (!j.ok) throw new Error(j.error || 'Error al sincronizar');
 
-    // Actualizar el Saldo de Débito con la cuenta checking (o la primera de depósito)
-    const checking = (j.balances || []).find(a => a.subtype === 'checking')
-                  || (j.balances || []).find(a => a.type === 'depository');
+    // Separar cuentas: personales (Chase) vs. negocio (Bluevine)
+    const personalAccts = (j.balances || []).filter(a => a.slot !== 'business');
+    const businessAccts = (j.balances || []).filter(a => a.slot === 'business');
+
+    // Actualizar el Saldo de Débito con la cuenta checking personal (o la primera de depósito)
+    const checking = personalAccts.find(a => a.subtype === 'checking')
+                  || personalAccts.find(a => a.type === 'depository');
     if (checking) {
       const bal = checking.available != null ? checking.available : checking.current;
       if (bal != null) {
         D.debitBalance = bal;
-        saveFinance();
         renderDebitBalance();
       }
     }
+
+    // Actualizar el Saldo del Negocio (Bluevine): suma de sus cuentas de depósito
+    if (businessAccts.length) {
+      const bizTotal = businessAccts
+        .filter(a => a.type === 'depository')
+        .reduce((s, a) => s + (a.available != null ? a.available : (a.current || 0)), 0);
+      D.bizBalance = bizTotal;
+      renderBizBalance();
+    }
     D.bank = { balances: j.balances, transactions: j.transactions, lastSync: j.lastSync };
+
+    // Puente banco → gastos: las transacciones nuevas entran al presupuesto
+    const imp = importBankTransactions();
 
     // Volcar las tarjetas de crédito del banco a la sección de Deudas
     const nCards = syncPlaidCardsToDebts();
     saveFinance();
     renderDebts();
     renderSurplus();
+    renderBudgetTable();
+    renderExpenses();
 
-    showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas${nCards ? ` · ${nCards} tarjeta(s) actualizada(s)` : ''}`);
+    if (!quiet || j.newCount || imp.added || imp.updated) {
+      showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas`
+        + (imp.added ? ` · ${imp.added} gasto(s) al presupuesto` : '')
+        + (nCards ? ` · ${nCards} tarjeta(s) actualizada(s)` : ''));
+    }
+    // Si un banco falló (ej. pide re-conectar), avisar sin tumbar el otro
+    if (j.errors && j.errors.length && !quiet) {
+      showToast('⚠️ Un banco no respondió: ' + j.errors.join(' · '), true);
+    }
     renderBankMock();
   } catch (e) {
-    showToast('Error al sincronizar: ' + e.message, true);
+    if (!quiet) showToast('Error al sincronizar: ' + e.message, true);
   } finally {
     if (syncBtn) { syncBtn.disabled = false; syncBtn.textContent = prevLabel || '🔄 Sincronizar'; }
   }
@@ -4394,7 +4530,7 @@ function syncPlaidCardsToDebts() {
   if (!Array.isArray(D.debts.cards)) D.debts.cards = [];
 
   let n = 0;
-  D.bank.balances.filter(a => a.type === 'credit').forEach(a => {
+  D.bank.balances.filter(a => a.type === 'credit' && a.slot !== 'business').forEach(a => {
     const balance = a.current != null ? a.current : 0;               // saldo adeudado
     const limit = (a.current != null && a.available != null) ? (a.current + a.available) : 0; // cupo total
     let card = D.debts.cards.find(c => c.plaidAccountId === a.accountId);
@@ -4425,6 +4561,175 @@ function syncPlaidCardsToDebts() {
     }
   });
   return n;
+}
+
+/* ============================================================
+   PUENTE BANCO → GASTOS
+   Convierte las transacciones que trae Plaid (D.bank.transactions)
+   en gastos del presupuesto (D.expenses.entries), automáticamente.
+   - No duplica: cada gasto importado guarda su plaidId. Las compras
+     "pendientes" se ACTUALIZAN (no se re-crean) cuando el banco las
+     confirma, gracias al campo pendingId.
+   - No importa ingresos, transferencias ni pagos de tarjeta (pagar la
+     tarjeta no es un gasto: los gastos ya entraron cuando compraste).
+   - Si un gasto manual coincide (mismo monto, ±2 días), se "adopta"
+     en lugar de duplicarse.
+   - Si Brian elimina un gasto importado, su id queda en D.bankIgnored
+     y no vuelve a importarse.
+   - Las categorías de Plaid se traducen a las del presupuesto con las
+     tablas de abajo; Brian puede corregirlas con el ✏️ de la tabla.
+============================================================ */
+
+// Categorías de Plaid que NO son gastos reales
+const BANK_SKIP_CATS = new Set(['INCOME', 'TRANSFER_IN', 'TRANSFER_OUT', 'LOAN_PAYMENTS']);
+
+// Traducción fina: categoría DETALLADA de Plaid → [categoría, subcategoría] del presupuesto
+const BANK_CAT_DETAIL_MAP = {
+  FOOD_AND_DRINK_GROCERIES:                ['cat-9',  'cat-9-1'],  // Mercado/Supermercado
+  FOOD_AND_DRINK_COFFEE:                   ['cat-9',  'cat-9-3'],  // Cafés
+  FOOD_AND_DRINK_FAST_FOOD:                ['cat-9',  'cat-9-4'],  // Comida rápida
+  TRANSPORTATION_GAS:                      ['cat-8',  'cat-8-1'],  // Gasolina
+  TRANSPORTATION_TAXIS_AND_RIDE_SHARES:    ['cat-8',  'cat-8-5'],  // Uber/Lyft
+  TRANSPORTATION_PARKING:                  ['cat-8',  'cat-8-4'],  // Parqueaderos
+  TRANSPORTATION_TOLLS:                    ['cat-8',  'cat-8-4'],  // Peajes
+  RENT_AND_UTILITIES_RENT:                 ['cat-7',  'cat-7-1'],  // Alquiler
+  RENT_AND_UTILITIES_INTERNET_AND_CABLE:   ['cat-7',  'cat-7-3'],  // Internet
+  RENT_AND_UTILITIES_TELEPHONE:            ['cat-7',  'cat-7-3'],
+  ENTERTAINMENT_TV_AND_MOVIES:             ['cat-11', 'cat-11-3'], // Netflix, etc.
+  ENTERTAINMENT_MUSIC_AND_AUDIO:           ['cat-11', 'cat-11-3'], // Spotify, etc.
+  PERSONAL_CARE_GYMS_AND_FITNESS_CENTERS:  ['cat-10', 'cat-10-1'], // Gimnasio
+  MEDICAL_PHARMACIES_AND_SUPPLEMENTS:      ['cat-10', 'cat-10-2'],
+  GENERAL_MERCHANDISE_CLOTHING_AND_ACCESSORIES: ['cat-12', 'cat-12-4'],
+  GENERAL_MERCHANDISE_PET_SUPPLIES:        ['cat-14', 'cat-14-3'], // Mascota
+  GENERAL_MERCHANDISE_ELECTRONICS:         ['cat-1',  'cat-1-1'],  // Equipo & Software
+  GENERAL_MERCHANDISE_SUPERSTORES:         ['cat-9',  'cat-9-1'],  // Walmart/Target
+  GENERAL_SERVICES_EDUCATION:              ['cat-4',  'cat-4-1'],  // Educación
+  GENERAL_SERVICES_INSURANCE:              ['cat-8',  'cat-8-2'],  // Seguros
+};
+
+// Traducción general: categoría PRIMARIA de Plaid → [categoría, subcategoría]
+const BANK_CAT_PRIMARY_MAP = {
+  FOOD_AND_DRINK:            ['cat-9',  'cat-9-2'],  // Restaurantes/Salidas
+  TRANSPORTATION:            ['cat-8',  'cat-8-1'],
+  RENT_AND_UTILITIES:        ['cat-7',  'cat-7-2'],  // Servicios públicos
+  ENTERTAINMENT:             ['cat-12', 'cat-12-1'],
+  PERSONAL_CARE:             ['cat-10', 'cat-10-4'],
+  MEDICAL:                   ['cat-10', 'cat-10-3'],
+  GENERAL_MERCHANDISE:       ['cat-12', 'cat-12-4'],
+  HOME_IMPROVEMENT:          ['cat-7',  'cat-7-5'],
+  GENERAL_SERVICES:          ['cat-6',  'cat-6-1'],
+  BANK_FEES:                 ['cat-6',  'cat-6-1'],
+  GOVERNMENT_AND_NON_PROFIT: ['cat-6',  'cat-6-1'],
+  TRAVEL:                    ['cat-12', 'cat-12-1'],
+};
+
+/** Traduce una transacción del banco a {categoryId, subcategoryId} válidos. */
+function bankTxnCategory(t) {
+  const pair = (t.categoryDetail && BANK_CAT_DETAIL_MAP[t.categoryDetail])
+            || (t.category && BANK_CAT_PRIMARY_MAP[t.category])
+            || ['cat-6', 'cat-6-1'];                       // desconocida → Otros
+  const cats = D.expenses.categories || [];
+  const c = cats.find(x => x.id === pair[0]) || cats.find(x => x.id === 'cat-6') || cats[0];
+  if (!c) return { categoryId: '', subcategoryId: '' };
+  const subs = c.subcategories || [];
+  const s = subs.find(x => x.id === pair[1]) || subs[0];
+  return { categoryId: c.id, subcategoryId: s ? s.id : '' };
+}
+
+/** Diferencia en días entre dos fechas 'YYYY-MM-DD' (999 si alguna es inválida). */
+function dateDiffDays(a, b) {
+  const ta = Date.parse(a), tb = Date.parse(b);
+  if (isNaN(ta) || isNaN(tb)) return 999;
+  return Math.abs(ta - tb) / 86400000;
+}
+
+/**
+ * Importa las transacciones del banco a la tabla de Gastos.
+ * Devuelve { added, updated }. NO toca D.debitBalance: el saldo real
+ * ya viene del banco en cada sincronización.
+ */
+function importBankTransactions() {
+  const res = { added: 0, updated: 0 };
+  if (!D || !D.bank || !Array.isArray(D.bank.transactions)) return res;
+  if (!D.expenses) D.expenses = { categories: [], entries: [] };
+  if (!Array.isArray(D.expenses.entries)) D.expenses.entries = [];
+  const entries = D.expenses.entries;
+  const ignored = new Set(D.bankIgnored || []);
+  const byPlaid = new Map();
+  entries.forEach(e => { if (e.plaidId) byPlaid.set(e.plaidId, e); });
+  const accounts = {};
+  (D.bank.balances || []).forEach(a => { accounts[a.accountId] = a; });
+
+  // Si la versión CONFIRMADA de una compra viene en la misma lista que su
+  // versión "pendiente", la pendiente se ignora (la confirmada manda).
+  const superseded = new Set();
+  for (const t of D.bank.transactions) { if (t && t.pendingId) superseded.add(t.pendingId); }
+
+  for (const t of D.bank.transactions) {
+    if (!t || !t.id || !(t.amount > 0)) continue;          // negativos = ingresos/reembolsos
+    if (t.slot === 'business') continue;                   // gastos del negocio NO van al presupuesto personal
+    if (superseded.has(t.id)) continue;                    // ya viene su versión confirmada
+    if (BANK_SKIP_CATS.has(t.category)) continue;          // transferencias / pagos de tarjeta
+    if (ignored.has(t.id) || (t.pendingId && ignored.has(t.pendingId))) continue;
+
+    // ¿Ya está? (por su id, o por su versión "pendiente" que el banco confirmó)
+    const prev = byPlaid.get(t.id) || (t.pendingId ? byPlaid.get(t.pendingId) : null);
+    if (prev) {
+      const changed = prev.plaidId !== t.id || prev.amount !== t.amount
+                   || prev.date !== (t.date || prev.date) || prev.pending !== Boolean(t.pending);
+      if (changed) {
+        byPlaid.delete(prev.plaidId);
+        prev.plaidId = t.id;
+        prev.amount  = t.amount;
+        prev.date    = t.date || prev.date;
+        prev.pending = Boolean(t.pending);
+        byPlaid.set(t.id, prev);
+        res.updated++;
+      }
+      continue;
+    }
+
+    // ¿Brian ya lo anotó a mano? (mismo monto, fecha a ±2 días) → adoptar, no duplicar
+    const manual = entries.find(x => !x.plaidId && !x.fromBank
+      && Math.abs((x.amount || 0) - t.amount) < 0.005
+      && dateDiffDays(x.date, t.date) <= 2);
+    if (manual) { manual.plaidId = t.id; byPlaid.set(t.id, manual); continue; }
+
+    const acc = accounts[t.accountId];
+    const { categoryId, subcategoryId } = bankTxnCategory(t);
+    const entry = {
+      id: 'bank_' + t.id,
+      plaidId: t.id,
+      date: t.date || today(),
+      description: t.name || 'Movimiento bancario',
+      amount: t.amount,
+      categoryId,
+      subcategoryId,
+      paymentMethod: (acc && acc.type === 'credit') ? 'credito' : 'debito',
+      fromBank: true,                          // vino del banco (no ajustar saldo a mano)
+      pending: Boolean(t.pending),
+      accountMask: (acc && acc.mask) || null   // últimos 4 dígitos de la tarjeta
+    };
+    entries.push(entry);
+    byPlaid.set(t.id, entry);
+    res.added++;
+  }
+  return res;
+}
+
+/**
+ * Sincronización automática del banco: se llama al abrir el dashboard y
+ * cada hora. Solo consulta a Plaid si la última sincronización tiene más
+ * de 30 minutos (para no gastar llamadas de más).
+ */
+async function autoBankSync() {
+  try {
+    const st = await fetch('/api/plaid/status').then(x => x.json());
+    if (!st || !st.connected) return;
+    const last = st.lastSync ? new Date(st.lastSync).getTime() : 0;
+    if (Date.now() - last < 30 * 60_000) return;
+    await syncBankNow(true);                   // true = modo silencioso
+  } catch (_) { /* sin servidor local (ej. file:// o GitHub Pages) — silencioso */ }
 }
 
 /* ============================================================
@@ -4500,6 +4805,7 @@ function migrateFinance() {
   if (!D.debts.preferredMethod) D.debts.preferredMethod = 'snowball';
   D.debts.cards.forEach(c => { if (!Array.isArray(c.payments)) c.payments = []; });
   if (D.debitBalance == null) D.debitBalance = 0;
+  if (D.bizBalance == null) D.bizBalance = 0;
   (D.expenses.categories || []).forEach(c => {
     if (!Array.isArray(c.subcategories) || !c.subcategories.length) {
       c.subcategories = [{ id: c.id + '-1', name: 'General' }];
@@ -4805,20 +5111,65 @@ function renderExpenses() {
   body.innerHTML = filtered.length ? filtered.map(e => {
     const c = catMap[e.categoryId];
     const s = subMap[e.subcategoryId];
-    const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}</span>` : '';
+    const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}${e.accountMask ? ' •' + e.accountMask : ''}</span>` : '';
+    // Insignias de los gastos que llegan solos desde el banco
+    const bankBadge = e.fromBank ? `<span title="Importado automáticamente del banco" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">🏦 Auto</span>` : '';
+    const pendBadge = e.pending ? `<span title="El banco aún no confirma esta compra" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--orange);border:1px solid var(--orange);border-radius:6px;padding:1px 6px;vertical-align:middle;opacity:.85">⏳ pendiente</span>` : '';
     const photoIcons = [
       e.receiptUrl      ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.receiptUrl}','Recibo — ${esc(e.description)}')" title="Ver recibo">🧾</button>` : '',
       e.groceryItemsUrl ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.groceryItemsUrl}','Comida — ${esc(e.description)}')" title="Ver foto de comida">🛒</button>` : ''
     ].filter(Boolean).join('');
+
+    // Celdas de categoría: normales, o selectores si esta fila está en modo edición ✏️
+    let catCell, subCell;
+    if (_editingExpId === e.id) {
+      catCell = `<select style="font-size:11px;max-width:170px" onchange="setExpenseCat('${e.id}', this.value)">`
+        + cats.map(x => `<option value="${x.id}" ${x.id === e.categoryId ? 'selected' : ''}>${x.emoji ? x.emoji + ' ' : ''}${esc(x.name)}</option>`).join('')
+        + `</select>`;
+      const subs = (c && c.subcategories) || [];
+      subCell = `<select style="font-size:11px;max-width:170px" onchange="setExpenseSub('${e.id}', this.value)">`
+        + subs.map(x => `<option value="${x.id}" ${x.id === e.subcategoryId ? 'selected' : ''}>${esc(x.name)}</option>`).join('')
+        + `</select>`;
+    } else {
+      catCell = `<span class="tag" style="background:${c ? c.color+'20' : 'var(--bg-3)'};color:${c ? c.color : 'var(--text-3)'};border:1px solid ${c ? c.color+'40' : 'var(--border)'}">${c ? (c.emoji?c.emoji+' ':'')+c.name : '?'}</span>`;
+      subCell = `<span style="color:var(--text-3)">${s ? esc(s.name) : '—'}</span>`;
+    }
+
+    const editBtn = `<button class="btn-s" style="padding:2px 7px;font-size:11px" onclick="editExpenseCat('${e.id}')" title="${_editingExpId === e.id ? 'Listo' : 'Cambiar categoría'}">${_editingExpId === e.id ? '✓' : '✏️'}</button>`;
     return `<tr>
       <td>${e.date}</td>
-      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}</td>
-      <td><span class="tag" style="background:${c ? c.color+'20' : 'var(--bg-3)'};color:${c ? c.color : 'var(--text-3)'};border:1px solid ${c ? c.color+'40' : 'var(--border)'}">${c ? (c.emoji?c.emoji+' ':'')+c.name : '?'}</span></td>
-      <td style="color:var(--text-3)">${s ? esc(s.name) : '—'}</td>
+      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}${bankBadge}${pendBadge}</td>
+      <td>${catCell}</td>
+      <td>${subCell}</td>
       <td style="font-weight:700">$${(e.amount||0).toFixed(2)}</td>
-      <td style="white-space:nowrap">${photoIcons}<button class="btn-d" onclick="deleteExpense('${e.id}')">✕</button></td>
+      <td style="white-space:nowrap">${photoIcons}${editBtn}<button class="btn-d" onclick="deleteExpense('${e.id}')">✕</button></td>
     </tr>`;
   }).join('') : '<tr><td colspan="6" class="empty">Sin gastos registrados</td></tr>';
+}
+
+// ── Corrección de categoría con ✏️ (un clic) ──────────────────────────────
+let _editingExpId = null;
+function editExpenseCat(id) {
+  _editingExpId = (_editingExpId === id) ? null : id;
+  renderExpenses();
+}
+function setExpenseCat(id, catId) {
+  const e = D.expenses.entries.find(x => x.id === id); if (!e) return;
+  e.categoryId = catId;
+  const c = (D.expenses.categories || []).find(x => x.id === catId);
+  e.subcategoryId = (c && c.subcategories && c.subcategories[0]) ? c.subcategories[0].id : '';
+  saveFinance();
+  renderBudgetTable();
+  renderExpenses();          // sigue en modo edición para elegir la subcategoría
+}
+function setExpenseSub(id, subId) {
+  const e = D.expenses.entries.find(x => x.id === id); if (!e) return;
+  e.subcategoryId = subId;
+  _editingExpId = null;      // subcategoría elegida → cerrar edición
+  saveFinance();
+  renderBudgetTable();
+  renderExpenses();
+  showToast('Categoría actualizada');
 }
 
 async function addExpense() {
@@ -4864,13 +5215,20 @@ async function addExpense() {
 
 function deleteExpense(id) {
   if (!confirm('¿Eliminar este gasto?')) return;
-  // Si el gasto era de débito, se devuelve el monto al saldo disponible
   const gasto = D.expenses.entries.find(e => e.id === id);
-  if (gasto && gasto.paymentMethod === 'debito') D.debitBalance = (D.debitBalance || 0) + (gasto.amount || 0);
+  // Si el gasto era de débito MANUAL, se devuelve el monto al saldo disponible.
+  // (Los importados del banco no: su saldo real ya lo dicta el banco.)
+  const refund = gasto && gasto.paymentMethod === 'debito' && !gasto.fromBank;
+  if (refund) D.debitBalance = (D.debitBalance || 0) + (gasto.amount || 0);
+  // Si vino del banco, recordar su id para NO volver a importarlo automáticamente
+  if (gasto && gasto.plaidId) {
+    if (!Array.isArray(D.bankIgnored)) D.bankIgnored = [];
+    if (!D.bankIgnored.includes(gasto.plaidId)) D.bankIgnored.push(gasto.plaidId);
+  }
   D.expenses.entries = D.expenses.entries.filter(e => e.id !== id);
   saveFinance();
   renderFinanzas();
-  showToast(gasto && gasto.paymentMethod === 'debito' ? 'Gasto eliminado · saldo devuelto' : 'Gasto eliminado');
+  showToast(refund ? 'Gasto eliminado · saldo devuelto' : 'Gasto eliminado');
 }
 
 function calcCOP() {
