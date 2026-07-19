@@ -874,6 +874,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .inc-summary-card .inc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:6px}
 .inc-summary-card .inc-value{font-size:24px;font-weight:800}
 .inc-summary-card.tax{background:linear-gradient(135deg,rgba(255,145,0,.08),rgba(255,82,82,.05));border-color:rgba(255,145,0,.18)}
+.adp-summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.adp-summary-grid .inc-value{font-size:20px}
 .inc-goal-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:20px}
 .inc-goal-bar{position:relative;height:10px;background:var(--bg-3);border-radius:5px;overflow:visible;margin-top:8px}
 .inc-goal-fill{height:100%;border-radius:5px;transition:width .4s ease;position:relative;z-index:1}
@@ -951,6 +953,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .week-calendar{grid-template-columns:repeat(4,1fr)}
   .fin-form-row{grid-template-columns:1fr 1fr}
   .inc-summary-grid{grid-template-columns:1fr 1fr}
+  .adp-summary-grid{grid-template-columns:1fr 1fr}
   .debt-metrics-grid{grid-template-columns:1fr 1fr}
   .debt-card-grid{grid-template-columns:1fr}
   .sim-compare{grid-template-columns:1fr}
@@ -998,6 +1001,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .chart-wrap{height:180px}
   .fin-totals-grid{grid-template-columns:1fr 1fr}
   .inc-summary-grid{grid-template-columns:1fr 1fr}
+  .adp-summary-grid{grid-template-columns:1fr 1fr}
   .debt-metrics-grid{grid-template-columns:1fr 1fr}
   .platform-grid{grid-template-columns:1fr 1fr}
   .summary-row{grid-template-columns:1fr}
@@ -1723,7 +1727,24 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <button class="btn-s" onclick="openModal('modal-channel-edit');renderChannelEditor()">⚙️ Gestionar Canales</button>
       </div>
 
-      <div class="inc-summary-grid" id="inc-summary"></div>
+      <!-- ===== Cheques del restaurante (ADP) — acumulado del año + historial ===== -->
+      <div class="card" style="margin-bottom:20px;display:none" id="adp-wrap">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <div class="card-title" style="margin-bottom:0">🏦 Restaurante (ADP) — Acumulado del Año</div>
+          <div id="adp-asof" style="font-size:12px;color:var(--text-3)"></div>
+        </div>
+        <div class="adp-summary-grid" id="adp-summary" style="margin-top:14px"></div>
+        <div class="card-title" style="margin:20px 0 10px">Historial de Cheques</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>Pago</th><th>Período</th><th>Horas</th><th>$/Hora (neto)</th><th>Federal</th><th>Soc. Security</th><th>Medicare</th><th>Otros</th><th>Bruto</th><th>Neto</th>
+            </tr></thead>
+            <tbody id="adp-table-body"></tbody>
+          </table>
+        </div>
+        <div id="adp-note" style="font-size:11px;color:var(--text-3);margin-top:10px"></div>
+      </div>
 
       <div class="inc-goal-wrap" id="inc-goal-wrap" style="display:none">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -5458,19 +5479,8 @@ function renderIncome() {
   const goalEl = document.getElementById('inc-monthly-goal');
   if (goalEl && !goalEl._synced) { goalEl.value = D.income.monthlyGoal; goalEl._synced = true; }
 
-  // Summary cards
-  const summaryEl = document.getElementById('inc-summary');
-  if (summaryEl) {
-    summaryEl.innerHTML = `
-      <div class="inc-summary-card">
-        <div class="inc-label">Ingreso Bruto</div>
-        <div class="inc-value" style="color:var(--green)">$${inc.gross.toFixed(2)}</div>
-      </div>
-      <div class="inc-summary-card">
-        <div class="inc-label">Promedio $/Hora</div>
-        <div class="inc-value" style="color:var(--blue)">$${inc.avgPerHour.toFixed(2)}</div>
-      </div>`;
-  }
+  // (Las tarjetas de resumen del mes se retiraron — la data vive ahora
+  //  en el Historial de Cheques de la sección ADP.)
 
   // Goal progress
   const goalWrap = document.getElementById('inc-goal-wrap');
@@ -5522,6 +5532,101 @@ function renderIncome() {
   if (filterMonth && !filterMonth.value) filterMonth.value = month;
 
   renderIncomeTable();
+
+  // Cheques del restaurante (ADP)
+  renderPaychecks();
+}
+
+// ============================================================
+// Cheques del restaurante (ADP) — datos en D.paychecks (vienen de
+// brand_os_data.json; los actualiza Claudian leyendo los PDF de
+// Google Drive → carpeta "Paystubs"). NO se guardan en localStorage,
+// así el navegador nunca "ensombrece" lo que actualiza Claudian.
+// ============================================================
+function renderPaychecks() {
+  const wrap = document.getElementById('adp-wrap');
+  if (!wrap) return;
+  const P = D.paychecks;
+  const checks = (P && Array.isArray(P.checks)) ? P.checks.slice() : [];
+  const y = (P && P.ytd) || null;
+  if (!P || (!checks.length && !y)) { wrap.style.display = 'none'; return; }
+  wrap.style.display = '';
+
+  const fmt = n => '$' + (Number(n) || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const fDate = iso => {
+    if (typeof iso !== 'string' || !/^\d{4}-\d{2}-\d{2}/.test(iso)) return '—';
+    const [yy, mm, dd] = iso.split('-').map(Number);
+    return `${dd} ${MESES[(mm || 1) - 1]}`;
+  };
+
+  // Encabezado: fecha del último cheque procesado
+  const asOfEl = document.getElementById('adp-asof');
+  if (asOfEl) asOfEl.textContent = y && y.asOf ? `Actualizado al cheque del ${fDate(y.asOf)} ${y.asOf.slice(0,4)}` : '';
+
+  // Tarjetas YTD
+  const sumEl = document.getElementById('adp-summary');
+  if (sumEl && y) {
+    sumEl.innerHTML = `
+      <div class="inc-summary-card">
+        <div class="inc-label">💵 Bruto YTD</div>
+        <div class="inc-value" style="color:var(--green)">${fmt(y.gross)}</div>
+      </div>
+      <div class="inc-summary-card">
+        <div class="inc-label">💰 Neto YTD</div>
+        <div class="inc-value" style="color:var(--blue)">${fmt(y.net)}</div>
+      </div>
+      <div class="inc-summary-card tax">
+        <div class="inc-label">🏛️ Federal Income Tax</div>
+        <div class="inc-value" style="color:var(--gold)">${fmt(y.federalTax)}</div>
+      </div>
+      <div class="inc-summary-card tax">
+        <div class="inc-label">🧓 Social Security</div>
+        <div class="inc-value" style="color:var(--gold)">${fmt(y.socialSecurity)}</div>
+      </div>
+      <div class="inc-summary-card tax">
+        <div class="inc-label">⚕️ Medicare</div>
+        <div class="inc-value" style="color:var(--gold)">${fmt(y.medicare)}</div>
+      </div>`;
+  }
+
+  // Tabla de historial (más reciente primero)
+  checks.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const body = document.getElementById('adp-table-body');
+  if (body) {
+    body.innerHTML = checks.length ? checks.map(c => `
+      <tr>
+        <td style="font-weight:700">${fDate(c.date)}</td>
+        <td style="color:var(--text-3);font-size:11px">${fDate(c.periodStart)} – ${fDate(c.periodEnd)}</td>
+        <td>${c.hours != null ? (Number(c.hours) || 0).toFixed(2) : '—'}</td>
+        <td style="color:var(--blue)">${(Number(c.hours) > 0 && c.net != null) ? fmt(c.net / Number(c.hours)) : '—'}</td>
+        <td style="color:var(--gold)">−${fmt(c.federalTax)}</td>
+        <td style="color:var(--gold)">−${fmt(c.socialSecurity)}</td>
+        <td style="color:var(--gold)">−${fmt(c.medicare)}</td>
+        <td style="color:var(--gold)">${Number(c.other) ? '−' + fmt(c.other) : '—'}</td>
+        <td style="color:var(--green);font-weight:700">${fmt(c.gross)}</td>
+        <td style="color:var(--blue);font-weight:700">${fmt(c.net)}</td>
+      </tr>`).join('')
+      : '<tr><td colspan="10" style="text-align:center;color:var(--text-3)">Aún no hay cheques cargados</td></tr>';
+  }
+
+  // Nota: detectar cheques que faltan comparando la suma vs. el YTD oficial
+  const noteEl = document.getElementById('adp-note');
+  if (noteEl) {
+    const sumGross = checks.reduce((s, c) => s + (Number(c.gross) || 0), 0);
+    if (!y) {
+      noteEl.innerHTML = `ℹ️ Aún no hay acumulado oficial (YTD) de ADP para comparar contra el historial. Pídele a Claudian que procese el cheque más reciente.`;
+    } else {
+      const diff = (Number(y.gross) || 0) - sumGross;
+      if (diff > 0.01) {
+        noteEl.innerHTML = `⚠️ Al historial le faltan <b>${fmt(diff)}</b> en cheques aún no cargados. Sube los PDF de ADP que falten a Google Drive → carpeta <b>Paystubs</b> y dile a Claudian: <i>"actualiza mis cheques"</i>.`;
+      } else if (diff < -0.01) {
+        noteEl.innerHTML = `⚠️ El historial suma <b>${fmt(-diff)}</b> MÁS que el acumulado oficial de ADP — puede haber un cheque duplicado o de otro año. Dile a Claudian que lo revise.`;
+      } else {
+        noteEl.innerHTML = `✅ Historial completo — la suma de los cheques cuadra con el acumulado oficial de ADP. Cuando te paguen, sube el PDF a Drive → <b>Paystubs</b> y dile a Claudian: <i>"actualiza mis cheques"</i>.`;
+      }
+    }
+  }
 }
 
 function renderIncomeBreakdown(month) {
