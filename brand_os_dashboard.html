@@ -821,24 +821,57 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 
 .fin-form-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;align-items:end;margin-bottom:10px}
 
-/* Presupuesto Proyectado vs. Real */
+/* Presupuesto Proyectado vs. Real (estilo EveryDollar: grande, compacto, centrado) */
 .fin-budget-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .fin-budget-controls{display:flex;align-items:center;gap:8px}
 .fin-budget-controls input[type=month]{width:auto;font-size:12px}
 .fin-totals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
-.fin-tcard{background:linear-gradient(135deg,rgba(124,111,255,.1),rgba(79,195,247,.07));border:1px solid rgba(124,111,255,.25);border-radius:var(--r);padding:14px 16px;text-align:center}
-.fin-tlabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:4px}
-.fin-tval{font-size:22px;font-weight:800;color:var(--text-1)}
+.fin-tcard{background:linear-gradient(135deg,rgba(124,111,255,.1),rgba(79,195,247,.07));border:1px solid rgba(124,111,255,.25);border-radius:var(--r);padding:16px 16px;text-align:center}
+.fin-tlabel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:5px}
+.fin-tval{font-size:26px;font-weight:800;color:var(--text-1)}
 .fin-hint{font-size:12px;color:var(--text-3);background:var(--bg-2);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;margin-bottom:14px;line-height:1.5}
 .fin-budget-table td,.fin-budget-table th{vertical-align:middle}
-.fin-budget-table .fin-num{text-align:right;white-space:nowrap}
+.fin-budget-table td{padding:11px 12px}
+.fin-budget-table .fin-num{text-align:right;white-space:nowrap;font-size:15px;font-weight:700}
+.fin-budget-table th{font-size:12px}
+.fin-cat-row{cursor:pointer}
 .fin-cat-row td{background:var(--bg-2);border-top:1px solid var(--border)}
-.fin-cat-head{font-weight:800;color:var(--text-1);font-size:13px;display:flex;align-items:center;gap:7px}
-.fin-sub-row .fin-sub-name{padding-left:26px;color:var(--text-2);font-size:12px}
-.fin-proj-input{width:90px;text-align:right;font-size:12px;padding:5px 8px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--rs);color:var(--text-1)}
+.fin-cat-row:hover td{background:var(--bg-hover)}
+.fin-cat-head{font-weight:800;color:var(--text-1);font-size:15px;display:flex;align-items:center;gap:7px}
+.fin-caret{display:inline-block;width:12px;color:var(--text-3);font-size:11px;flex:none}
+.fin-sub-row{cursor:pointer}
+.fin-sub-row:hover td{background:var(--bg-hover)}
+.fin-sub-row .fin-sub-name{padding-left:12px;color:var(--text-1);font-size:14px;display:flex;align-items:center;gap:6px}
+.fin-sub-row .fin-caret.sub{color:var(--text-3);font-size:10px}
+.fin-proj-input{width:96px;text-align:right;font-size:14px;padding:6px 8px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--rs);color:var(--text-1)}
 .fin-proj-input:focus{border-color:var(--purple);outline:none}
-.fin-pct{font-size:10px;font-weight:700;margin-top:3px;text-align:right}
+.fin-pct{font-size:11px;font-weight:700;margin-top:3px;text-align:right}
 .fin-budget-table .fin-bar-track{margin-top:2px}
+/* Badge de saldo disponible */
+.fin-saldo-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:800;font-size:14px;line-height:1.3}
+/* Fila de detalle: gastos de una subcategoría */
+.fin-detail-row td{background:var(--bg-1);padding:0}
+.fin-detail-wrap{padding:6px 14px 10px 30px}
+.fin-detail-item{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px dashed var(--border);font-size:12px}
+.fin-detail-item:last-child{border-bottom:none}
+.fin-detail-date{color:var(--text-3);min-width:52px}
+.fin-detail-desc{flex:1;color:var(--text-2)}
+.fin-detail-amt{color:var(--text-1);font-weight:700;white-space:nowrap}
+.fin-detail-empty{padding:6px 0;color:var(--text-3);font-size:12px;font-style:italic}
+/* Resumen de categorías agotadas */
+.fin-depleted-summary{font-size:13px;font-weight:600;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--rs);padding:9px 14px;margin-bottom:14px}
+/* Aviso de saldo al agregar gasto */
+.fin-saldo-hint{font-size:13px;font-weight:600;border-radius:var(--rs);padding:9px 12px;margin-top:4px;line-height:1.45}
+/* Ingreso planeado del mes */
+.fin-income-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.fin-planned-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.fin-planned-label{flex:1;min-width:120px;font-size:14px;font-weight:600;padding:7px 10px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--rs);color:var(--text-1)}
+.fin-planned-amt-wrap{display:flex;align-items:center;gap:3px;color:var(--green);font-weight:800;font-size:16px}
+.fin-planned-amt{width:120px;text-align:right;font-size:16px;font-weight:800;padding:7px 8px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--rs);color:var(--green)}
+.fin-planned-amt:focus,.fin-planned-label:focus{border-color:var(--purple);outline:none}
+.fin-planned-empty{font-size:12px;color:var(--text-3);padding:6px 0}
+.fin-planned-summary{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:13px;color:var(--text-2)}
+.fin-planned-summary b{font-size:15px}
 
 /* ================================================
    MODULE 5: COMMENT FILTERS
@@ -1042,10 +1075,15 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   /* Panel de presupuesto — tabla scrollable en móvil */
   .panel{overflow-x:hidden}
   .fin-totals-grid{grid-template-columns:1fr 1fr;width:100%}
-  .fin-budget-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;font-size:11px;min-width:480px}
-  .fin-budget-table th,.fin-budget-table td{padding:5px 3px}
-  .fin-proj-input{width:60px;min-height:32px;font-size:11px!important;padding:4px 6px!important}
+  .fin-budget-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;font-size:12px;min-width:520px}
+  .fin-budget-table th,.fin-budget-table td{padding:8px 6px}
+  .fin-budget-table .fin-num{font-size:13px}
+  .fin-cat-head{font-size:13px}
+  .fin-sub-row .fin-sub-name{font-size:13px}
+  .fin-saldo-badge{font-size:12px;padding:2px 8px}
+  .fin-proj-input{width:64px;min-height:32px;font-size:12px!important;padding:4px 6px!important}
   .fin-hint{font-size:11px}
+  .fin-planned-summary{gap:12px}
 
   /* Surplus */
   .surplus-equation{flex-direction:column;align-items:stretch}
@@ -1583,7 +1621,18 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <button class="btn-s" onclick="openCatEditor()">⚙️ Categorías</button>
       </div>
     </div>
+    <!-- Ingreso planeado del mes (estilo EveryDollar) -->
+    <div class="card fin-income-card" style="margin-bottom:14px">
+      <div class="fin-income-hdr">
+        <div class="card-title" style="margin-bottom:0">💵 Ingreso planeado del mes</div>
+        <button class="btn-s" onclick="addPlannedIncome()">+ Agregar ingreso</button>
+      </div>
+      <div id="fin-planned-list"></div>
+      <div id="fin-planned-summary" class="fin-planned-summary"></div>
+    </div>
+
     <div class="fin-totals-grid" id="fin-totals"></div>
+    <div id="fin-depleted-summary" class="fin-depleted-summary"></div>
 
     <!-- Pie chart: distribución del gasto real -->
     <div id="fin-chart-wrap" style="display:none;margin-bottom:16px">
@@ -1601,7 +1650,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
             <th>Categoría / Subcategoría</th>
             <th class="fin-num">Proyectado</th>
             <th class="fin-num">Real</th>
-            <th class="fin-num">Variación</th>
+            <th class="fin-num">Saldo disponible</th>
             <th style="width:170px">Cumplimiento</th>
           </tr></thead>
           <tbody id="fin-budget-body"></tbody>
@@ -1616,11 +1665,12 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="fin-date"></div>
         <div class="i-group"><label class="i-label">Descripción</label><input type="text" id="fin-desc" placeholder="Adobe CC, Mercado…"></div>
         <div class="i-group"><label class="i-label">Categoría</label><select id="fin-cat" onchange="onFinCatChange()"></select></div>
-        <div class="i-group"><label class="i-label">Subcategoría</label><select id="fin-subcat"></select></div>
-        <div class="i-group"><label class="i-label">Monto (USD)</label><input type="number" id="fin-amount" placeholder="50.00" step="0.01" min="0"></div>
+        <div class="i-group"><label class="i-label">Subcategoría</label><select id="fin-subcat" onchange="updateExpenseSaldoHint()"></select></div>
+        <div class="i-group"><label class="i-label">Monto (USD)</label><input type="number" id="fin-amount" placeholder="50.00" step="0.01" min="0" oninput="updateExpenseSaldoHint()"></div>
         <div class="i-group"><label class="i-label">Pagado con</label><select id="fin-payment"><option value="debito">💳 Débito</option><option value="credito">🏦 Crédito</option><option value="efectivo">💵 Efectivo</option><option value="otro">🔁 Otro</option></select></div>
         <button class="btn-p" style="align-self:flex-end" onclick="addExpense()">+ Agregar</button>
       </div>
+      <div id="fin-saldo-hint" class="fin-saldo-hint" style="display:none"></div>
 
       <!-- Captura de fotos -->
       <div class="photo-btn-row">
@@ -1744,6 +1794,19 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
           </table>
         </div>
         <div id="adp-note" style="font-size:11px;color:var(--text-3);margin-top:10px"></div>
+      </div>
+
+      <!-- ===== Registrar cheque a mano (aparte de ADP) ===== -->
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">✍️ Registrar cheque a mano</div>
+        <div class="fin-hint" style="margin-bottom:12px">Usa esto para anotar un cheque que no venga de ADP (efectivo, otro trabajo, etc.). Aparecerá en el Historial de Cheques con la etiqueta <b>✍️ Manual</b>. No cambia el acumulado del año (YTD) de ADP.</div>
+        <div class="fin-form-row">
+          <div class="i-group"><label class="i-label">Fecha de pago</label><input type="date" id="mchk-date"></div>
+          <div class="i-group"><label class="i-label">Bruto ($)</label><input type="number" id="mchk-gross" placeholder="500.00" step="0.01" min="0"></div>
+          <div class="i-group"><label class="i-label">Neto ($)</label><input type="number" id="mchk-net" placeholder="450.00" step="0.01" min="0"></div>
+          <div class="i-group"><label class="i-label">Horas (opcional)</label><input type="number" id="mchk-hours" placeholder="0" step="0.25" min="0"></div>
+          <button class="btn-p" style="align-self:flex-end" onclick="addManualPaycheck()">+ Agregar cheque</button>
+        </div>
       </div>
 
       <div class="inc-goal-wrap" id="inc-goal-wrap" style="display:none">
@@ -2673,7 +2736,10 @@ async function pushToCloud() {
     const savedAt = new Date().toISOString();
     const payload = {
       entries:      (D.expenses && D.expenses.entries) || [],
+      categories:   (D.expenses && D.expenses.categories) || [],
       budgets:      D.budgets      || {},
+      plannedIncome: D.plannedIncome || {},
+      manualPaychecks: D.manualPaychecks || [],
       remittances:  D.remittances  || { entries:[] },
       income:       D.income       || { monthlyGoal:0, channels:[], entries:[] },
       debts:        D.debts        || { cards:[], extraPayment:0, preferredMethod:'snowball' },
@@ -2704,7 +2770,10 @@ async function pullFromCloud() {
     if (cloudTime <= localTime) return false; // datos locales son más recientes, no sobreescribir
     if (!D.expenses) D.expenses = { categories:[], entries:[] };
     if (Array.isArray(f.entries))    D.expenses.entries = f.entries;
+    if (Array.isArray(f.categories) && f.categories.length) D.expenses.categories = f.categories;
     if (f.budgets)     D.budgets     = f.budgets;
+    if (f.plannedIncome) D.plannedIncome = f.plannedIncome;
+    if (Array.isArray(f.manualPaychecks)) D.manualPaychecks = f.manualPaychecks;
     if (f.remittances) D.remittances = f.remittances;
     if (f.income)      D.income      = f.income;
     if (f.debts)       D.debts       = f.debts;
@@ -2752,14 +2821,18 @@ async function pullScriptsFromCloud() {
 // Finanzas: gastos, remesas y presupuestos proyectados se guardan en el navegador
 // para que NO se borren con el auto-update de las 7am (mismo patrón que las Metas).
 const FINANCE_KEY = 'brandos_finance';
-// Solo se persisten los datos del usuario (gastos, presupuestos, remesas).
-// Las CATEGORÍAS siempre vienen del JSON, para poder actualizarlas sin que el
-// navegador las "ensombrezca".
+// Se persisten los datos del usuario (gastos, categorías, presupuestos, remesas,
+// ingreso planeado, cheques manuales). Las CATEGORÍAS ahora también se guardan
+// (navegador + Supabase) para que agregar/borrar una categoría se quede fijo y
+// no "reviva" desde el JSON en la siguiente carga o con el auto-update de las 7am.
 function saveFinance() {
   try {
     localStorage.setItem(FINANCE_KEY, JSON.stringify({
       entries: (D.expenses && D.expenses.entries) || [],
+      categories: (D.expenses && D.expenses.categories) || [],
       budgets: D.budgets || {},
+      plannedIncome: D.plannedIncome || {},
+      manualPaychecks: D.manualPaychecks || [],
       remittances: D.remittances || { entries: [] },
       income: D.income || { monthlyGoal:0, channels:[], entries:[] },
       debts: D.debts || { cards:[], extraPayment:0, preferredMethod:'snowball' },
@@ -2781,7 +2854,10 @@ function restoreFinance() {
     if (!D.expenses) D.expenses = { categories: [], entries: [] };
     if (Array.isArray(f.entries))                 D.expenses.entries = f.entries;
     else if (f.expenses && Array.isArray(f.expenses.entries)) D.expenses.entries = f.expenses.entries; // compat formato viejo
+    if (Array.isArray(f.categories) && f.categories.length) D.expenses.categories = f.categories;
     if (f.budgets)     D.budgets     = f.budgets;
+    if (f.plannedIncome) D.plannedIncome = f.plannedIncome;
+    if (Array.isArray(f.manualPaychecks)) D.manualPaychecks = f.manualPaychecks;
     if (f.remittances) D.remittances = f.remittances;
     if (f.income)      D.income      = f.income;
     if (f.debts)       D.debts       = f.debts;
@@ -4904,9 +4980,39 @@ function computeVariance(proj, real) {
 function varColor(status) {
   return status === 'over' ? 'var(--red)' : status === 'warn' ? 'var(--orange)' : 'var(--green)';
 }
+/* ── Saldo disponible (envelope budgeting) ─────────────────────────────────
+   Saldo = Proyectado − Real. Nivel de color:
+   verde si queda >20% del presupuesto, ámbar si queda 0–20%, rojo si ≤0. */
+function saldoLevel(proj, real) {
+  const saldo = proj - real;
+  if (proj <= 0) return real > 0 ? 'red' : 'none';   // gasto sin meta = agotado
+  if (saldo <= 0) return 'red';
+  return (saldo / proj) * 100 > 20 ? 'green' : 'amber';
+}
+function saldoColor(level) {
+  return level === 'green' ? 'var(--green)'
+       : level === 'amber' ? 'var(--orange)'
+       : level === 'red'   ? 'var(--red)'
+       : 'var(--text-3)';
+}
+/** Estado de expansión de la tabla (en memoria, dura la sesión). Vacío = colapsado. */
+const finExpandedCats = new Set();
+const finExpandedSubs = new Set();
+function toggleCat(catId) {
+  if (finExpandedCats.has(catId)) finExpandedCats.delete(catId);
+  else finExpandedCats.add(catId);
+  renderBudgetTable();
+}
+function toggleSub(subId) {
+  if (finExpandedSubs.has(subId)) finExpandedSubs.delete(subId);
+  else finExpandedSubs.add(subId);
+  renderBudgetTable();
+}
 /** Migración idempotente: asegura subcategorías, emoji, grupo y D.budgets. */
 function migrateFinance() {
   if (!D.budgets) D.budgets = {};
+  if (!D.plannedIncome) D.plannedIncome = {};
+  if (!Array.isArray(D.manualPaychecks)) D.manualPaychecks = [];
   if (!D.income) D.income = { monthlyGoal:0, channels:[], entries:[] };
   if (!Array.isArray(D.income.channels)) D.income.channels = [];
   if (!Array.isArray(D.income.entries)) D.income.entries = [];
@@ -4940,6 +5046,27 @@ function migrateFinance() {
   });
 }
 
+/** Fondo translúcido del badge de saldo según su nivel. */
+function saldoBg(level) {
+  return level === 'green' ? 'rgba(0,230,118,.13)'
+       : level === 'amber' ? 'rgba(255,145,0,.15)'
+       : level === 'red'   ? 'rgba(255,82,82,.15)'
+       : 'transparent';
+}
+/** Fila de detalle: lista los gastos de una subcategoría en el mes. */
+function subDetailRow(month, subId) {
+  const items = (D.expenses.entries || [])
+    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month))
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const inner = items.length ? items.map(e => `
+    <div class="fin-detail-item">
+      <span class="fin-detail-date">${fShortDate(e.date)}</span>
+      <span class="fin-detail-desc">${esc(e.description || '—')}${e.fromBank ? ' <span title="Importado del banco" style="color:var(--green);font-size:10px">🏦</span>' : ''}</span>
+      <span class="fin-detail-amt">$${(e.amount || 0).toFixed(2)}</span>
+    </div>`).join('') : '<div class="fin-detail-empty">Sin gastos aún este mes</div>';
+  return `<tr class="fin-detail-row"><td colspan="5"><div class="fin-detail-wrap">${inner}</div></td></tr>`;
+}
+
 /** Tabla comparativa Proyectado vs. Real agrupada por categoría + tarjetas de totales. */
 function renderBudgetTable() {
   const cats = D.expenses.categories || [];
@@ -4947,43 +5074,57 @@ function renderBudgetTable() {
   const bm = document.getElementById('fin-budget-month');
   if (bm && !bm.value) bm.value = month;
 
-  let gProj = 0, gReal = 0;
+  let gProj = 0, gReal = 0, depleted = 0;
   const rows = cats.map(c => {
     const subs = c.subcategories || [];
+    const open = finExpandedCats.has(c.id);
     let cProj = 0, cReal = 0;
     const subRows = subs.map(s => {
       const proj = getProjected(month, s.id);
       const real = realForSub(month, s.id);
       cProj += proj; cReal += real;
-      const { variance, pct, status } = computeVariance(proj, real);
+      if (!open) return '';   // colapsada: no dibuja la subfila, pero sí suma al total
+      const { pct, status } = computeVariance(proj, real);
       const bar = varColor(status);
-      const vCol = variance < 0 ? 'var(--red)' : 'var(--text-2)';
-      return `<tr class="fin-sub-row">
-        <td class="fin-sub-name">${esc(s.name)}</td>
+      const saldo = proj - real;
+      const lvl = saldoLevel(proj, real);
+      const subOpen = finExpandedSubs.has(s.id);
+      const detail = subOpen ? subDetailRow(month, s.id) : '';
+      return `<tr class="fin-sub-row" onclick="toggleSub('${s.id}')">
+        <td class="fin-sub-name"><span class="fin-caret sub">${subOpen ? '▾' : '▸'}</span>${esc(s.name)}</td>
         <td class="fin-num"><input type="number" class="fin-proj-input" min="0" step="1" value="${proj || ''}" placeholder="0"
-            onchange="setProjected('${month}','${s.id}', this.value)" aria-label="Proyectado ${esc(s.name)}"></td>
+            onclick="event.stopPropagation()" onchange="event.stopPropagation();setProjected('${month}','${s.id}', this.value)" aria-label="Proyectado ${esc(s.name)}"></td>
         <td class="fin-num">$${real.toFixed(2)}</td>
-        <td class="fin-num" style="color:${vCol};font-weight:700">${variance < 0 ? '−' : ''}$${Math.abs(variance).toFixed(2)}</td>
+        <td class="fin-num"><span class="fin-saldo-badge" style="color:${saldoColor(lvl)};background:${saldoBg(lvl)}">${saldo < 0 ? '−' : ''}$${Math.abs(saldo).toFixed(2)}</span></td>
         <td>
           <div class="fin-bar-track"><div class="fin-bar-fill" style="width:${Math.min(100,pct)}%;background:${bar}"></div></div>
           <div class="fin-pct" style="color:${bar}">${proj > 0 ? pct.toFixed(0)+'%' : (real > 0 ? 'sin meta' : '—')}</div>
         </td>
-      </tr>`;
+      </tr>${detail}`;
     }).join('');
     gProj += cProj; gReal += cReal;
     const cVar = cProj - cReal;
-    const cVarCol = cVar < 0 ? 'var(--red)' : 'var(--green)';
-    return `<tr class="fin-cat-row">
-      <td class="fin-cat-head"><span class="fin-cat-dot" style="background:${c.color}"></span>${c.emoji||''} ${esc(c.name)}</td>
+    const cLvl = saldoLevel(cProj, cReal);
+    if (cProj > 0 && cVar <= 0) depleted++;
+    return `<tr class="fin-cat-row" onclick="toggleCat('${c.id}')">
+      <td class="fin-cat-head"><span class="fin-caret">${open ? '▾' : '▸'}</span><span class="fin-cat-dot" style="background:${c.color}"></span>${c.emoji||''} ${esc(c.name)}</td>
       <td class="fin-num">$${cProj.toFixed(0)}</td>
       <td class="fin-num">$${cReal.toFixed(2)}</td>
-      <td class="fin-num" style="color:${cVarCol};font-weight:700">${cVar < 0 ? '−' : ''}$${Math.abs(cVar).toFixed(2)}</td>
+      <td class="fin-num"><span class="fin-saldo-badge" style="color:${saldoColor(cLvl)};background:${saldoBg(cLvl)}">${cVar < 0 ? '−' : ''}$${Math.abs(cVar).toFixed(0)}</span></td>
       <td></td>
     </tr>${subRows}`;
   }).join('');
 
   const body = document.getElementById('fin-budget-body');
   if (body) body.innerHTML = rows || '<tr><td colspan="5" class="empty">Sin categorías</td></tr>';
+
+  // Resumen de categorías agotadas (saldo ≤ 0)
+  const depSummary = document.getElementById('fin-depleted-summary');
+  if (depSummary) {
+    depSummary.innerHTML = depleted > 0
+      ? `<span style="color:var(--red)">🔴 ${depleted} ${depleted === 1 ? 'categoría agotada' : 'categorías agotadas'} este mes</span> — ya gastaste todo lo proyectado en ${depleted === 1 ? 'ella' : 'ellas'}.`
+      : `<span style="color:var(--green)">✓ Ninguna categoría agotada este mes.</span>`;
+  }
 
   // Tarjetas de totales del mes
   const gVar = gProj - gReal;
@@ -4994,9 +5135,10 @@ function renderBudgetTable() {
   if (totals) totals.innerHTML = `
     <div class="fin-tcard"><div class="fin-tlabel">Proyectado</div><div class="fin-tval">$${gProj.toFixed(2)}</div></div>
     <div class="fin-tcard"><div class="fin-tlabel">Real</div><div class="fin-tval" style="color:${gCol}">$${gReal.toFixed(2)}</div></div>
-    <div class="fin-tcard"><div class="fin-tlabel">Variación</div><div class="fin-tval" style="color:${gVar<0?'var(--red)':'var(--green)'}">${gVar<0?'−':''}$${Math.abs(gVar).toFixed(2)}</div></div>
+    <div class="fin-tcard"><div class="fin-tlabel">Saldo disponible</div><div class="fin-tval" style="color:${gVar<0?'var(--red)':'var(--green)'}">${gVar<0?'−':''}$${Math.abs(gVar).toFixed(2)}</div></div>
     <div class="fin-tcard"><div class="fin-tlabel">Cumplimiento</div><div class="fin-tval" style="color:${gCol}">${gProj>0?gPct.toFixed(0)+'%':'—'}</div></div>`;
 
+  renderPlannedIncome();
   renderBudgetChart();
   populateCategorySelects();
 }
@@ -5031,6 +5173,96 @@ function onFinCatChange() {
   const c = cats.find(x => x.id === catId);
   const subs = (c && c.subcategories) || [];
   sub.innerHTML = subs.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join('');
+  updateExpenseSaldoHint();
+}
+
+/** Aviso en vivo del saldo disponible de la subcategoría elegida al agregar un gasto. */
+function updateExpenseSaldoHint() {
+  const hint = document.getElementById('fin-saldo-hint');
+  if (!hint) return;
+  const subId = document.getElementById('fin-subcat')?.value;
+  if (!subId) { hint.style.display = 'none'; return; }
+  const month = monthKey(document.getElementById('fin-date')?.value || today());
+  const proj = getProjected(month, subId);
+  const real = realForSub(month, subId);
+  const saldo = proj - real;
+  const amount = parseFloat(document.getElementById('fin-amount')?.value) || 0;
+  const after = saldo - amount;
+  let msg, color, bg;
+  if (proj <= 0) {
+    msg = `ℹ️ Esta subcategoría no tiene presupuesto (Proyectado) este mes. Llevas gastado $${real.toFixed(2)}.`;
+    color = 'var(--text-2)'; bg = 'var(--bg-2)';
+  } else if (saldo <= 0) {
+    msg = `⚠️ Esta categoría ya no tiene saldo disponible (gastado $${real.toFixed(2)} de $${proj.toFixed(2)}). Puedes registrarlo igual.`;
+    color = 'var(--red)'; bg = 'rgba(255,82,82,.12)';
+  } else if (amount > 0 && after < 0) {
+    msg = `⚠️ Este gasto deja la categoría en −$${Math.abs(after).toFixed(2)} (saldo actual $${saldo.toFixed(2)}). Puedes registrarlo igual.`;
+    color = 'var(--red)'; bg = 'rgba(255,82,82,.12)';
+  } else {
+    msg = `✓ Saldo disponible: $${saldo.toFixed(2)}${amount > 0 ? ` · después de este gasto: $${after.toFixed(2)}` : ''}.`;
+    color = 'var(--green)'; bg = 'rgba(0,230,118,.10)';
+  }
+  hint.style.display = 'block';
+  hint.style.color = color;
+  hint.style.background = bg;
+  hint.textContent = msg;
+}
+
+/* ── Ingreso planeado del mes (estilo EveryDollar) ─────────────────────────── */
+function plannedForMonth(month) {
+  if (!D.plannedIncome) D.plannedIncome = {};
+  if (!Array.isArray(D.plannedIncome[month])) D.plannedIncome[month] = [];
+  return D.plannedIncome[month];
+}
+function renderPlannedIncome() {
+  const list = document.getElementById('fin-planned-list');
+  const summary = document.getElementById('fin-planned-summary');
+  if (!list) return;
+  const month = finSelectedMonth();
+  const items = plannedForMonth(month);
+  list.innerHTML = items.length ? items.map(it => `
+    <div class="fin-planned-row">
+      <input type="text" class="fin-planned-label" value="${esc(it.label || '')}" placeholder="Cheque 1"
+        onchange="setPlannedIncome('${it.id}','label',this.value)">
+      <div class="fin-planned-amt-wrap"><span>$</span>
+        <input type="number" class="fin-planned-amt" min="0" step="0.01" value="${it.amount || ''}" placeholder="0.00"
+          onchange="setPlannedIncome('${it.id}','amount',this.value)"></div>
+      <button class="btn-d" onclick="deletePlannedIncome('${it.id}')" title="Quitar">✕</button>
+    </div>`).join('') : '<div class="fin-planned-empty">Sin ingresos planeados. Agrega cuánto esperas recibir este mes (Cheque 1, Cheque 2…).</div>';
+
+  if (summary) {
+    const totalPlanned = items.reduce((s, it) => s + (Number(it.amount) || 0), 0);
+    const budgets = (D.budgets && D.budgets[month]) || {};
+    const totalBudgeted = Object.values(budgets).reduce((s, v) => s + (Number(v) || 0), 0);
+    const left = totalPlanned - totalBudgeted;
+    const leftCol = left < 0 ? 'var(--red)' : 'var(--green)';
+    summary.innerHTML =
+      `<span>Planeado <b style="color:var(--green)">$${totalPlanned.toFixed(2)}</b></span>` +
+      `<span>Presupuestado <b>$${totalBudgeted.toFixed(2)}</b></span>` +
+      `<span>${left < 0 ? 'Te pasaste' : 'Sin asignar'} <b style="color:${leftCol}">${left < 0 ? '−' : ''}$${Math.abs(left).toFixed(2)}</b></span>`;
+  }
+}
+function addPlannedIncome() {
+  const month = finSelectedMonth();
+  const items = plannedForMonth(month);
+  items.push({ id: 'pi' + Date.now(), label: 'Cheque ' + (items.length + 1), amount: 0 });
+  saveFinance();
+  renderPlannedIncome();
+}
+function setPlannedIncome(id, field, value) {
+  const month = finSelectedMonth();
+  const it = plannedForMonth(month).find(x => x.id === id);
+  if (!it) return;
+  if (field === 'amount') it.amount = parseFloat(value) || 0;
+  else it.label = (value || '').trim();
+  saveFinance();
+  renderPlannedIncome();
+}
+function deletePlannedIncome(id) {
+  const month = finSelectedMonth();
+  D.plannedIncome[month] = plannedForMonth(month).filter(x => x.id !== id);
+  saveFinance();
+  renderPlannedIncome();
 }
 
 /** Copia las proyecciones del mes anterior al mes seleccionado. */
@@ -5549,7 +5781,8 @@ function renderPaychecks() {
   const P = D.paychecks;
   const checks = (P && Array.isArray(P.checks)) ? P.checks.slice() : [];
   const y = (P && P.ytd) || null;
-  if (!P || (!checks.length && !y)) { wrap.style.display = 'none'; return; }
+  const manual = Array.isArray(D.manualPaychecks) ? D.manualPaychecks : [];
+  if (!checks.length && !y && !manual.length) { wrap.style.display = 'none'; return; }
   wrap.style.display = '';
 
   const fmt = n => '$' + (Number(n) || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -5590,11 +5823,26 @@ function renderPaychecks() {
       </div>`;
   }
 
-  // Tabla de historial (más reciente primero)
-  checks.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  // Tabla de historial (ADP + manuales, más reciente primero)
+  const merged = checks.map(c => ({ ...c, _manual: false }))
+    .concat(manual.map(c => ({ ...c, _manual: true })));
+  merged.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const body = document.getElementById('adp-table-body');
   if (body) {
-    body.innerHTML = checks.length ? checks.map(c => `
+    body.innerHTML = merged.length ? merged.map(c => c._manual ? `
+      <tr>
+        <td style="font-weight:700">${fDate(c.date)} <span title="Cheque agregado a mano" style="color:var(--purple);font-size:10px;white-space:nowrap">✍️ Manual</span>
+          <button class="btn-d" style="margin-left:4px" onclick="deleteManualPaycheck('${c.id}')" title="Borrar cheque manual">✕</button></td>
+        <td style="color:var(--text-3);font-size:11px">—</td>
+        <td>${c.hours != null && c.hours !== '' ? (Number(c.hours) || 0).toFixed(2) : '—'}</td>
+        <td style="color:var(--blue)">${(Number(c.hours) > 0 && c.net != null) ? fmt(c.net / Number(c.hours)) : '—'}</td>
+        <td style="color:var(--text-3)">—</td>
+        <td style="color:var(--text-3)">—</td>
+        <td style="color:var(--text-3)">—</td>
+        <td style="color:var(--text-3)">—</td>
+        <td style="color:var(--green);font-weight:700">${fmt(c.gross)}</td>
+        <td style="color:var(--blue);font-weight:700">${fmt(c.net)}</td>
+      </tr>` : `
       <tr>
         <td style="font-weight:700">${fDate(c.date)}</td>
         <td style="color:var(--text-3);font-size:11px">${fDate(c.periodStart)} – ${fDate(c.periodEnd)}</td>
@@ -5627,6 +5875,36 @@ function renderPaychecks() {
       }
     }
   }
+}
+
+/** Agrega un cheque manual (aparte de ADP). No toca el YTD oficial. */
+function addManualPaycheck() {
+  const date = document.getElementById('mchk-date').value || today();
+  const gross = parseFloat(document.getElementById('mchk-gross').value);
+  const net = parseFloat(document.getElementById('mchk-net').value);
+  const hoursRaw = document.getElementById('mchk-hours').value;
+  if (isNaN(gross) || gross <= 0) { showToast('Escribe el monto bruto del cheque', true); return; }
+  if (isNaN(net) || net <= 0) { showToast('Escribe el monto neto del cheque', true); return; }
+  if (!Array.isArray(D.manualPaychecks)) D.manualPaychecks = [];
+  D.manualPaychecks.push({
+    id: 'mchk' + Date.now(),
+    date, gross, net,
+    hours: (hoursRaw !== '' && !isNaN(parseFloat(hoursRaw))) ? parseFloat(hoursRaw) : null,
+    manual: true
+  });
+  document.getElementById('mchk-gross').value = '';
+  document.getElementById('mchk-net').value = '';
+  document.getElementById('mchk-hours').value = '';
+  saveFinance();
+  renderPaychecks();
+  showToast('Cheque manual agregado');
+}
+function deleteManualPaycheck(id) {
+  if (!confirm('¿Borrar este cheque agregado a mano?')) return;
+  D.manualPaychecks = (D.manualPaychecks || []).filter(c => c.id !== id);
+  saveFinance();
+  renderPaychecks();
+  showToast('Cheque manual borrado');
 }
 
 function renderIncomeBreakdown(month) {
@@ -6289,6 +6567,13 @@ document.addEventListener('keydown', e => {
 ============================================================ */
 function today() { return new Date().toISOString().split('T')[0]; }
 function esc(s)  { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+/** 'YYYY-MM-DD' -> '12 jul' (o '—' si no es válida). */
+function fShortDate(iso) {
+  if (typeof iso !== 'string' || !/^\d{4}-\d{2}-\d{2}/.test(iso)) return '—';
+  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const [, mm, dd] = iso.split('-').map(Number);
+  return `${dd} ${MESES[(mm || 1) - 1]}`;
+}
 function showToast(msg, isErr=false) {
   const el = document.getElementById('toast');
   el.textContent = msg;
