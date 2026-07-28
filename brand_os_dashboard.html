@@ -415,7 +415,14 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 /* ================================================
    DCA FORM
 ================================================ */
-.dca-form-row{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:10px;align-items:end}
+.dca-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;align-items:end}
+.dca-form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.dca-hint{font-size:12px;color:var(--text-3)}
+.dca-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.dca-badge.buy{background:rgba(0,200,120,.14);color:var(--green)}
+.dca-badge.sell{background:rgba(255,80,80,.14);color:var(--red)}
+.dca-badge.transfer{background:rgba(80,140,255,.14);color:var(--blue)}
+.plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin-bottom:20px}
 
 /* ================================================
    ICP
@@ -1247,7 +1254,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   <button class="tab-btn" data-tab="mindmap">🗺️ Mapa Maestro</button>
   <button class="tab-btn" data-tab="sop">📋 SOP Sunday</button>
   <button class="tab-btn" data-tab="content">🎬 Gestión de Contenido</button>
-  <button class="tab-btn" data-tab="dca">📈 Inversiones DCA</button>
+  <button class="tab-btn" data-tab="dca">📈 Inversiones</button>
   <button class="tab-btn" data-tab="finanzas">💰 Finanzas</button>
   <button class="tab-btn" data-tab="icp">🎯 Estrategia ICP</button>
 </nav>
@@ -1454,43 +1461,105 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     <div id="calendar-area"></div>
   </div>
 
-  <!-- ========== DCA ========== -->
+  <!-- ========== DCA / INVERSIONES ========== -->
   <div class="panel" id="panel-dca">
     <div class="sec-hdr">
       <div>
-        <div class="sec-title">Inversiones DCA</div>
-        <div class="sec-sub">Dollar-Cost Averaging · Portafolio Crypto</div>
+        <div class="sec-title">Inversiones</div>
+        <div class="sec-sub">Portafolio unificado · Cripto y Acciones · Todas tus plataformas</div>
       </div>
-      <button class="btn-p" onclick="openProjection()">📊 Proyectar Ganancia/Pérdida</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-p" id="dca-refresh-btn" onclick="updatePrices(true)">🔄 Actualizar precios</button>
+        <button class="btn-p" onclick="openProjection()">📊 Proyectar Ganancia/Pérdida</button>
+      </div>
     </div>
 
     <div class="metric-grid" id="dca-summary" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div id="dca-price-note" class="dca-hint" style="margin:-8px 0 18px"></div>
+
+    <div id="dca-plat-section" style="display:none">
+      <div class="card-title" style="margin-bottom:12px">📍 Por Plataforma — ¿dónde está mi dinero?</div>
+      <div class="plat-grid" id="dca-plat-grid"></div>
+    </div>
+
+    <div class="card" id="dca-alloc-section" style="display:none;margin-bottom:20px">
+      <div class="card-title">🥧 Asignación del Portafolio</div>
+      <div id="dca-alloc-inner" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start"></div>
+    </div>
 
     <div class="card" style="margin-bottom:20px">
-      <div class="card-title">Agregar Transacción</div>
+      <div class="card-title">Registrar Movimiento</div>
       <div class="dca-form-row">
+        <div class="i-group"><label class="i-label">Tipo</label>
+          <select id="dca-type" onchange="onDcaTypeChange()">
+            <option value="buy">🟢 Compra</option>
+            <option value="sell">🔴 Venta</option>
+            <option value="transfer">🔄 Transferencia</option>
+          </select>
+        </div>
         <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="dca-date"></div>
-        <div class="i-group"><label class="i-label">Activo</label><input type="text" id="dca-asset" placeholder="BTC, ETH…"></div>
-        <div class="i-group"><label class="i-label">Monto (USD)</label><input type="number" id="dca-amount" placeholder="100" step="0.01"></div>
-        <div class="i-group"><label class="i-label">Precio Compra (USD)</label><input type="number" id="dca-price" placeholder="65000" step="0.01"></div>
+        <div class="i-group"><label class="i-label" id="dca-platform-label">Plataforma</label>
+          <select id="dca-platform" onchange="updateDcaHint()">
+            <option value="">— Elegir —</option>
+            <option>Robinhood</option>
+            <option>Coinbase</option>
+            <option>Kraken</option>
+            <option>Phantom Wallet</option>
+            <option>Think or Swim</option>
+            <option>Cash App</option>
+            <option>Tangem Wallet</option>
+            <option>Otra</option>
+          </select>
+        </div>
+        <div class="i-group" id="dca-to-platform-group" style="display:none"><label class="i-label">Hacia (plataforma)</label>
+          <select id="dca-to-platform" onchange="updateDcaHint()">
+            <option value="">— Elegir —</option>
+            <option>Robinhood</option>
+            <option>Coinbase</option>
+            <option>Kraken</option>
+            <option>Phantom Wallet</option>
+            <option>Think or Swim</option>
+            <option>Cash App</option>
+            <option>Tangem Wallet</option>
+            <option>Otra</option>
+          </select>
+        </div>
+        <div class="i-group"><label class="i-label">Tipo de Activo</label>
+          <select id="dca-assettype">
+            <option value="crypto">🪙 Cripto</option>
+            <option value="stock">📈 Acción / ETF</option>
+          </select>
+        </div>
+        <div class="i-group"><label class="i-label">Activo</label><input type="text" id="dca-asset" placeholder="BTC, SPY…" oninput="updateDcaHint()"></div>
+        <div class="i-group" id="dca-amount-group"><label class="i-label">Monto (USD)</label><input type="number" id="dca-amount" placeholder="100" step="0.01"></div>
+        <div class="i-group" id="dca-qty-group"><label class="i-label" id="dca-qty-label">Cantidad</label><input type="number" id="dca-qty" placeholder="0.0015" step="any" oninput="updateDcaHint()"></div>
+        <div class="i-group" id="dca-price-group"><label class="i-label" id="dca-price-label">Precio Compra (USD)</label><input type="number" id="dca-price" placeholder="65000" step="0.01"></div>
         <div class="i-group"><label class="i-label">Comisión (USD)</label><input type="number" id="dca-fee" placeholder="1.50" step="0.01"></div>
-        <button class="btn-p" style="align-self:flex-end" onclick="addDCA()">+ Agregar</button>
+      </div>
+      <div class="dca-form-actions">
+        <div class="dca-hint" id="dca-form-hint"></div>
+        <button class="btn-p" onclick="addDCA()">+ Agregar</button>
       </div>
     </div>
 
     <div class="card" style="padding:0;overflow:hidden">
-      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-        <div class="card-title" style="margin-bottom:0">Transacciones</div>
-        <select id="dca-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
-          <option value="all">Todos los activos</option>
-        </select>
+      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <div class="card-title" style="margin-bottom:0">Bitácora de Movimientos</div>
+        <div style="display:flex;gap:8px">
+          <select id="dca-plat-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
+            <option value="all">Todas las plataformas</option>
+          </select>
+          <select id="dca-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
+            <option value="all">Todos los activos</option>
+          </select>
+        </div>
       </div>
       <div class="tbl-wrap">
         <table>
           <thead><tr>
-            <th>Fecha</th><th>Activo</th><th>Monto USD</th><th>Precio Compra</th>
-            <th>Cantidad</th><th>Comisión</th><th>Precio Promedio</th>
-            <th>Precio Actual</th><th>P&L Est. (%)</th><th></th>
+            <th>Fecha</th><th>Tipo</th><th>Plataforma</th><th>Activo</th>
+            <th>Cantidad</th><th>Monto USD</th><th>Precio</th><th>Comisión</th>
+            <th>Precio Actual</th><th>P&L</th><th></th>
           </tr></thead>
           <tbody id="dca-body"></tbody>
         </table>
@@ -1535,6 +1604,17 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       </div>
       <button class="btn-s" id="bank-sync-btn-biz" style="display:none" onclick="syncBankNow()">🔄 Sincronizar</button>
       <span class="bank-badge disconnected" id="bank-badge-biz">Conectar</span>
+    </div>
+
+    <!-- Conexión bancaria real (Plaid) — tarjeta Discover -->
+    <div class="bank-mock" id="bank-mock-disc">
+      <div class="bank-icon">💳</div>
+      <div class="bank-info">
+        <div class="bank-name" id="bank-name-disc">Discover</div>
+        <div class="bank-status" id="bank-status-text-disc">No conectado</div>
+      </div>
+      <button class="btn-s" id="bank-sync-btn-disc" style="display:none" onclick="syncBankNow()">🔄 Sincronizar</button>
+      <span class="bank-badge disconnected" id="bank-badge-disc">Conectar</span>
     </div>
 
     <!-- Saldos: Tarjeta de Débito (personal) + Cuenta de Negocios (Bluevine) -->
@@ -1863,8 +1943,9 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 
       <div class="debt-card-grid" id="debt-card-grid"></div>
 
-      <div style="margin-bottom:20px">
+      <div style="margin-bottom:20px;display:flex;gap:8px">
         <button class="btn-p" onclick="openCardModal()">+ Agregar Tarjeta</button>
+        <button class="btn-s" onclick="syncBankNow()">🔄 Sincronizar saldos del banco</button>
       </div>
 
       <div class="sim-panel">
@@ -2007,6 +2088,17 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <button class="btn-s" onclick="closeModal('modal-payment')">Cancelar</button>
       <button class="btn-p" onclick="registerPayment()">✓ Registrar Pago</button>
     </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     MODAL: MOVIMIENTOS DE LA TARJETA (en tiempo real, vía banco)
+====================================================== -->
+<div class="modal-ov" id="modal-card-txns" onclick="if(event.target===this)closeModal('modal-card-txns')">
+  <div class="modal" style="max-width:480px;max-height:85vh;overflow-y:auto">
+    <button class="modal-close" onclick="closeModal('modal-card-txns')">×</button>
+    <div class="modal-title" id="txns-card-title">💳 Movimientos</div>
+    <div id="txns-card-body"></div>
   </div>
 </div>
 
@@ -2202,16 +2294,7 @@ const SAMPLE = {
     { id:'sop9',  title:'Revisar y actualizar estrategia ICP',        description:'¿Resonó el contenido con tu ICP? Ajusta el perfil si encontraste nueva información sobre tu audiencia.',           tag:'strategy',  completed:false },
     { id:'sop10', title:'Registrar compras DCA de la semana',         description:'Si hiciste compras de cripto, agregar en la pestaña Inversiones DCA con fecha, monto, precio y comisión.',         tag:'json',      completed:false }
   ],
-  dca: {
-    transactions: [
-      { id:'d1', date:'2026-05-05', asset:'BTC', amount:100, price:62000, fee:1.5, currentPrice:65500 },
-      { id:'d2', date:'2026-05-12', asset:'BTC', amount:100, price:64000, fee:1.5, currentPrice:65500 },
-      { id:'d3', date:'2026-05-19', asset:'BTC', amount:100, price:63500, fee:1.5, currentPrice:65500 },
-      { id:'d4', date:'2026-05-05', asset:'ETH', amount:50,  price:2800,  fee:0.75, currentPrice:3150 },
-      { id:'d5', date:'2026-05-12', asset:'ETH', amount:50,  price:2950,  fee:0.75, currentPrice:3150 },
-      { id:'d6', date:'2026-05-05', asset:'SOL', amount:50,  price:145,   fee:0.5,  currentPrice:172  }
-    ]
-  },
+  dca: { transactions: [], prices: {}, pricesUpdatedAt: null },
   icp: {
     title:          'Creator Latinoamericano en Crecimiento',
     age:            '24-35 años',
@@ -2257,6 +2340,10 @@ async function init() {
   // Banco "en vivo": sincroniza al abrir el dashboard y cada hora mientras esté abierto
   autoBankSync();
   setInterval(autoBankSync, 60 * 60_000);
+  // Inversiones: fecha de hoy por defecto y precios en vivo al abrir (máx. cada 10 min)
+  try { document.getElementById('dca-date').value = new Date().toLocaleDateString('en-CA'); } catch(_) {}
+  updatePrices(false);
+  setInterval(() => updatePrices(false), 30 * 60_000);
 }
 
 /* ============================================================
@@ -2302,8 +2389,12 @@ function startPolling() {
       if (!r.ok) return;
       const fresh = await r.json();
       if (fresh.meta?.lastAutoUpdate && fresh.meta.lastAutoUpdate !== D?.meta?.lastAutoUpdate) {
+        const prevGoals = D && D.goals; // conservar metas en memoria por si falla la lectura de localStorage
         D = fresh;
-        try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
+        try {
+          const saved = localStorage.getItem(GOALS_KEY);
+          D.goals = saved ? JSON.parse(saved) : (prevGoals || D.goals);
+        } catch(_) { if (prevGoals) D.goals = prevGoals; }
         restoreFinance();
         try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
         renderAll();
@@ -2326,6 +2417,7 @@ async function loadData() {
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
+    await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     // Notas por video: el navegador manda; fusiona el respaldo del JSON y resincroniza
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     document.getElementById('sync-time').textContent = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
@@ -2346,6 +2438,7 @@ async function loadData() {
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
+    await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
   }
@@ -2639,7 +2732,12 @@ function fmtNum(n) {
 const VIDEO_NOTES_KEY = 'brandos_video_notes';
 const GOALS_KEY = 'brandos_goals';
 function saveGoals() {
-  try { localStorage.setItem(GOALS_KEY, JSON.stringify(D.goals)); } catch(_) {}
+  const savedAt = new Date().toISOString();
+  try {
+    localStorage.setItem(GOALS_KEY, JSON.stringify(D.goals));
+    localStorage.setItem(GOALS_KEY + '_ts', savedAt);
+  } catch(_) {}
+  pushGoalsToCloud(savedAt); // respaldo en la nube, en segundo plano — para que no dependan solo de este navegador
 }
 
 // ============================================================
@@ -2721,6 +2819,7 @@ const SUPABASE_URL = 'https://xbnzizzvvzadlhfagnjn.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhibnppenp2dnphZGxoZmFnbmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NzI2NDAsImV4cCI6MjA5ODE0ODY0MH0.PeuucODjxz1KVtuVSL3_4d979ZHHzFygDzKAQ-yngq4';
 const SYNC_ROW_ID  = 'brian_finance';
 const SCRIPTS_SYNC_ID = 'brian_scripts';
+const GOALS_SYNC_ID = 'brian_goals';
 let _sbClient = null;
 
 function getSB() {
@@ -2746,6 +2845,7 @@ async function pushToCloud() {
       debitBalance: D.debitBalance || 0,
       bizBalance:   D.bizBalance   || 0,
       bancolombiaBalance: D.bancolombiaBalance || 0,
+      dca:          D.dca          || { transactions: [] },
       savedAt
     };
     await sb.from('finance_sync').upsert({
@@ -2780,6 +2880,13 @@ async function pullFromCloud() {
     if (f.debitBalance != null) D.debitBalance = f.debitBalance;
     if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
+    // Candado: usar la versión (nube vs. local) que tenga MÁS movimientos, nunca la más vacía.
+    if (f.dca && Array.isArray(f.dca.transactions)) {
+      const localCount = (D.dca && Array.isArray(D.dca.transactions)) ? D.dca.transactions.length : 0;
+      if (f.dca.transactions.length >= localCount) D.dca = f.dca;
+      else f.dca = D.dca; // lo local es más completo — no lo borres, y súbelo de vuelta
+    }
+    else if (D.dca && Array.isArray(D.dca.transactions) && D.dca.transactions.length) f.dca = D.dca;
     try { localStorage.setItem(FINANCE_KEY, JSON.stringify(f)); } catch(_) {}
     return true;
   } catch(e) { console.warn('[Sync] pull failed:', e.message); return false; }
@@ -2818,6 +2925,82 @@ async function pullScriptsFromCloud() {
 }
 // ============================================================
 
+// ── GOALS SYNC — respaldo de metas en la nube (patrón de scripts + candado de dca) ──
+// Las metas viven en localStorage (brandos_goals) desde siempre, pero SIN copia en la
+// nube — por eso se perdían: al limpiar el navegador, en Safari/iPhone (borra sitios sin
+// visitar en ~7 días), o simplemente porque el celular (GitHub Pages) y la PC (localhost)
+// tienen cada uno su propio localStorage y nunca se veían entre sí. Esto les da el mismo
+// respaldo que ya tienen Finanzas y Guiones, más un candado: una copia VACÍA nunca pisa
+// una con metas.
+function goalsCount(g) {
+  return ((g && g.shortTerm && g.shortTerm.length) || 0) + ((g && g.longTerm && g.longTerm.length) || 0);
+}
+
+function persistGoalsLocal(goals, savedAt) {
+  try {
+    localStorage.setItem(GOALS_KEY, JSON.stringify(goals));
+    localStorage.setItem(GOALS_KEY + '_ts', savedAt || new Date().toISOString());
+  } catch(_) {}
+}
+
+async function pushGoalsToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: GOALS_SYNC_ID,
+      data: { goals: D.goals || { shortTerm:[], longTerm:[] }, savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] goals push failed:', e.message); }
+}
+
+// Fusiona por id (una sola vez, para adoptar metas guardadas antes de que existiera la sync)
+function mergeGoalsById(local, cloud) {
+  const merge = (a, b) => {
+    const seen = new Set((a || []).map(g => g.id));
+    return (a || []).concat((b || []).filter(g => !seen.has(g.id)));
+  };
+  return {
+    shortTerm: merge(local && local.shortTerm, cloud && cloud.shortTerm),
+    longTerm:  merge(local && local.longTerm,  cloud && cloud.longTerm)
+  };
+}
+
+async function pullGoalsFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', GOALS_SYNC_ID).maybeSingle();
+    const cloud = (!error && row && row.data && row.data.goals) ? row.data.goals : null;
+    const localCount = goalsCount(D.goals);
+    // 1) La nube aún no tiene fila: adoptar lo local (si hay) y subirlo — primer arranque
+    if (!cloud) { if (localCount > 0) pushGoalsToCloud(); return; }
+    const cloudCount = goalsCount(cloud);
+    const cloudTime  = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs    = localStorage.getItem(GOALS_KEY + '_ts');
+    // 2) Migración única: metas locales de ANTES de esta actualización (sin _ts) → fusionar por id
+    if (localCount > 0 && !localTs) {
+      D.goals = mergeGoalsById(D.goals, cloud);
+      const savedAt = new Date().toISOString();
+      persistGoalsLocal(D.goals, savedAt);
+      pushGoalsToCloud(savedAt);
+      return;
+    }
+    // 3) Candado: una copia VACÍA jamás pisa una con metas
+    if (cloudCount === 0 && localCount > 0) { pushGoalsToCloud(); return; }
+    if (localCount === 0 && cloudCount > 0) {
+      D.goals = cloud; persistGoalsLocal(cloud, row.data.savedAt); return;
+    }
+    // 4) Ambas con metas (o ambas vacías): gana la más reciente — así sí se propagan
+    //    las eliminaciones legítimas. (Riesgo aceptado: borrar la ÚNICA meta en un
+    //    dispositivo puede revivirla si otro dispositivo tenía una copia vieja —
+    //    recuperable borrando de nuevo; la alternativa es la pérdida silenciosa actual.)
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) { D.goals = cloud; persistGoalsLocal(cloud, row.data.savedAt); }
+  } catch(e) { console.warn('[Sync] goals pull failed:', e.message); }
+}
+// ============================================================
+
 // Finanzas: gastos, remesas y presupuestos proyectados se guardan en el navegador
 // para que NO se borren con el auto-update de las 7am (mismo patrón que las Metas).
 const FINANCE_KEY = 'brandos_finance';
@@ -2840,6 +3023,7 @@ function saveFinance() {
       bizBalance: D.bizBalance || 0,
       bancolombiaBalance: D.bancolombiaBalance || 0,
       bankIgnored: D.bankIgnored || [],   // gastos del banco que Brian eliminó (no re-importar)
+      dca: D.dca || { transactions: [] }, // bitácora de inversiones (compras/ventas/transferencias)
       savedAt: new Date().toISOString()
     }));
   } catch(_) {}
@@ -2865,6 +3049,14 @@ function restoreFinance() {
     if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
     if (Array.isArray(f.bankIgnored)) D.bankIgnored = f.bankIgnored;
+    // Candado: solo usar la bitácora guardada en el navegador si tiene AL MENOS tantos
+    // movimientos como la que acaba de venir del JSON. Si el JSON trae más (p. ej. porque
+    // se cargó un historial nuevo directamente en brand_os_data.json), no lo pises con
+    // una versión vieja/vacía guardada en localStorage.
+    if (f.dca && Array.isArray(f.dca.transactions)) {
+      const jsonCount = (D.dca && Array.isArray(D.dca.transactions)) ? D.dca.transactions.length : 0;
+      if (f.dca.transactions.length >= jsonCount) D.dca = f.dca;
+    }
   } catch(_) {}
 }
 
@@ -3881,123 +4073,541 @@ function calendarDayClick(dateStr) {
 }
 
 /* ============================================================
-   DCA
+   INVERSIONES (DCA multi-plataforma)
+   Bitácora de compras, ventas y transferencias entre plataformas.
+   Los datos se guardan como Finanzas: navegador (localStorage) + nube (Supabase).
 ============================================================ */
+const DCA_PLAT_ICON = {
+  'Robinhood':'🪶', 'Coinbase':'🔵', 'Kraken':'🐙', 'Phantom Wallet':'👻',
+  'Think or Swim':'📊', 'Cash App':'💵', 'Tangem Wallet':'❄️', 'Otra':'📦', 'Sin plataforma':'❔'
+};
+// Símbolo → id de CoinGecko (para precios automáticos de cripto)
+const CG_IDS = {
+  BTC:'bitcoin', ETH:'ethereum', SOL:'solana', XRP:'ripple', DOGE:'dogecoin', ADA:'cardano',
+  DOT:'polkadot', LINK:'chainlink', LTC:'litecoin', BCH:'bitcoin-cash', AVAX:'avalanche-2',
+  MATIC:'matic-network', POL:'polygon-ecosystem-token', SHIB:'shiba-inu', PEPE:'pepe', SUI:'sui',
+  TON:'the-open-network', TRX:'tron', XLM:'stellar', UNI:'uniswap', NEAR:'near', APT:'aptos',
+  ARB:'arbitrum', OP:'optimism', INJ:'injective-protocol', BONK:'bonk', WIF:'dogwifcoin',
+  USDT:'tether', USDC:'usd-coin', HBAR:'hedera-hashgraph', ICP:'internet-computer',
+  FIL:'filecoin', ATOM:'cosmos', ETC:'ethereum-classic', XMR:'monero', AAVE:'aave',
+  ALGO:'algorand', VET:'vechain', RENDER:'render-token', JUP:'jupiter-exchange-solana'
+};
+
+// Da forma segura a los datos (y migra transacciones viejas sin tipo/plataforma)
+function normalizeDCA() {
+  if (!D.dca) D.dca = {};
+  if (!Array.isArray(D.dca.transactions)) D.dca.transactions = [];
+  if (!D.dca.prices) D.dca.prices = {};
+  D.dca.transactions.forEach(t => {
+    if (!t.type) t.type = 'buy';
+    if (!t.assetType) t.assetType = 'crypto';
+    if (t.qty == null && t.amount && t.price) t.qty = t.amount / t.price;
+    if (t.type !== 'transfer' && !t.platform) t.platform = 'Sin plataforma';
+    // Migración: el precio actual por transacción pasa al mapa por activo
+    if (t.currentPrice && !D.dca.prices[t.asset]) D.dca.prices[t.asset] = { usd: t.currentPrice, at: null };
+  });
+}
+
+function dcaCurPrice(asset, fallback) {
+  const p = D.dca.prices && D.dca.prices[asset];
+  return (p && p.usd) ? p.usd : (fallback || 0);
+}
+function dcaMoney(n) { return (n < 0 ? '-' : '') + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function dcaQtyFmt(q) { return parseFloat(q.toFixed(8)).toLocaleString('en-US', { maximumFractionDigits: 8 }); }
+function dcaPlatLabel(name) { return (DCA_PLAT_ICON[name] || '📦') + ' ' + name; }
+
+// Agregados globales: por activo y por plataforma
+function dcaAggregates() {
+  const txs = D.dca.transactions || [];
+  const byAsset = {}; // { buys, buyQty, sells, sellQty, fees, assetType }
+  const byPlat  = {}; // { [platform]: { [asset]: qty } }
+  const addQ = (plat, asset, q) => {
+    if (!plat) return;
+    if (!byPlat[plat]) byPlat[plat] = {};
+    byPlat[plat][asset] = (byPlat[plat][asset] || 0) + q;
+  };
+  txs.forEach(t => {
+    if (!byAsset[t.asset]) byAsset[t.asset] = { buys:0, buyQty:0, sells:0, sellQty:0, fees:0, assetType: t.assetType || 'crypto' };
+    const a = byAsset[t.asset];
+    a.fees += (t.fee || 0);
+    a.assetType = t.assetType || a.assetType;
+    if (t.type === 'buy')      { a.buys  += t.amount; a.buyQty  += (t.qty || 0); addQ(t.platform, t.asset,  (t.qty || 0)); }
+    else if (t.type === 'sell'){ a.sells += t.amount; a.sellQty += (t.qty || 0); addQ(t.platform, t.asset, -(t.qty || 0)); }
+    else if (t.type === 'transfer') { addQ(t.platform, t.asset, -(t.qty || 0)); addQ(t.toPlatform, t.asset, (t.qty || 0)); }
+  });
+  return { byAsset, byPlat };
+}
+
+// Costo real POR PLATAFORMA. Recorre los movimientos en orden de fecha llevando,
+// para cada plataforma y activo, cuánto hay y cuánto costó. Una transferencia se
+// lleva su costo consigo (si sale de Cash App a $60k, entra a Tangem a $60k), así
+// la plataforma que recibe no aparece con una ganancia falsa del 100%.
+function dcaPlatformBasis(globalAvgPx) {
+  const txs = (D.dca.transactions || []).slice()
+    .sort((a, b) => (a.date || '').localeCompare(b.date || '') || (a.id || '').localeCompare(b.id || ''));
+  const pos = {}; // pos[plataforma][activo] = { qty, cost, realized, fees, invested }
+  const slot = (plat, asset) => {
+    if (!pos[plat]) pos[plat] = {};
+    if (!pos[plat][asset]) pos[plat][asset] = { qty:0, cost:0, realized:0, fees:0, invested:0 };
+    return pos[plat][asset];
+  };
+  const avgOf = (s, asset) => s.qty > 1e-12 ? s.cost / s.qty : (globalAvgPx[asset] || 0);
+
+  txs.forEach(t => {
+    if (!t.platform) return;
+    const s = slot(t.platform, t.asset);
+    s.fees += (t.fee || 0);
+    if (t.type === 'buy') {
+      s.qty += (t.qty || 0); s.cost += (t.amount || 0); s.invested += (t.amount || 0);
+    } else if (t.type === 'sell') {
+      const q = t.qty || 0, avg = avgOf(s, t.asset);
+      s.realized += ((t.price || 0) - avg) * q;
+      s.qty -= q; s.cost -= avg * q;
+    } else if (t.type === 'transfer' && t.toPlatform) {
+      const q = t.qty || 0, moved = avgOf(s, t.asset) * q;
+      s.qty -= q; s.cost -= moved;
+      const dst = slot(t.toPlatform, t.asset);
+      dst.qty += q; dst.cost += moved;
+    }
+  });
+  return pos;
+}
+
+// Colores fijos de los activos más comunes; el resto se reparte de la paleta.
+const DCA_ASSET_COLOR = { BTC:'#f7931a', ETH:'#8a92b2', SOL:'#9945ff', USDC:'#2775ca', USDT:'#26a17b', XRP:'#23292f', DOGE:'#c2a633' };
+const DCA_PALETTE = ['#7c6fff','#4fc3f7','#00e676','#ff7043','#ffd740','#e040fb','#64ffda','#ff80ab','#80d8ff','#ccff90'];
+function dcaColorFor(name, i) { return DCA_ASSET_COLOR[name] || DCA_PALETTE[i % DCA_PALETTE.length]; }
+
+// Dibuja un donut SVG a partir de [{name, value, color}] — mismo estilo que el de Finanzas.
+function dcaDonutHTML(title, data) {
+  const total = data.reduce((s, d) => s + d.value, 0);
+  if (!(total > 0)) return '';
+  const W = 160, cx = 80, cy = 80, r = 70, ri = 42;
+  let angle = -Math.PI / 2;
+  const slices = data.map(d => {
+    const sweep = (d.value / total) * 2 * Math.PI;
+    // Un solo elemento = anillo completo (un arco de 360° no se dibuja en SVG)
+    const full = data.length === 1;
+    const x1 = cx + r * Math.cos(angle),  y1 = cy + r * Math.sin(angle);
+    const x2 = cx + r * Math.cos(angle + sweep), y2 = cy + r * Math.sin(angle + sweep);
+    const ix1 = cx + ri * Math.cos(angle), iy1 = cy + ri * Math.sin(angle);
+    const ix2 = cx + ri * Math.cos(angle + sweep), iy2 = cy + ri * Math.sin(angle + sweep);
+    const large = sweep > Math.PI ? 1 : 0;
+    const path = full
+      ? `M ${cx-r} ${cy} A ${r} ${r} 0 1 1 ${cx+r} ${cy} A ${r} ${r} 0 1 1 ${cx-r} ${cy} Z M ${cx-ri} ${cy} A ${ri} ${ri} 0 1 1 ${cx+ri} ${cy} A ${ri} ${ri} 0 1 1 ${cx-ri} ${cy} Z`
+      : `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 ${large} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} L ${ix2.toFixed(2)} ${iy2.toFixed(2)} A ${ri} ${ri} 0 ${large} 0 ${ix1.toFixed(2)} ${iy1.toFixed(2)} Z`;
+    angle += sweep;
+    return { ...d, path, pct: (d.value / total * 100) };
+  });
+  const paths = slices.map(s =>
+    `<path d="${s.path}" fill="${s.color}" fill-rule="evenodd" stroke="var(--bg-card)" stroke-width="2" opacity="0.9"><title>${esc(s.name)}: ${dcaMoney(s.value)} (${s.pct.toFixed(1)}%)</title></path>`
+  ).join('');
+  const legend = slices.map(s =>
+    `<div style="display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:6px">
+       <div style="width:10px;height:10px;border-radius:50%;background:${s.color};flex-shrink:0"></div>
+       <span style="color:var(--text-2);flex:1">${esc(s.name)}</span>
+       <span style="color:var(--text-1);font-weight:700">${dcaMoney(s.value)}</span>
+       <span style="color:var(--text-3);width:46px;text-align:right">${s.pct.toFixed(1)}%</span>
+     </div>`
+  ).join('');
+  return `
+    <div style="flex:1;min-width:300px">
+      <div style="font-size:12px;font-weight:800;color:var(--text-2);margin-bottom:10px">${esc(title)}</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+        <svg width="${W}" height="${W}" viewBox="0 0 ${W} ${W}" style="flex-shrink:0">
+          ${paths}
+          <text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="10" fill="var(--text-3)">Total</text>
+          <text x="${cx}" y="${cy+10}" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text-1)">$${Math.round(total).toLocaleString('en-US')}</text>
+        </svg>
+        <div style="flex:1;min-width:170px">${legend}</div>
+      </div>
+    </div>`;
+}
+
+// Dos donuts: cuánto vale hoy cada activo y cuánto hay en cada plataforma.
+function renderDcaAllocation(byAsset, byPlat, avgPx) {
+  const section = document.getElementById('dca-alloc-section');
+  const inner   = document.getElementById('dca-alloc-inner');
+  if (!section || !inner) return;
+
+  const assets = Object.entries(byAsset)
+    .map(([name, a]) => ({ name, value: (a.buyQty - a.sellQty) * dcaCurPrice(name, avgPx[name]) }))
+    .filter(d => d.value > 0.01)
+    .sort((a, b) => b.value - a.value)
+    .map((d, i) => ({ ...d, color: dcaColorFor(d.name, i) }));
+
+  const plats = Object.entries(byPlat)
+    .map(([name, held]) => ({
+      name: dcaPlatLabel(name),
+      value: Object.entries(held).reduce((s, [asset, q]) => s + q * dcaCurPrice(asset, avgPx[asset]), 0)
+    }))
+    .filter(d => d.value > 0.01)
+    .sort((a, b) => b.value - a.value)
+    .map((d, i) => ({ ...d, color: DCA_PALETTE[i % DCA_PALETTE.length] }));
+
+  const html = dcaDonutHTML('Por Activo', assets) + dcaDonutHTML('Por Plataforma', plats);
+  section.style.display = html ? '' : 'none';
+  inner.innerHTML = html;
+}
+
 function renderDCA() {
   if (!D) return;
+  normalizeDCA();
   const txs = D.dca.transactions || [];
+  const { byAsset, byPlat } = dcaAggregates();
 
-  // Build per-asset aggregates
-  const agg = {};
-  txs.forEach(t => {
-    if (!agg[t.asset]) agg[t.asset] = { usd:0, qty:0, fees:0, curPrice: t.currentPrice || t.price };
-    const qty = t.amount / t.price;
-    agg[t.asset].usd  += t.amount;
-    agg[t.asset].qty  += qty;
-    agg[t.asset].fees += (t.fee || 0);
-    agg[t.asset].curPrice = t.currentPrice || t.price; // last seen
+  // Precio promedio de compra por activo
+  const avgPx = {};
+  Object.entries(byAsset).forEach(([k, a]) => avgPx[k] = a.buyQty ? a.buys / a.buyQty : 0);
+
+  // ── Tarjetas resumen (globales) ──────────────────────────────
+  let totInv = 0, totSold = 0, totFees = 0, totVal = 0;
+  Object.entries(byAsset).forEach(([k, a]) => {
+    totInv  += a.buys;
+    totSold += a.sells;
+    totFees += a.fees;
+    const held = a.buyQty - a.sellQty;
+    totVal += held * dcaCurPrice(k, avgPx[k]);
   });
-
-  // Summary cards
-  const totInv = Object.values(agg).reduce((s,a) => s + a.usd, 0);
-  const totVal = Object.entries(agg).reduce((s,[,a]) => s + a.qty * a.curPrice, 0);
-  const pnl    = totVal - totInv;
+  const pnl    = totVal + totSold - totInv - totFees;
   const pnlPct = totInv ? pnl / totInv * 100 : 0;
   document.getElementById('dca-summary').innerHTML = [
-    { label:'Total Invertido',   val:'$'+totInv.toFixed(2),                                        mc:'var(--blue)'   },
-    { label:'Valor Actual Est.', val:'$'+totVal.toFixed(2),                                        mc:'var(--purple)' },
-    { label:'P&L Total',         val:(pnl>=0?'+':'')+'$'+Math.abs(pnl).toFixed(2),                mc: pnl>=0?'var(--green)':'var(--red)' },
-    { label:'Rendimiento Total', val:(pnlPct>=0?'+':'')+pnlPct.toFixed(2)+'%',                    mc: pnlPct>=0?'var(--green)':'var(--red)' }
+    { label:'Total Invertido',   val: dcaMoney(totInv),                          mc:'var(--blue)'   },
+    { label:'Valor Actual Est.', val: dcaMoney(totVal),                          mc:'var(--purple)' },
+    { label:'P&L Total',         val:(pnl>=0?'+':'-')+'$'+Math.abs(pnl).toFixed(2), mc: pnl>=0?'var(--green)':'var(--red)' },
+    { label:'Rendimiento Total', val:(pnlPct>=0?'+':'')+pnlPct.toFixed(2)+'%',   mc: pnlPct>=0?'var(--green)':'var(--red)' }
   ].map(m=>`
     <div class="metric-card" style="--mc:${m.mc}">
       <div class="m-label">${m.label}</div>
       <div class="m-value" style="font-size:22px;color:${m.mc}">${m.val}</div>
     </div>`).join('');
 
-  // Filter dropdown
+  // Nota bajo el resumen: vendido, comisiones y frescura de precios
+  const noteBits = [];
+  if (totSold) noteBits.push('📤 Vendido: ' + dcaMoney(totSold));
+  if (totFees) noteBits.push('💸 Comisiones: ' + dcaMoney(totFees));
+  if (D.dca.pricesUpdatedAt) {
+    const mins = Math.round((Date.now() - new Date(D.dca.pricesUpdatedAt).getTime()) / 60000);
+    noteBits.push('🕐 Precios actualizados ' + (mins < 1 ? 'hace un momento' : mins < 60 ? `hace ${mins} min` : `hace ${Math.round(mins/60)} h`));
+  } else if (txs.length) {
+    noteBits.push('🕐 Precios sin actualizar — usa el botón 🔄');
+  }
+  document.getElementById('dca-price-note').textContent = noteBits.join('  ·  ');
+
+  // ── Tarjetas por plataforma ──────────────────────────────────
+  const platSection = document.getElementById('dca-plat-section');
+  const basis = dcaPlatformBasis(avgPx);
+  const platCards = Object.entries(byPlat).map(([plat, assets]) => {
+    const rows = Object.entries(assets).filter(([,q]) => Math.abs(q) > 1e-9);
+    if (!rows.length) return '';
+    let val = 0, cost = 0, realized = 0, fees = 0, warn = false;
+    const list = rows.map(([asset, q]) => {
+      if (q < 0) warn = true;
+      const px = dcaCurPrice(asset, avgPx[asset]);
+      const s  = (basis[plat] && basis[plat][asset]) || { cost:0, realized:0, fees:0 };
+      val  += q * px;
+      cost += s.cost; realized += s.realized; fees += s.fees;
+      const myAvg = s.qty > 1e-12 ? s.cost / s.qty : 0;
+      return `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px dashed var(--border)">
+        <span style="color:var(--text-2)">${esc(asset)}${myAvg ? ` <span style="color:var(--text-3)">· prom. $${Math.round(myAvg).toLocaleString('en-US')}</span>` : ''}</span>
+        <span style="color:${q<0?'var(--red)':'var(--text-2)'}">${dcaQtyFmt(q)}${q<0?' ⚠️':''}</span>
+      </div>`;
+    }).join('');
+
+    const unreal = val - cost;
+    const total  = unreal + realized - fees;
+    const pct    = cost > 0 ? total / cost * 100 : 0;
+    const line = (label, value, color, title) =>
+      `<div style="display:flex;justify-content:space-between;font-size:11px;padding:2px 0" ${title?`title="${esc(title)}"`:''}>
+         <span style="color:var(--text-3)">${label}</span>
+         <span style="color:${color||'var(--text-2)'};font-weight:700">${value}</span>
+       </div>`;
+
+    return `
+      <div class="card" style="margin-bottom:0">
+        <div style="font-size:14px;font-weight:800;margin-bottom:8px">${esc(dcaPlatLabel(plat))}</div>
+        <div style="font-size:22px;font-weight:800;color:var(--purple);margin-bottom:2px">${dcaMoney(val)}</div>
+        <div style="font-size:12px;font-weight:800;margin-bottom:10px;color:${total>=0?'var(--green)':'var(--red)'}">
+          ${total>=0?'▲':'▼'} ${total>=0?'+':'-'}$${Math.abs(total).toFixed(2)} (${pct>=0?'+':''}${pct.toFixed(1)}%)
+        </div>
+        <div style="margin-bottom:10px">
+          ${line('Costo de lo que tienes', dcaMoney(cost), 'var(--text-2)', 'Lo que pagaste por lo que sigue en esta plataforma')}
+          ${line('Sin vender (en papel)', (unreal>=0?'+':'-')+'$'+Math.abs(unreal).toFixed(2), unreal>=0?'var(--green)':'var(--red)', 'Ganancia o pérdida si vendieras hoy')}
+          ${realized ? line('Ya realizado (ventas)', (realized>=0?'+':'-')+'$'+Math.abs(realized).toFixed(2), realized>=0?'var(--green)':'var(--red)', 'Ganancia o pérdida de las ventas que ya hiciste') : ''}
+          ${fees ? line('Comisiones pagadas', '-$'+fees.toFixed(2), 'var(--text-3)') : ''}
+        </div>
+        ${list}
+        ${warn ? '<div style="font-size:11px;color:var(--red);margin-top:8px">⚠️ Cantidad negativa: parece que falta registrar una compra o transferencia de entrada.</div>' : ''}
+      </div>`;
+  }).filter(Boolean).join('');
+  platSection.style.display = platCards ? '' : 'none';
+  document.getElementById('dca-plat-grid').innerHTML = platCards;
+
+  renderDcaAllocation(byAsset, byPlat, avgPx);
+
+  // ── Filtros ──────────────────────────────────────────────────
   const fil = document.getElementById('dca-filter');
-  const cur = fil.value;
+  const curA = fil.value;
   fil.innerHTML = '<option value="all">Todos los activos</option>' +
-    Object.keys(agg).map(k=>`<option value="${k}" ${k===cur?'selected':''}>${k}</option>`).join('');
+    Object.keys(byAsset).sort().map(k=>`<option value="${esc(k)}" ${k===curA?'selected':''}>${esc(k)}</option>`).join('');
 
-  // Average prices
-  const avgPx = {};
-  Object.entries(agg).forEach(([k,a]) => avgPx[k] = a.qty ? a.usd / a.qty : 0);
+  const pfil = document.getElementById('dca-plat-filter');
+  const curP = pfil.value;
+  const plats = [...new Set(txs.flatMap(t => [t.platform, t.toPlatform]).filter(Boolean))].sort();
+  pfil.innerHTML = '<option value="all">Todas las plataformas</option>' +
+    plats.map(p=>`<option value="${esc(p)}" ${p===curP?'selected':''}>${esc(p)}</option>`).join('');
 
-  // Table
-  const filter = fil.value;
-  const rows   = (filter==='all' ? txs : txs.filter(t=>t.asset===filter));
+  // ── Tabla (bitácora, más reciente arriba) ────────────────────
+  const fA = fil.value, fP = pfil.value;
+  const rows = txs
+    .filter(t => fA==='all' || t.asset === fA)
+    .filter(t => fP==='all' || t.platform === fP || t.toPlatform === fP)
+    .slice()
+    .sort((a,b) => (b.date||'').localeCompare(a.date||'') || (b.id||'').localeCompare(a.id||''));
+
+  const badge = { buy:'<span class="dca-badge buy">🟢 Compra</span>', sell:'<span class="dca-badge sell">🔴 Venta</span>', transfer:'<span class="dca-badge transfer">🔄 Transfer</span>' };
   document.getElementById('dca-body').innerHTML = rows.map(t => {
-    const qty    = t.amount / t.price;
-    const avgP   = avgPx[t.asset] || 0;
-    const curP   = t.currentPrice || t.price;
-    const pnlPct = avgP ? (curP - avgP) / avgP * 100 : 0;
-    const cls    = pnlPct >= 0 ? 'pos' : 'neg';
+    const curP2 = dcaCurPrice(t.asset, avgPx[t.asset] || t.price || 0);
+    let platCell, amountCell, priceCell, pnlCell, curCell;
+    if (t.type === 'transfer') {
+      platCell   = `${esc(dcaPlatLabel(t.platform||'?'))} → ${esc(dcaPlatLabel(t.toPlatform||'?'))}`;
+      amountCell = '—';
+      priceCell  = '—';
+      pnlCell    = '<td style="color:var(--text-3)">—</td>';
+      curCell    = `<td>${curP2 ? dcaMoney(curP2) : '—'}</td>`;
+    } else {
+      platCell   = esc(dcaPlatLabel(t.platform||'Sin plataforma'));
+      amountCell = dcaMoney(t.amount || 0);
+      priceCell  = '$' + (t.price||0).toLocaleString('en-US');
+      if (t.type === 'sell') {
+        const avg = avgPx[t.asset] || 0;
+        const rp  = (t.price - avg) * (t.qty || 0);
+        const rpc = avg ? (t.price - avg) / avg * 100 : 0;
+        pnlCell = `<td class="${rp>=0?'pos':'neg'}" title="Ganancia/pérdida realizada vs precio promedio de compra">${rp>=0?'+':'-'}$${Math.abs(rp).toFixed(2)} (${rpc>=0?'+':''}${rpc.toFixed(1)}%)</td>`;
+        curCell = '<td style="color:var(--text-3)">—</td>';
+      } else {
+        const up  = (curP2 - t.price) * (t.qty || 0);
+        const upc = t.price ? (curP2 - t.price) / t.price * 100 : 0;
+        pnlCell = `<td class="${up>=0?'pos':'neg'}">${up>=0?'+':'-'}$${Math.abs(up).toFixed(2)} (${upc>=0?'+':''}${upc.toFixed(1)}%)</td>`;
+        curCell = `<td><input type="number" value="${curP2 || ''}" step="0.01" placeholder="—"
+          style="width:100px;padding:4px 8px;font-size:12px"
+          onchange="setAssetPrice('${esc(t.asset)}', this.value)"
+          title="Precio actual de ${esc(t.asset)} (editar lo actualiza en todas las filas)"></td>`;
+      }
+    }
     return `
       <tr>
-        <td>${t.date}</td>
-        <td><strong style="color:var(--gold)">${t.asset}</strong></td>
-        <td>$${t.amount.toFixed(2)}</td>
-        <td>$${t.price.toLocaleString('en-US')}</td>
-        <td>${qty.toFixed(6)}</td>
+        <td>${esc(t.date||'—')}</td>
+        <td>${badge[t.type] || badge.buy}</td>
+        <td style="font-size:12px">${platCell}</td>
+        <td><strong style="color:var(--gold)">${esc(t.asset)}</strong>${t.assetType==='stock' ? ' <span style="font-size:9px;color:var(--text-3)">📈</span>' : ''}</td>
+        <td>${dcaQtyFmt(t.qty || 0)}</td>
+        <td>${amountCell}</td>
+        <td>${priceCell}</td>
         <td>$${(t.fee||0).toFixed(2)}</td>
-        <td>$${avgP.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
-        <td>
-          <div class="i-group" style="gap:3px">
-            <input type="number" value="${curP}" step="0.01"
-              style="width:110px;padding:4px 8px;font-size:12px"
-              onchange="updateCurPrice('${t.id}',this.value)"
-              title="Precio actual">
-          </div>
-        </td>
-        <td class="${cls}">${pnlPct>=0?'+':''}${pnlPct.toFixed(2)}%</td>
+        ${curCell}
+        ${pnlCell}
         <td><button class="btn-d" onclick="delDCA('${t.id}')">✕</button></td>
       </tr>`;
-  }).join('') || '<tr><td colspan="10" class="empty">Sin transacciones registradas</td></tr>';
+  }).join('') || '<tr><td colspan="11" class="empty">Sin movimientos registrados — agrega tu primera compra arriba 👆</td></tr>';
 }
 
-function updateCurPrice(id, val) {
-  const t = D.dca.transactions.find(x => x.id === id);
-  if (t) { t.currentPrice = parseFloat(val) || t.price; renderDCA(); }
+// Editar el precio actual de un activo a mano (aplica a todas sus filas)
+function setAssetPrice(asset, val) {
+  const p = parseFloat(val);
+  if (!p || p <= 0) return;
+  normalizeDCA();
+  D.dca.prices[asset] = { usd: p, at: new Date().toISOString() };
+  saveFinance();
+  renderDCA();
+}
+
+// Muestra/oculta campos según el tipo de movimiento elegido
+function onDcaTypeChange() {
+  const type = document.getElementById('dca-type').value;
+  document.getElementById('dca-amount-group').style.display      = type === 'buy' ? '' : 'none';
+  document.getElementById('dca-qty-group').style.display         = '';
+  document.getElementById('dca-price-group').style.display       = type === 'transfer' ? 'none' : '';
+  document.getElementById('dca-to-platform-group').style.display = type === 'transfer' ? '' : 'none';
+  document.getElementById('dca-platform-label').textContent      = type === 'transfer' ? 'Desde (plataforma)' : 'Plataforma';
+  document.getElementById('dca-price-label').textContent         = type === 'sell' ? 'Precio Venta (USD)' : 'Precio Compra (USD)';
+  // En compras la cantidad es opcional: si la dejas vacía se calcula sola (Monto ÷ Precio).
+  // Mejor pega la cantidad EXACTA que te muestra la plataforma cuando la tengas — con
+  // comisiones o "market buy" la cantidad real casi nunca es exactamente Monto ÷ Precio.
+  const qtyLabel = document.getElementById('dca-qty-label');
+  const qtyInput = document.getElementById('dca-qty');
+  if (type === 'buy') { qtyLabel.textContent = 'Cantidad exacta (opcional)'; qtyInput.placeholder = 'ej. 0.00045861 — vacío = se calcula sola'; }
+  else if (type === 'sell') { qtyLabel.textContent = 'Cantidad a vender'; qtyInput.placeholder = '0.0015'; }
+  else { qtyLabel.textContent = 'Cantidad a transferir'; qtyInput.placeholder = '0.0015'; }
+  updateDcaHint();
+}
+
+// Pista en vivo: cuánto tienes de ese activo en esa plataforma
+function updateDcaHint() {
+  const el = document.getElementById('dca-form-hint');
+  if (!el) return;
+  const type  = document.getElementById('dca-type').value;
+  const asset = document.getElementById('dca-asset').value.trim().toUpperCase();
+  const plat  = document.getElementById('dca-platform').value;
+  if (type === 'buy' || !asset || !plat || !D || !D.dca) { el.textContent = ''; return; }
+  const { byPlat } = dcaAggregates();
+  const have = (byPlat[plat] && byPlat[plat][asset]) || 0;
+  el.textContent = `Tienes ${dcaQtyFmt(have)} ${asset} en ${plat}`;
 }
 
 function addDCA() {
+  normalizeDCA();
+  const type   = document.getElementById('dca-type').value;
   const date   = document.getElementById('dca-date').value;
-  const asset  = document.getElementById('dca-asset').value.trim().toUpperCase();
+  const plat   = document.getElementById('dca-platform').value;
+  const toPlat = document.getElementById('dca-to-platform').value;
+  const aType  = document.getElementById('dca-assettype').value;
+  const asset  = document.getElementById('dca-asset').value.trim().toUpperCase().replace(/[^A-Z0-9.\-^=]/g, '');
   const amount = parseFloat(document.getElementById('dca-amount').value);
+  const qtyIn  = parseFloat(document.getElementById('dca-qty').value);
   const price  = parseFloat(document.getElementById('dca-price').value);
   const fee    = parseFloat(document.getElementById('dca-fee').value) || 0;
-  if (!date || !asset || isNaN(amount) || isNaN(price)) { showToast('Completa todos los campos requeridos', true); return; }
-  D.dca.transactions.push({ id:'d'+Date.now(), date, asset, amount, price, fee, currentPrice: price });
-  ['dca-asset','dca-amount','dca-price','dca-fee'].forEach(id => document.getElementById(id).value='');
+
+  if (!date || !asset || !plat) { showToast('Completa fecha, plataforma y activo', true); return; }
+
+  let tx = { id:'d'+Date.now(), type, date, asset, assetType:aType, platform:plat, fee };
+  if (type === 'buy') {
+    if (isNaN(amount) || amount <= 0 || isNaN(price) || price <= 0) { showToast('Completa monto y precio de compra', true); return; }
+    tx.amount = amount; tx.price = price;
+    // Si Brian pegó la cantidad exacta del recibo, usarla — es más precisa que Monto÷Precio
+    // (las compras "market" con comisión casi nunca dan exacto con esa división).
+    tx.qty = (!isNaN(qtyIn) && qtyIn > 0) ? qtyIn : amount / price;
+  } else if (type === 'sell') {
+    if (isNaN(qtyIn) || qtyIn <= 0 || isNaN(price) || price <= 0) { showToast('Completa cantidad y precio de venta', true); return; }
+    tx.qty = qtyIn; tx.price = price; tx.amount = qtyIn * price;
+    const { byPlat } = dcaAggregates();
+    const have = (byPlat[plat] && byPlat[plat][asset]) || 0;
+    if (qtyIn > have + 1e-9) showToast(`⚠️ Vendes ${dcaQtyFmt(qtyIn)} ${asset} pero solo hay ${dcaQtyFmt(have)} registrados en ${plat} — revisa si falta una compra`, true);
+  } else { // transfer
+    if (!toPlat) { showToast('Elige la plataforma de destino', true); return; }
+    if (toPlat === plat) { showToast('La plataforma de origen y destino no pueden ser la misma', true); return; }
+    if (isNaN(qtyIn) || qtyIn <= 0) { showToast('Escribe la cantidad transferida', true); return; }
+    tx.toPlatform = toPlat; tx.qty = qtyIn;
+    const { byPlat } = dcaAggregates();
+    const have = (byPlat[plat] && byPlat[plat][asset]) || 0;
+    if (qtyIn > have + 1e-9) showToast(`⚠️ Transfieres ${dcaQtyFmt(qtyIn)} ${asset} pero solo hay ${dcaQtyFmt(have)} registrados en ${plat}`, true);
+  }
+
+  D.dca.transactions.push(tx);
+  saveFinance();
+  ['dca-asset','dca-amount','dca-qty','dca-price','dca-fee'].forEach(id => document.getElementById(id).value='');
   renderDCA();
-  showToast(`Transacción de ${asset} agregada`);
+  updatePrices(false); // por si es un activo nuevo, traer su precio
+  const verb = type==='buy' ? 'Compra' : type==='sell' ? 'Venta' : 'Transferencia';
+  showToast(`${verb} de ${asset} registrada ✅`);
 }
 
 function delDCA(id) {
   D.dca.transactions = D.dca.transactions.filter(t => t.id !== id);
+  saveFinance();
   renderDCA();
-  showToast('Transacción eliminada');
+  showToast('Movimiento eliminado');
+}
+
+/* ── Precios automáticos ─────────────────────────────────────────
+   Cripto: CoinGecko (gratis, sin llave, funciona en cualquier navegador).
+   Acciones/ETFs: Yahoo Finance vía el servidor local (/api/quotes).   */
+async function cgLookup(sym) {
+  try {
+    const r = await fetch('https://api.coingecko.com/api/v3/search?query=' + encodeURIComponent(sym));
+    const j = await r.json();
+    const hit = (j.coins || []).find(c => c.symbol && c.symbol.toUpperCase() === sym.toUpperCase());
+    if (hit) {
+      if (!D.dca.cgIds) D.dca.cgIds = {};
+      D.dca.cgIds[sym] = hit.id;
+      return hit.id;
+    }
+  } catch(_) {}
+  return null;
+}
+
+let _dcaPricesBusy = false;
+async function updatePrices(force) {
+  if (!D || _dcaPricesBusy) return;
+  normalizeDCA();
+  const txs = D.dca.transactions || [];
+  if (!txs.length) { if (force) showToast('Aún no hay activos para actualizar'); return; }
+
+  // Sin forzar: máximo una actualización cada 10 minutos
+  const last = D.dca.pricesUpdatedAt ? new Date(D.dca.pricesUpdatedAt).getTime() : 0;
+  if (!force && Date.now() - last < 10 * 60_000) return;
+
+  _dcaPricesBusy = true;
+  const btn = document.getElementById('dca-refresh-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '🔄 Actualizando…'; }
+  try {
+    const typeOf = {};
+    txs.forEach(t => { typeOf[t.asset] = t.assetType || typeOf[t.asset] || 'crypto'; });
+    const cryptos = Object.keys(typeOf).filter(a => typeOf[a] !== 'stock');
+    const stocks  = Object.keys(typeOf).filter(a => typeOf[a] === 'stock');
+    const missing = [];
+    const now = new Date().toISOString();
+
+    if (cryptos.length) {
+      const ids = {};
+      for (const s of cryptos) {
+        const id = CG_IDS[s] || (D.dca.cgIds || {})[s] || await cgLookup(s);
+        if (id) ids[s] = id; else missing.push(s);
+      }
+      const uniq = [...new Set(Object.values(ids))];
+      if (uniq.length) {
+        const r = await fetch('https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=' + uniq.join(','));
+        const j = await r.json();
+        for (const [sym, id] of Object.entries(ids)) {
+          const p = j[id] && j[id].usd;
+          if (p) D.dca.prices[sym] = { usd: p, at: now };
+          else missing.push(sym);
+        }
+      }
+    }
+
+    if (stocks.length) {
+      try {
+        const r = await fetch('/api/quotes?symbols=' + encodeURIComponent(stocks.join(',')));
+        const j = await r.json();
+        if (j.ok) {
+          for (const [sym, p] of Object.entries(j.quotes)) {
+            if (p != null) D.dca.prices[sym] = { usd: p, at: now };
+            else missing.push(sym);
+          }
+        }
+      } catch(_) {
+        if (force) showToast('Los precios de acciones necesitan el servidor local (ABRIR DASHBOARD.bat)', true);
+      }
+    }
+
+    D.dca.pricesUpdatedAt = now;
+    saveFinance();
+    renderDCA();
+    if (force) showToast(missing.length ? '⚠️ Sin precio para: ' + missing.join(', ') : '✅ Precios actualizados');
+  } catch (e) {
+    if (force) showToast('Error al actualizar precios: ' + e.message, true);
+  } finally {
+    _dcaPricesBusy = false;
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 Actualizar precios'; }
+  }
 }
 
 function openProjection() {
-  const txs = D.dca.transactions;
-  const agg = {};
-  txs.forEach(t => {
-    if (!agg[t.asset]) agg[t.asset] = { usd:0, qty:0, curPrice: t.currentPrice || t.price };
-    agg[t.asset].usd += t.amount;
-    agg[t.asset].qty += t.amount / t.price;
-    agg[t.asset].curPrice = t.currentPrice || t.price;
-  });
-
+  normalizeDCA();
+  const { byAsset } = dcaAggregates();
   const mults = [0.5, 1, 1.25, 1.5, 2, 3, 5, 10];
-  document.getElementById('proj-content').innerHTML = Object.entries(agg).map(([name,a]) => {
-    const avgP = a.qty ? a.usd/a.qty : 0;
+  document.getElementById('proj-content').innerHTML = Object.entries(byAsset).map(([name, a]) => {
+    const held = a.buyQty - a.sellQty;
+    if (held <= 1e-9) return '';
+    const avgP = a.buyQty ? a.buys / a.buyQty : 0;
+    const curP = dcaCurPrice(name, avgP);
+    const invHeld = held * avgP; // costo estimado de lo que aún tienes
     const rows = mults.map(m => {
-      const pp  = a.curPrice * m;
-      const val = a.qty * pp;
-      const pl  = val - a.usd;
-      const pct = a.usd ? pl/a.usd*100 : 0;
+      const pp  = curP * m;
+      const val = held * pp;
+      const pl  = val - invHeld;
+      const pct = invHeld ? pl / invHeld * 100 : 0;
       return `<tr>
         <td>${m}x <span style="color:var(--text-3);font-size:11px">($${pp.toLocaleString('en-US',{maximumFractionDigits:0})})</span></td>
         <td>$${val.toFixed(2)}</td>
@@ -4006,18 +4616,19 @@ function openProjection() {
     }).join('');
     return `
       <div style="margin-bottom:22px">
-        <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px">${name}</div>
+        <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px">${esc(name)}</div>
         <div style="font-size:11px;color:var(--text-3);margin-bottom:10px">
-          Invertido: <b style="color:var(--text-2)">$${a.usd.toFixed(2)}</b> ·
+          Tienes: <b style="color:var(--text-2)">${dcaQtyFmt(held)}</b> ·
+          Costo est.: <b style="color:var(--text-2)">$${invHeld.toFixed(2)}</b> ·
           Precio Prom.: <b style="color:var(--text-2)">$${avgP.toLocaleString('en-US',{maximumFractionDigits:2})}</b> ·
-          Precio Actual: <b style="color:var(--text-2)">$${a.curPrice.toLocaleString('en-US')}</b>
+          Precio Actual: <b style="color:var(--text-2)">$${curP.toLocaleString('en-US')}</b>
         </div>
         <table style="width:100%">
           <thead><tr><th>Escenario</th><th>Valor Proyectado</th><th>P&L</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
-  }).join('') || '<p style="color:var(--text-3)">Sin transacciones para proyectar.</p>';
+  }).filter(Boolean).join('') || '<p style="color:var(--text-3)">Sin tenencias para proyectar.</p>';
   openModal('modal-proj');
 }
 
@@ -4375,9 +4986,16 @@ async function renderBankMock() {
     st = await r.json();
   } catch (_) { /* sin servidor local (ej. GitHub Pages) */ }
 
-  // Cada fila de banco tiene su ranura: personal (Chase) y business (Bluevine)
+  // Cada fila de banco tiene su ranura: personal (Chase), business (Bluevine), discover (Discover)
   renderBankRow('personal', '', 'Banco', st);
   renderBankRow('business', '-biz', 'Banco de Negocios', st);
+  renderBankRow('discover', '-disc', 'Discover', st);
+}
+
+// Sufijo de ids por ranura — usado por connectBank() y pollHostedLink() para
+// encontrar el badge/nombre/estado correctos de cada fila de banco.
+function slotSuffix(slot) {
+  return slot === 'business' ? '-biz' : (slot === 'discover' ? '-disc' : '');
 }
 
 // Pinta una fila de conexión bancaria. suffix = '' (personal) | '-biz' (negocios)
@@ -4542,8 +5160,8 @@ function applyBancoAdjust() {
 }
 
 async function connectBank(slot) {
-  slot = slot === 'business' ? 'business' : 'personal';
-  const suffix = slot === 'business' ? '-biz' : '';
+  slot = ['business', 'discover'].includes(slot) ? slot : 'personal';
+  const suffix = slotSuffix(slot);
   const badge = document.getElementById('bank-badge' + suffix);
   badge.textContent = '⏳ Conectando…';
   badge.style.cursor = 'default';
@@ -4615,9 +5233,9 @@ async function connectBank(slot) {
 // Consulta cada 4 segundos, hasta 10 minutos.
 let hostedPollTimer = null;
 function pollHostedLink(slot) {
-  slot = slot === 'business' ? 'business' : 'personal';
+  slot = ['business', 'discover'].includes(slot) ? slot : 'personal';
   if (hostedPollTimer) clearInterval(hostedPollTimer);
-  const badge = document.getElementById('bank-badge' + (slot === 'business' ? '-biz' : ''));
+  const badge = document.getElementById('bank-badge' + slotSuffix(slot));
   const started = Date.now();
   hostedPollTimer = setInterval(async () => {
     if (Date.now() - started > 10 * 60_000) {
@@ -4653,8 +5271,8 @@ async function syncBankNow(quiet) {
     const j = await fetch('/api/plaid/sync', { method: 'POST' }).then(x => x.json());
     if (!j.ok) throw new Error(j.error || 'Error al sincronizar');
 
-    // Separar cuentas: personales (Chase) vs. negocio (Bluevine)
-    const personalAccts = (j.balances || []).filter(a => a.slot !== 'business');
+    // Separar cuentas por ranura: personal (Chase), negocio (Bluevine), Discover
+    const personalAccts = (j.balances || []).filter(a => a.slot === 'personal' || !a.slot);
     const businessAccts = (j.balances || []).filter(a => a.slot === 'business');
 
     // Actualizar el Saldo de Débito con la cuenta checking personal (o la primera de depósito)
@@ -4723,6 +5341,14 @@ function syncPlaidCardsToDebts() {
     const limit = (a.current != null && a.available != null) ? (a.current + a.available) : 0; // cupo total
     let card = D.debts.cards.find(c => c.plaidAccountId === a.accountId);
     if (!card && a.mask) card = D.debts.cards.find(c => !c.plaidAccountId && c.last4 === a.mask);
+    // Discover: si Brian ya tenía la tarjeta creada a mano (sin last4 que coincida),
+    // la adoptamos por nombre para no duplicarla — conserva su APR/promo manual.
+    // Solo si hay EXACTAMENTE una tarjeta manual candidata (evita adoptar la
+    // equivocada si hay varias tarjetas con "discover" en el nombre).
+    if (!card && (a.slot === 'discover' || /discover/i.test(a.institution || ''))) {
+      const candidates = D.debts.cards.filter(c => !c.plaidAccountId && /discover/i.test(c.name || ''));
+      if (candidates.length === 1) card = candidates[0];
+    }
 
     if (card) {
       card.plaidAccountId = a.accountId;
@@ -6136,13 +6762,13 @@ function renderDebts() {
       }
       return `<div class="debt-card-visual ${c.label || 'personal'}" id="debt-card-${c.id}">
         <div class="debt-card-label ${c.label || 'personal'}">${c.label === 'negocio' ? 'Negocio' : 'Personal'}</div>
-        <div class="debt-card-top">
+        <div class="debt-card-top" style="cursor:pointer" onclick="openCardTxns('${c.id}')" title="Ver movimientos en tiempo real">
           <div>
             <div class="debt-card-name">${esc(c.name)}</div>
             <div class="debt-card-last4">${c.last4 ? '•••• ' + c.last4 : ''}</div>
           </div>
         </div>
-        <div class="debt-card-balance" style="color:var(--red)">$${(c.balance||0).toLocaleString('en-US',{minimumFractionDigits:2})}</div>
+        <div class="debt-card-balance" style="color:var(--red);cursor:pointer" onclick="openCardTxns('${c.id}')" title="Ver movimientos en tiempo real">$${(c.balance||0).toLocaleString('en-US',{minimumFractionDigits:2})} <span style="font-size:11px;font-weight:600;color:var(--text-3)">🧾 ver movimientos</span></div>
         <div class="debt-util-wrap">
           <div class="debt-util-bar"><div class="debt-util-fill" style="width:${Math.min(util,100)}%;background:${uColor}"></div></div>
           <div class="debt-util-text"><span>${util.toFixed(1)}% utilizado</span><span>$${(c.creditLimit||0).toLocaleString()} límite</span></div>
@@ -6273,6 +6899,67 @@ function registerPayment() {
   renderDebts();
   renderSurplus();
   showToast(`Pago de $${amount.toFixed(2)} registrado`);
+}
+
+// Movimientos de la tarjeta, tal como aparecen en el banco — compras, pagos
+// y cargos pendientes. Se leen de D.bank.transactions (traídos por Plaid),
+// cruzando por accountId con la tarjeta.
+function openCardTxns(cardId) {
+  const card = D.debts.cards.find(c => c.id === cardId);
+  if (!card) return;
+  document.getElementById('txns-card-title').textContent = '💳 Movimientos — ' + card.name;
+  renderCardTxnsBody(card);
+  openModal('modal-card-txns');
+}
+
+function renderCardTxnsBody(card) {
+  const body = document.getElementById('txns-card-body');
+  if (!body) return;
+
+  if (!card.plaidAccountId) {
+    body.innerHTML = `
+      <div style="text-align:center;padding:20px 10px;color:var(--text-3)">
+        Esta tarjeta no está conectada al banco todavía, así que no hay movimientos en tiempo real.
+        Conéctala desde Finanzas → Ingresos para verlos aquí automáticamente.
+      </div>`;
+    return;
+  }
+
+  const txns = ((D.bank && D.bank.transactions) || [])
+    .filter(t => t.accountId === card.plaidAccountId)
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+  const rows = txns.length ? txns.map(t => {
+    const isPayment = t.amount < 0;          // convención Plaid: negativo = pago/abono a la tarjeta
+    const amtColor = isPayment ? 'var(--green)' : 'var(--red)';
+    const amtSign = isPayment ? '−' : '';     // el pago se ve como crédito
+    const amtTxt = '$' + Math.abs(t.amount).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    return `<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(t.name || 'Movimiento')}</div>
+        <div style="font-size:10.5px;color:var(--text-3)">${esc(t.date || '')}${t.pending ? ' · <span style="color:var(--orange)">Pendiente</span>' : ''}</div>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:${amtColor};white-space:nowrap">${amtSign}${amtTxt}</div>
+    </div>`;
+  }).join('') : `<div style="text-align:center;padding:20px 10px;color:var(--text-3)">Sin movimientos todavía en esta cuenta.</div>`;
+
+  const lastSync = (D.bank && D.bank.lastSync)
+    ? new Date(D.bank.lastSync).toLocaleString('es-MX')
+    : 'nunca';
+
+  body.innerHTML = `
+    <div style="max-height:50vh;overflow-y:auto;margin-bottom:12px">${rows}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border)">
+      <div style="font-size:10.5px;color:var(--text-3)">Última sincronización: ${esc(lastSync)}</div>
+      <button class="btn-s" style="font-size:11px;padding:4px 10px" onclick="reSyncCardTxns('${card.id}')">🔄 Sincronizar ahora</button>
+    </div>`;
+}
+
+// Sincroniza el banco y vuelve a pintar el modal de movimientos ya abierto
+async function reSyncCardTxns(cardId) {
+  await syncBankNow();
+  const card = D.debts.cards.find(c => c.id === cardId);
+  if (card) renderCardTxnsBody(card);
 }
 
 function openQuickUpdate(cardId) {
@@ -6553,7 +7240,8 @@ function renderSurplusTrend() {
 ============================================================ */
 function openModal(id)  { document.getElementById(id).classList.add('open') }
 function closeModal(id) { document.getElementById(id).classList.remove('open') }
-function openProjection(){ /* already defined above */ }
+/* 🐛 Bug histórico eliminado: aquí había un "function openProjection(){}" vacío
+   que pisaba la función real de Inversiones — el botón 📊 Proyectar nunca abría nada. */
 
 document.querySelectorAll('.modal-ov').forEach(el =>
   el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); })
