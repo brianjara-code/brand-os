@@ -879,6 +879,9 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .fin-budget-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .fin-budget-controls{display:flex;align-items:center;gap:8px}
 .fin-budget-controls input[type=month]{width:auto;font-size:12px}
+.fin-expenses-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.fin-expenses-title-wrap{display:flex;align-items:center;gap:12px}
+.fin-expenses-controls{display:flex;gap:8px}
 .fin-totals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
 .fin-tcard{background:linear-gradient(135deg,rgba(124,111,255,.1),rgba(79,195,247,.07));border:1px solid rgba(124,111,255,.25);border-radius:var(--r);padding:16px 16px;text-align:center}
 .fin-tlabel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:5px}
@@ -1121,6 +1124,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .fin-budget-hdr{flex-direction:column;align-items:flex-start;gap:8px}
   .fin-budget-controls{flex-wrap:wrap;gap:6px}
   .fin-budget-controls input[type=month]{width:100%}
+  .fin-expenses-hdr{flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px}
+  .fin-expenses-controls{flex-wrap:wrap;gap:6px;width:100%}
 
   /* Sub-tabs de Finanzas */
   .fin-subtab-bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -1840,12 +1845,12 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 
     <!-- Expense Table -->
     <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px">
-      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:12px">
+      <div class="fin-expenses-hdr">
+        <div class="fin-expenses-title-wrap">
           <div class="card-title" style="margin-bottom:0">Gastos</div>
           <span id="fin-expenses-total" style="font-size:13px;font-weight:700;color:var(--text-1)"></span>
         </div>
-        <div style="display:flex;gap:8px">
+        <div class="fin-expenses-controls">
           <select id="fin-filter-cat" style="width:auto;font-size:12px" onchange="renderExpenses()">
             <option value="all">Todas las categorías</option>
           </select>
