@@ -754,6 +754,53 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 }
 
 /* ================================================
+   MODULE: HABIT TRACKER (💪 Hábitos)
+================================================ */
+.habits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:900px){.habits-grid{grid-template-columns:1fr}}
+.habit-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:18px;transition:var(--t)}
+.habit-card:hover{border-color:var(--border-hover)}
+.habit-card-hdr{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.habit-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--border-hover);flex-shrink:0;background:var(--bg-2)}
+.habit-avatar-emoji{display:flex;align-items:center;justify-content:center;font-size:34px}
+.habit-info{flex:1;min-width:0}
+.habit-name{font-size:14px;font-weight:700;color:var(--text-1);display:flex;align-items:center;gap:6px}
+.habit-stage-name{font-size:11px;color:var(--text-3);margin-top:2px}
+.habit-streak{font-size:12px;color:var(--orange);font-weight:700;white-space:nowrap}
+.habit-bars{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.habit-bar-row{display:flex;align-items:center;gap:8px}
+.habit-bar-label{font-size:10px;color:var(--text-3);width:44px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.habit-bar-track{flex:1;height:8px;background:var(--bg-3);border-radius:4px;overflow:hidden}
+.habit-bar-fill{height:100%;border-radius:4px;transition:width .4s ease}
+.habit-bar-fill.health{background:linear-gradient(90deg,var(--red),var(--gold))}
+.habit-bar-fill.xp{background:linear-gradient(90deg,var(--teal),var(--green))}
+.habit-bar-pct{font-size:10px;color:var(--text-3);width:32px;text-align:right;flex-shrink:0}
+.habit-week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
+.habit-day{aspect-ratio:1;border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);font-size:9px;gap:2px;color:var(--text-3)}
+.habit-day:hover{border-color:var(--border-hover);background:var(--bg-hover)}
+.habit-day.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.habit-day.future{opacity:.35;cursor:default;pointer-events:none}
+.habit-day.today{box-shadow:0 0 0 2px var(--purple)}
+.habit-foot{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-3)}
+.habit-goal-edit{display:flex;align-items:center;gap:4px}
+.habit-goal-edit input{width:36px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;padding:3px 4px;color:var(--text-1);font-size:11px;text-align:center}
+.habit-gallery{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.habit-gallery-item{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--border);opacity:.4;filter:grayscale(1)}
+.habit-gallery-item.unlocked{opacity:1;filter:none;border-color:var(--teal)}
+.habit-gallery-item.current{border-color:var(--purple);box-shadow:0 0 8px rgba(124,111,255,.4)}
+
+.habits-widget{background:linear-gradient(135deg,rgba(0,230,118,.05),rgba(79,195,247,.03));border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:20px}
+.habits-widget-hdr{font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.habits-widget-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:700px){.habits-widget-row{grid-template-columns:repeat(2,1fr)}}
+.habits-widget-item{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.habits-widget-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--border-hover);background:var(--bg-2)}
+.habits-widget-avatar-emoji{display:flex;align-items:center;justify-content:center;font-size:22px}
+.habits-widget-name{font-size:10px;color:var(--text-3)}
+.habits-widget-mark{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:10px;color:var(--text-2);cursor:pointer;transition:var(--t)}
+.habits-widget-mark.done{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ================================================
    MODULE 1: CONTENT STRATEGY
 ================================================ */
 .strategy-section{margin-bottom:20px}
@@ -1061,7 +1108,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .fin-proj-input{min-height:36px;width:100%}
 
   /* Botones táctiles */
-  button:not(.tab-btn):not(.fin-subtab-btn):not(.goal-chk):not(.step-chk):not(.goal-del):not(.sop-step):not(.debt-card-actions button){
+  button:not(.tab-btn):not(.fin-subtab-btn):not(.goal-chk):not(.step-chk):not(.goal-del):not(.sop-step):not(.debt-card-actions button):not(.habits-widget-mark){
     min-height:44px;
     font-size:14px!important;
     padding:10px 16px!important
@@ -1257,6 +1304,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   <button class="tab-btn" data-tab="dca">📈 Inversiones</button>
   <button class="tab-btn" data-tab="finanzas">💰 Finanzas</button>
   <button class="tab-btn" data-tab="icp">🎯 Estrategia ICP</button>
+  <button class="tab-btn" data-tab="habitos">💪 Hábitos</button>
 </nav>
 
 <!-- ======================================================
@@ -1294,6 +1342,12 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Mini-widget: Habit Tracker -->
+    <div class="habits-widget" id="habits-widget">
+      <div class="habits-widget-hdr">💪 Hábitos de hoy <span style="font-size:11px;color:var(--text-3);font-weight:400" id="habits-widget-sub"></span></div>
+      <div class="habits-widget-row" id="habits-widget-row"></div>
     </div>
 
     <div class="sec-hdr">
@@ -1787,7 +1841,10 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     <!-- Expense Table -->
     <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px">
       <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-        <div class="card-title" style="margin-bottom:0">Gastos</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="card-title" style="margin-bottom:0">Gastos</div>
+          <span id="fin-expenses-total" style="font-size:13px;font-weight:700;color:var(--text-1)"></span>
+        </div>
         <div style="display:flex;gap:8px">
           <select id="fin-filter-cat" style="width:auto;font-size:12px" onchange="renderExpenses()">
             <option value="all">Todas las categorías</option>
@@ -1996,6 +2053,17 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <button class="btn-p" onclick="saveICP()">💾 Guardar ICP</button>
     </div>
     <div class="icp-grid" id="icp-grid"></div>
+  </div>
+
+  <!-- ========== HABITOS ========== -->
+  <div class="panel" id="panel-habitos">
+    <div class="sec-hdr">
+      <div>
+        <div class="sec-title">💪 Habit Tracker</div>
+        <div class="sec-sub">Cumple tus hábitos de la semana y evoluciona a tu personaje</div>
+      </div>
+    </div>
+    <div class="habits-grid" id="habits-grid"></div>
   </div>
 
 </main>
@@ -2316,6 +2384,7 @@ const SAMPLE = {
     substack:  { subscribers:0, opens:0, clicks:0, source:'manual', lastManualUpdate:null }
   },
   goals: { shortTerm:[], longTerm:[] },
+  habits: null, // se inicializa con defaultHabits() — no se guarda en el JSON, vive en localStorage + nube (patrón de Metas)
   contentStrategy: {
     buckets:[
       {id:'bucket-1',name:'Contenido Personal',color:'#7c6fff',icon:'👤',description:'Historias personales, behind the scenes'},
@@ -2390,11 +2459,16 @@ function startPolling() {
       const fresh = await r.json();
       if (fresh.meta?.lastAutoUpdate && fresh.meta.lastAutoUpdate !== D?.meta?.lastAutoUpdate) {
         const prevGoals = D && D.goals; // conservar metas en memoria por si falla la lectura de localStorage
+        const prevHabits = D && D.habits; // igual para hábitos — el JSON del auto-update no los trae
         D = fresh;
         try {
           const saved = localStorage.getItem(GOALS_KEY);
           D.goals = saved ? JSON.parse(saved) : (prevGoals || D.goals);
         } catch(_) { if (prevGoals) D.goals = prevGoals; }
+        try {
+          const saved = localStorage.getItem(HABITS_KEY);
+          D.habits = saved ? JSON.parse(saved) : (prevHabits || defaultHabits());
+        } catch(_) { D.habits = prevHabits || defaultHabits(); }
         restoreFinance();
         try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
         renderAll();
@@ -2414,10 +2488,13 @@ async function loadData() {
     D = await r.json();
     try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
+    try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
+    await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
     // Notas por video: el navegador manda; fusiona el respaldo del JSON y resincroniza
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     document.getElementById('sync-time').textContent = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
@@ -2435,10 +2512,13 @@ async function loadData() {
     D = JSON.parse(JSON.stringify(SAMPLE));
     try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
+    try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
+    await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
   }
@@ -2496,6 +2576,8 @@ function setupTabs() {
 ============================================================ */
 function renderAll() {
   renderGoals();
+  renderHabits();
+  renderHabitsWidget();
   renderAnalytics();
   renderComments();
   renderSOP();
@@ -2820,6 +2902,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const SYNC_ROW_ID  = 'brian_finance';
 const SCRIPTS_SYNC_ID = 'brian_scripts';
 const GOALS_SYNC_ID = 'brian_goals';
+const HABITS_SYNC_ID = 'brian_habits';
 let _sbClient = null;
 
 function getSB() {
@@ -2998,6 +3081,96 @@ async function pullGoalsFromCloud() {
     const localTime = localTs ? new Date(localTs).getTime() : 0;
     if (cloudTime > localTime) { D.goals = cloud; persistGoalsLocal(cloud, row.data.savedAt); }
   } catch(e) { console.warn('[Sync] goals pull failed:', e.message); }
+}
+// ============================================================
+
+// ── HABIT TRACKER — juego de hábitos con avatar evolutivo (mismo patrón que Metas) ──
+// D.habits NO vive en brand_os_data.json (el auto-update de las 7am lo borraría).
+// Vive en localStorage (brandos_habits) + nube (fila 'brian_habits'), con el mismo
+// candado anti-borrado que ya protege Metas: una copia vacía nunca pisa una con datos.
+const HABITS_KEY = 'brandos_habits';
+
+const HABIT_DEFS = [
+  { id:'ejercicio', nombre:'Ejercicio',        emoji:'💪', weeklyGoal:3,
+    stages:['Flaquito','Empezando','En forma','Fuerte','Muy fuerte','HULK 💥'] },
+  { id:'contenido', nombre:'Crear Contenido',  emoji:'🎬', weeklyGoal:3,
+    stages:['Celular básico','Aprendiz','Creador','Con audiencia','Estudio pro','Estrella 🌟'] },
+  { id:'lectura',   nombre:'Lectura',          emoji:'📚', weeklyGoal:3,
+    stages:['Principiante','Curioso','Lector','Estudioso','Sabio','Genio con aura 🧠'] },
+  { id:'dieta',     nombre:'Dieta Sana',       emoji:'🥗', weeklyGoal:5,
+    stages:['Chatarra','Mejorando','Balanceado','Saludable','Radiante','Máxima vitalidad ✨'] }
+];
+// XP mínimo para cada etapa (índice 0-5 = etapa 1-6)
+const HABIT_STAGE_XP = [0, 150, 400, 800, 1400, 2200];
+
+function defaultHabits() {
+  return {
+    habits: HABIT_DEFS.map(def => ({
+      id: def.id, weeklyGoal: def.weeklyGoal, xp: 0, health: 100,
+      streakWeeks: 0, log: {}, lastWeekProcessed: null
+    })),
+    savedAt: null
+  };
+}
+
+function habitStageIndex(xp) {
+  let idx = 0;
+  for (let i = 0; i < HABIT_STAGE_XP.length; i++) if (xp >= HABIT_STAGE_XP[i]) idx = i;
+  return idx; // 0-5
+}
+
+function habitsCount(h) {
+  return (h && Array.isArray(h.habits)) ? h.habits.reduce((n, x) => n + Object.keys(x.log || {}).length, 0) : 0;
+}
+
+function persistHabitsLocal(habits, savedAt) {
+  try {
+    localStorage.setItem(HABITS_KEY, JSON.stringify(habits));
+    localStorage.setItem(HABITS_KEY + '_ts', savedAt || new Date().toISOString());
+  } catch(_) {}
+}
+
+function saveHabits() {
+  const savedAt = new Date().toISOString();
+  D.habits.savedAt = savedAt;
+  persistHabitsLocal(D.habits, savedAt);
+  pushHabitsToCloud(savedAt);
+}
+
+async function pushHabitsToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: HABITS_SYNC_ID,
+      data: { habits: D.habits || defaultHabits(), savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] habits push failed:', e.message); }
+}
+
+async function pullHabitsFromCloud() {
+  const sb = getSB();
+  if (!D.habits) D.habits = defaultHabits();
+  if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', HABITS_SYNC_ID).maybeSingle();
+    const cloud = (!error && row && row.data && row.data.habits) ? row.data.habits : null;
+    const localCount = habitsCount(D.habits);
+    // 1) La nube aún no tiene fila: adoptar lo local (si hay marcas) y subirlo — primer arranque
+    if (!cloud) { if (localCount > 0) pushHabitsToCloud(); return; }
+    const cloudCount = habitsCount(cloud);
+    const cloudTime  = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs    = localStorage.getItem(HABITS_KEY + '_ts');
+    // 2) Candado: una copia VACÍA jamás pisa una con marcas de hábitos
+    if (cloudCount === 0 && localCount > 0) { pushHabitsToCloud(); return; }
+    if (localCount === 0 && cloudCount > 0) {
+      D.habits = cloud; persistHabitsLocal(cloud, row.data.savedAt); return;
+    }
+    // 3) Ambas con datos (o ambas vacías): gana la más reciente
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) { D.habits = cloud; persistHabitsLocal(cloud, row.data.savedAt); }
+  } catch(e) { console.warn('[Sync] habits pull failed:', e.message); }
 }
 // ============================================================
 
@@ -4785,6 +4958,185 @@ function deleteGoal(id) {
 }
 
 /* ============================================================
+   HABIT TRACKER — juego de hábitos con avatar evolutivo
+   Cada hábito: XP (nunca baja solo, sube etapa) + Salud (baja si
+   fallas la meta semanal; en 0 retrocede una etapa — estilo estricto).
+============================================================ */
+function isoMonday(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  const day = d.getUTCDay(); // 0=domingo..6=sábado
+  const diff = (day === 0 ? -6 : 1 - day);
+  d.setUTCDate(d.getUTCDate() + diff);
+  return d.toISOString().split('T')[0];
+}
+function addDaysISO(dateStr, n) {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().split('T')[0];
+}
+function habitWeekDates(mondayStr) {
+  return Array.from({length:7}, (_, i) => addDaysISO(mondayStr, i));
+}
+function habitDef(id) { return HABIT_DEFS.find(h => h.id === id); }
+function findHabit(id) { return D.habits && D.habits.habits.find(h => h.id === id); }
+
+// Cierra semanas ya terminadas: bonus si cumpliste la meta, castigo estricto si no
+// (baja salud; en 0 retrocede una etapa completa). Se corre al cargar el dashboard,
+// así que si pasaron varias semanas sin abrirlo, se cierran todas en orden.
+function processHabitWeeks() {
+  if (!D.habits) D.habits = defaultHabits();
+  const curMonday = isoMonday(today());
+  let changed = false;
+  D.habits.habits.forEach(h => {
+    if (!h.lastWeekProcessed) { h.lastWeekProcessed = curMonday; return; }
+    while (h.lastWeekProcessed < curMonday) {
+      const weekStart = h.lastWeekProcessed;
+      const done = habitWeekDates(weekStart).filter(d => h.log[d]).length;
+      if (done >= h.weeklyGoal) {
+        h.xp += 25;
+        h.streakWeeks += 1;
+      } else {
+        const missed = h.weeklyGoal - done;
+        h.health = (h.health || 0) - 20 * missed;
+        h.streakWeeks = 0;
+        if (h.health <= 0) {
+          const newIdx = Math.max(0, habitStageIndex(h.xp) - 1);
+          h.xp = HABIT_STAGE_XP[newIdx];
+          h.health = 75;
+        } else {
+          h.health = Math.max(0, h.health);
+        }
+      }
+      h.lastWeekProcessed = addDaysISO(weekStart, 7);
+      changed = true;
+    }
+  });
+  if (changed) saveHabits();
+}
+
+function toggleHabitDay(habitId, dateStr) {
+  const h = findHabit(habitId); if (!h) return;
+  const curMonday = isoMonday(today());
+  if (dateStr < curMonday || dateStr > today()) return; // solo días de esta semana, hasta hoy
+  const nowDone = !h.log[dateStr];
+  if (nowDone) { h.log[dateStr] = true; h.xp += 10; h.health = Math.min(100, (h.health||0) + 5); }
+  else { delete h.log[dateStr]; h.xp = Math.max(0, h.xp - 10); h.health = Math.max(0, (h.health||0) - 5); }
+  saveHabits();
+  renderHabits();
+  renderHabitsWidget();
+  showToast(nowDone ? `${habitDef(habitId).emoji} ¡Hábito marcado!` : 'Marca quitada');
+}
+
+function editHabitGoal(habitId, input) {
+  const h = findHabit(habitId); if (!h) return;
+  const v = Math.max(1, Math.min(7, parseInt(input.value, 10) || h.weeklyGoal));
+  h.weeklyGoal = v;
+  input.value = v;
+  saveHabits();
+  renderHabits();
+  renderHabitsWidget();
+}
+
+// Avatar con caída a emoji si aún no existe la imagen generada (avatars/<id>-<etapa>.png)
+function habitAvatarTag(def, stageIdx, cls) {
+  const emojiCls = cls + '-emoji';
+  return `<img class="${cls}" src="avatars/${def.id}-${stageIdx+1}.png" alt="${esc(def.nombre)}"
+    onerror="this.onerror=null;this.replaceWith(Object.assign(document.createElement('div'),{className:'${cls} ${emojiCls}',textContent:'${def.emoji}'}))">`;
+}
+
+function renderHabits() {
+  if (!D.habits) D.habits = defaultHabits();
+  const grid = document.getElementById('habits-grid');
+  if (!grid) return;
+  const curMonday = isoMonday(today());
+  const days = habitWeekDates(curMonday);
+  const todayStr = today();
+
+  grid.innerHTML = HABIT_DEFS.map(def => {
+    const h = findHabit(def.id) || { weeklyGoal:def.weeklyGoal, xp:0, health:100, streakWeeks:0, log:{} };
+    const stageIdx = habitStageIndex(h.xp);
+    const prevXp = HABIT_STAGE_XP[stageIdx];
+    const nextXp = HABIT_STAGE_XP[Math.min(stageIdx+1, HABIT_STAGE_XP.length-1)];
+    const xpPct = stageIdx >= HABIT_STAGE_XP.length-1 ? 100 : Math.round(((h.xp - prevXp) / (nextXp - prevXp)) * 100);
+    const doneThisWeek = days.filter(d => h.log[d]).length;
+
+    const week = days.map(d => {
+      const cls = ['habit-day'];
+      if (h.log[d]) cls.push('done');
+      if (d === todayStr) cls.push('today');
+      if (d > todayStr) cls.push('future');
+      const dow = new Date(d + 'T00:00:00Z').getUTCDay();
+      const label = DAY_LABELS[dow === 0 ? 6 : dow - 1];
+      return `<div class="${cls.join(' ')}" onclick="toggleHabitDay('${def.id}','${d}')" title="${d}">
+        <span>${label}</span><span>${h.log[d] ? '✓' : ''}</span>
+      </div>`;
+    }).join('');
+
+    const gallery = def.stages.map((name, i) => {
+      const cls = ['habit-gallery-item'];
+      if (i <= stageIdx) cls.push('unlocked');
+      if (i === stageIdx) cls.push('current');
+      return `<img class="${cls.join(' ')}" src="avatars/${def.id}-${i+1}.png" alt="${esc(name)}" title="${i<=stageIdx ? esc(name) : '🔒 ' + esc(name)}" onerror="this.style.display='none'">`;
+    }).join('');
+
+    return `
+    <div class="habit-card">
+      <div class="habit-card-hdr">
+        ${habitAvatarTag(def, stageIdx, 'habit-avatar')}
+        <div class="habit-info">
+          <div class="habit-name">${def.emoji} ${esc(def.nombre)}</div>
+          <div class="habit-stage-name">Etapa ${stageIdx+1}/6 · ${esc(def.stages[stageIdx])}</div>
+        </div>
+        <div class="habit-streak">${h.streakWeeks > 0 ? `🔥 ${h.streakWeeks}` : ''}</div>
+      </div>
+      <div class="habit-bars">
+        <div class="habit-bar-row">
+          <span class="habit-bar-label">Salud</span>
+          <div class="habit-bar-track"><div class="habit-bar-fill health" style="width:${Math.max(0,Math.min(100,h.health))}%"></div></div>
+          <span class="habit-bar-pct">${Math.round(h.health)}%</span>
+        </div>
+        <div class="habit-bar-row">
+          <span class="habit-bar-label">XP</span>
+          <div class="habit-bar-track"><div class="habit-bar-fill xp" style="width:${Math.max(0,Math.min(100,xpPct))}%"></div></div>
+          <span class="habit-bar-pct">${h.xp}</span>
+        </div>
+      </div>
+      <div class="habit-week">${week}</div>
+      <div class="habit-foot">
+        <span>${doneThisWeek}/${h.weeklyGoal} esta semana</span>
+        <div class="habit-goal-edit">
+          Meta/sem
+          <input type="number" min="1" max="7" value="${h.weeklyGoal}" onchange="editHabitGoal('${def.id}', this)">
+        </div>
+      </div>
+      <div class="habit-gallery">${gallery}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderHabitsWidget() {
+  if (!D.habits) D.habits = defaultHabits();
+  const row = document.getElementById('habits-widget-row');
+  const sub = document.getElementById('habits-widget-sub');
+  if (!row) return;
+  const todayStr = today();
+  const totalDone = HABIT_DEFS.filter(def => { const h = findHabit(def.id); return h && h.log[todayStr]; }).length;
+  if (sub) sub.textContent = `${totalDone}/${HABIT_DEFS.length} marcados hoy`;
+
+  row.innerHTML = HABIT_DEFS.map(def => {
+    const h = findHabit(def.id) || { xp:0, log:{} };
+    const stageIdx = habitStageIndex(h.xp);
+    const done = !!h.log[todayStr];
+    return `
+    <div class="habits-widget-item">
+      ${habitAvatarTag(def, stageIdx, 'habits-widget-avatar')}
+      <span class="habits-widget-name">${esc(def.nombre)}</span>
+      <span class="habits-widget-mark ${done ? 'done' : ''}" onclick="toggleHabitDay('${def.id}','${todayStr}')">${done ? '✓ Hecho' : 'Marcar'}</span>
+    </div>`;
+  }).join('');
+}
+
+/* ============================================================
    MODULE 1: CONTENT STRATEGY
 ============================================================ */
 const DAY_NAMES = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
@@ -6075,6 +6427,10 @@ function renderExpenses() {
   if (filterMonth) filtered = filtered.filter(e => e.date && e.date.startsWith(filterMonth));
 
   filtered.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+
+  const total = filtered.reduce((s, e) => s + (e.amount || 0), 0);
+  const totalEl = document.getElementById('fin-expenses-total');
+  if (totalEl) totalEl.textContent = `Total: $${total.toFixed(2)}`;
 
   const body = document.getElementById('fin-expenses-body');
   if (!body) return;
