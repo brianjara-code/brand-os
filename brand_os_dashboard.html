@@ -273,12 +273,25 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 .k-card{
   background:var(--bg-card);border:1px solid var(--border);
   border-left:3px solid var(--ca,var(--border));border-radius:var(--rs);
-  padding:12px;cursor:grab;transition:var(--t)
+  padding:12px;cursor:grab;transition:var(--t);position:relative
 }
 .k-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--border-hover)}
 .k-card.dragging{opacity:.4;cursor:grabbing}
-.k-card-title{font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:8px;line-height:1.4}
+.k-card-title{font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:8px;line-height:1.4;padding-right:16px}
 .k-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.k-card-del{
+  position:absolute;top:8px;right:8px;background:none;border:none;color:var(--text-3);
+  cursor:pointer;font-size:13px;line-height:1;padding:2px;opacity:0;transition:var(--t)
+}
+.k-card:hover .k-card-del{opacity:1}
+.k-card-del:hover{color:var(--red)}
+.tag-bot{background:rgba(124,111,255,.15);color:var(--purple)}
+.k-card-script{
+  background:rgba(124,111,255,.12);color:var(--purple);border:1px solid rgba(124,111,255,.25);
+  border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:var(--t)
+}
+.k-card-script:hover{background:rgba(124,111,255,.25)}
 .tag{font-size:10px;padding:2px 9px;border-radius:20px;font-weight:700}
 .tag-plat{background:rgba(124,111,255,.15);color:var(--purple)}
 .tag-urgent{background:rgba(255,82,82,.15);color:var(--red)}
@@ -814,6 +827,59 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .bucket-icon{font-size:28px;margin-bottom:6px}
 .bucket-name{font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:4px}
 .bucket-desc{font-size:11px;color:var(--text-3);line-height:1.4}
+
+/* ================================================
+   RADAR DE TEMAS (bot de contenido)
+================================================ */
+.radar-empty{color:var(--text-3);font-size:12px;padding:16px 0;text-align:center}
+.radar-status{font-size:11px;color:var(--text-3);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.radar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px}
+.radar-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px;transition:var(--t);display:flex;flex-direction:column;gap:8px
+}
+.radar-card:hover{border-color:var(--border-hover)}
+.radar-card-title{font-size:13px;font-weight:700;color:var(--text-1);line-height:1.4}
+.radar-card-angle{font-size:12px;color:var(--text-2);line-height:1.5}
+.radar-card-why{font-size:11px;color:var(--text-3);line-height:1.5;font-style:italic}
+.radar-card-sources{display:flex;flex-wrap:wrap;gap:6px}
+.radar-source-link{font-size:10px;color:var(--blue);text-decoration:none}
+.radar-source-link:hover{text-decoration:underline}
+.radar-card-actions{display:flex;gap:8px;margin-top:4px}
+
+/* ================================================
+   IDEAS DE X (temas que Brian pega a mano — X no tiene API gratis)
+================================================ */
+.xtopics-box{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px;margin-bottom:16px
+}
+.xtopics-hint{font-size:11px;color:var(--text-3);margin-bottom:10px;line-height:1.4}
+.xtopics-form{display:flex;gap:8px;margin-bottom:10px}
+.xtopics-input{
+  flex:1;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--rs);
+  padding:9px 12px;font-size:12px;color:var(--text-1);font-family:inherit
+}
+.xtopics-input:focus{outline:none;border-color:var(--purple)}
+.xtopics-add{
+  background:var(--purple);color:#fff;border:none;border-radius:var(--rs);
+  padding:9px 16px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:var(--t)
+}
+.xtopics-add:hover{opacity:.88}
+.xtopics-list{display:flex;flex-direction:column;gap:6px}
+.xtopics-item{
+  display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--border);
+  border-radius:var(--rs);padding:7px 10px;font-size:12px
+}
+.xtopics-item-text{flex:1;color:var(--text-1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xtopics-item-link{font-size:10px;color:var(--blue);text-decoration:none;flex-shrink:0}
+.xtopics-item-link:hover{text-decoration:underline}
+.xtopics-item-del{
+  background:none;border:none;color:var(--text-3);cursor:pointer;font-size:13px;
+  padding:2px 4px;flex-shrink:0;transition:var(--t)
+}
+.xtopics-item-del:hover{color:var(--red)}
+.xtopics-empty{color:var(--text-3);font-size:11px;padding:4px 0}
 .week-calendar{
   display:grid;grid-template-columns:repeat(7,1fr);gap:6px;
   background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:14px
@@ -1467,7 +1533,10 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div class="sec-title">Gestión de Contenido</div>
         <div class="sec-sub">Estrategia · Kanban · Guiones · Calendario</div>
       </div>
-      <button class="btn-p" onclick="addScript()">+ Nuevo Guión</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn-s" id="btn-content-bot" onclick="runContentBot()">🤖 Generar ahora</button>
+        <button class="btn-p" onclick="addScript()">+ Nuevo Guión</button>
+      </div>
     </div>
 
     <!-- MODULE 1: Content Strategy Planner -->
@@ -1476,6 +1545,27 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <div class="bucket-grid" id="bucket-grid"></div>
       <div class="week-calendar" id="week-calendar"></div>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- Radar de Temas (bot de contenido) -->
+    <div class="sec-hdr" style="margin-bottom:14px">
+      <div class="card-title" style="margin-bottom:0">🤖 Radar de Temas</div>
+    </div>
+
+    <!-- Ideas de X — Brian las pega a mano, el bot las prioriza (X no tiene API gratis) -->
+    <div class="xtopics-box">
+      <div class="card-title" style="font-size:12px;margin-bottom:6px">📌 Ideas de X</div>
+      <div class="xtopics-hint">Escribe de qué trata (y pega el link si quieres) — el bot no puede leer X, así que la frase es lo que de verdad usa.</div>
+      <div class="xtopics-form">
+        <input type="text" class="xtopics-input" id="xtopics-input" placeholder="Ej: Grok 5 ya razona mejor que GPT-6 https://x.com/..." onkeydown="if(event.key==='Enter')addXTopic()">
+        <button class="xtopics-add" onclick="addXTopic()">＋ Agregar</button>
+      </div>
+      <div class="xtopics-list" id="xtopics-list"></div>
+    </div>
+
+    <div class="radar-status" id="radar-status"></div>
+    <div class="radar-grid" id="radar-grid"></div>
 
     <div class="divider"></div>
 
@@ -1676,6 +1766,25 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
       <span class="bank-badge disconnected" id="bank-badge-disc">Conectar</span>
     </div>
 
+    <!-- Conexión bancaria real (Plaid) — Capital One (3 cuentas: seguro, bills, mamá) -->
+    <div class="bank-mock" id="bank-mock-cap1">
+      <div class="bank-icon">🏛️</div>
+      <div class="bank-info">
+        <div class="bank-name" id="bank-name-cap1">Capital One</div>
+        <div class="bank-status" id="bank-status-text-cap1">No conectado</div>
+      </div>
+      <button class="btn-s" id="bank-sync-btn-cap1" style="display:none" onclick="syncBankNow()">🔄 Sincronizar</button>
+      <span class="bank-badge disconnected" id="bank-badge-cap1">Conectar</span>
+    </div>
+
+    <!-- Panorama Total: suma de todo el efectivo disponible en todas las cuentas -->
+    <div style="background:linear-gradient(135deg,rgba(0,230,118,.10),rgba(100,255,218,.04));border:1px solid rgba(0,230,118,.28);border-radius:var(--r);padding:18px 22px;margin-bottom:16px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:6px">💰 Panorama Total — Todo tu Dinero</div>
+      <div id="panorama-cash" style="font-size:34px;font-weight:800;color:var(--green)">$0.00</div>
+      <div id="panorama-breakdown" style="font-size:12px;color:var(--text-3);margin-top:6px"></div>
+      <div id="panorama-net" style="font-size:12px;color:var(--text-3);margin-top:3px"></div>
+    </div>
+
     <!-- Saldos: Tarjeta de Débito (personal) + Cuenta de Negocios (Bluevine) -->
     <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">
     <div style="background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(100,255,218,.05));border:1px solid rgba(0,230,118,.2);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;flex:1;min-width:300px">
@@ -1748,6 +1857,12 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
           </span>
         </div>
       </div>
+    </div>
+
+    <!-- Saldo: Capital One (3 cuentas — seguro del carro, bills/renta, mamá) -->
+    <div style="background:linear-gradient(135deg,rgba(0,145,234,.08),rgba(41,121,255,.05));border:1px solid rgba(0,145,234,.25);border-radius:var(--r);padding:16px 20px;flex:1;min-width:340px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">🏛️</span> Saldo Disponible — Capital One</div>
+      <div id="cap1-accounts"></div>
     </div>
     </div>
 
@@ -2271,6 +2386,28 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   </div>
 </div>
 
+<!-- ======================================================
+     MODAL: VER GUIÓN COMPLETO
+====================================================== -->
+<div class="modal-ov" id="modal-script-view" onclick="if(event.target===this)closeModal('modal-script-view')">
+  <div class="modal" style="max-width:620px">
+    <button class="modal-close" onclick="closeModal('modal-script-view')">×</button>
+    <div class="modal-title" id="sv-title">Guión</div>
+    <div id="sv-meta" style="margin-bottom:10px"></div>
+    <div class="i-group"><label class="i-label">Hook (primeros 3 segundos)</label><textarea id="sv-hook" style="min-height:50px"></textarea></div>
+    <div class="i-group"><label class="i-label">Guión completo</label><textarea id="sv-body" style="min-height:180px"></textarea></div>
+    <div class="i-group"><label class="i-label">Caption / descripción</label><textarea id="sv-caption" style="min-height:60px"></textarea></div>
+    <div class="i-group"><label class="i-label">Hashtags</label><input type="text" id="sv-hashtags"></div>
+    <div class="i-group"><label class="i-label">Ideas de B-roll</label><textarea id="sv-broll" style="min-height:60px"></textarea></div>
+    <div id="sv-sources" style="margin-top:4px"></div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+      <button class="btn-s" onclick="closeModal('modal-script-view')">Cerrar</button>
+      <button class="btn-s" onclick="copyScriptView()">📋 Copiar guión</button>
+      <button class="btn-p" onclick="saveScriptView()">Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <!-- ======================================================
@@ -2307,6 +2444,7 @@ let charts = {};
 let dragId = null;
 let dragFrom = null;
 let editingScriptId = null;
+let viewingScriptId = null;
 let calendarView = 'monthly';
 let calendarDate = new Date();
 
@@ -2465,7 +2603,10 @@ function startPolling() {
       if (fresh.meta?.lastAutoUpdate && fresh.meta.lastAutoUpdate !== D?.meta?.lastAutoUpdate) {
         const prevGoals = D && D.goals; // conservar metas en memoria por si falla la lectura de localStorage
         const prevHabits = D && D.habits; // igual para hábitos — el JSON del auto-update no los trae
-        D = fresh;
+        const prevScripts = D && D.scripts; // igual para guiones/kanban — fusionar, no reemplazar
+        const prevKanban  = D && D.kanban;
+        const prevXTopics = D && D.xTopics; // xTopics vive SOLO en Supabase, nunca en este JSON —
+        D = fresh;                          // sin esto, D.xTopics quedaría undefined y se vería vacío hasta el próximo pull
         try {
           const saved = localStorage.getItem(GOALS_KEY);
           D.goals = saved ? JSON.parse(saved) : (prevGoals || D.goals);
@@ -2474,6 +2615,13 @@ function startPolling() {
           const saved = localStorage.getItem(HABITS_KEY);
           D.habits = saved ? JSON.parse(saved) : (prevHabits || defaultHabits());
         } catch(_) { D.habits = prevHabits || defaultHabits(); }
+        // El JSON del auto-update / bot de contenido puede traer tarjetas y guiones nuevos —
+        // se fusionan sobre lo que Brian ya tenía en pantalla, nunca se reemplaza sin más.
+        const dismissed = getDismissed();
+        D.scripts = mergeScripts(prevScripts || [], D.scripts || [], dismissed);
+        D.kanban  = mergeKanban(prevKanban || {todo:[],inProduction:[],scheduled:[],published:[]}, D.kanban || {}, dismissed);
+        D.xTopics = prevXTopics || [];
+        pullXTopicsFromCloud().then(() => renderXTopics()); // por si el bot ya retiró alguna idea usada
         restoreFinance();
         try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
         renderAll();
@@ -2491,15 +2639,32 @@ async function loadData() {
     const r = await fetch('./brand_os_data.json?t=' + Date.now());
     if (!r.ok) throw new Error(r.status);
     D = await r.json();
-    try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
+    // Los descartados van PRIMERO: sin ellos, la fusión de abajo reviviría lo que Brian
+    // ya borró en este u otro dispositivo.
+    await pullDismissedFromCloud();
+    try {
+      const dismissed = getDismissed();
+      const savedScripts = localStorage.getItem('brandos_scripts');
+      D.scripts = mergeScripts(savedScripts ? JSON.parse(savedScripts) : [], D.scripts || [], dismissed);
+      const savedKanban = localStorage.getItem('brandos_kanban');
+      D.kanban = mergeKanban(savedKanban ? JSON.parse(savedKanban) : {todo:[],inProduction:[],scheduled:[],published:[]}, D.kanban || {}, dismissed);
+    } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
+    try { const saved = localStorage.getItem(XTOPICS_KEY); D.xTopics = saved ? JSON.parse(saved) : []; } catch(_) { D.xTopics = []; }
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
+    await pullKanbanFromCloud(); // restaurar tablero desde la nube si es más reciente
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    await pullXTopicsFromCloud(); // ideas de X — la nube manda (ver comentario en la función)
     processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
+    // Guardar el resultado de la fusión: así el sello de tiempo local queda al día (si no,
+    // el siguiente pull de la nube volvería a pisar lo que acaba de traer el bot) y el
+    // celular recibe los guiones nuevos sin esperar a que Brian toque nada.
+    persistScripts();
+    persistKanban();
     // Notas por video: el navegador manda; fusiona el respaldo del JSON y resincroniza
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     document.getElementById('sync-time').textContent = new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
@@ -2515,14 +2680,20 @@ async function loadData() {
     renderNotice(false);
   } catch(e) {
     D = JSON.parse(JSON.stringify(SAMPLE));
+    // Sin servidor (file://) los datos de muestra no deben pisar el trabajo real que
+    // Brian tenga guardado en este navegador — aquí el navegador manda del todo.
     try { const saved = localStorage.getItem('brandos_scripts'); if (saved) D.scripts = JSON.parse(saved); } catch(_) {}
+    try { const saved = localStorage.getItem('brandos_kanban'); if (saved) D.kanban = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
+    try { const saved = localStorage.getItem(XTOPICS_KEY); if (saved) D.xTopics = JSON.parse(saved); } catch(_) {}
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
     await pullScriptsFromCloud(); // restaurar guiones desde la nube si son más recientes
+    await pullKanbanFromCloud(); // restaurar tablero desde la nube si es más reciente
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    await pullXTopicsFromCloud(); // ideas de X — la nube manda (ver comentario en la función)
     processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
@@ -2587,6 +2758,8 @@ function renderAll() {
   renderComments();
   renderSOP();
   renderContentStrategy();
+  renderXTopics();
+  renderTopicRadar();
   renderKanban();
   renderScripts();
   renderCalendar();
@@ -2908,6 +3081,9 @@ const SYNC_ROW_ID  = 'brian_finance';
 const SCRIPTS_SYNC_ID = 'brian_scripts';
 const GOALS_SYNC_ID = 'brian_goals';
 const HABITS_SYNC_ID = 'brian_habits';
+const KANBAN_SYNC_ID = 'brian_kanban';
+const DISMISSED_SYNC_ID = 'brian_dismissed';
+const XTOPICS_SYNC_ID = 'brian_x_topics';
 let _sbClient = null;
 
 function getSB() {
@@ -2933,6 +3109,8 @@ async function pushToCloud() {
       debitBalance: D.debitBalance || 0,
       bizBalance:   D.bizBalance   || 0,
       bancolombiaBalance: D.bancolombiaBalance || 0,
+      capitalOne:   D.capitalOne   || { accounts: [] },
+      remittancesIgnored: D.remittancesIgnored || [],
       dca:          D.dca          || { transactions: [] },
       savedAt
     };
@@ -2968,6 +3146,8 @@ async function pullFromCloud() {
     if (f.debitBalance != null) D.debitBalance = f.debitBalance;
     if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
+    if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
+    if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
     // Candado: usar la versión (nube vs. local) que tenga MÁS movimientos, nunca la más vacía.
     if (f.dca && Array.isArray(f.dca.transactions)) {
       const localCount = (D.dca && Array.isArray(D.dca.transactions)) ? D.dca.transactions.length : 0;
@@ -3003,13 +3183,118 @@ async function pullScriptsFromCloud() {
     const localTs = localStorage.getItem(SCRIPTS_KEY + '_ts');
     const localTime = localTs ? new Date(localTs).getTime() : 0;
     if (cloudTime > localTime) {
-      D.scripts = row.data.scripts;
+      // Fusionar, NO reemplazar: D.scripts ya trae los guiones nuevos que escribió el bot
+      // en el JSON; un reemplazo directo los borraría hasta la siguiente recarga.
+      // La nube va primero (es la versión más reciente y sus ediciones mandan) y lo que
+      // solo existe aquí — lo recién llegado del bot — se le agrega.
+      D.scripts = mergeScripts(row.data.scripts, D.scripts || [], getDismissed());
       try {
-        localStorage.setItem(SCRIPTS_KEY, JSON.stringify(row.data.scripts));
+        localStorage.setItem(SCRIPTS_KEY, JSON.stringify(D.scripts));
         localStorage.setItem(SCRIPTS_KEY + '_ts', row.data.savedAt);
       } catch(_) {}
     }
   } catch(e) { console.warn('[Sync] scripts pull failed:', e.message); }
+}
+// ============================================================
+
+// ── KANBAN SYNC — respaldo del tablero en la nube (mismo patrón que scripts) ──
+async function pushKanbanToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: KANBAN_SYNC_ID,
+      data: { kanban: D.kanban || {}, savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] kanban push failed:', e.message); }
+}
+
+async function pullKanbanFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', KANBAN_SYNC_ID).maybeSingle();
+    if (error || !row || !row.data || !row.data.kanban) return;
+    const cloudTime = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs = localStorage.getItem(KANBAN_KEY + '_ts');
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) {
+      // Fusionar, no reemplazar — misma razón que en pullScriptsFromCloud()
+      D.kanban = mergeKanban(row.data.kanban, D.kanban || {}, getDismissed());
+      try {
+        localStorage.setItem(KANBAN_KEY, JSON.stringify(D.kanban));
+        localStorage.setItem(KANBAN_KEY + '_ts', row.data.savedAt);
+      } catch(_) {}
+    }
+  } catch(e) { console.warn('[Sync] kanban pull failed:', e.message); }
+}
+// ============================================================
+
+// ── DISMISSED SYNC — lo que Brian descarta se descarta en TODOS sus dispositivos ──
+// A diferencia de los demás, aquí no se compara "quién es más reciente": se hace la
+// UNIÓN de la lista local y la de la nube. Descartar es una decisión definitiva de
+// Brian, así que nunca se pierde — si borró algo en la PC, tampoco debe reaparecer en
+// el celular (y era justo lo que iba a pasar sin esto).
+async function pushDismissedToCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: DISMISSED_SYNC_ID,
+      data: { dismissed: [...getDismissed()], savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] dismissed push failed:', e.message); }
+}
+
+async function pullDismissedFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', DISMISSED_SYNC_ID).maybeSingle();
+    if (error || !row || !row.data || !Array.isArray(row.data.dismissed)) return;
+    const union = new Set([...getDismissed(), ...row.data.dismissed]);
+    try { localStorage.setItem(DISMISSED_KEY, JSON.stringify([...union])); } catch(_) {}
+  } catch(e) { console.warn('[Sync] dismissed pull failed:', e.message); }
+}
+// ============================================================
+
+// ── IDEAS DE X SYNC — lo que Brian pega a mano, para que el bot (en la PC) lo lea
+// aunque Brian lo haya agregado desde el celular.
+//
+// A diferencia de scripts/kanban, aquí NO se fusiona sumando: la nube es la ÚNICA
+// lista compartida (no hay un archivo JSON aparte en la PC como con scripts/kanban),
+// y tiene DOS escritores legítimos que borran de ella — Brian (cuando quita una idea
+// con ✕) y el propio bot (cuando ya usó una). Si sumáramos en vez de reemplazar, una
+// idea que el bot ya consumió y borró de la nube seguiría viéndose "pendiente" en el
+// navegador para siempre. Por eso: el más reciente reemplaza completo al otro lado.
+async function pushXTopicsToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: XTOPICS_SYNC_ID,
+      data: { items: D.xTopics || [], savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] x-topics push failed:', e.message); }
+}
+
+async function pullXTopicsFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', XTOPICS_SYNC_ID).maybeSingle();
+    if (error || !row || !row.data || !Array.isArray(row.data.items)) return;
+    const cloudTime = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs = localStorage.getItem(XTOPICS_KEY + '_ts');
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) {
+      D.xTopics = row.data.items;
+      try {
+        localStorage.setItem(XTOPICS_KEY, JSON.stringify(D.xTopics));
+        localStorage.setItem(XTOPICS_KEY + '_ts', row.data.savedAt);
+      } catch(_) {}
+    }
+  } catch(e) { console.warn('[Sync] x-topics pull failed:', e.message); }
 }
 // ============================================================
 
@@ -3200,7 +3485,9 @@ function saveFinance() {
       debitBalance: D.debitBalance || 0,
       bizBalance: D.bizBalance || 0,
       bancolombiaBalance: D.bancolombiaBalance || 0,
+      capitalOne: D.capitalOne || { accounts: [] },
       bankIgnored: D.bankIgnored || [],   // gastos del banco que Brian eliminó (no re-importar)
+      remittancesIgnored: D.remittancesIgnored || [], // remesas del banco que Brian eliminó (no re-importar)
       dca: D.dca || { transactions: [] }, // bitácora de inversiones (compras/ventas/transferencias)
       savedAt: new Date().toISOString()
     }));
@@ -3226,7 +3513,9 @@ function restoreFinance() {
     if (f.debitBalance != null) D.debitBalance = f.debitBalance;
     if (f.bizBalance   != null) D.bizBalance   = f.bizBalance;
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
+    if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
     if (Array.isArray(f.bankIgnored)) D.bankIgnored = f.bankIgnored;
+    if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
     // Candado: solo usar la bitácora guardada en el navegador si tiene AL MENOS tantos
     // movimientos como la que acaba de venir del JSON. Si el JSON trae más (p. ej. porque
     // se cargó un historial nuevo directamente en brand_os_data.json), no lo pises con
@@ -3825,13 +4114,18 @@ function renderKanban() {
 function renderCard(card) {
   const pc = PRIORITY_COLOR[card.priority] || 'var(--border)';
   const timeStr = card.startTime ? `${card.startTime}${card.endTime ? '–'+card.endTime : ''}` : '';
+  // El botón de guión solo aparece si el guión enlazado todavía existe (Brian pudo borrarlo
+  // por separado — tarjeta y guión son independientes a propósito).
+  const hasScript = card.scriptId && (D.scripts || []).some(s => s.id === card.scriptId);
   return `
-    <div class="k-card" draggable="true" data-id="${card.id}" style="--ca:${pc}">
-      <div class="k-card-title">${card.title}</div>
+    <div class="k-card" draggable="true" data-id="${esc(card.id)}" style="--ca:${pc}">
+      <button class="k-card-del" title="Eliminar tarjeta" onclick="event.stopPropagation();delKanbanCard('${esc(card.id)}')">✕</button>
+      <div class="k-card-title">${card.origin === 'bot' ? '🤖 ' : ''}${esc(card.title)}</div>
       <div class="k-meta">
-        <span class="tag tag-plat">${card.platform}</span>
-        <span class="tag tag-${card.priority}">${card.priority}</span>
-        ${card.date ? `<span class="k-date">${card.date}${timeStr ? ' '+timeStr : ''}</span>` : ''}
+        <span class="tag tag-plat">${esc(card.platform)}</span>
+        <span class="tag tag-${card.priority}">${esc(card.priority)}</span>
+        ${hasScript ? `<button class="k-card-script" title="Ver guión" onclick="event.stopPropagation();openScriptView('${esc(card.scriptId)}')">📄 Guión</button>` : ''}
+        ${card.date ? `<span class="k-date">${esc(card.date)}${timeStr ? ' '+esc(timeStr) : ''}</span>` : ''}
       </div>
     </div>`;
 }
@@ -3846,9 +4140,21 @@ function dropCard(e, toCol) {
   const [card] = from.splice(idx, 1);
   D.kanban[toCol].push(card);
   dragId = dragFrom = null;
+  persistKanban();
   renderKanban();
   renderCalendar();
   showToast('Tarjeta movida a "' + COLS.find(c=>c.key===toCol)?.label + '"');
+}
+
+function delKanbanCard(id) {
+  if (!confirm('¿Eliminar esta tarjeta?')) return;
+  const cols = ['todo','inProduction','scheduled','published'];
+  cols.forEach(c => { D.kanban[c] = (D.kanban[c] || []).filter(card => card.id !== id); });
+  addDismissed(id);
+  persistKanban();
+  renderKanban();
+  renderCalendar();
+  showToast('Tarjeta eliminada');
 }
 
 function openKanbanModal(col) {
@@ -3877,6 +4183,7 @@ function saveKanbanCard() {
   if (startTime) card.startTime = startTime;
   if (endTime)   card.endTime   = endTime;
   D.kanban[col].push(card);
+  persistKanban();
 
   if (!D.scripts) D.scripts = [];
   D.scripts.unshift({ id: 's' + Date.now(), title, platform, date: today(), status: 'draft', docUrl: '' });
@@ -3895,6 +4202,9 @@ function saveKanbanCard() {
 const STATUS_MAP = { draft:'Borrador', filming:'Grabando', editing:'Editando', scheduled:'Programado', published:'Publicado' };
 const STATUS_ORDER = ['draft','filming','editing','scheduled','published'];
 const SCRIPTS_KEY = 'brandos_scripts';
+const KANBAN_KEY = 'brandos_kanban';
+const DISMISSED_KEY = 'brandos_dismissed';
+const XTOPICS_KEY = 'brandos_x_topics';
 
 function persistScripts() {
   const savedAt = new Date().toISOString();
@@ -3905,15 +4215,112 @@ function persistScripts() {
   pushScriptsToCloud(savedAt);
 }
 
+function persistKanban() {
+  const savedAt = new Date().toISOString();
+  try {
+    localStorage.setItem(KANBAN_KEY, JSON.stringify(D.kanban));
+    localStorage.setItem(KANBAN_KEY + '_ts', savedAt);
+  } catch(_) {}
+  pushKanbanToCloud(savedAt);
+}
+
+// ── Lista de "descartados" ───────────────────────────────────────────────
+// Cuando Brian borra un guión o tarjeta que puso el bot, el navegador anota su id aquí.
+// Así, la próxima vez que el bot corra y vuelva a escribir en el JSON, ese id se ignora
+// y no reaparece solo (si no, sería como un correo que borras y regresa siempre).
+function getDismissed() {
+  try { const raw = localStorage.getItem(DISMISSED_KEY); return raw ? new Set(JSON.parse(raw)) : new Set(); }
+  catch(_) { return new Set(); }
+}
+function addDismissed(id) {
+  try {
+    const s = getDismissed();
+    s.add(id);
+    localStorage.setItem(DISMISSED_KEY, JSON.stringify([...s]));
+  } catch(_) {}
+  pushDismissedToCloud();
+}
+
+// ── Fusión JSON ↔ navegador ──────────────────────────────────────────────
+// Regla simple: lo que Brian ya tiene en el navegador manda (respeta ediciones y
+// dónde movió cada tarjeta). Lo nuevo que trae el JSON (del bot o de otro dispositivo)
+// se agrega. Lo que Brian ya descartó no vuelve.
+function mergeScripts(local, remote, dismissed) {
+  local = local || [];
+  const byId = new Map(local.map(s => [s.id, s]));
+  (remote || []).forEach(rs => {
+    if (dismissed.has(rs.id)) return;
+    const ls = byId.get(rs.id);
+    if (!ls) { local.push(rs); byId.set(rs.id, rs); return; }
+    // Si el local todavía no tiene el guión completo pero el JSON sí, se completa sin pisar el estado/doc que Brian ya haya tocado.
+    if (!ls.body && rs.body) Object.assign(ls, rs, { status: ls.status, docUrl: ls.docUrl });
+  });
+  return local;
+}
+
+// ── IDEAS DE X — Brian pega el link o el tema a mano; el bot las lee de la nube ──
+function persistXTopics() {
+  const savedAt = new Date().toISOString();
+  try {
+    localStorage.setItem(XTOPICS_KEY, JSON.stringify(D.xTopics || []));
+    localStorage.setItem(XTOPICS_KEY + '_ts', savedAt);
+  } catch(_) {}
+  pushXTopicsToCloud(savedAt);
+}
+
+function addXTopic() {
+  const input = document.getElementById('xtopics-input');
+  const raw = input.value.trim();
+  if (!raw) return;
+  // Se separa el link (si hay uno) del texto — así Brian puede escribir los dos juntos
+  // ("Grok 5 ya razona mejor que GPT-6 https://x.com/..."). Un link SOLO no le sirve al
+  // bot: no puede leer X, así que sin una frase que diga de qué trata, no sabe el tema.
+  const urlMatch = raw.match(/https?:\/\/\S+/i);
+  const url = urlMatch ? urlMatch[0] : '';
+  const text = raw.replace(url, '').trim();
+  if (!D.xTopics) D.xTopics = [];
+  D.xTopics.push({ id: 'x' + Date.now(), text, url, addedAt: new Date().toISOString() });
+  input.value = '';
+  persistXTopics();
+  renderXTopics();
+  if (url && !text) {
+    showToast('Idea agregada — pero como solo pegaste el link, agrega también una frase de qué trata (el bot no puede leer X)', true);
+  } else {
+    showToast('Idea agregada — el bot la va a priorizar en su próxima búsqueda');
+  }
+}
+
+function removeXTopic(id) {
+  D.xTopics = (D.xTopics || []).filter(x => x.id !== id);
+  persistXTopics();
+  renderXTopics();
+}
+
+function mergeKanban(local, remote, dismissed) {
+  const cols = ['todo', 'inProduction', 'scheduled', 'published'];
+  local = local || {};
+  remote = remote || {};
+  const localIds = new Set();
+  cols.forEach(c => { if (!local[c]) local[c] = []; local[c].forEach(card => localIds.add(card.id)); });
+  cols.forEach(c => {
+    (remote[c] || []).forEach(card => {
+      if (localIds.has(card.id) || dismissed.has(card.id)) return;
+      local[c].push(card);
+      localIds.add(card.id);
+    });
+  });
+  return local;
+}
+
 function renderScripts() {
   if (!D) return;
   document.getElementById('scripts-body').innerHTML = (D.scripts||[]).map(s => `
     <tr>
-      <td style="color:var(--text-1);font-weight:600">${esc(s.title)}</td>
+      <td style="color:var(--text-1);font-weight:600;cursor:pointer" onclick="openScriptView('${esc(s.id)}')">${s.origin === 'bot' ? '🤖 ' : ''}${esc(s.title)}</td>
       <td><span class="tag tag-plat">${esc(s.platform)}</span></td>
       <td>${s.date}</td>
       <td><span class="sbadge s-${s.status}" onclick="cycleScriptStatus('${s.id}')" title="Click para cambiar estado">${STATUS_MAP[s.status]||s.status}</span></td>
-      <td>${s.docUrl ? `<a class="doc-link" href="${esc(s.docUrl)}" target="_blank">📄 Abrir Doc ↗</a>` : '<span style="color:var(--text-3)">—</span>'}</td>
+      <td>${s.docUrl ? `<a class="doc-link" href="${esc(safeUrl(s.docUrl))}" target="_blank" rel="noopener noreferrer">📄 Abrir Doc ↗</a>` : '<span style="color:var(--text-3)">—</span>'}</td>
       <td style="white-space:nowrap"><button class="btn-e" onclick="editScript('${s.id}')" title="Editar">✎</button> <button class="btn-d" onclick="delScript('${s.id}')">✕</button></td>
     </tr>`).join('') || '<tr><td colspan="6" class="empty">Sin guiones registrados</td></tr>';
 }
@@ -3968,6 +4375,7 @@ function saveNewScript() {
 function delScript(id) {
   if (!confirm('¿Eliminar este guión?')) return;
   D.scripts = D.scripts.filter(s => s.id !== id);
+  addDismissed(id);
   persistScripts();
   renderScripts();
   showToast('Guión eliminado');
@@ -3981,6 +4389,74 @@ function cycleScriptStatus(id) {
   persistScripts();
   renderScripts();
   showToast('Estado → ' + STATUS_MAP[s.status]);
+}
+
+// ── Ver / editar el guión completo que escribió el bot (o Brian) ──────────
+function openScriptView(id) {
+  const s = D.scripts.find(x => x.id === id);
+  if (!s) return;
+  viewingScriptId = id;
+  document.getElementById('sv-title').textContent = (s.origin === 'bot' ? '🤖 ' : '') + s.title;
+  document.getElementById('sv-meta').innerHTML =
+    `<span class="tag tag-plat">${esc(s.platform)}</span> <span class="sbadge s-${s.status}">${STATUS_MAP[s.status]||s.status}</span> <span style="color:var(--text-3);font-size:11px;margin-left:6px">${esc(s.date||'')}</span>`;
+  document.getElementById('sv-hook').value = s.hook || '';
+  document.getElementById('sv-body').value = s.body || '';
+  document.getElementById('sv-caption').value = s.caption || '';
+  document.getElementById('sv-hashtags').value = Array.isArray(s.hashtags) ? s.hashtags.join(' ') : (s.hashtags || '');
+  document.getElementById('sv-broll').value = Array.isArray(s.broll) ? s.broll.map(b => '• ' + b).join('\n') : (s.broll || '');
+  const sources = Array.isArray(s.sources) ? s.sources : [];
+  document.getElementById('sv-sources').innerHTML = sources.length
+    ? '<div class="i-label" style="margin-bottom:4px">Fuentes</div>' + sources.map(src =>
+        `<a class="radar-source-link" href="${esc(safeUrl(src.url))}" target="_blank" rel="noopener noreferrer" style="margin-right:10px">🔗 ${esc(src.name||src.url||'fuente')}</a>`).join('')
+    : '';
+  if (!s.body) {
+    showToast('Este guión todavía no tiene contenido del bot — escríbelo tú abajo o espera la próxima corrida', false);
+  }
+  openModal('modal-script-view');
+}
+
+function saveScriptView() {
+  const s = D.scripts.find(x => x.id === viewingScriptId);
+  if (!s) return;
+  s.hook = document.getElementById('sv-hook').value.trim();
+  s.body = document.getElementById('sv-body').value.trim();
+  s.caption = document.getElementById('sv-caption').value.trim();
+  s.hashtags = document.getElementById('sv-hashtags').value.trim().split(/\s+/).filter(Boolean);
+  s.broll = document.getElementById('sv-broll').value.split('\n').map(l => l.replace(/^•\s*/, '').trim()).filter(Boolean);
+  persistScripts();
+  closeModal('modal-script-view');
+  showToast('Guión guardado');
+}
+
+function copyScriptView() {
+  const parts = [
+    document.getElementById('sv-title').textContent,
+    '',
+    'HOOK: ' + document.getElementById('sv-hook').value,
+    '',
+    document.getElementById('sv-body').value,
+    '',
+    'CAPTION: ' + document.getElementById('sv-caption').value,
+    document.getElementById('sv-hashtags').value,
+  ];
+  const text = parts.join('\n');
+  const done = () => showToast('📋 Guión copiado');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function fallbackCopy(text, done) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    done();
+  } catch(_) { showToast('No se pudo copiar — selecciona el texto manualmente', true); }
 }
 
 /* ============================================================
@@ -5200,6 +5676,135 @@ function assignBucket(day, bucketId) {
 }
 
 /* ============================================================
+   RADAR DE TEMAS (bot de contenido)
+   El bot escribe D.topicRadar en el JSON. Aquí solo se muestra y se decide
+   qué hacer con cada tema — nunca se publica nada solo.
+============================================================ */
+function radarPriorityFromScore(score) {
+  if (score >= 8) return 'high';
+  if (score >= 5) return 'medium';
+  return 'low';
+}
+
+function renderXTopics() {
+  if (!D) return;
+  const listEl = document.getElementById('xtopics-list');
+  if (!listEl) return;
+  const items = D.xTopics || [];
+  if (!items.length) {
+    listEl.innerHTML = '<div class="xtopics-empty">Aún no has agregado nada de X.</div>';
+    return;
+  }
+  listEl.innerHTML = items.map(x => `
+    <div class="xtopics-item">
+      <span class="xtopics-item-text">${esc(x.text || x.url || '')}</span>
+      ${x.url ? `<a class="xtopics-item-link" href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener noreferrer">🔗 Abrir</a>` : ''}
+      <button class="xtopics-item-del" title="Quitar" onclick="removeXTopic('${esc(x.id)}')">✕</button>
+    </div>`).join('');
+}
+
+function renderTopicRadar() {
+  if (!D) return;
+  const statusEl = document.getElementById('radar-status');
+  const gridEl = document.getElementById('radar-grid');
+  const radar = D.topicRadar || {};
+  const dismissed = getDismissed();
+  const items = (radar.items || []).filter(t => !dismissed.has(t.id));
+
+  if (radar.generatedAt) {
+    const dt = new Date(radar.generatedAt);
+    const fmt = dt.toLocaleString('es-MX', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    statusEl.textContent = `Última búsqueda: ${fmt} — ${items.length} tema${items.length===1?'':'s'} sin usar`;
+  } else {
+    statusEl.textContent = '';
+  }
+
+  if (!items.length) {
+    gridEl.innerHTML = `<div class="radar-empty">${radar.generatedAt ? 'Ya usaste o descartaste todos los temas de la última búsqueda.' : 'Todavía no hay temas — el bot corre lunes y jueves a las 7:30am, o dale a "🤖 Generar ahora".'}</div>`;
+    return;
+  }
+
+  gridEl.innerHTML = items.map(t => `
+    <div class="radar-card">
+      <div class="radar-card-title">${esc(t.title)}</div>
+      ${t.angle ? `<div class="radar-card-angle">${esc(t.angle)}</div>` : ''}
+      ${t.why ? `<div class="radar-card-why">${esc(t.why)}</div>` : ''}
+      ${Array.isArray(t.sources) && t.sources.length ? `<div class="radar-card-sources">${t.sources.map(src => `<a class="radar-source-link" href="${esc(safeUrl(src.url))}" target="_blank" rel="noopener noreferrer">🔗 ${esc(src.name||'fuente')}</a>`).join('')}</div>` : ''}
+      <div class="radar-card-actions">
+        <button class="btn-p" style="flex:1" onclick="addTopicToKanban('${esc(t.id)}')">➕ Al Kanban</button>
+        <button class="btn-s" onclick="dismissTopic('${esc(t.id)}')">✕ Descartar</button>
+      </div>
+    </div>`).join('');
+}
+
+function addTopicToKanban(topicId) {
+  const t = (D.topicRadar?.items || []).find(x => x.id === topicId);
+  if (!t) return;
+  const platform = t.platform || 'TikTok';
+  const card = {
+    id: 'k' + Date.now(),
+    title: t.title,
+    platform,
+    priority: radarPriorityFromScore(t.score || 5),
+    date: today(),
+    origin: 'radar'
+  };
+  D.kanban.todo.push(card);
+  persistKanban();
+
+  if (!D.scripts) D.scripts = [];
+  D.scripts.unshift({
+    id: 's' + Date.now(), title: t.title, platform, date: today(), status: 'draft', docUrl: '',
+    origin: 'radar', hook: t.angle || '', sources: t.sources || []
+  });
+  persistScripts();
+
+  addDismissed(topicId); // ya se usó — que no siga apareciendo en el radar
+  renderKanban();
+  renderScripts();
+  renderCalendar();
+  renderTopicRadar();
+  showToast('Tema agregado al Kanban y a Guiones');
+}
+
+function dismissTopic(topicId) {
+  addDismissed(topicId);
+  renderTopicRadar();
+  showToast('Tema descartado');
+}
+
+// Dispara al bot de contenido manualmente (además de correr solo lunes y jueves 7:30am)
+async function runContentBot() {
+  const btn = document.getElementById('btn-content-bot');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '🤖 Buscando temas…';
+  // El servidor responde 200 también cuando NO arrancó nada (ya estaba corriendo, o en
+  // espera). Hay que mirar el campo "status", no solo el código HTTP, o le diríamos a
+  // Brian que el bot arrancó cuando no fue así.
+  let started = false;
+  try {
+    const r = await fetch('/api/content-bot/run', { method: 'POST' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    if (j.status === 'busy') {
+      showToast('El bot ya está trabajando — espera a que termine');
+    } else if (j.status === 'cooldown') {
+      showToast(`Acaba de correr. Espera ${j.retryIn}s para volver a intentarlo`);
+    } else {
+      started = true;
+      showToast('🤖 El bot está trabajando — tarda 1-2 minutos, el dashboard se actualiza solo');
+    }
+  } catch (e) {
+    showToast('No se pudo iniciar el bot (¿el servidor local está corriendo?)', true);
+  } finally {
+    // Si arrancó de verdad, el botón queda bloqueado mientras dura la corrida y el
+    // periodo de espera del servidor; si no arrancó, se libera enseguida.
+    setTimeout(() => { btn.disabled = false; btn.textContent = original; }, started ? 60000 : 3000);
+  }
+}
+
+/* ============================================================
    MODULE 5: COMMENT FILTERS
 ============================================================ */
 let commentFilter = 'all';
@@ -5319,12 +5924,14 @@ function renderFinanzas() {
   // Puente banco → gastos: vuelca las transacciones de Plaid al presupuesto
   // (cubre también las que trajo la tarea de las 7am sin abrir el dashboard)
   const _imp = importBankTransactions();
-  if (_imp.added || _imp.updated) saveFinance();
+  const _impRem = importBankRemittances();
+  if (_imp.added || _imp.updated || _impRem.added || _impRem.updated) saveFinance();
 
   renderBankMock();
   renderDebitBalance();
   renderBizBalance();
   renderBancoBalance();
+  renderCapitalOne();
   syncPlaidCardsToDebts();   // refleja saldos de tarjetas del banco (ej. auto-update 7am)
   renderBudgetTable();
   renderExpenses();
@@ -5332,7 +5939,19 @@ function renderFinanzas() {
   renderIncome();
   renderDebts();
   renderSurplus();
+  renderPanorama();   // al final: ya están calculados el efectivo y las deudas
 }
+
+// Fuente única de verdad de las ranuras de banco conocidas por el dashboard: su sufijo
+// de ids y su nombre por defecto. connectBank(), pollHostedLink(), slotSuffix() y
+// renderBankMock() leen de aquí — agregar un banco nuevo es UNA sola línea en esta
+// lista (más VALID_SLOTS en lib/plaid.js, del lado del servidor).
+const BANK_SLOTS = [
+  { slot: 'personal',   suffix: '',      label: 'Banco' },
+  { slot: 'business',   suffix: '-biz',  label: 'Banco de Negocios' },
+  { slot: 'discover',   suffix: '-disc', label: 'Discover' },
+  { slot: 'capitalone', suffix: '-cap1', label: 'Capital One' }
+];
 
 async function renderBankMock() {
   if (!document.getElementById('bank-badge')) return;
@@ -5343,16 +5962,14 @@ async function renderBankMock() {
     st = await r.json();
   } catch (_) { /* sin servidor local (ej. GitHub Pages) */ }
 
-  // Cada fila de banco tiene su ranura: personal (Chase), business (Bluevine), discover (Discover)
-  renderBankRow('personal', '', 'Banco', st);
-  renderBankRow('business', '-biz', 'Banco de Negocios', st);
-  renderBankRow('discover', '-disc', 'Discover', st);
+  BANK_SLOTS.forEach(b => renderBankRow(b.slot, b.suffix, b.label, st));
 }
 
 // Sufijo de ids por ranura — usado por connectBank() y pollHostedLink() para
 // encontrar el badge/nombre/estado correctos de cada fila de banco.
 function slotSuffix(slot) {
-  return slot === 'business' ? '-biz' : (slot === 'discover' ? '-disc' : '');
+  const b = BANK_SLOTS.find(x => x.slot === slot);
+  return b ? b.suffix : '';
 }
 
 // Pinta una fila de conexión bancaria. suffix = '' (personal) | '-biz' (negocios)
@@ -5397,6 +6014,7 @@ function renderDebitBalance() {
 function updateDebitBalance() {
   D.debitBalance = parseFloat(document.getElementById('debit-balance-input').value) || 0;
   saveFinance();
+  renderPanorama();
 }
 
 // Ajuste rápido del saldo de débito (+1 = recibí, -1 = gasté)
@@ -5420,6 +6038,7 @@ function applyDebitAdjust() {
   D.debitBalance = (D.debitBalance || 0) + debitAdjustSign * amt;
   saveFinance();
   renderDebitBalance();
+  renderPanorama();
   hideDebitAdjust();
   showToast(debitAdjustSign < 0 ? 'Saldo reducido' : 'Saldo aumentado');
 }
@@ -5433,6 +6052,7 @@ function renderBizBalance() {
 function updateBizBalance() {
   D.bizBalance = parseFloat(document.getElementById('biz-balance-input').value) || 0;
   saveFinance();
+  renderPanorama();
 }
 
 // Ajuste rápido del saldo del negocio (+1 = recibí, -1 = gasté)
@@ -5456,6 +6076,7 @@ function applyBizAdjust() {
   D.bizBalance = (D.bizBalance || 0) + bizAdjustSign * amt;
   saveFinance();
   renderBizBalance();
+  renderPanorama();
   hideBizAdjust();
   showToast(bizAdjustSign < 0 ? 'Saldo del negocio reducido' : 'Saldo del negocio aumentado');
 }
@@ -5474,15 +6095,21 @@ function renderBancoBalance() {
   if (el && document.activeElement !== el) el.value = D.bancolombiaBalance || '';
   renderBancoUsd();
 }
+// Equivalente en dólares del saldo de Bancolombia — null si no hay tasa registrada.
+// Única fuente de verdad, usada por renderBancoUsd() y por renderPanorama().
+function bancoUsdEquivalent() {
+  const rate = latestCopRate();
+  return rate ? (D.bancolombiaBalance || 0) / rate : null;
+}
 // Línea gris: saldo formateado en pesos + equivalente en dólares (última tasa registrada)
 function renderBancoUsd() {
   const line = document.getElementById('banco-usd-eq');
   if (!line) return;
   const cop = D.bancolombiaBalance || 0;
   const copTxt = '$' + cop.toLocaleString('es-CO', { maximumFractionDigits: 0 });
-  const rate = latestCopRate();
-  const usdTxt = rate
-    ? '≈ US$ ' + (cop / rate).toLocaleString('en-US', { maximumFractionDigits: 0 })
+  const usd = bancoUsdEquivalent();
+  const usdTxt = usd != null
+    ? '≈ US$ ' + usd.toLocaleString('en-US', { maximumFractionDigits: 0 })
     : '≈ US$ —';
   line.textContent = copTxt + ' COP · ' + usdTxt;
 }
@@ -5490,6 +6117,7 @@ function updateBancoBalance() {
   D.bancolombiaBalance = parseFloat(document.getElementById('banco-balance-input').value) || 0;
   saveFinance();
   renderBancoUsd();
+  renderPanorama();
 }
 // Ajuste rápido del saldo de Bancolombia (+1 = recibí, -1 = gasté), en pesos
 let bancoAdjustSign = -1;
@@ -5512,12 +6140,148 @@ function applyBancoAdjust() {
   D.bancolombiaBalance = (D.bancolombiaBalance || 0) + bancoAdjustSign * amt;
   saveFinance();
   renderBancoBalance();
+  renderPanorama();
   hideBancoAdjust();
   showToast(bancoAdjustSign < 0 ? 'Saldo de Bancolombia reducido' : 'Saldo de Bancolombia aumentado');
 }
 
+// ── Capital One: 3 cuentas (seguro del carro, bills/renta, mamá) ──
+// Un solo objeto D.capitalOne.accounts en vez de 3 claves sueltas, para que
+// agregar/quitar una cuenta no obligue a tocar saveFinance/restoreFinance/
+// pushToCloud/pullFromCloud/migrateFinance cada vez.
+function defaultCap1Accounts() {
+  return [
+    { id: 'seguro', label: 'Car insurance', mask: '7946', emoji: '🚗', balance: 0, plaidAccountId: null },
+    { id: 'bills',  label: 'Bills',         mask: '4378', emoji: '🧾', balance: 0, plaidAccountId: null },
+    { id: 'mama',   label: 'Money to Mom',  mask: '5486', emoji: '💝', balance: 0, plaidAccountId: null }
+  ];
+}
+
+function renderCapitalOne() {
+  const wrap = document.getElementById('cap1-accounts');
+  if (!wrap || !D.capitalOne) return;
+  const accounts = D.capitalOne.accounts || [];
+
+  // Si Brian está escribiendo un saldo, O tiene un ajuste (− Gasté / + Recibí) abierto
+  // en CUALQUIERA de las 3 cuentas, no repintar el HTML entero — se perdería lo que
+  // está escribiendo. Solo refrescar los valores de los saldos que no está tocando.
+  const busy = accounts.some(acc => {
+    const balEl = document.getElementById('cap1-balance-' + acc.id);
+    if (document.activeElement === balEl) return true;
+    const box = document.getElementById('cap1-adjust-box-' + acc.id);
+    return box && box.style.display && box.style.display !== 'none';
+  });
+  if (busy && wrap.childElementCount) {
+    accounts.forEach(acc => {
+      const el = document.getElementById('cap1-balance-' + acc.id);
+      if (el && document.activeElement !== el) el.value = acc.balance || '';
+    });
+    return;
+  }
+
+  wrap.innerHTML = accounts.map(acc => `
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid rgba(0,145,234,.12)">
+      <div style="font-size:18px">${acc.emoji}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:2px">${esc(acc.label)} <span style="opacity:.6">…${esc(acc.mask)}</span></div>
+        <div style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:18px;font-weight:800;color:var(--blue)">$</span>
+          <input type="number" id="cap1-balance-${acc.id}" step="0.01" min="0" placeholder="0.00" value="${acc.balance || ''}"
+            style="font-size:18px;font-weight:800;color:var(--blue);background:none;border:none;border-bottom:2px solid rgba(0,145,234,.25);padding:2px 0;width:120px;outline:none;font-family:inherit"
+            oninput="updateCap1Balance('${acc.id}')">
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <button class="btn-s" type="button" onclick="toggleCap1Adjust('${acc.id}',-1)">− Gasté</button>
+        <button class="btn-s" type="button" onclick="toggleCap1Adjust('${acc.id}',1)">+ Recibí</button>
+      </div>
+    </div>
+    <div id="cap1-adjust-box-${acc.id}" style="display:none;align-items:center;gap:6px;padding:4px 0 4px 28px">
+      <input type="number" id="cap1-adjust-amount-${acc.id}" step="0.01" min="0" placeholder="0.00" style="width:110px;font-size:13px;padding:6px 8px"
+        onkeydown="if(event.key==='Enter')applyCap1Adjust('${acc.id}')">
+      <button class="btn-p" type="button" onclick="applyCap1Adjust('${acc.id}')">OK</button>
+      <button class="btn-s" type="button" onclick="hideCap1Adjust('${acc.id}')">Cancelar</button>
+    </div>
+  `).join('');
+}
+
+function updateCap1Balance(id) {
+  const el = document.getElementById('cap1-balance-' + id);
+  const acc = (D.capitalOne.accounts || []).find(a => a.id === id);
+  if (!el || !acc) return;
+  acc.balance = parseFloat(el.value) || 0;
+  saveFinance();
+  renderPanorama();
+}
+
+// Ajuste rápido por cuenta de Capital One (+1 = recibí, -1 = gasté)
+const cap1AdjustSign = {};
+function toggleCap1Adjust(id, sign) {
+  cap1AdjustSign[id] = sign;
+  const box = document.getElementById('cap1-adjust-box-' + id);
+  const amt = document.getElementById('cap1-adjust-amount-' + id);
+  if (!box || !amt) return;
+  box.style.display = 'inline-flex';
+  amt.placeholder = sign < 0 ? 'Monto gastado' : 'Monto recibido';
+  amt.value = '';
+  amt.focus();
+}
+function hideCap1Adjust(id) {
+  const box = document.getElementById('cap1-adjust-box-' + id);
+  const amt = document.getElementById('cap1-adjust-amount-' + id);
+  if (box) box.style.display = 'none';
+  if (amt) amt.value = '';
+}
+function applyCap1Adjust(id) {
+  const amt = parseFloat(document.getElementById('cap1-adjust-amount-' + id).value);
+  if (isNaN(amt) || amt <= 0) { showToast('Monto inválido', true); return; }
+  const acc = (D.capitalOne.accounts || []).find(a => a.id === id);
+  if (!acc) return;
+  const sign = cap1AdjustSign[id] || -1;
+  acc.balance = (acc.balance || 0) + sign * amt;
+  saveFinance();
+  renderCapitalOne();
+  renderPanorama();
+  hideCap1Adjust(id);
+  showToast(sign < 0 ? (acc.label + ': saldo reducido') : (acc.label + ': saldo aumentado'));
+}
+
+// ── Panorama Total: suma de todo el efectivo disponible, aparte de las deudas ──
+function renderPanorama() {
+  const cashEl = document.getElementById('panorama-cash');
+  if (!cashEl) return;
+
+  const debit = D.debitBalance || 0;
+  const biz = D.bizBalance || 0;
+  const cap1 = (D.capitalOne && D.capitalOne.accounts || []).reduce((s, a) => s + (a.balance || 0), 0);
+  const copUsd = bancoUsdEquivalent();   // null = sin tasa registrada, no se puede convertir
+
+  const cash = debit + biz + cap1 + (copUsd || 0);
+  cashEl.textContent = '$' + cash.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const parts = [
+    'Chase $' + debit.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    'Bluevine $' + biz.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    'Capital One $' + cap1.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    copUsd != null
+      ? 'Bancolombia ≈$' + copUsd.toLocaleString('en-US', { maximumFractionDigits: 0 })
+      : 'Bancolombia sin tasa (no incluido)'
+  ];
+  const breakdownEl = document.getElementById('panorama-breakdown');
+  if (breakdownEl) breakdownEl.textContent = parts.join(' · ');
+
+  const debt = totalCardDebt();
+  const net = cash - debt;
+  const netEl = document.getElementById('panorama-net');
+  if (netEl) {
+    netEl.textContent = 'Deudas de tarjetas: $' + debt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+      + ' · Neto: ' + (net < 0 ? '−$' + Math.abs(net).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '$' + net.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+    netEl.style.color = net < 0 ? 'var(--red)' : 'var(--text-3)';
+  }
+}
+
 async function connectBank(slot) {
-  slot = ['business', 'discover'].includes(slot) ? slot : 'personal';
+  slot = BANK_SLOTS.some(b => b.slot === slot) ? slot : 'personal';
   const suffix = slotSuffix(slot);
   const badge = document.getElementById('bank-badge' + suffix);
   badge.textContent = '⏳ Conectando…';
@@ -5587,16 +6351,17 @@ async function connectBank(slot) {
 }
 
 // Espera a que el usuario termine la conexión en la ventana de Plaid (Hosted Link).
-// Consulta cada 4 segundos, hasta 10 minutos.
-let hostedPollTimer = null;
+// Consulta cada 4 segundos, hasta 10 minutos. Un temporizador POR RANURA (no uno solo
+// compartido) — así conectar un banco no cancela el sondeo de otro que ya estaba en curso.
+const hostedPollTimers = {};
 function pollHostedLink(slot) {
-  slot = ['business', 'discover'].includes(slot) ? slot : 'personal';
-  if (hostedPollTimer) clearInterval(hostedPollTimer);
+  slot = BANK_SLOTS.some(b => b.slot === slot) ? slot : 'personal';
+  if (hostedPollTimers[slot]) clearInterval(hostedPollTimers[slot]);
   const badge = document.getElementById('bank-badge' + slotSuffix(slot));
   const started = Date.now();
-  hostedPollTimer = setInterval(async () => {
+  hostedPollTimers[slot] = setInterval(async () => {
     if (Date.now() - started > 10 * 60_000) {
-      clearInterval(hostedPollTimer); hostedPollTimer = null;
+      clearInterval(hostedPollTimers[slot]); hostedPollTimers[slot] = null;
       showToast('Tiempo agotado — vuelve a intentar con "Conectar"', true);
       renderBankMock();
       return;
@@ -5604,13 +6369,13 @@ function pollHostedLink(slot) {
     try {
       const s = await fetch('/api/plaid/hosted-status?slot=' + slot).then(x => x.json());
       if (s.connected) {
-        clearInterval(hostedPollTimer); hostedPollTimer = null;
+        clearInterval(hostedPollTimers[slot]); hostedPollTimers[slot] = null;
         showToast('✓ ' + (s.institution || 'Banco') + ' conectado');
         await renderBankMock();
         await syncBankNow();
       } else if (!s.pending) {
         // No hay sesión pendiente y no está conectado → el usuario cerró sin terminar
-        clearInterval(hostedPollTimer); hostedPollTimer = null;
+        clearInterval(hostedPollTimers[slot]); hostedPollTimers[slot] = null;
         renderBankMock();
       }
     } catch (_) { /* servidor ocupado — reintenta en el próximo tick */ }
@@ -5651,10 +6416,28 @@ async function syncBankNow(quiet) {
       D.bizBalance = bizTotal;
       renderBizBalance();
     }
+    // Actualizar las 3 cuentas de Capital One — a diferencia de Bluevine, NO se suman:
+    // cada una se mapea por separado (primero por accountId aprendido, luego por mask).
+    // Solo cuentas de depósito — nunca una tarjeta de crédito de Capital One, que sería
+    // una deuda y no efectivo (si algún día Capital One expone una, va a Deudas por su cuenta).
+    const cap1Accts = (j.balances || []).filter(a => a.slot === 'capitalone' && a.type === 'depository');
+    if (cap1Accts.length && D.capitalOne) {
+      D.capitalOne.accounts.forEach(acc => {
+        const hit = cap1Accts.find(a => a.accountId === acc.plaidAccountId)
+                 || cap1Accts.find(a => a.mask === acc.mask);
+        if (!hit) return;   // sin coincidencia esta vez → se conserva el valor manual
+        acc.plaidAccountId = hit.accountId;
+        const bal = hit.available != null ? hit.available : hit.current;
+        if (bal != null) acc.balance = bal;
+      });
+      renderCapitalOne();
+    }
+
     D.bank = { balances: j.balances, transactions: j.transactions, lastSync: j.lastSync };
 
     // Puente banco → gastos: las transacciones nuevas entran al presupuesto
     const imp = importBankTransactions();
+    const impRem = importBankRemittances();
 
     // Volcar las tarjetas de crédito del banco a la sección de Deudas
     const nCards = syncPlaidCardsToDebts();
@@ -5663,10 +6446,13 @@ async function syncBankNow(quiet) {
     renderSurplus();
     renderBudgetTable();
     renderExpenses();
+    renderRemittances();
+    renderPanorama();
 
-    if (!quiet || j.newCount || imp.added || imp.updated) {
+    if (!quiet || j.newCount || imp.added || imp.updated || impRem.added || impRem.updated) {
       showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas`
         + (imp.added ? ` · ${imp.added} gasto(s) al presupuesto` : '')
+        + (impRem.added ? ` · ${impRem.added} remesa(s) detectada(s)` : '')
         + (nCards ? ` · ${nCards} tarjeta(s) actualizada(s)` : ''));
     }
     // Si un banco falló (ej. pide re-conectar), avisar sin tumbar el otro
@@ -5837,23 +6623,31 @@ function importBankTransactions() {
   for (const t of D.bank.transactions) { if (t && t.pendingId) superseded.add(t.pendingId); }
 
   for (const t of D.bank.transactions) {
-    if (!t || !t.id || !(t.amount > 0)) continue;          // negativos = ingresos/reembolsos
-    if (t.slot === 'business') continue;                   // gastos del negocio NO van al presupuesto personal
-    if (superseded.has(t.id)) continue;                    // ya viene su versión confirmada
-    if (BANK_SKIP_CATS.has(t.category)) continue;          // transferencias / pagos de tarjeta
+    if (!t || !t.id) continue;
+    const isZelle = /ZELLE/i.test(t.name || '');            // Zelle sí se importa, entre y salga plata
+    if (!isZelle && !(t.amount > 0)) continue;               // negativos = ingresos/reembolsos
+    if (isZelle && t.amount === 0) continue;                 // Zelle en $0 (reversión) no aporta nada
+    if (t.slot === 'business' || t.slot === 'capitalone') continue;  // negocio y las 3 cuentas de Capital One (apartados) NO van al presupuesto personal
+    if (superseded.has(t.id)) continue;                      // ya viene su versión confirmada
+    if (!isZelle && BANK_SKIP_CATS.has(t.category)) continue; // transferencias / pagos de tarjeta
     if (ignored.has(t.id) || (t.pendingId && ignored.has(t.pendingId))) continue;
+
+    const absAmount = Math.abs(t.amount);
+    const isIncome = isZelle && t.amount < 0;                // Zelle que le entra a Brian
 
     // ¿Ya está? (por su id, o por su versión "pendiente" que el banco confirmó)
     const prev = byPlaid.get(t.id) || (t.pendingId ? byPlaid.get(t.pendingId) : null);
     if (prev) {
-      const changed = prev.plaidId !== t.id || prev.amount !== t.amount
-                   || prev.date !== (t.date || prev.date) || prev.pending !== Boolean(t.pending);
+      const changed = prev.plaidId !== t.id || prev.amount !== absAmount
+                   || prev.date !== (t.date || prev.date) || prev.pending !== Boolean(t.pending)
+                   || Boolean(prev.isIncome) !== isIncome;
       if (changed) {
         byPlaid.delete(prev.plaidId);
         prev.plaidId = t.id;
-        prev.amount  = t.amount;
+        prev.amount  = absAmount;
         prev.date    = t.date || prev.date;
         prev.pending = Boolean(t.pending);
+        if (isIncome) prev.isIncome = true; else delete prev.isIncome;
         byPlaid.set(t.id, prev);
         res.updated++;
       }
@@ -5862,24 +6656,106 @@ function importBankTransactions() {
 
     // ¿Brian ya lo anotó a mano? (mismo monto, fecha a ±2 días) → adoptar, no duplicar
     const manual = entries.find(x => !x.plaidId && !x.fromBank
-      && Math.abs((x.amount || 0) - t.amount) < 0.005
+      && Math.abs((x.amount || 0) - absAmount) < 0.005
       && dateDiffDays(x.date, t.date) <= 2);
-    if (manual) { manual.plaidId = t.id; byPlaid.set(t.id, manual); continue; }
+    if (manual) {
+      manual.plaidId = t.id;
+      if (isIncome) manual.isIncome = true;   // ese "gasto" manual en realidad era un Zelle que le entró
+      byPlaid.set(t.id, manual);
+      continue;
+    }
 
     const acc = accounts[t.accountId];
-    const { categoryId, subcategoryId } = bankTxnCategory(t);
+    // Zelle no trae categoría útil de Plaid — se manda directo a Familia/Apoyo Familiar
+    const { categoryId, subcategoryId } = isZelle
+      ? { categoryId: 'cat-14', subcategoryId: 'cat-14-2' }
+      : bankTxnCategory(t);
     const entry = {
       id: 'bank_' + t.id,
       plaidId: t.id,
       date: t.date || today(),
       description: t.name || 'Movimiento bancario',
-      amount: t.amount,
+      amount: absAmount,
       categoryId,
       subcategoryId,
       paymentMethod: (acc && acc.type === 'credit') ? 'credito' : 'debito',
       fromBank: true,                          // vino del banco (no ajustar saldo a mano)
       pending: Boolean(t.pending),
       accountMask: (acc && acc.mask) || null   // últimos 4 dígitos de la tarjeta
+    };
+    if (isIncome) entry.isIncome = true;       // Zelle que le entra: se muestra pero no resta del total
+    entries.push(entry);
+    byPlaid.set(t.id, entry);
+    res.added++;
+  }
+  return res;
+}
+
+/**
+ * Detecta remesas a Colombia (hoy: Felixpago) en el banco y las agrega solas
+ * a "Historial de Remesas". El banco solo ve el débito total (monto que se
+ * manda + comisión de Felixpago) — no sabe la tasa de cambio ni a quién se
+ * lo mandó Brian, así que esos campos quedan en blanco para que él los
+ * complete. Sigue el mismo patrón de dedup/ignorados que importBankTransactions().
+ */
+function importBankRemittances() {
+  const res = { added: 0, updated: 0 };
+  if (!D || !D.bank || !Array.isArray(D.bank.transactions)) return res;
+  if (!D.remittances) D.remittances = { entries: [] };
+  if (!Array.isArray(D.remittances.entries)) D.remittances.entries = [];
+  const entries = D.remittances.entries;
+  const ignored = new Set(D.remittancesIgnored || []);
+  const byPlaid = new Map();
+  entries.forEach(r => { if (r.plaidId) byPlaid.set(r.plaidId, r); });
+
+  // Si la versión CONFIRMADA de una remesa viene en la misma lista que su
+  // versión "pendiente", la pendiente se ignora (la confirmada manda).
+  const superseded = new Set();
+  for (const t of D.bank.transactions) { if (t && t.pendingId) superseded.add(t.pendingId); }
+
+  for (const t of D.bank.transactions) {
+    if (!t || !t.id || !(t.amount >= 5)) continue;   // debitos chiquitos = reversiones, no remesas
+    if (t.slot === 'business' || t.slot === 'capitalone') continue;  // negocio y Capital One no van al historial de remesas
+    if (superseded.has(t.id)) continue;                // ya viene su versión confirmada
+    if (!/FELIX ?PAGO/i.test(t.name || '')) continue;
+    if (ignored.has(t.id) || (t.pendingId && ignored.has(t.pendingId))) continue;
+
+    // ¿Ya está? (por su id, o por su versión "pendiente" que el banco confirmó)
+    const prev = byPlaid.get(t.id) || (t.pendingId ? byPlaid.get(t.pendingId) : null);
+    if (prev) {
+      const changed = prev.plaidId !== t.id
+                   || Math.abs((prev.amountUSD || 0) + (prev.fee || 0) - t.amount) > 0.005
+                   || prev.date !== (t.date || prev.date) || prev.pending !== Boolean(t.pending);
+      if (changed) {
+        byPlaid.delete(prev.plaidId);
+        prev.plaidId = t.id;
+        if (!prev.fee) prev.amountUSD = t.amount;   // si Brian ya separó comisión a mano, no se la pisa
+        prev.date    = t.date || prev.date;
+        prev.pending = Boolean(t.pending);
+        byPlaid.set(t.id, prev);
+        res.updated++;
+      }
+      continue;
+    }
+
+    // ¿Brian ya la anotó a mano? (monto+comisión = lo debitado, fecha a ±2 días) → adoptar, no duplicar
+    const manual = entries.find(x => !x.plaidId
+      && Math.abs((x.amountUSD || 0) + (x.fee || 0) - t.amount) < 0.01
+      && dateDiffDays(x.date, t.date) <= 2);
+    if (manual) { manual.plaidId = t.id; byPlaid.set(t.id, manual); continue; }
+
+    const entry = {
+      id: 'rem_' + t.id,
+      plaidId: t.id,
+      date: t.date || today(),
+      amountUSD: t.amount,
+      fee: 0,
+      amountCOP: 0,
+      exchangeRate: null,
+      recipient: '',
+      notes: 'Detectado automáticamente del banco (Felixpago) — ajusta el monto/comisión si hace falta y completa destinatario y tasa de cambio.',
+      fromBank: true,
+      pending: Boolean(t.pending)
     };
     entries.push(entry);
     byPlaid.set(t.id, entry);
@@ -5943,7 +6819,7 @@ function setProjected(month, subId, amount) {
 /** Suma de gastos reales de una subcategoría en un mes. */
 function realForSub(month, subId) {
   return (D.expenses.entries || [])
-    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month))
+    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month) && !e.isIncome)
     .reduce((s,e) => s + (e.amount||0), 0);
 }
 /** Variación (proyectado - real), % de cumplimiento y estado de alerta. */
@@ -6008,6 +6884,14 @@ function migrateFinance() {
   if (D.debitBalance == null) D.debitBalance = 0;
   if (D.bizBalance == null) D.bizBalance = 0;
   if (D.bancolombiaBalance == null) D.bancolombiaBalance = 0;
+  const cap1Defaults = defaultCap1Accounts();
+  if (!D.capitalOne || !Array.isArray(D.capitalOne.accounts)) D.capitalOne = { accounts: cap1Defaults };
+  else {
+    // Si un localStorage viejo trae solo algunas cuentas, completar las que falten (por id)
+    cap1Defaults.forEach(def => {
+      if (!D.capitalOne.accounts.find(a => a.id === def.id)) D.capitalOne.accounts.push(def);
+    });
+  }
   (D.expenses.categories || []).forEach(c => {
     if (!Array.isArray(c.subcategories) || !c.subcategories.length) {
       c.subcategories = [{ id: c.id + '-1', name: 'General' }];
@@ -6039,7 +6923,7 @@ function saldoBg(level) {
 /** Fila de detalle: lista los gastos de una subcategoría en el mes. */
 function subDetailRow(month, subId) {
   const items = (D.expenses.entries || [])
-    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month))
+    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month) && !e.isIncome)
     .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const inner = items.length ? items.map(e => `
     <div class="fin-detail-item">
@@ -6433,7 +7317,7 @@ function renderExpenses() {
 
   filtered.sort((a,b) => (b.date||'').localeCompare(a.date||''));
 
-  const total = filtered.reduce((s, e) => s + (e.amount || 0), 0);
+  const total = filtered.reduce((s, e) => s + (e.isIncome ? 0 : (e.amount || 0)), 0);
   const totalEl = document.getElementById('fin-expenses-total');
   if (totalEl) totalEl.textContent = `Total: $${total.toFixed(2)}`;
 
@@ -6446,6 +7330,7 @@ function renderExpenses() {
     const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}${e.accountMask ? ' •' + e.accountMask : ''}</span>` : '';
     // Insignias de los gastos que llegan solos desde el banco
     const bankBadge = e.fromBank ? `<span title="Importado automáticamente del banco" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">🏦 Auto</span>` : '';
+    const incomeBadge = e.isIncome ? `<span title="Esto te entró a ti — no se resta del total de Gastos" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">💰 Ingreso</span>` : '';
     const pendBadge = e.pending ? `<span title="El banco aún no confirma esta compra" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--orange);border:1px solid var(--orange);border-radius:6px;padding:1px 6px;vertical-align:middle;opacity:.85">⏳ pendiente</span>` : '';
     const photoIcons = [
       e.receiptUrl      ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.receiptUrl}','Recibo — ${esc(e.description)}')" title="Ver recibo">🧾</button>` : '',
@@ -6470,10 +7355,10 @@ function renderExpenses() {
     const editBtn = `<button class="btn-s" style="padding:2px 7px;font-size:11px" onclick="editExpenseCat('${e.id}')" title="${_editingExpId === e.id ? 'Listo' : 'Cambiar categoría'}">${_editingExpId === e.id ? '✓' : '✏️'}</button>`;
     return `<tr>
       <td>${e.date}</td>
-      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}${bankBadge}${pendBadge}</td>
+      <td style="color:var(--text-1);font-weight:600">${esc(e.description)}${payBadge}${bankBadge}${incomeBadge}${pendBadge}</td>
       <td>${catCell}</td>
       <td>${subCell}</td>
-      <td style="font-weight:700">$${(e.amount||0).toFixed(2)}</td>
+      <td style="font-weight:700${e.isIncome ? ';color:var(--green)' : ''}">${e.isIncome ? '+' : ''}$${(e.amount||0).toFixed(2)}</td>
       <td style="white-space:nowrap">${photoIcons}${editBtn}<button class="btn-d" onclick="deleteExpense('${e.id}')">✕</button></td>
     </tr>`;
   }).join('') : '<tr><td colspan="6" class="empty">Sin gastos registrados</td></tr>';
@@ -6587,16 +7472,19 @@ function renderRemittances() {
   const body = document.getElementById('remit-body');
   if (!body) return;
   const sorted = [...entries].sort((a,b) => (b.date||'').localeCompare(a.date||''));
-  body.innerHTML = sorted.length ? sorted.map(r => `<tr>
+  body.innerHTML = sorted.length ? sorted.map(r => {
+    const bankBadge = r.fromBank ? `<span title="Detectado automáticamente del banco (Felixpago)" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">🏦 Auto</span>` : '';
+    return `<tr>
     <td>${r.date}</td>
-    <td style="font-weight:700">$${(r.amountUSD||0).toFixed(2)}</td>
+    <td style="font-weight:700">$${(r.amountUSD||0).toFixed(2)}${bankBadge}</td>
     <td style="color:var(--red)">${r.fee ? '$'+r.fee.toFixed(2) : '—'}</td>
     <td>$${(r.amountCOP||0).toLocaleString('es-CO')}</td>
     <td>${r.exchangeRate||'—'}</td>
     <td>${esc(r.recipient||'')}</td>
     <td style="color:var(--text-3)">${esc(r.notes||'—')}</td>
     <td><button class="btn-d" onclick="deleteRemittance('${r.id}')">✕</button></td>
-  </tr>`).join('') : '<tr><td colspan="8" class="empty">Sin remesas registradas</td></tr>';
+  </tr>`;
+  }).join('') : '<tr><td colspan="8" class="empty">Sin remesas registradas</td></tr>';
 }
 
 function addRemittance() {
@@ -6636,6 +7524,12 @@ function addRemittance() {
 
 function deleteRemittance(id) {
   if (!confirm('¿Eliminar esta remesa?')) return;
+  const remesa = D.remittances.entries.find(r => r.id === id);
+  // Si vino del banco, recordar su id para NO volver a importarla automáticamente
+  if (remesa && remesa.plaidId) {
+    if (!Array.isArray(D.remittancesIgnored)) D.remittancesIgnored = [];
+    if (!D.remittancesIgnored.includes(remesa.plaidId)) D.remittancesIgnored.push(remesa.plaidId);
+  }
   D.remittances.entries = D.remittances.entries.filter(r => r.id !== id);
   saveFinance();
   renderFinanzas();
@@ -7081,6 +7975,12 @@ function getMonthlyDebtPayments() {
   return (D.debts?.cards || []).reduce((s, c) => s + (c.balance > 0 ? (c.minPayment || 0) : 0), 0);
 }
 
+// Deuda total de tarjetas — única fuente de verdad, usada por renderDebts() y por
+// renderPanorama() (así el "Deuda Total" de Deudas y el "Neto" del Panorama nunca discrepan).
+function totalCardDebt() {
+  return (D.debts && D.debts.cards || []).reduce((s, c) => s + (c.balance || 0), 0);
+}
+
 function renderDebts() {
   if (!D || !D.debts) return;
   const cards = D.debts.cards || [];
@@ -7088,7 +7988,7 @@ function renderDebts() {
   // Metrics
   const metricsEl = document.getElementById('debt-metrics');
   if (metricsEl) {
-    const totalDebt = cards.reduce((s, c) => s + (c.balance || 0), 0);
+    const totalDebt = totalCardDebt();
     const totalLimit = cards.reduce((s, c) => s + (c.creditLimit || 0), 0);
     const totalUtil = totalLimit > 0 ? (totalDebt / totalLimit * 100) : 0;
     const monthlyInterest = cards.reduce((s, c) => {
@@ -7228,6 +8128,7 @@ function deleteCard(id) {
   saveFinance();
   renderDebts();
   renderSurplus();
+  renderPanorama();
   showToast('Tarjeta eliminada');
 }
 
@@ -7259,6 +8160,7 @@ function registerPayment() {
   saveFinance();
   renderDebts();
   renderSurplus();
+  renderPanorama();
   showToast(`Pago de $${amount.toFixed(2)} registrado`);
 }
 
@@ -7352,6 +8254,7 @@ function saveQuickUpdate(cardId) {
   saveFinance();
   renderDebts();
   renderSurplus();
+  renderPanorama();
   showToast('Tarjeta actualizada');
 }
 
@@ -7493,8 +8396,14 @@ function runSimulator() {
 ============================================================ */
 function getMonthExpenses(month) {
   return (D.expenses?.entries || [])
-    .filter(e => e.date && e.date.startsWith(month))
+    .filter(e => e.date && e.date.startsWith(month) && !e.isIncome)
     .reduce((s, e) => s + (e.amount || 0), 0);
+}
+
+function getMonthRemittances(month) {
+  return (D.remittances?.entries || [])
+    .filter(r => r.date && r.date.startsWith(month))
+    .reduce((s, r) => s + (r.amountUSD || 0) + (r.fee || 0), 0);
 }
 
 function renderSurplus() {
@@ -7503,9 +8412,10 @@ function renderSurplus() {
   const month = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
   const inc = getMonthIncome(month);
   const expenses = getMonthExpenses(month);
+  const remesas = getMonthRemittances(month);
   const minPayments = getMonthlyDebtPayments();
   const extraDebt = D.debts?.extraPayment || 0;
-  const surplus = inc.gross - expenses - minPayments - extraDebt;
+  const surplus = inc.gross - expenses - remesas - minPayments - extraDebt;
 
   // Equation
   const eqEl = document.getElementById('surplus-equation');
@@ -7514,6 +8424,8 @@ function renderSurplus() {
       <div class="surplus-term"><div class="st-label">Ingreso Bruto</div><div class="st-value" style="color:var(--green)">$${inc.gross.toFixed(2)}</div></div>
       <div class="surplus-op">−</div>
       <div class="surplus-term"><div class="st-label">Gastos del Mes</div><div class="st-value" style="color:var(--red)">$${expenses.toFixed(2)}</div></div>
+      <div class="surplus-op">−</div>
+      <div class="surplus-term"><div class="st-label">🇨🇴 Remesas</div><div class="st-value" style="color:var(--red)">$${remesas.toFixed(2)}</div></div>
       <div class="surplus-op">−</div>
       <div class="surplus-term"><div class="st-label">Pagos Deuda</div><div class="st-value" style="color:var(--orange)">$${(minPayments + extraDebt).toFixed(2)}</div></div>
       <div class="surplus-op">=</div>`;
@@ -7564,6 +8476,7 @@ function renderSurplus() {
     bdEl.innerHTML = `
       <div class="surplus-row"><span class="sr-name">📈 Ingreso Bruto</span><span class="sr-amt" style="color:var(--green)">$${inc.gross.toFixed(2)}</span></div>
       <div class="surplus-row"><span class="sr-name">💸 Gastos del Mes</span><span class="sr-amt" style="color:var(--red)">−$${expenses.toFixed(2)}</span></div>
+      ${remesas > 0 ? `<div class="surplus-row"><span class="sr-name">🇨🇴 Remesas del Mes</span><span class="sr-amt" style="color:var(--red)">−$${remesas.toFixed(2)}</span></div>` : ''}
       <div class="surplus-row"><span class="sr-name">💳 Pagos Mínimos Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${minPayments.toFixed(2)}</span></div>
       ${extraDebt > 0 ? `<div class="surplus-row"><span class="sr-name">💳 Pago Extra Deuda</span><span class="sr-amt" style="color:var(--orange)">−$${extraDebt.toFixed(2)}</span></div>` : ''}
       <div class="surplus-row" style="border:2px solid ${surplus >= 0 ? 'rgba(0,230,118,.25)' : 'rgba(255,82,82,.25)'}"><span class="sr-name" style="font-weight:700;color:var(--text-1)">= Excedente Calculado</span><span class="sr-amt" style="color:${surplus >= 0 ? 'var(--green)' : 'var(--red)'}">$${surplus.toFixed(2)}</span></div>
@@ -7586,9 +8499,10 @@ function renderSurplusTrend() {
     labels.push(monthNames[d.getMonth()]);
     const inc = getMonthIncome(m);
     const exp = getMonthExpenses(m);
+    const rem = getMonthRemittances(m);
     const minP = getMonthlyDebtPayments();
     const extra = D.debts?.extraPayment || 0;
-    const surplus = inc.gross - exp - minP - extra;
+    const surplus = inc.gross - exp - rem - minP - extra;
     data.push(surplus);
     bgColors.push(surplus >= 0 ? 'rgba(0,230,118,.3)' : 'rgba(255,82,82,.3)');
     borderColors.push(surplus >= 0 ? 'rgba(0,230,118,.85)' : 'rgba(255,82,82,.85)');
@@ -7616,6 +8530,16 @@ document.addEventListener('keydown', e => {
 ============================================================ */
 function today() { return new Date().toISOString().split('T')[0]; }
 function esc(s)  { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+// Solo deja pasar enlaces http/https. esc() impide romper el atributo pero NO valida el
+// esquema, así que un "javascript:..." sobreviviría y se ejecutaría al hacer clic. Las
+// URLs de las fuentes las produce la IA a partir de titulares de internet (no confiables),
+// así que se filtran aquí antes de pintarlas.
+function safeUrl(u) {
+  try {
+    const p = new URL(String(u), window.location.href);
+    return (p.protocol === 'http:' || p.protocol === 'https:') ? p.href : '#';
+  } catch(_) { return '#'; }
+}
 /** 'YYYY-MM-DD' -> '12 jul' (o '—' si no es válida). */
 function fShortDate(iso) {
   if (typeof iso !== 'string' || !/^\d{4}-\d{2}-\d{2}/.test(iso)) return '—';
