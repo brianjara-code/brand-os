@@ -767,6 +767,36 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 }
 
 /* ================================================
+   MODULE: PLAN DE 12 SEMANAS (🎯 pág. 118 del libro)
+================================================ */
+.plan12-wrap{background:linear-gradient(135deg,rgba(124,131,253,.06),rgba(0,230,118,.03));border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:24px}
+.plan12-hdr{font-size:15px;font-weight:700;color:var(--text-1);display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.plan12-sub{font-size:12px;color:var(--text-3);margin-bottom:16px}
+.plan12-goal{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.plan12-goal:last-child{margin-bottom:0}
+.plan12-goal-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--purple);margin-bottom:8px}
+.plan12-goal-input{width:100%;background:var(--bg-1);border:1px solid var(--border);border-radius:8px;color:var(--text-1);font-size:14px;font-weight:600;padding:10px 12px;font-family:inherit;box-sizing:border-box}
+.plan12-goal-input::placeholder{color:var(--text-3);font-weight:400}
+.plan12-goal-input:focus{outline:none;border-color:var(--purple)}
+.plan12-tactics{margin-top:12px;overflow-x:auto}
+.plan12-table{width:100%;border-collapse:collapse;min-width:340px}
+.plan12-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);text-align:left;padding:0 6px 6px}
+.plan12-table th.c-week,.plan12-table th.c-done,.plan12-table th.c-del{text-align:center;width:1%;white-space:nowrap}
+.plan12-table td{padding:4px 6px;vertical-align:middle}
+.plan12-tactic-input{width:100%;background:var(--bg-1);border:1px solid var(--border);border-radius:6px;color:var(--text-1);font-size:13px;padding:7px 9px;font-family:inherit;box-sizing:border-box}
+.plan12-tactic-input::placeholder{color:var(--text-3)}
+.plan12-tactic-input:focus{outline:none;border-color:var(--teal)}
+.plan12-tactic-input.done{text-decoration:line-through;color:var(--text-3)}
+.plan12-week-input{width:52px;background:var(--bg-1);border:1px solid var(--border);border-radius:6px;color:var(--text-1);font-size:13px;text-align:center;padding:7px 4px;font-family:inherit;box-sizing:border-box}
+.plan12-week-input:focus{outline:none;border-color:var(--teal)}
+.plan12-done-chk{width:22px;height:22px;border:2px solid var(--border-hover);border-radius:6px;background:var(--bg-1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;margin:0 auto;transition:var(--t)}
+.plan12-done-chk.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.plan12-del{background:transparent;border:none;color:var(--text-3);cursor:pointer;font-size:15px;padding:4px;border-radius:6px;transition:var(--t)}
+.plan12-del:hover{color:var(--red,#ff5252);background:var(--bg-1)}
+.plan12-add{margin-top:8px;background:var(--bg-1);border:1px dashed var(--border-hover);border-radius:8px;color:var(--text-2);font-size:12px;font-weight:600;padding:8px 12px;cursor:pointer;transition:var(--t)}
+.plan12-add:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ================================================
    MODULE: HABIT TRACKER (💪 Hábitos)
 ================================================ */
 .habits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -1015,12 +1045,12 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .c-load-more:hover{background:var(--bg-hover);border-color:var(--purple)}
 
 /* FINANZAS SUB-TABS */
-.fin-subtab-bar{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--rs);padding:3px;margin-bottom:20px;overflow-x:auto}
-.fin-subtab-btn{background:none;border:none;color:var(--text-3);padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--t);white-space:nowrap}
-.fin-subtab-btn:hover{color:var(--text-1)}
-.fin-subtab-btn.active{background:var(--purple);color:#fff}
-.fin-subtab-panel{display:none}
-.fin-subtab-panel.active{display:block}
+.fin-subtab-bar,.inv-subtab-bar{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--rs);padding:3px;margin-bottom:20px;overflow-x:auto}
+.fin-subtab-btn,.inv-subtab-btn{background:none;border:none;color:var(--text-3);padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--t);white-space:nowrap}
+.fin-subtab-btn:hover,.inv-subtab-btn:hover{color:var(--text-1)}
+.fin-subtab-btn.active,.inv-subtab-btn.active{background:var(--purple);color:#fff}
+.fin-subtab-panel,.inv-subtab-panel{display:none}
+.fin-subtab-panel.active,.inv-subtab-panel.active{display:block}
 
 /* INCOME MODULE */
 .inc-settings-row{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
@@ -1114,7 +1144,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .debt-card-grid{grid-template-columns:1fr}
   .sim-compare{grid-template-columns:1fr}
   .surplus-equation{flex-direction:column}
-  .fin-subtab-bar{flex-wrap:wrap}
+  .fin-subtab-bar,.inv-subtab-bar{flex-wrap:wrap}
 }
 
 /* ================================================
@@ -1177,7 +1207,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .fin-proj-input{min-height:36px;width:100%}
 
   /* Botones táctiles */
-  button:not(.tab-btn):not(.fin-subtab-btn):not(.goal-chk):not(.step-chk):not(.goal-del):not(.sop-step):not(.debt-card-actions button):not(.habits-widget-mark){
+  button:not(.tab-btn):not(.fin-subtab-btn):not(.inv-subtab-btn):not(.goal-chk):not(.step-chk):not(.goal-del):not(.sop-step):not(.debt-card-actions button):not(.habits-widget-mark){
     min-height:44px;
     font-size:14px!important;
     padding:10px 16px!important
@@ -1194,8 +1224,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
   .fin-expenses-controls{flex-wrap:wrap;gap:6px;width:100%}
 
   /* Sub-tabs de Finanzas */
-  .fin-subtab-bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .fin-subtab-btn{padding:8px 14px;font-size:11px;min-height:36px;flex-shrink:0}
+  .fin-subtab-bar,.inv-subtab-bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .fin-subtab-btn,.inv-subtab-btn{padding:8px 14px;font-size:11px;min-height:36px;flex-shrink:0}
 
   /* Panel de presupuesto — tabla scrollable en móvil */
   .panel{overflow-x:hidden}
@@ -1615,105 +1645,194 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
     <div class="sec-hdr">
       <div>
         <div class="sec-title">Inversiones</div>
-        <div class="sec-sub">Portafolio unificado · Cripto y Acciones · Todas tus plataformas</div>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn-p" id="dca-refresh-btn" onclick="updatePrices(true)">🔄 Actualizar precios</button>
-        <button class="btn-p" onclick="openProjection()">📊 Proyectar Ganancia/Pérdida</button>
+        <div class="sec-sub">Portafolio unificado · Cripto, Acciones y Bienes Raíces · Todos tus activos</div>
       </div>
     </div>
 
-    <div class="metric-grid" id="dca-summary" style="grid-template-columns:repeat(4,1fr)"></div>
-    <div id="dca-price-note" class="dca-hint" style="margin:-8px 0 18px"></div>
-
-    <div id="dca-plat-section" style="display:none">
-      <div class="card-title" style="margin-bottom:12px">📍 Por Plataforma — ¿dónde está mi dinero?</div>
-      <div class="plat-grid" id="dca-plat-grid"></div>
+    <!-- 💎 Patrimonio Total — cripto/acciones + equity de bienes raíces, en un solo número -->
+    <div class="card" id="inv-networth-card" style="margin-bottom:20px">
+      <div class="card-title" style="margin-bottom:12px">💎 Patrimonio Total</div>
+      <div id="inv-networth-inner"></div>
     </div>
 
-    <div class="card" id="dca-alloc-section" style="display:none;margin-bottom:20px">
-      <div class="card-title">🥧 Asignación del Portafolio</div>
-      <div id="dca-alloc-inner" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start"></div>
+    <div class="inv-subtab-bar">
+      <button class="inv-subtab-btn active" onclick="switchInvSubtab('portafolio')">💹 Portafolio</button>
+      <button class="inv-subtab-btn" onclick="switchInvSubtab('raices')">🏠 Bienes Raíces</button>
+      <button class="inv-subtab-btn" onclick="switchInvSubtab('calculadora')">🧮 Calculadora de Propiedades</button>
     </div>
 
-    <div class="card" style="margin-bottom:20px">
-      <div class="card-title">Registrar Movimiento</div>
-      <div class="dca-form-row">
-        <div class="i-group"><label class="i-label">Tipo</label>
-          <select id="dca-type" onchange="onDcaTypeChange()">
-            <option value="buy">🟢 Compra</option>
-            <option value="sell">🔴 Venta</option>
-            <option value="transfer">🔄 Transferencia</option>
-          </select>
+    <!-- ========== SUB: PORTAFOLIO (cripto y acciones — tal como estaba) ========== -->
+    <div class="inv-subtab-panel active" id="inv-sub-portafolio">
+      <div class="sec-hdr">
+        <div class="sec-sub">Cripto y Acciones · Todas tus plataformas</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn-p" id="dca-refresh-btn" onclick="updatePrices(true)">🔄 Actualizar precios</button>
+          <button class="btn-p" onclick="openProjection()">📊 Proyectar Ganancia/Pérdida</button>
         </div>
-        <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="dca-date"></div>
-        <div class="i-group"><label class="i-label" id="dca-platform-label">Plataforma</label>
-          <select id="dca-platform" onchange="updateDcaHint()">
-            <option value="">— Elegir —</option>
-            <option>Robinhood</option>
-            <option>Coinbase</option>
-            <option>Kraken</option>
-            <option>Phantom Wallet</option>
-            <option>Think or Swim</option>
-            <option>Cash App</option>
-            <option>Tangem Wallet</option>
-            <option>Otra</option>
-          </select>
-        </div>
-        <div class="i-group" id="dca-to-platform-group" style="display:none"><label class="i-label">Hacia (plataforma)</label>
-          <select id="dca-to-platform" onchange="updateDcaHint()">
-            <option value="">— Elegir —</option>
-            <option>Robinhood</option>
-            <option>Coinbase</option>
-            <option>Kraken</option>
-            <option>Phantom Wallet</option>
-            <option>Think or Swim</option>
-            <option>Cash App</option>
-            <option>Tangem Wallet</option>
-            <option>Otra</option>
-          </select>
-        </div>
-        <div class="i-group"><label class="i-label">Tipo de Activo</label>
-          <select id="dca-assettype">
-            <option value="crypto">🪙 Cripto</option>
-            <option value="stock">📈 Acción / ETF</option>
-          </select>
-        </div>
-        <div class="i-group"><label class="i-label">Activo</label><input type="text" id="dca-asset" placeholder="BTC, SPY…" oninput="updateDcaHint()"></div>
-        <div class="i-group" id="dca-amount-group"><label class="i-label">Monto (USD)</label><input type="number" id="dca-amount" placeholder="100" step="0.01"></div>
-        <div class="i-group" id="dca-qty-group"><label class="i-label" id="dca-qty-label">Cantidad</label><input type="number" id="dca-qty" placeholder="0.0015" step="any" oninput="updateDcaHint()"></div>
-        <div class="i-group" id="dca-price-group"><label class="i-label" id="dca-price-label">Precio Compra (USD)</label><input type="number" id="dca-price" placeholder="65000" step="0.01"></div>
-        <div class="i-group"><label class="i-label">Comisión (USD)</label><input type="number" id="dca-fee" placeholder="1.50" step="0.01"></div>
       </div>
-      <div class="dca-form-actions">
-        <div class="dca-hint" id="dca-form-hint"></div>
-        <button class="btn-p" onclick="addDCA()">+ Agregar</button>
-      </div>
-    </div>
 
-    <div class="card" style="padding:0;overflow:hidden">
-      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
-        <div class="card-title" style="margin-bottom:0">Bitácora de Movimientos</div>
-        <div style="display:flex;gap:8px">
-          <select id="dca-plat-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
-            <option value="all">Todas las plataformas</option>
-          </select>
-          <select id="dca-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
-            <option value="all">Todos los activos</option>
-          </select>
+      <div class="metric-grid" id="dca-summary" style="grid-template-columns:repeat(4,1fr)"></div>
+      <div id="dca-price-note" class="dca-hint" style="margin:-8px 0 18px"></div>
+
+      <div id="dca-plat-section" style="display:none">
+        <div class="card-title" style="margin-bottom:12px">📍 Por Plataforma — ¿dónde está mi dinero?</div>
+        <div class="plat-grid" id="dca-plat-grid"></div>
+      </div>
+
+      <div class="card" id="dca-alloc-section" style="display:none;margin-bottom:20px">
+        <div class="card-title">🥧 Asignación del Portafolio</div>
+        <div id="dca-alloc-inner" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Registrar Movimiento</div>
+        <div class="dca-form-row">
+          <div class="i-group"><label class="i-label">Tipo</label>
+            <select id="dca-type" onchange="onDcaTypeChange()">
+              <option value="buy">🟢 Compra</option>
+              <option value="sell">🔴 Venta</option>
+              <option value="transfer">🔄 Transferencia</option>
+            </select>
+          </div>
+          <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="dca-date"></div>
+          <div class="i-group"><label class="i-label" id="dca-platform-label">Plataforma</label>
+            <select id="dca-platform" onchange="updateDcaHint()">
+              <option value="">— Elegir —</option>
+              <option>Robinhood</option>
+              <option>Coinbase</option>
+              <option>Kraken</option>
+              <option>Phantom Wallet</option>
+              <option>Think or Swim</option>
+              <option>Cash App</option>
+              <option>Tangem Wallet</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="i-group" id="dca-to-platform-group" style="display:none"><label class="i-label">Hacia (plataforma)</label>
+            <select id="dca-to-platform" onchange="updateDcaHint()">
+              <option value="">— Elegir —</option>
+              <option>Robinhood</option>
+              <option>Coinbase</option>
+              <option>Kraken</option>
+              <option>Phantom Wallet</option>
+              <option>Think or Swim</option>
+              <option>Cash App</option>
+              <option>Tangem Wallet</option>
+              <option>Otra</option>
+            </select>
+          </div>
+          <div class="i-group"><label class="i-label">Tipo de Activo</label>
+            <select id="dca-assettype">
+              <option value="crypto">🪙 Cripto</option>
+              <option value="stock">📈 Acción / ETF</option>
+            </select>
+          </div>
+          <div class="i-group"><label class="i-label">Activo</label><input type="text" id="dca-asset" placeholder="BTC, SPY…" oninput="updateDcaHint()"></div>
+          <div class="i-group" id="dca-amount-group"><label class="i-label">Monto (USD)</label><input type="number" id="dca-amount" placeholder="100" step="0.01"></div>
+          <div class="i-group" id="dca-qty-group"><label class="i-label" id="dca-qty-label">Cantidad</label><input type="number" id="dca-qty" placeholder="0.0015" step="any" oninput="updateDcaHint()"></div>
+          <div class="i-group" id="dca-price-group"><label class="i-label" id="dca-price-label">Precio Compra (USD)</label><input type="number" id="dca-price" placeholder="65000" step="0.01"></div>
+          <div class="i-group"><label class="i-label">Comisión (USD)</label><input type="number" id="dca-fee" placeholder="1.50" step="0.01"></div>
+        </div>
+        <div class="dca-form-actions">
+          <div class="dca-hint" id="dca-form-hint"></div>
+          <button class="btn-p" onclick="addDCA()">+ Agregar</button>
         </div>
       </div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr>
-            <th>Fecha</th><th>Tipo</th><th>Plataforma</th><th>Activo</th>
-            <th>Cantidad</th><th>Monto USD</th><th>Precio</th><th>Comisión</th>
-            <th>Precio Actual</th><th>P&L</th><th></th>
-          </tr></thead>
-          <tbody id="dca-body"></tbody>
-        </table>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div class="card-title" style="margin-bottom:0">Bitácora de Movimientos</div>
+          <div style="display:flex;gap:8px">
+            <select id="dca-plat-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
+              <option value="all">Todas las plataformas</option>
+            </select>
+            <select id="dca-filter" style="width:auto;font-size:12px" onchange="renderDCA()">
+              <option value="all">Todos los activos</option>
+            </select>
+          </div>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>Fecha</th><th>Tipo</th><th>Plataforma</th><th>Activo</th>
+              <th>Cantidad</th><th>Monto USD</th><th>Precio</th><th>Comisión</th>
+              <th>Precio Actual</th><th>P&L</th><th></th>
+            </tr></thead>
+            <tbody id="dca-body"></tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </div><!-- /inv-sub-portafolio -->
+
+    <!-- ========== SUB: BIENES RAÍCES (casa de Pereira + hipoteca) ========== -->
+    <div class="inv-subtab-panel" id="inv-sub-raices">
+      <div class="sec-hdr">
+        <div class="sec-sub">Tu(s) propiedad(es) · Hipoteca · Simulador de pago acelerado · DTI</div>
+        <button class="btn-p" onclick="addRealEstateProperty()">+ Agregar Propiedad</button>
+      </div>
+      <div id="re-empty-hint" class="dca-hint" style="display:none;margin-bottom:14px">Aún no tienes propiedades registradas. Agrega la casa de Pereira con el botón de arriba.</div>
+      <div id="re-properties-list"></div>
+    </div><!-- /inv-sub-raices -->
+
+    <!-- ========== SUB: CALCULADORA DE PROPIEDADES (cash flow) ========== -->
+    <div class="inv-subtab-panel" id="inv-sub-calculadora">
+      <div class="sec-hdr">
+        <div class="sec-sub">Corre los números de cash flow de cualquier propiedad que encuentres — inspirada en la calculadora de cash flow de Novarise · calcula mientras escribes</div>
+        <button class="btn-p" onclick="saveRealEstateDeal()">💾 Guardar Escenario</button>
+      </div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Datos de la Propiedad</div>
+        <div class="dca-form-row">
+          <div class="i-group"><label class="i-label">Nombre / Dirección</label><input type="text" id="calc-name" placeholder="Apto en Pereira, barrio X" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Moneda</label>
+            <select id="calc-currency" onchange="onCalcInput()">
+              <option value="COP">COP (pesos)</option>
+              <option value="USD">USD (dólares)</option>
+            </select>
+          </div>
+          <div class="i-group"><label class="i-label">Precio de Compra</label><input type="number" id="calc-price" placeholder="250000000" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Efectivo Invertido (enganche + cierre)</label><input type="number" id="calc-cash-invested" placeholder="50000000" step="1" min="0" oninput="onCalcInput()"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Ingresos</div>
+        <div class="dca-form-row">
+          <div class="i-group"><label class="i-label">Renta Mensual Esperada</label><input type="number" id="calc-rent" placeholder="1500000" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Vacancia Proyectada (%)</label><input type="number" id="calc-vacancy" placeholder="5" step="0.5" min="0" max="100" value="5" oninput="onCalcInput()"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Gastos Operativos (mensuales — sin incluir la hipoteca)</div>
+        <div class="dca-hint" style="margin:-4px 0 12px">Seguro, impuestos, administración, reparaciones, HOA — estos son los que se usan para el Cap Rate.</div>
+        <div class="dca-form-row">
+          <div class="i-group"><label class="i-label">Seguro</label><input type="number" id="calc-insurance" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Impuestos de Propiedad</label><input type="number" id="calc-tax" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Administración</label><input type="number" id="calc-mgmt" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Reparaciones / Mantenimiento</label><input type="number" id="calc-repairs" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">HOA</label><input type="number" id="calc-hoa" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+          <div class="i-group"><label class="i-label">Otro Gasto Operativo</label><input type="number" id="calc-other" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-title">Financiamiento</div>
+        <div class="dca-hint" style="margin:-4px 0 12px">La cuota de hipoteca no cuenta como gasto operativo (por eso no afecta el Cap Rate), pero sí resta del Cash Flow real que te queda en el bolsillo.</div>
+        <div class="dca-form-row">
+          <div class="i-group"><label class="i-label">Cuota Mensual de Hipoteca (deuda + intereses)</label><input type="number" id="calc-mortgage" placeholder="0" step="1" min="0" oninput="onCalcInput()"></div>
+        </div>
+      </div>
+      <div class="metric-grid" id="calc-results" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px"></div>
+      <div id="calc-verdict" style="margin-bottom:20px"></div>
+      <div class="card" id="calc-deals-card" style="padding:0;overflow:hidden;display:none">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--border)">
+          <div class="card-title" style="margin-bottom:0">Escenarios Guardados</div>
+        </div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Nombre</th><th>Precio</th><th>Cash Flow / mes</th><th>Cash-on-Cash</th><th>¿Rentable?</th><th></th></tr></thead>
+          <tbody id="calc-deals-body"></tbody>
+        </table></div>
+      </div>
+    </div><!-- /inv-sub-calculadora -->
+
   </div>
 
   <!-- ========== FINANZAS ========== -->
@@ -2084,6 +2203,9 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 
       <div class="card" style="margin-bottom:20px">
         <div class="card-title">Registrar Ingreso</div>
+        <div style="font-size:11px;color:var(--text-3);margin:-8px 0 12px">
+          ⚠️ Los cheques del restaurante ya se agregan solos cuando pides "actualiza mis cheques" (ver Historial de Cheques abajo) — usa esto solo para otros ingresos (contenido, gigs sueltos), para que no se cuenten dos veces.
+        </div>
         <div class="fin-form-row">
           <div class="i-group"><label class="i-label">Fecha</label><input type="date" id="inc-date"></div>
           <div class="i-group"><label class="i-label">Canal</label><select id="inc-channel"></select></div>
@@ -2149,6 +2271,14 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 
     <!-- ===== SUB-TAB: RESUMEN ===== -->
     <div class="fin-subtab-panel" id="fin-sub-resumen">
+      <div class="card" style="padding:16px;margin-bottom:20px" id="finance-advisor-wrap">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:4px">
+          <div class="card-title" style="margin-bottom:0">🧠 Tu Mes en Finanzas</div>
+          <button class="btn-s" id="finance-advisor-btn" onclick="runFinanceAdvisor()">🧠 Analizar mi mes</button>
+        </div>
+        <div id="finance-advisor-body"></div>
+      </div>
+
       <div class="card-title" style="margin-bottom:16px">Excedente Disponible — Mes Actual</div>
       <div class="surplus-equation" id="surplus-equation"></div>
       <div class="surplus-result" id="surplus-result"></div>
@@ -2183,6 +2313,14 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div class="sec-sub">Cumple tus hábitos de la semana y evoluciona a tu personaje</div>
       </div>
     </div>
+
+    <!-- Plan de 12 semanas (pág. 118 del libro) -->
+    <div class="plan12-wrap">
+      <div class="plan12-hdr">🎯 Plan de 12 semanas</div>
+      <div class="plan12-sub">Escribe hasta 3 metas y, debajo de cada una, tus tácticas con la semana de plazo (1–12).</div>
+      <div id="plan12-goals"></div>
+    </div>
+
     <div class="habits-grid" id="habits-grid"></div>
   </div>
 
@@ -2294,10 +2432,56 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
      MODAL: PROYECCIÓN DCA
 ====================================================== -->
 <div class="modal-ov" id="modal-proj">
-  <div class="modal">
+  <div class="modal" style="max-width:720px;max-height:85vh;overflow-y:auto">
     <button class="modal-close" onclick="closeModal('modal-proj')">×</button>
     <div class="modal-title">📊 Proyección de Ganancia / Pérdida</div>
     <div id="proj-content"></div>
+  </div>
+</div>
+
+<!-- ======================================================
+     MODAL: PROPIEDAD (Bienes Raíces — casa, hipoteca)
+====================================================== -->
+<div class="modal-ov" id="modal-re-edit" onclick="if(event.target===this)closeModal('modal-re-edit')">
+  <div class="modal" style="max-width:600px;max-height:85vh;overflow-y:auto">
+    <button class="modal-close" onclick="closeModal('modal-re-edit')">×</button>
+    <div class="modal-title" id="re-modal-title">🏠 Agregar Propiedad</div>
+    <input type="hidden" id="re-edit-id">
+    <div class="g2" style="gap:12px;margin-bottom:12px">
+      <div class="i-group"><label class="i-label">Nombre</label><input type="text" id="re-name" placeholder="Casa Pereira"></div>
+      <div class="i-group"><label class="i-label">Moneda</label>
+        <select id="re-currency">
+          <option value="COP">COP (pesos)</option>
+          <option value="USD">USD (dólares)</option>
+        </select>
+      </div>
+    </div>
+    <div class="i-group" style="margin-bottom:12px"><label class="i-label">Dirección (opcional)</label><input type="text" id="re-address" placeholder="Barrio, ciudad"></div>
+    <div class="g2" style="gap:12px;margin-bottom:12px">
+      <div class="i-group"><label class="i-label">Precio de Compra</label><input type="number" id="re-purchase-price" step="1" min="0" placeholder="37000000"></div>
+      <div class="i-group"><label class="i-label">Fecha de Compra</label><input type="date" id="re-purchase-date"></div>
+    </div>
+    <div class="i-group" style="margin-bottom:16px"><label class="i-label">Valor Estimado Hoy</label><input type="number" id="re-current-value" step="1" min="0" placeholder="45000000"></div>
+    <div style="font-size:12px;font-weight:800;color:var(--text-2);margin-bottom:10px;padding-top:8px;border-top:1px solid var(--border)">🏦 Hipoteca</div>
+    <div class="g2" style="gap:12px;margin-bottom:12px">
+      <div class="i-group"><label class="i-label">Monto Original del Préstamo</label><input type="number" id="re-mortgage-original" step="1" min="0" placeholder="30000000"></div>
+      <div class="i-group"><label class="i-label">Saldo Actual (lo que debes hoy)</label><input type="number" id="re-mortgage-balance" step="1" min="0" placeholder="37000000"></div>
+    </div>
+    <div class="g2" style="gap:12px;margin-bottom:12px">
+      <div class="i-group"><label class="i-label">Tasa de Interés Anual (%)</label><input type="number" id="re-mortgage-rate" step="0.01" min="0" placeholder="12.5"></div>
+      <div class="i-group"><label class="i-label">Cuota Mensual</label><input type="number" id="re-mortgage-payment" step="1" min="0" placeholder="450000"></div>
+    </div>
+    <div class="g2" style="gap:12px;margin-bottom:16px">
+      <div class="i-group"><label class="i-label">Fecha de Inicio del Préstamo</label><input type="date" id="re-mortgage-start"></div>
+      <div class="i-group"><label class="i-label">Plazo Total (meses)</label><input type="number" id="re-mortgage-term" step="1" min="0" placeholder="180"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:8px;padding-top:12px;border-top:1px solid var(--border)">
+      <button class="btn-s" id="re-delete-btn" style="display:none;color:var(--red)" onclick="deleteRealEstateProperty()">🗑 Eliminar</button>
+      <div style="display:flex;gap:8px;margin-left:auto">
+        <button class="btn-s" onclick="closeModal('modal-re-edit')">Cancelar</button>
+        <button class="btn-p" onclick="saveRealEstateProperty()">💾 Guardar</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2528,6 +2712,7 @@ const SAMPLE = {
   },
   goals: { shortTerm:[], longTerm:[] },
   habits: null, // se inicializa con defaultHabits() — no se guarda en el JSON, vive en localStorage + nube (patrón de Metas)
+  plan12: null, // Plan de 12 semanas — mismo patrón que habits: localStorage + nube, fuera del JSON
   contentStrategy: {
     buckets:[
       {id:'bucket-1',name:'Contenido Personal',color:'#7c6fff',icon:'👤',description:'Historias personales, behind the scenes'},
@@ -2651,6 +2836,7 @@ async function loadData() {
     } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
+    try { const s = localStorage.getItem(PLAN12_KEY); D.plan12 = s ? JSON.parse(s) : defaultPlan12(); } catch(_) { D.plan12 = defaultPlan12(); }
     try { const saved = localStorage.getItem(XTOPICS_KEY); D.xTopics = saved ? JSON.parse(saved) : []; } catch(_) { D.xTopics = []; }
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
@@ -2658,7 +2844,9 @@ async function loadData() {
     await pullKanbanFromCloud(); // restaurar tablero desde la nube si es más reciente
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    await pullPlan12FromCloud(); // restaurar plan de 12 semanas desde la nube si es más reciente
     await pullXTopicsFromCloud(); // ideas de X — la nube manda (ver comentario en la función)
+    await pullFinanceAdvisorFromCloud(); // informes mensuales del agente de finanzas
     processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
     // Guardar el resultado de la fusión: así el sello de tiempo local queda al día (si no,
     // el siguiente pull de la nube volvería a pisar lo que acaba de traer el bot) y el
@@ -2686,6 +2874,7 @@ async function loadData() {
     try { const saved = localStorage.getItem('brandos_kanban'); if (saved) D.kanban = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(GOALS_KEY); if (saved) D.goals = JSON.parse(saved); } catch(_) {}
     try { const saved = localStorage.getItem(HABITS_KEY); D.habits = saved ? JSON.parse(saved) : defaultHabits(); } catch(_) { D.habits = defaultHabits(); }
+    try { const s = localStorage.getItem(PLAN12_KEY); D.plan12 = s ? JSON.parse(s) : defaultPlan12(); } catch(_) { D.plan12 = defaultPlan12(); }
     try { const saved = localStorage.getItem(XTOPICS_KEY); if (saved) D.xTopics = JSON.parse(saved); } catch(_) {}
     restoreFinance();
     await pullFromCloud(); // jalar datos más recientes de la nube
@@ -2693,7 +2882,9 @@ async function loadData() {
     await pullKanbanFromCloud(); // restaurar tablero desde la nube si es más reciente
     await pullGoalsFromCloud(); // restaurar metas desde la nube si son más recientes
     await pullHabitsFromCloud(); // restaurar hábitos desde la nube si son más recientes
+    await pullPlan12FromCloud(); // restaurar plan de 12 semanas desde la nube si es más reciente
     await pullXTopicsFromCloud(); // ideas de X — la nube manda (ver comentario en la función)
+    await pullFinanceAdvisorFromCloud(); // informes mensuales del agente de finanzas
     processHabitWeeks(); // cerrar semanas pendientes (castigo/bonus) antes de renderizar
     try { const merged = Object.assign({}, D.videoNotes || {}, loadVideoNotes()); D.videoNotes = merged; localStorage.setItem(VIDEO_NOTES_KEY, JSON.stringify(merged)); } catch(_) {}
     renderNotice(true);
@@ -2752,6 +2943,7 @@ function setupTabs() {
 ============================================================ */
 function renderAll() {
   renderGoals();
+  renderPlan12();
   renderHabits();
   renderHabitsWidget();
   renderAnalytics();
@@ -2764,6 +2956,8 @@ function renderAll() {
   renderScripts();
   renderCalendar();
   renderDCA();
+  renderRealEstate();
+  renderRealEstateCalc();
   renderICP();
   renderFinanzas();
 }
@@ -3081,9 +3275,11 @@ const SYNC_ROW_ID  = 'brian_finance';
 const SCRIPTS_SYNC_ID = 'brian_scripts';
 const GOALS_SYNC_ID = 'brian_goals';
 const HABITS_SYNC_ID = 'brian_habits';
+const PLAN12_SYNC_ID = 'brian_plan12';
 const KANBAN_SYNC_ID = 'brian_kanban';
 const DISMISSED_SYNC_ID = 'brian_dismissed';
 const XTOPICS_SYNC_ID = 'brian_x_topics';
+const FINANCE_ADVISOR_SYNC_ID = 'brian_finance_advisor';
 let _sbClient = null;
 
 function getSB() {
@@ -3112,6 +3308,7 @@ async function pushToCloud() {
       capitalOne:   D.capitalOne   || { accounts: [] },
       remittancesIgnored: D.remittancesIgnored || [],
       dca:          D.dca          || { transactions: [] },
+      realEstate:   D.realEstate   || { properties: [], deals: [] },
       savedAt
     };
     await sb.from('finance_sync').upsert({
@@ -3148,6 +3345,7 @@ async function pullFromCloud() {
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
     if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
     if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
+    if (f.realEstate && Array.isArray(f.realEstate.properties)) D.realEstate = f.realEstate;
     // Candado: usar la versión (nube vs. local) que tenga MÁS movimientos, nunca la más vacía.
     if (f.dca && Array.isArray(f.dca.transactions)) {
       const localCount = (D.dca && Array.isArray(D.dca.transactions)) ? D.dca.transactions.length : 0;
@@ -3155,6 +3353,15 @@ async function pullFromCloud() {
       else f.dca = D.dca; // lo local es más completo — no lo borres, y súbelo de vuelta
     }
     else if (D.dca && Array.isArray(D.dca.transactions) && D.dca.transactions.length) f.dca = D.dca;
+    // El candado de arriba elige un solo D.dca completo por cantidad de movimientos — eso
+    // podría descartar un "targets"/"housingGoal" (Proyección) escrito solo en el otro lado.
+    // Se fusionan aparte para que un precio objetivo en el celular no desaparezca en la PC (o viceversa).
+    if (!D.dca) D.dca = {};
+    if (!f.dca) f.dca = {};
+    const mergedTargets = { ...(f.dca.targets || {}), ...(D.dca.targets || {}) };
+    if (Object.keys(mergedTargets).length) { D.dca.targets = mergedTargets; f.dca.targets = mergedTargets; }
+    const mergedHousingGoal = (D.dca.housingGoal && D.dca.housingGoal.price) ? D.dca.housingGoal : (f.dca.housingGoal || null);
+    if (mergedHousingGoal) { D.dca.housingGoal = mergedHousingGoal; f.dca.housingGoal = mergedHousingGoal; }
     try { localStorage.setItem(FINANCE_KEY, JSON.stringify(f)); } catch(_) {}
     return true;
   } catch(e) { console.warn('[Sync] pull failed:', e.message); return false; }
@@ -3295,6 +3502,158 @@ async function pullXTopicsFromCloud() {
       } catch(_) {}
     }
   } catch(e) { console.warn('[Sync] x-topics pull failed:', e.message); }
+}
+// ============================================================
+
+// ── FINANCE ADVISOR — informes mensuales del agente de finanzas (analyze-finances.js) ──
+// Solo lectura desde el navegador: el bot (Node) es el único que escribe esta fila.
+// No hay candado de "más reciente gana" porque nunca hay conflicto — la nube siempre manda.
+async function pullFinanceAdvisorFromCloud() {
+  const sb = getSB(); if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', FINANCE_ADVISOR_SYNC_ID).maybeSingle();
+    if (error || !row || !row.data || !Array.isArray(row.data.reports)) return;
+    D.financeAdvisor = { reports: row.data.reports };
+  } catch(e) { console.warn('[Sync] finance-advisor pull failed:', e.message); }
+}
+
+/** Dispara al bot de análisis en el servidor local y refresca el informe al terminar. */
+async function runFinanceAdvisor() {
+  const btn = document.getElementById('finance-advisor-btn');
+  // El servidor responde 200 también cuando NO arrancó nada (ya estaba corriendo, o en
+  // espera) — hay que mirar "status", no solo el código HTTP (mismo patrón que runContentBot()).
+  try {
+    const r = await fetch('/api/finance-advisor/run', { method: 'POST' });
+    const j = await r.json();
+    if (j.status === 'busy') { showToast('El análisis ya está corriendo — espera a que termine'); return; }
+    if (j.status === 'cooldown') { showToast(`Acaba de correr. Espera ${j.retryIn}s para volver a intentarlo`); return; }
+  } catch(_) {
+    showToast('No hay servidor local corriendo — abre el dashboard con ABRIR DASHBOARD.bat', true);
+    return;
+  }
+  if (btn) { btn.disabled = true; btn.textContent = '🧠 Analizando… (~1-2 min)'; }
+  // Tope de intentos: si el proceso hijo se cuelga sin avisar (raro en Windows si
+  // claude.exe queda suspendido), sin esto el botón se quedaría deshabilitado para
+  // siempre en silencio. 45 intentos × 4s = 3 minutos, con margen sobre el timeout
+  // interno de 2 minutos que ya tiene lib/finance-analyst.js.
+  let attempts = 0;
+  const MAX_ATTEMPTS = 45;
+  const stop = () => { clearInterval(poll); if (btn) { btn.disabled = false; btn.textContent = '🧠 Analizar mi mes'; } };
+  const poll = setInterval(async () => {
+    attempts++;
+    if (attempts > MAX_ATTEMPTS) {
+      stop();
+      showToast('El análisis está tardando más de lo normal — revisa finance-advisor.log', true);
+      return;
+    }
+    try {
+      const r = await fetch('/api/finance-advisor/status');
+      const j = await r.json();
+      if (j.status !== 'running') {
+        stop();
+        if (j.lastExitCode === 0) {
+          await pullFinanceAdvisorFromCloud();
+          renderFinanceAdvisor();
+          showToast('🧠 Análisis del mes listo');
+        } else {
+          showToast('El análisis falló — revisa finance-advisor.log', true);
+        }
+      }
+    } catch(_) { stop(); }
+  }, 4000);
+}
+
+/** Escribe el presupuesto sugerido por el agente — solo cuando la categoría tiene una
+ *  única subcategoría (si tiene varias, Brian decide a mano cuál ajustar en Presupuesto,
+ *  ver renderFinanceAdvisor()). Reutiliza setProjected(), el mismo camino que el formulario.
+ *  Pide confirmación antes de sobrescribir — el monto lo escribió la IA, no Brian, así que
+ *  un solo clic accidental no debe poder pisar un presupuesto real sin que él lo vea venir. */
+function applyBudgetSuggestion(subId, amount, nextMonth, catName) {
+  if (!confirm(`¿Poner el presupuesto de "${catName}" en $${Number(amount).toFixed(0)} para ${nextMonth}? Esto reemplaza lo que tengas ahí.`)) return;
+  setProjected(nextMonth, subId, amount);
+  showToast('✓ Presupuesto sugerido aplicado a ' + nextMonth);
+  renderFinanceAdvisor();
+}
+
+function renderFinanceAdvisor() {
+  const body = document.getElementById('finance-advisor-body');
+  if (!body) return;
+  const reports = (D.financeAdvisor && D.financeAdvisor.reports) || [];
+  if (!reports.length) {
+    body.innerHTML = `<div style="padding:8px 0;color:var(--text-2);font-size:.85rem">
+      Todavía no hay ningún informe. Corre <b>"🧠 Analizar mi mes"</b> o espera a la corrida automática del día 1 de cada mes.
+    </div>`;
+    return;
+  }
+  const latest = reports[reports.length - 1];
+  const { report, analysis, generatedAt } = latest;
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const mesNombre = ym => { const [y,m] = ym.split('-').map(Number); return `${MESES[m-1]} ${y}`; };
+
+  const deltaColor = report.surplusDelta >= 0 ? 'var(--green)' : 'var(--red)';
+  const deltaSign = report.surplusDelta >= 0 ? '+' : '';
+
+  const mejorHtml = (analysis.loQueHicisteMejor || []).length
+    ? `<div style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">✅ Lo que hiciste mejor</div>
+        ${analysis.loQueHicisteMejor.map(t => `<div style="font-size:.85rem;color:var(--text-2);margin-bottom:3px">· ${esc(t)}</div>`).join('')}
+      </div>` : '';
+
+  const focosHtml = (analysis.focosDeAtencion || []).length
+    ? `<div style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--orange);margin-bottom:6px">⚠️ Dónde se te fue el dinero</div>
+        ${analysis.focosDeAtencion.map(f => `<div style="font-size:.85rem;color:var(--text-2);margin-bottom:3px">· <b>${esc(f.categoria || f.categoriaId)}</b>: ${esc(f.queePaso)}</div>`).join('')}
+      </div>` : '';
+
+  // Próximo mes (para "Aplicar")
+  const [y, m] = report.month.split('-').map(Number);
+  const nextD = new Date(y, m, 1);
+  const nextMonth = `${nextD.getFullYear()}-${String(nextD.getMonth()+1).padStart(2,'0')}`;
+
+  const consejosHtml = (analysis.consejos || []).map(c => `
+    <div style="padding:10px 12px;background:rgba(255,255,255,.03);border-radius:var(--rs);margin-bottom:8px">
+      <div style="font-size:.85rem;color:var(--text-1);margin-bottom:2px">💡 ${esc(c.accion)}</div>
+      <div style="font-size:11px;color:var(--text-3)">${esc(c.porque)}${c.ahorroEstimado ? ` — ahorro estimado ~$${Number(c.ahorroEstimado).toFixed(0)}` : ''}</div>
+    </div>`).join('');
+
+  const presupuestoHtml = (analysis.presupuestoSugerido || []).map(s => {
+    // Solo se ofrece "Aplicar" cuando la categoría tiene una única subcategoría — con
+    // varias, el agente sugiere un total de categoría que no mapea a una sola casilla
+    // de Presupuesto (que vive por subcategoría), y aplicar mal ahí pisaría un dato de
+    // Brian sin que él lo pidiera. Con una sola sub no hay ambigüedad posible.
+    // Se empareja por categoriaId (id exacto, ver lib/finance-analyst.js) en vez de por
+    // el nombre/emoji que la IA haya escrito — un id no se puede escribir "casi bien".
+    const cat = (D.expenses.categories || []).find(c => c.id === s.categoriaId);
+    const label = s.categoria || (cat ? `${cat.emoji} ${cat.name}` : s.categoriaId);
+    const singleSub = cat && (cat.subcategories || []).length === 1 ? cat.subcategories[0] : null;
+    return `<div style="padding:10px 12px;background:rgba(100,255,218,.05);border-radius:var(--rs);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:.85rem;color:var(--text-1)"><b>${esc(label)}</b> → $${Number(s.sugerido).toFixed(0)} para ${mesNombre(nextMonth)}</div>
+        <div style="font-size:11px;color:var(--text-3)">${esc(s.porque)}</div>
+      </div>
+      ${singleSub
+        ? `<button class="btn-s" onclick="applyBudgetSuggestion('${singleSub.id}', ${Number(s.sugerido)}, '${nextMonth}', '${esc(label)}')">Aplicar</button>`
+        : `<button class="btn-s" onclick="switchFinSubtab('presupuesto'); toggleCat('${cat ? cat.id : ''}')">Ajustar en Presupuesto →</button>`}
+    </div>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div style="font-size:11px;color:var(--text-3);margin-bottom:10px">
+      ${mesNombre(report.month)} vs. ${mesNombre(report.prevMonth)} · generado ${new Date(generatedAt).toLocaleDateString('es-MX',{day:'numeric',month:'short'})}
+      ${reports.length > 1 ? ` · ${reports.length} informes en el historial` : ''}
+    </div>
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px">Te sobró</div>
+      <div style="font-size:28px;font-weight:800;color:${report.surplus >= 0 ? 'var(--green)' : 'var(--red)'}">$${report.surplus.toFixed(2)}</div>
+      <div style="font-size:12px;color:${deltaColor}">${deltaSign}$${report.surplusDelta.toFixed(2)} vs. ${mesNombre(report.prevMonth)}</div>
+    </div>
+    <div style="font-size:.85rem;color:var(--text-2);margin-bottom:14px;font-style:italic">${esc(analysis.resumen || '')}</div>
+    ${mejorHtml}
+    ${focosHtml}
+    ${consejosHtml ? `<div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:6px">💡 Para ${mesNombre(nextMonth)}</div>${consejosHtml}` : ''}
+    ${presupuestoHtml ? `<div style="font-size:12px;font-weight:700;color:var(--text-1);margin:10px 0 6px">Presupuesto sugerido para ${mesNombre(nextMonth)}</div>${presupuestoHtml}` : ''}
+    <div style="font-size:10px;color:var(--text-3);margin-top:10px;text-align:center">Herramienta de comparación sobre tus propios números — no es un asesor financiero licenciado.</div>
+  `;
 }
 // ============================================================
 
@@ -3464,6 +3823,84 @@ async function pullHabitsFromCloud() {
 }
 // ============================================================
 
+// ── PLAN DE 12 SEMANAS (🎯 pág. 118 del libro) — mismo patrón que Hábitos ──
+// NO vive en brand_os_data.json (el auto-update de las 7am lo borraría). Vive en
+// localStorage (brandos_plan12) + nube (fila 'brian_plan12'), con el mismo candado
+// anti-borrado: una copia vacía nunca pisa una con contenido.
+const PLAN12_KEY = 'brandos_plan12';
+
+function defaultPlan12() {
+  return {
+    goals: [
+      { text:'', tactics:[ { text:'', week:1, done:false } ] },
+      { text:'', tactics:[] },
+      { text:'', tactics:[] }
+    ],
+    savedAt: null
+  };
+}
+
+// Cuenta metas con texto + tácticas con texto (para el candado anti-borrado)
+function plan12Count(p) {
+  if (!p || !Array.isArray(p.goals)) return 0;
+  return p.goals.reduce((n, g) => {
+    let c = (g.text && g.text.trim()) ? 1 : 0;
+    c += (Array.isArray(g.tactics) ? g.tactics.filter(t => t.text && t.text.trim()).length : 0);
+    return n + c;
+  }, 0);
+}
+
+function persistPlan12Local(plan, savedAt) {
+  try {
+    localStorage.setItem(PLAN12_KEY, JSON.stringify(plan));
+    localStorage.setItem(PLAN12_KEY + '_ts', savedAt || new Date().toISOString());
+  } catch(_) {}
+}
+
+function savePlan12() {
+  const savedAt = new Date().toISOString();
+  D.plan12.savedAt = savedAt;
+  persistPlan12Local(D.plan12, savedAt);
+  pushPlan12ToCloud(savedAt);
+}
+
+async function pushPlan12ToCloud(savedAt) {
+  const sb = getSB(); if (!sb) return;
+  try {
+    if (!savedAt) savedAt = new Date().toISOString();
+    await sb.from('finance_sync').upsert({
+      id: PLAN12_SYNC_ID,
+      data: { plan12: D.plan12 || defaultPlan12(), savedAt },
+      updated_at: savedAt
+    });
+  } catch(e) { console.warn('[Sync] plan12 push failed:', e.message); }
+}
+
+async function pullPlan12FromCloud() {
+  const sb = getSB();
+  if (!D.plan12) D.plan12 = defaultPlan12();
+  if (!sb) return;
+  try {
+    const { data: row, error } = await sb.from('finance_sync').select('data').eq('id', PLAN12_SYNC_ID).maybeSingle();
+    const cloud = (!error && row && row.data && row.data.plan12) ? row.data.plan12 : null;
+    const localCount = plan12Count(D.plan12);
+    // 1) La nube aún no tiene fila: adoptar lo local (si hay algo) y subirlo
+    if (!cloud) { if (localCount > 0) pushPlan12ToCloud(); return; }
+    const cloudCount = plan12Count(cloud);
+    const cloudTime  = row.data.savedAt ? new Date(row.data.savedAt).getTime() : 0;
+    const localTs    = localStorage.getItem(PLAN12_KEY + '_ts');
+    // 2) Candado: una copia VACÍA jamás pisa una con contenido
+    if (cloudCount === 0 && localCount > 0) { pushPlan12ToCloud(); return; }
+    if (localCount === 0 && cloudCount > 0) {
+      D.plan12 = cloud; persistPlan12Local(cloud, row.data.savedAt); return;
+    }
+    // 3) Ambas con datos (o ambas vacías): gana la más reciente
+    const localTime = localTs ? new Date(localTs).getTime() : 0;
+    if (cloudTime > localTime) { D.plan12 = cloud; persistPlan12Local(cloud, row.data.savedAt); }
+  } catch(e) { console.warn('[Sync] plan12 pull failed:', e.message); }
+}
+// ============================================================
+
 // Finanzas: gastos, remesas y presupuestos proyectados se guardan en el navegador
 // para que NO se borren con el auto-update de las 7am (mismo patrón que las Metas).
 const FINANCE_KEY = 'brandos_finance';
@@ -3489,6 +3926,7 @@ function saveFinance() {
       bankIgnored: D.bankIgnored || [],   // gastos del banco que Brian eliminó (no re-importar)
       remittancesIgnored: D.remittancesIgnored || [], // remesas del banco que Brian eliminó (no re-importar)
       dca: D.dca || { transactions: [] }, // bitácora de inversiones (compras/ventas/transferencias)
+      realEstate: D.realEstate || { properties: [], deals: [] }, // casa(s), hipoteca(s), escenarios de la calculadora
       savedAt: new Date().toISOString()
     }));
   } catch(_) {}
@@ -3516,6 +3954,7 @@ function restoreFinance() {
     if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
     if (Array.isArray(f.bankIgnored)) D.bankIgnored = f.bankIgnored;
     if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
+    if (f.realEstate && Array.isArray(f.realEstate.properties)) D.realEstate = f.realEstate;
     // Candado: solo usar la bitácora guardada en el navegador si tiene AL MENOS tantos
     // movimientos como la que acaba de venir del JSON. Si el JSON trae más (p. ej. porque
     // se cargó un historial nuevo directamente en brand_os_data.json), no lo pises con
@@ -3523,6 +3962,14 @@ function restoreFinance() {
     if (f.dca && Array.isArray(f.dca.transactions)) {
       const jsonCount = (D.dca && Array.isArray(D.dca.transactions)) ? D.dca.transactions.length : 0;
       if (f.dca.transactions.length >= jsonCount) D.dca = f.dca;
+    }
+    // El candado de arriba puede reemplazar D.dca completo con una versión vieja de
+    // localStorage que no tenga "targets"/"housingGoal" (Proyección) — se fusionan aparte
+    // para que un precio objetivo escrito en OTRO dispositivo no desaparezca aquí.
+    if (f.dca) {
+      if (!D.dca) D.dca = {};
+      if (f.dca.targets && Object.keys(f.dca.targets).length) D.dca.targets = { ...(D.dca.targets || {}), ...f.dca.targets };
+      if (f.dca.housingGoal && f.dca.housingGoal.price) D.dca.housingGoal = f.dca.housingGoal;
     }
   } catch(_) {}
 }
@@ -4752,6 +5199,8 @@ function normalizeDCA() {
   if (!D.dca) D.dca = {};
   if (!Array.isArray(D.dca.transactions)) D.dca.transactions = [];
   if (!D.dca.prices) D.dca.prices = {};
+  if (!D.dca.targets) D.dca.targets = {};       // precios objetivo por activo (Proyección)
+  if (!D.dca.housingGoal) D.dca.housingGoal = { price: 0, downPct: 20, taxPct: 15 };
   D.dca.transactions.forEach(t => {
     if (!t.type) t.type = 'buy';
     if (!t.assetType) t.assetType = 'crypto';
@@ -5249,14 +5698,45 @@ async function updatePrices(force) {
 
 function openProjection() {
   normalizeDCA();
+  renderProjectionContent();
+  openModal('modal-proj');
+}
+
+// Repinta el contenido del modal de Proyección sin tocar el modal — se llama al abrir
+// y cada vez que Brian escribe un precio objetivo o cambia la meta de casa (Módulo B).
+function renderProjectionContent() {
   const { byAsset } = dcaAggregates();
   const mults = [0.5, 1, 1.25, 1.5, 2, 3, 5, 10];
-  document.getElementById('proj-content').innerHTML = Object.entries(byAsset).map(([name, a]) => {
+  const targets = D.dca.targets || {};
+
+  let totalValueAtTarget = 0, totalCostHeld = 0, anyTarget = false;
+
+  const assetRows = Object.entries(byAsset).map(([name, a]) => {
     const held = a.buyQty - a.sellQty;
     if (held <= 1e-9) return '';
     const avgP = a.buyQty ? a.buys / a.buyQty : 0;
     const curP = dcaCurPrice(name, avgP);
     const invHeld = held * avgP; // costo estimado de lo que aún tienes
+    const target = targets[name] || null;
+
+    let targetRowHtml = '';
+    if (target) {
+      anyTarget = true;
+      const val = held * target;
+      const pl = val - invHeld;
+      const pct = invHeld ? pl / invHeld * 100 : 0;
+      totalValueAtTarget += val;
+      totalCostHeld += invHeld;
+      targetRowHtml = `
+        <div style="margin-top:8px;padding:10px 12px;background:var(--bg-2);border-radius:var(--rs);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div style="font-size:12px;color:var(--text-2)">Con ${esc(name)} a <b style="color:var(--gold)">$${target.toLocaleString('en-US')}</b>: valdría <b style="color:var(--text-1)">$${val.toLocaleString('en-US',{maximumFractionDigits:0})}</b></div>
+          <div class="${pl>=0?'pos':'neg'}">${pl>=0?'+':''}$${Math.abs(pl).toLocaleString('en-US',{maximumFractionDigits:0})} (${pl>=0?'+':''}${pct.toFixed(1)}%)</div>
+        </div>`;
+    } else {
+      totalCostHeld += invHeld;
+      totalValueAtTarget += held * curP; // sin objetivo escrito, usa el precio actual como base del total
+    }
+
     const rows = mults.map(m => {
       const pp  = curP * m;
       const val = held * pp;
@@ -5268,8 +5748,9 @@ function openProjection() {
         <td class="${pl>=0?'pos':'neg'}">${pl>=0?'+':''}$${Math.abs(pl).toFixed(2)} (${pl>=0?'+':''}${pct.toFixed(1)}%)</td>
       </tr>`;
     }).join('');
+
     return `
-      <div style="margin-bottom:22px">
+      <div style="margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border)">
         <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px">${esc(name)}</div>
         <div style="font-size:11px;color:var(--text-3);margin-bottom:10px">
           Tienes: <b style="color:var(--text-2)">${dcaQtyFmt(held)}</b> ·
@@ -5277,14 +5758,599 @@ function openProjection() {
           Precio Prom.: <b style="color:var(--text-2)">$${avgP.toLocaleString('en-US',{maximumFractionDigits:2})}</b> ·
           Precio Actual: <b style="color:var(--text-2)">$${curP.toLocaleString('en-US')}</b>
         </div>
-        <table style="width:100%">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <label class="i-label" style="margin:0">🎯 Si llega a $</label>
+          <input type="number" class="fin-proj-input" style="width:140px" value="${target || ''}" placeholder="precio objetivo" step="any" min="0"
+            onchange="onProjTargetChange('${esc(name)}', this.value)">
+        </div>
+        ${targetRowHtml}
+        <table style="width:100%;margin-top:12px">
           <thead><tr><th>Escenario</th><th>Valor Proyectado</th><th>P&L</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
-  }).filter(Boolean).join('') || '<p style="color:var(--text-3)">Sin tenencias para proyectar.</p>';
-  openModal('modal-proj');
+  }).filter(Boolean).join('');
+
+  document.getElementById('proj-content').innerHTML =
+    (assetRows || '<p style="color:var(--text-3)">Sin tenencias para proyectar.</p>') +
+    renderProjectionTotalsAndHousing(totalValueAtTarget, totalCostHeld, anyTarget);
 }
+
+// Total del escenario + "¿Me alcanza para una casa?" — la pregunta real que Brian quiere responder.
+function renderProjectionTotalsAndHousing(totalValueAtTarget, totalCostHeld, anyTarget) {
+  const pl = totalValueAtTarget - totalCostHeld;
+  const pct = totalCostHeld ? pl / totalCostHeld * 100 : 0;
+  const g = D.dca.housingGoal || { price: 0, downPct: 20, taxPct: 15 };
+
+  const now = new Date();
+  const month = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+  const surplus = getMonthIncome(month).gross - getMonthExpenses(month) - getMonthRemittances(month)
+    - getMonthlyDebtPayments() - (D.debts?.extraPayment || 0);
+
+  let housingHtml = '';
+  if (g.price > 0) {
+    const downPayment = g.price * (g.downPct / 100);
+    const taxOnGains = Math.max(0, pl) * (g.taxPct / 100);
+    const netCash = totalValueAtTarget - taxOnGains;
+    const diff = netCash - downPayment;
+    const monthsToSave = surplus > 0 ? Math.ceil(downPayment / surplus) : null;
+    housingHtml = `
+      <div style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px">
+          <span style="color:var(--text-2)">Efectivo neto si se cumplen tus objetivos</span><b>$${netCash.toLocaleString('en-US',{maximumFractionDigits:0})}</b>
+        </div>
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;margin-top:4px">
+          <span style="color:var(--text-2)">Enganche que necesitas (${g.downPct}%)</span><b>$${downPayment.toLocaleString('en-US',{maximumFractionDigits:0})}</b>
+        </div>
+        <div class="fin-bar-track" style="margin-top:10px"><div class="fin-bar-fill" style="width:${Math.max(0,Math.min(100, downPayment>0 ? netCash/downPayment*100 : 0))}%;background:${diff>=0?'var(--green)':'var(--orange)'}"></div></div>
+        <div style="margin-top:8px;font-size:14px;font-weight:800;color:${diff>=0?'var(--green)':'var(--red)'}">
+          ${diff>=0 ? `→ Te sobra $${diff.toLocaleString('en-US',{maximumFractionDigits:0})}` : `→ Te falta $${Math.abs(diff).toLocaleString('en-US',{maximumFractionDigits:0})}`}
+        </div>
+        ${monthsToSave != null ? `<div style="font-size:11px;color:var(--text-3);margin-top:8px">A tu ritmo de ahorro actual ($${surplus.toFixed(0)}/mes, de Finanzas → Resumen), juntar ese enganche sin depender de que suba nada te tomaría <b style="color:var(--text-2)">${monthsToSave} meses</b>.</div>` : ''}
+      </div>`;
+  }
+
+  return `
+    <div style="margin-top:4px;padding:16px;background:var(--bg-2);border-radius:var(--rs);margin-bottom:20px">
+      <div style="font-size:13px;color:var(--text-2)">Si todos tus objetivos se cumplen, tu portafolio valdría</div>
+      <div style="font-size:26px;font-weight:800;color:var(--text-1);margin:4px 0">$${totalValueAtTarget.toLocaleString('en-US',{maximumFractionDigits:0})}</div>
+      <div class="${pl>=0?'pos':'neg'}" style="font-size:14px">${pl>=0?'+':''}$${Math.abs(pl).toLocaleString('en-US',{maximumFractionDigits:0})} (${pl>=0?'+':''}${pct.toFixed(1)}%)</div>
+      ${!anyTarget ? '<div style="font-size:11px;color:var(--text-3);margin-top:6px">Sin precios objetivo escritos todavía — usa los múltiplos de referencia de cada activo, o escribe uno arriba.</div>' : ''}
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-title">🏠 ¿Me alcanza para una casa?</div>
+      <div class="dca-form-row">
+        <div class="i-group"><label class="i-label">Precio de la Casa Objetivo (USD)</label>
+          <input type="number" value="${g.price || ''}" placeholder="250000" step="1000" min="0"
+            onchange="onHousingGoalChange('price', this.value)"></div>
+        <div class="i-group"><label class="i-label">Enganche (%)</label>
+          <input type="number" value="${g.downPct || ''}" placeholder="20" step="1" min="0" max="100"
+            onchange="onHousingGoalChange('downPct', this.value)"></div>
+        <div class="i-group"><label class="i-label">Impuesto sobre Ganancias Est. (%)</label>
+          <input type="number" value="${g.taxPct || ''}" placeholder="15" step="1" min="0" max="100"
+            onchange="onHousingGoalChange('taxPct', this.value)"></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:-6px;margin-bottom:8px">Estimado, no es cálculo de impuestos real — cada quien paga distinto según su situación.</div>
+      ${housingHtml || '<div class="dca-hint">Escribe el precio de una casa objetivo para ver si tus proyecciones te alcanzarían.</div>'}
+    </div>`;
+}
+
+function onProjTargetChange(asset, val) {
+  normalizeDCA();
+  const p = parseFloat(val);
+  if (!p || p <= 0) delete D.dca.targets[asset];
+  else D.dca.targets[asset] = p;
+  saveFinance();
+  renderProjectionContent();
+}
+
+function onHousingGoalChange(field, val) {
+  normalizeDCA();
+  D.dca.housingGoal[field] = parseFloat(val) || 0;
+  saveFinance();
+  renderProjectionContent();
+}
+
+/* ============================================================
+   PATRIMONIO TOTAL — cripto/acciones + equity de bienes raíces
+============================================================ */
+// Convierte un monto a USD si viene en COP, usando la última tasa registrada en una
+// remesa (misma fuente que ya usa el saldo de Bancolombia). Devuelve null si no hay tasa.
+function toUSD(amount, currency) {
+  if (currency !== 'COP') return amount || 0;
+  const rate = latestCopRate();
+  return rate ? (amount || 0) / rate : null;
+}
+
+// Las 4 métricas de arriba (dca-summary) se dejan solo con cripto/acciones a propósito —
+// mezclar la casa ahí distorsionaría el % de rendimiento que Brian quiere comparar contra
+// el real estate. El patrimonio unificado ("todo en un solo lugar") va aquí, aparte.
+function renderNetWorth() {
+  const el = document.getElementById('inv-networth-inner');
+  if (!el || !D) return;
+  normalizeDCA();
+  normalizeRealEstate();
+  const { byAsset } = dcaAggregates();
+  let portfolioVal = 0;
+  Object.entries(byAsset).forEach(([k, a]) => {
+    const held = a.buyQty - a.sellQty;
+    const avgP = a.buyQty ? a.buys / a.buyQty : 0;
+    portfolioVal += held * dcaCurPrice(k, avgP);
+  });
+
+  let realEstateEquityUSD = 0, missingRate = false;
+  D.realEstate.properties.forEach(p => {
+    const equity = (p.currentValue || 0) - (p.mortgage?.balance || 0);
+    const usd = toUSD(equity, p.currency);
+    if (usd == null) missingRate = true; else realEstateEquityUSD += usd;
+  });
+
+  const total = portfolioVal + realEstateEquityUSD;
+  el.innerHTML = `
+    <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-3)">Patrimonio Total</div>
+        <div style="font-size:32px;font-weight:800;color:var(--green)">$${total.toLocaleString('en-US',{maximumFractionDigits:0})}</div>
+      </div>
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px;font-size:12px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-3)">💹 Cripto y Acciones</span><b style="color:var(--text-1)">$${portfolioVal.toLocaleString('en-US',{maximumFractionDigits:0})}</b></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-3)">🏠 Equity en Bienes Raíces</span><b style="color:var(--text-1)">${missingRate && !D.realEstate.properties.length ? '$0' : (missingRate ? '— (falta tasa COP)' : '$'+realEstateEquityUSD.toLocaleString('en-US',{maximumFractionDigits:0}))}</b></div>
+      </div>
+    </div>`;
+}
+
+/* ============================================================
+   BIENES RAÍCES — Módulo A (casa de Pereira + hipoteca)
+============================================================ */
+// Da forma segura a D.realEstate (propiedades + hipotecas + escenarios de la calculadora)
+function normalizeRealEstate() {
+  if (!D.realEstate) D.realEstate = {};
+  if (!Array.isArray(D.realEstate.properties)) D.realEstate.properties = [];
+  if (!Array.isArray(D.realEstate.deals)) D.realEstate.deals = [];
+  if (!D.realEstate.calcDraft) D.realEstate.calcDraft = {};
+  D.realEstate.properties.forEach(p => {
+    if (!p.mortgage) p.mortgage = {};
+    const m = p.mortgage;
+    if (m.originalAmount == null) m.originalAmount = 0;
+    if (m.balance == null) m.balance = 0;
+    if (m.annualRate == null) m.annualRate = 0;
+    if (m.monthlyPayment == null) m.monthlyPayment = 0;
+    if (m.termMonths == null) m.termMonths = 0;
+    if (m.extraPayment == null) m.extraPayment = 0;
+    if (p.currency == null) p.currency = 'COP';
+    if (p.currentValue == null) p.currentValue = 0;
+    if (p.purchasePrice == null) p.purchasePrice = 0;
+  });
+}
+
+// Colombia cotiza los créditos hipotecarios en tasa EFECTIVA anual (%EA, la que muestra el
+// extracto del banco) — para pasarla a tasa mensual hay que COMPONERLA, no dividirla entre 12
+// (dividir entre 12 es la convención de EE.UU. para una tasa nominal/APR). Por eso la
+// conversión depende de la moneda: COP asume %EA colombiana, USD asume nominal/APR de EE.UU.
+// Ej.: 12% EA → 0.9489% mensual (compuesta), NO 1% (dividida) — así lo confirma el banco
+// mismo en el extracto, que muestra "Tasa mensual vencida (%MV)" ≈ 0.94% para un 12% EA.
+function monthlyRateFromAnnual(annualRate, currency) {
+  const r = (annualRate || 0) / 100;
+  if (!r) return 0;
+  return currency === 'COP' ? Math.pow(1 + r, 1 / 12) - 1 : r / 12;
+}
+
+// Motor de amortización: mes a mes, interés = saldo × tasa mensual, el resto del pago abona
+// a capital, hasta llegar a 0. Tope de 600 meses (50 años) para nunca quedarse en un loop
+// infinito si la cuota no alcanza a cubrir ni el interés — en ese caso devuelve Infinity.
+function buildAmortization({ balance, annualRate, monthlyPayment, extraPayment = 0, currency = 'COP' }) {
+  const monthlyRate = monthlyRateFromAnnual(annualRate, currency);
+  let bal = balance || 0;
+  const payment = (monthlyPayment || 0) + (extraPayment || 0);
+  if (bal <= 0) return { months: 0, totalInterest: 0, stuck: false };
+  if (payment <= 0 || (monthlyRate > 0 && payment <= bal * monthlyRate)) {
+    return { months: Infinity, totalInterest: Infinity, stuck: true };
+  }
+  const MAX_MONTHS = 600;
+  let months = 0, totalInterest = 0;
+  while (bal > 0.01 && months < MAX_MONTHS) {
+    const interest = bal * monthlyRate;
+    let principal = payment - interest;
+    if (principal > bal) principal = bal;
+    bal -= principal;
+    totalInterest += interest;
+    months++;
+  }
+  return { months, totalInterest, stuck: bal > 0.01 };
+}
+
+function monthsBetween(startDate, endDate) {
+  if (!startDate) return 0;
+  const s = new Date(startDate), e = endDate ? new Date(endDate) : new Date();
+  if (isNaN(s.getTime())) return 0;
+  return Math.max(0, (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth()));
+}
+
+// Corre la amortización teórica desde el inicio del préstamo hasta hoy, para estimar
+// cuánto se ha pagado de intereses. Es una ESTIMACIÓN — si hubo abonos extra o cambios de
+// tasa no registrados aquí, el saldo teórico no cuadra exacto con el saldo real que Brian
+// escribió a mano. Por eso se compara contra ese saldo real y se avisa si difieren mucho.
+function estimateInterestPaid(mortgage, currency = 'COP') {
+  const elapsed = monthsBetween(mortgage.startDate);
+  if (!elapsed || !mortgage.originalAmount || !mortgage.monthlyPayment) {
+    return { interestPaid: 0, theoreticalBalance: mortgage.originalAmount || 0, monthsElapsed: elapsed, discrepancyPct: 0, stalled: false };
+  }
+  const monthlyRate = monthlyRateFromAnnual(mortgage.annualRate, currency);
+  // Si la cuota no alcanza a cubrir ni el interés del primer mes, el saldo teórico nunca
+  // baja y el "interés pagado" que sale de este ciclo es un número inflado y poco confiable
+  // (no es que Brian de verdad haya pagado eso — es un artefacto de una Cuota Mensual mal
+  // escrita). Se detecta aparte para avisar con claridad en vez de mostrar el número tal cual.
+  const stalled = mortgage.monthlyPayment <= mortgage.originalAmount * monthlyRate;
+  let bal = mortgage.originalAmount, interestPaid = 0;
+  for (let i = 0; i < elapsed && bal > 0.01; i++) {
+    const interest = bal * monthlyRate;
+    let principal = mortgage.monthlyPayment - interest;
+    if (principal < 0) principal = 0;
+    if (principal > bal) principal = bal;
+    bal -= principal;
+    interestPaid += interest;
+  }
+  const real = mortgage.balance || 0;
+  const discrepancyPct = real > 0 ? Math.abs(bal - real) / real * 100 : 0;
+  return { interestPaid, theoreticalBalance: bal, monthsElapsed: elapsed, discrepancyPct, stalled };
+}
+
+function payoffDateLabel(months) {
+  if (!isFinite(months)) return 'nunca (la cuota no cubre el interés)';
+  const d = new Date();
+  d.setMonth(d.getMonth() + months);
+  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return MESES[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+function reFmt(n, currency) {
+  return currency === 'COP' ? Math.round(n || 0).toLocaleString('es-CO') : (n || 0).toLocaleString('en-US', { maximumFractionDigits: 2 });
+}
+
+function renderRealEstate() {
+  normalizeRealEstate();
+  const list = document.getElementById('re-properties-list');
+  const emptyHint = document.getElementById('re-empty-hint');
+  if (!list) return;
+  const props = D.realEstate.properties;
+  if (emptyHint) emptyHint.style.display = props.length ? 'none' : '';
+  list.innerHTML = props.map(p => renderRealEstatePropertyCard(p)).join('');
+  renderNetWorth();
+}
+
+function extraPaymentSimHtml(p) {
+  const m = p.mortgage;
+  const cur = '$';
+  const base = buildAmortization({ balance: m.balance, annualRate: m.annualRate, monthlyPayment: m.monthlyPayment, extraPayment: 0, currency: p.currency });
+  const withExtra = buildAmortization({ balance: m.balance, annualRate: m.annualRate, monthlyPayment: m.monthlyPayment, extraPayment: m.extraPayment || 0, currency: p.currency });
+  const canCompare = isFinite(base.totalInterest) && isFinite(withExtra.totalInterest);
+  const savedInterest = canCompare ? base.totalInterest - withExtra.totalInterest : 0;
+  const savedMonths = canCompare ? base.months - withExtra.months : 0;
+  return `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div class="m-label">Sin Abono Extra</div>
+        <div style="font-size:13px;color:var(--text-2)">Terminas en <b style="color:var(--text-1)">${payoffDateLabel(base.months)}</b></div>
+        <div style="font-size:13px;color:var(--text-2)">Intereses que faltan: <b style="color:var(--text-1)">${cur}${reFmt(base.totalInterest, p.currency)}</b></div>
+      </div>
+      <div>
+        <div class="m-label" style="color:var(--green)">Con Tu Abono</div>
+        <div style="font-size:13px;color:var(--text-2)">Terminas en <b style="color:var(--green)">${payoffDateLabel(withExtra.months)}</b></div>
+        <div style="font-size:13px;color:var(--text-2)">Intereses que faltan: <b style="color:var(--green)">${cur}${reFmt(withExtra.totalInterest, p.currency)}</b></div>
+      </div>
+    </div>
+    ${(m.extraPayment || 0) > 0 && canCompare ? `
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(0,230,118,.1);border-radius:var(--rs);text-align:center;font-weight:800;color:var(--green)">
+        Te ahorras ${cur}${reFmt(savedInterest, p.currency)} y terminas ${savedMonths} meses antes
+      </div>` : ''}`;
+}
+
+function renderRealEstatePropertyCard(p) {
+  const m = p.mortgage;
+  const cur = '$';
+  const equity = (p.currentValue || 0) - (m.balance || 0);
+  const est = estimateInterestPaid(m, p.currency);
+  const pctPaid = m.originalAmount ? Math.max(0, Math.min(100, (1 - (m.balance / m.originalAmount)) * 100)) : 0;
+
+  const now = new Date();
+  const monthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+  const incomeGross = getMonthIncome(monthKey).gross || 0;
+  const mortgageUSD = toUSD(m.monthlyPayment || 0, p.currency) || 0;
+  const cardDebt = getMonthlyDebtPayments();
+  const dtiNow = incomeGross ? ((cardDebt + mortgageUSD) / incomeGross * 100) : 0;
+  const dtiAfterPayoff = incomeGross ? (cardDebt / incomeGross * 100) : 0;
+  const dtiColor = v => v < 36 ? 'var(--green)' : (v <= 43 ? 'var(--orange)' : 'var(--red)');
+
+  const discrepancyWarn = est.stalled ? `
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(255,82,82,.12);border:1px solid rgba(255,82,82,.3);border-radius:var(--rs);font-size:11px;color:var(--red)">
+      ⚠️ El número de "Intereses Pagados" de arriba <b>NO es confiable</b> — con la Cuota Mensual que tienes escrita (${cur}${reFmt(m.monthlyPayment, p.currency)}), el pago ni siquiera alcanza a cubrir el interés de un solo mes, así que el cálculo asume que nunca bajó el saldo y solo suma intereses sin parar. Casi seguro que ese campo quedó incompleto o mal escrito. Ve a "✎ Editar" y revisa "Cuota Mensual de Hipoteca" — escribe el número completo, sin puntos ni comas (ej. escribe <code>550699</code>, no <code>550.699</code> ni <code>550,699</code>).
+    </div>` : (est.discrepancyPct > 5 ? `
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(255,152,0,.12);border:1px solid rgba(255,152,0,.3);border-radius:var(--rs);font-size:11px;color:var(--orange)">
+      ⚠️ Según la fecha de inicio y la cuota que escribiste, el saldo teórico hoy sería ${cur}${reFmt(est.theoreticalBalance, p.currency)}, pero el saldo real que escribiste es ${cur}${reFmt(m.balance, p.currency)} — probablemente porque has hecho abonos extra o la tasa cambió en el camino. Los intereses pagados de arriba son una <b>estimación</b>; ajusta la tasa o la fecha de inicio en "✎ Editar" si quieres afinarla.
+    </div>` : '');
+
+  return `
+  <div class="card" style="margin-bottom:20px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+      <div>
+        <div class="card-title" style="margin-bottom:2px">🏠 ${esc(p.name || 'Propiedad')}</div>
+        ${p.address ? `<div style="font-size:11px;color:var(--text-3)">${esc(p.address)}</div>` : ''}
+      </div>
+      <button class="btn-s" onclick="openRealEstateModal('${p.id}')">✎ Editar</button>
+    </div>
+
+    <div class="metric-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+      <div class="metric-card"><div class="m-label">Valor de la Casa</div><div class="m-value" style="font-size:20px">${cur}${reFmt(p.currentValue, p.currency)}</div></div>
+      <div class="metric-card" style="--mc:var(--red)"><div class="m-label">Saldo Hipoteca</div><div class="m-value" style="font-size:20px;color:var(--red)">${cur}${reFmt(m.balance, p.currency)}</div></div>
+      <div class="metric-card" style="--mc:var(--green)"><div class="m-label">Equity (lo tuyo)</div><div class="m-value" style="font-size:20px;color:var(--green)">${cur}${reFmt(equity, p.currency)}</div></div>
+      <div class="metric-card" style="--mc:${est.stalled ? 'var(--red)' : 'var(--orange)'}"><div class="m-label">Intereses Pagados (est.)</div><div class="m-value" style="font-size:${est.stalled ? '14px' : '20px'};color:${est.stalled ? 'var(--red)' : 'var(--orange)'}">${est.stalled ? '⚠️ Revisa la Cuota' : cur+reFmt(est.interestPaid, p.currency)}</div></div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-bottom:4px">
+        <span>Pagado: ${pctPaid.toFixed(1)}%</span><span>Restante: ${(100 - pctPaid).toFixed(1)}%</span>
+      </div>
+      <div class="fin-bar-track"><div class="fin-bar-fill" style="width:${pctPaid}%;background:var(--green)"></div></div>
+    </div>
+
+    ${discrepancyWarn}
+
+    <div class="card" style="background:var(--bg-2);margin-bottom:20px">
+      <div class="card-title">🚀 Termina Más Rápido — Simulador de Abono Extra</div>
+      <div class="dca-form-row" style="align-items:flex-end">
+        <div class="i-group"><label class="i-label">Abono Extra Mensual (${p.currency})</label>
+          <input type="number" id="re-extra-${p.id}" value="${m.extraPayment || ''}" placeholder="0" step="1" min="0" oninput="onExtraPaymentInput('${p.id}')">
+        </div>
+        <div style="display:flex;gap:6px;padding-bottom:6px">
+          <button class="btn-s" onclick="quickExtraPayment('${p.id}', 100000)">+100k</button>
+          <button class="btn-s" onclick="quickExtraPayment('${p.id}', 200000)">+200k</button>
+          <button class="btn-s" onclick="quickExtraPayment('${p.id}', 500000)">+500k</button>
+        </div>
+      </div>
+      <div id="re-sim-${p.id}" style="margin-top:14px">${extraPaymentSimHtml(p)}</div>
+    </div>
+
+    <div class="card" style="background:var(--bg-2);margin-bottom:0">
+      <div class="card-title">🎯 DTI (Deuda / Ingreso) — para calificar a tu segunda casa</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div>
+          <div class="m-label">DTI Hoy</div>
+          <div style="font-size:24px;font-weight:800;color:${dtiColor(dtiNow)}">${dtiNow.toFixed(1)}%</div>
+        </div>
+        <div>
+          <div class="m-label">DTI Cuando Termines Esta Hipoteca</div>
+          <div style="font-size:24px;font-weight:800;color:${dtiColor(dtiAfterPayoff)}">${dtiAfterPayoff.toFixed(1)}%</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:10px">
+        Fórmula estándar de la banca en EE.UU. (pagos mínimos de deuda ÷ ingreso bruto). Verde &lt;36% (ideal), naranja 36-43% (límite típico), rojo &gt;43%. No es una preaprobación real.
+      </div>
+    </div>
+  </div>`;
+}
+
+function onExtraPaymentInput(id) {
+  const p = D.realEstate.properties.find(x => x.id === id);
+  if (!p) return;
+  const el = document.getElementById('re-extra-' + id);
+  p.mortgage.extraPayment = parseFloat(el.value) || 0;
+  saveFinance();
+  const simEl = document.getElementById('re-sim-' + id);
+  if (simEl) simEl.innerHTML = extraPaymentSimHtml(p);
+}
+
+function quickExtraPayment(id, amount) {
+  const p = D.realEstate.properties.find(x => x.id === id);
+  if (!p) return;
+  p.mortgage.extraPayment = amount;
+  const el = document.getElementById('re-extra-' + id);
+  if (el) el.value = amount;
+  saveFinance();
+  const simEl = document.getElementById('re-sim-' + id);
+  if (simEl) simEl.innerHTML = extraPaymentSimHtml(p);
+}
+
+function addRealEstateProperty() { openRealEstateModal(null); }
+
+function openRealEstateModal(id) {
+  normalizeRealEstate();
+  const p = id ? D.realEstate.properties.find(x => x.id === id) : null;
+  document.getElementById('re-modal-title').textContent = p ? '✎ Editar Propiedad' : '🏠 Agregar Propiedad';
+  document.getElementById('re-edit-id').value = id || '';
+  document.getElementById('re-name').value = p ? p.name : '';
+  document.getElementById('re-currency').value = p ? p.currency : 'COP';
+  document.getElementById('re-address').value = p ? (p.address || '') : '';
+  document.getElementById('re-purchase-price').value = p ? (p.purchasePrice || '') : '';
+  document.getElementById('re-purchase-date').value = p ? (p.purchaseDate || '') : '';
+  document.getElementById('re-current-value').value = p ? (p.currentValue || '') : '';
+  const m = p ? p.mortgage : {};
+  document.getElementById('re-mortgage-original').value = m.originalAmount || '';
+  document.getElementById('re-mortgage-balance').value = m.balance || '';
+  document.getElementById('re-mortgage-rate').value = m.annualRate || '';
+  document.getElementById('re-mortgage-payment').value = m.monthlyPayment || '';
+  document.getElementById('re-mortgage-start').value = m.startDate || '';
+  document.getElementById('re-mortgage-term').value = m.termMonths || '';
+  document.getElementById('re-delete-btn').style.display = p ? '' : 'none';
+  openModal('modal-re-edit');
+}
+
+function saveRealEstateProperty() {
+  normalizeRealEstate();
+  const id = document.getElementById('re-edit-id').value;
+  const name = document.getElementById('re-name').value.trim();
+  if (!name) { showToast('Ponle un nombre a la propiedad', true); return; }
+  const existing = id ? D.realEstate.properties.find(x => x.id === id) : null;
+  const data = {
+    id: id || ('re-' + Date.now()),
+    name,
+    currency: document.getElementById('re-currency').value,
+    address: document.getElementById('re-address').value.trim(),
+    purchasePrice: parseFloat(document.getElementById('re-purchase-price').value) || 0,
+    purchaseDate: document.getElementById('re-purchase-date').value || '',
+    currentValue: parseFloat(document.getElementById('re-current-value').value) || 0,
+    valueUpdatedAt: new Date().toISOString(),
+    monthlyRent: existing ? (existing.monthlyRent || 0) : 0,
+    mortgage: {
+      originalAmount: parseFloat(document.getElementById('re-mortgage-original').value) || 0,
+      balance: parseFloat(document.getElementById('re-mortgage-balance').value) || 0,
+      annualRate: parseFloat(document.getElementById('re-mortgage-rate').value) || 0,
+      monthlyPayment: parseFloat(document.getElementById('re-mortgage-payment').value) || 0,
+      startDate: document.getElementById('re-mortgage-start').value || '',
+      termMonths: parseInt(document.getElementById('re-mortgage-term').value, 10) || 0,
+      extraPayment: existing ? (existing.mortgage.extraPayment || 0) : 0
+    }
+  };
+  if (existing) {
+    const idx = D.realEstate.properties.findIndex(x => x.id === id);
+    D.realEstate.properties[idx] = data;
+  } else {
+    D.realEstate.properties.push(data);
+  }
+  saveFinance();
+  closeModal('modal-re-edit');
+  renderRealEstate();
+  showToast('Propiedad guardada');
+}
+
+function deleteRealEstateProperty() {
+  const id = document.getElementById('re-edit-id').value;
+  if (!id) return;
+  if (!confirm('¿Eliminar esta propiedad? Esta acción no se puede deshacer.')) return;
+  D.realEstate.properties = D.realEstate.properties.filter(x => x.id !== id);
+  saveFinance();
+  closeModal('modal-re-edit');
+  renderRealEstate();
+  showToast('Propiedad eliminada');
+}
+
+/* ============================================================
+   CALCULADORA DE PROPIEDADES — Módulo C (cash flow inmobiliario)
+============================================================ */
+function readCalcInputs() {
+  const num = id => parseFloat(document.getElementById(id).value) || 0;
+  return {
+    name: document.getElementById('calc-name').value.trim(),
+    currency: document.getElementById('calc-currency').value,
+    price: num('calc-price'),
+    cashInvested: num('calc-cash-invested'),
+    rent: num('calc-rent'),
+    vacancyPct: num('calc-vacancy'),
+    insurance: num('calc-insurance'),
+    tax: num('calc-tax'),
+    mgmt: num('calc-mgmt'),
+    repairs: num('calc-repairs'),
+    hoa: num('calc-hoa'),
+    other: num('calc-other'),
+    mortgagePayment: num('calc-mortgage')
+  };
+}
+
+// NOI (ingreso operativo neto) excluye la hipoteca a propósito — así el Cap Rate mide la
+// propiedad en sí, no cómo la estás financiando. El Cash Flow y el Cash-on-Cash sí restan
+// la hipoteca, porque esos son "lo que te queda en el bolsillo cada mes" de verdad.
+function calcRealEstateDeal(inputs) {
+  const effectiveRent = inputs.rent * (1 - (inputs.vacancyPct || 0) / 100);
+  const operatingExpenses = inputs.insurance + inputs.tax + inputs.mgmt + inputs.repairs + inputs.hoa + inputs.other;
+  const noiMonthly = effectiveRent - operatingExpenses;
+  const capRateAnnual = inputs.price ? (noiMonthly * 12) / inputs.price * 100 : 0;
+  const cashFlowMonthly = noiMonthly - inputs.mortgagePayment;
+  const cashOnCashAnnual = inputs.cashInvested ? (cashFlowMonthly * 12) / inputs.cashInvested * 100 : 0;
+  return { effectiveRent, operatingExpenses, noiMonthly, capRateAnnual, cashFlowMonthly, cashOnCashAnnual, profitable: cashFlowMonthly >= 100 };
+}
+
+function onCalcInput() {
+  normalizeRealEstate();
+  D.realEstate.calcDraft = readCalcInputs();
+  saveFinance();
+  renderRealEstateCalc();
+}
+
+// Repinta solo los RESULTADOS de la calculadora — nunca los inputs mientras Brian escribe
+// (cada input estático se sincroniza una sola vez desde el borrador guardado, igual que
+// el patrón ya usado en el simulador de deudas con "_synced").
+function renderRealEstateCalc() {
+  normalizeRealEstate();
+  const draft = D.realEstate.calcDraft || {};
+  const setOnce = (id, val) => {
+    const el = document.getElementById(id);
+    if (el && !el._synced) { el.value = val; el._synced = true; }
+  };
+  setOnce('calc-name', draft.name || '');
+  setOnce('calc-currency', draft.currency || 'COP');
+  setOnce('calc-price', draft.price || '');
+  setOnce('calc-cash-invested', draft.cashInvested || '');
+  setOnce('calc-rent', draft.rent || '');
+  setOnce('calc-vacancy', draft.vacancyPct != null ? draft.vacancyPct : 5);
+  setOnce('calc-insurance', draft.insurance || '');
+  setOnce('calc-tax', draft.tax || '');
+  setOnce('calc-mgmt', draft.mgmt || '');
+  setOnce('calc-repairs', draft.repairs || '');
+  setOnce('calc-hoa', draft.hoa || '');
+  setOnce('calc-other', draft.other || '');
+  setOnce('calc-mortgage', draft.mortgagePayment || '');
+
+  const inputs = readCalcInputs();
+  const r = calcRealEstateDeal(inputs);
+  const cur = '$';
+  const fmt = n => reFmt(n, inputs.currency);
+
+  document.getElementById('calc-results').innerHTML = [
+    { label: 'Ingreso Bruto Efectivo / mes', val: cur + fmt(r.effectiveRent), mc: 'var(--blue)' },
+    { label: 'Gastos Operativos / mes', val: cur + fmt(r.operatingExpenses), mc: 'var(--orange)' },
+    { label: 'Cash Flow / mes', val: (r.cashFlowMonthly >= 0 ? '+' : '-') + cur + fmt(Math.abs(r.cashFlowMonthly)), mc: r.cashFlowMonthly >= 0 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Cash-on-Cash (anual)', val: r.cashOnCashAnnual.toFixed(1) + '%', mc: r.cashOnCashAnnual >= 0 ? 'var(--green)' : 'var(--red)' }
+  ].map(m => `
+    <div class="metric-card" style="--mc:${m.mc}">
+      <div class="m-label">${m.label}</div>
+      <div class="m-value" style="font-size:20px;color:${m.mc}">${m.val}</div>
+    </div>`).join('');
+
+  document.getElementById('calc-verdict').innerHTML = `
+    <div class="card" style="text-align:center;background:${r.profitable ? 'rgba(0,230,118,.1)' : 'rgba(255,82,82,.1)'};border-color:${r.profitable ? 'rgba(0,230,118,.3)' : 'rgba(255,82,82,.3)'}">
+      <div style="font-size:22px;font-weight:800;color:${r.profitable ? 'var(--green)' : 'var(--red)'}">${r.profitable ? '✅ Rentable' : '❌ No Rentable'}</div>
+      <div style="font-size:11px;color:var(--text-3);margin-top:6px">Cap Rate estimado: <b style="color:var(--text-2)">${r.capRateAnnual.toFixed(2)}%</b> · Regla: rentable si el cash flow es de al menos $100/mes ($1,200/año)</div>
+    </div>`;
+
+  renderRealEstateDeals();
+}
+
+function saveRealEstateDeal() {
+  normalizeRealEstate();
+  const inputs = readCalcInputs();
+  if (!inputs.name) { showToast('Ponle un nombre al escenario antes de guardar', true); return; }
+  if (!inputs.price) { showToast('Ingresa al menos el precio de la propiedad', true); return; }
+  const r = calcRealEstateDeal(inputs);
+  D.realEstate.deals.push({ id: 're-deal-' + Date.now(), ...inputs, ...r, savedAt: new Date().toISOString() });
+  saveFinance();
+  renderRealEstateDeals();
+  showToast('Escenario guardado: ' + inputs.name);
+}
+
+function deleteRealEstateDeal(id) {
+  if (!confirm('¿Eliminar este escenario guardado?')) return;
+  D.realEstate.deals = (D.realEstate.deals || []).filter(d => d.id !== id);
+  saveFinance();
+  renderRealEstateDeals();
+}
+
+function renderRealEstateDeals() {
+  const card = document.getElementById('calc-deals-card');
+  const body = document.getElementById('calc-deals-body');
+  if (!card || !body) return;
+  const deals = (D.realEstate && D.realEstate.deals) || [];
+  if (!deals.length) { card.style.display = 'none'; return; }
+  card.style.display = '';
+  body.innerHTML = deals.map(d => `
+    <tr>
+      <td>${esc(d.name)}</td>
+      <td>$${reFmt(d.price, d.currency)}</td>
+      <td class="${d.cashFlowMonthly >= 0 ? 'pos' : 'neg'}">${d.cashFlowMonthly >= 0 ? '+' : '-'}$${reFmt(Math.abs(d.cashFlowMonthly), d.currency)}</td>
+      <td>${d.cashOnCashAnnual.toFixed(1)}%</td>
+      <td>${d.profitable ? '✅' : '❌'}</td>
+      <td><button class="btn-s" onclick="deleteRealEstateDeal('${d.id}')">🗑</button></td>
+    </tr>`).join('');
+}
+
 
 /* ============================================================
    ICP
@@ -5523,6 +6589,96 @@ function habitAvatarTag(def, stageIdx, cls) {
   const emojiCls = cls + '-emoji';
   return `<img class="${cls}" src="avatars/${def.id}-${stageIdx+1}.png" alt="${esc(def.nombre)}"
     onerror="this.onerror=null;this.replaceWith(Object.assign(document.createElement('div'),{className:'${cls} ${emojiCls}',textContent:'${def.emoji}'}))">`;
+}
+
+/* ============================================================
+   PLAN DE 12 SEMANAS (🎯 pág. 118 del libro)
+============================================================ */
+function findPlan12Goal(gi) {
+  if (!D.plan12 || !Array.isArray(D.plan12.goals)) return null;
+  return D.plan12.goals[gi] || null;
+}
+
+function renderPlan12() {
+  if (!D.plan12) D.plan12 = defaultPlan12();
+  const box = document.getElementById('plan12-goals');
+  if (!box) return;
+
+  box.innerHTML = D.plan12.goals.map((g, gi) => {
+    const tactics = Array.isArray(g.tactics) ? g.tactics : [];
+    const rows = tactics.map((t, ti) => `
+      <tr>
+        <td><input class="plan12-tactic-input ${t.done ? 'done' : ''}" type="text" value="${esc(t.text || '')}"
+              placeholder="Escribe una acción concreta…" onchange="editPlan12TacticText(${gi}, ${ti}, this)"></td>
+        <td><input class="plan12-week-input" type="number" min="1" max="12" value="${t.week || 1}"
+              onchange="editPlan12Week(${gi}, ${ti}, this)" title="Semana de plazo (1–12)"></td>
+        <td style="text-align:center"><div class="plan12-done-chk ${t.done ? 'done' : ''}"
+              onclick="togglePlan12Done(${gi}, ${ti})" title="Marcar como hecha">✓</div></td>
+        <td style="text-align:center"><button class="plan12-del" onclick="deletePlan12Tactic(${gi}, ${ti})" title="Borrar táctica">🗑</button></td>
+      </tr>`).join('');
+
+    const table = tactics.length ? `
+      <table class="plan12-table">
+        <thead><tr>
+          <th>Táctica</th>
+          <th class="c-week">Semana</th>
+          <th class="c-done">Hecha</th>
+          <th class="c-del"></th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>` : '';
+
+    return `
+    <div class="plan12-goal">
+      <div class="plan12-goal-label">Meta ${gi + 1}</div>
+      <input class="plan12-goal-input" type="text" value="${esc(g.text || '')}"
+        placeholder="Escribe tu meta de 12 semanas…" onchange="editPlan12Goal(${gi}, this)">
+      <div class="plan12-tactics">${table}</div>
+      <button class="plan12-add" onclick="addPlan12Tactic(${gi})">➕ Agregar táctica</button>
+    </div>`;
+  }).join('');
+}
+
+function editPlan12Goal(gi, input) {
+  const g = findPlan12Goal(gi); if (!g) return;
+  g.text = input.value;
+  savePlan12();
+}
+
+function addPlan12Tactic(gi) {
+  const g = findPlan12Goal(gi); if (!g) return;
+  if (!Array.isArray(g.tactics)) g.tactics = [];
+  g.tactics.push({ text:'', week:1, done:false });
+  savePlan12();
+  renderPlan12();
+}
+
+function editPlan12TacticText(gi, ti, input) {
+  const g = findPlan12Goal(gi); if (!g || !g.tactics[ti]) return;
+  g.tactics[ti].text = input.value;
+  savePlan12();
+}
+
+function editPlan12Week(gi, ti, input) {
+  const g = findPlan12Goal(gi); if (!g || !g.tactics[ti]) return;
+  const v = Math.max(1, Math.min(12, parseInt(input.value, 10) || 1));
+  g.tactics[ti].week = v;
+  input.value = v;
+  savePlan12();
+}
+
+function togglePlan12Done(gi, ti) {
+  const g = findPlan12Goal(gi); if (!g || !g.tactics[ti]) return;
+  g.tactics[ti].done = !g.tactics[ti].done;
+  savePlan12();
+  renderPlan12();
+}
+
+function deletePlan12Tactic(gi, ti) {
+  const g = findPlan12Goal(gi); if (!g || !Array.isArray(g.tactics)) return;
+  g.tactics.splice(ti, 1);
+  savePlan12();
+  renderPlan12();
 }
 
 function renderHabits() {
@@ -5940,6 +7096,7 @@ function renderFinanzas() {
   renderDebts();
   renderSurplus();
   renderPanorama();   // al final: ya están calculados el efectivo y las deudas
+  renderFinanceAdvisor();
 }
 
 // Fuente única de verdad de las ranuras de banco conocidas por el dashboard: su sufijo
@@ -7537,6 +8694,20 @@ function deleteRemittance(id) {
 }
 
 /* ============================================================
+   INVERSIONES: SUB-TABS
+============================================================ */
+function switchInvSubtab(name) {
+  document.querySelectorAll('.inv-subtab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.inv-subtab-panel').forEach(p => p.classList.remove('active'));
+  const btn = document.querySelector(`.inv-subtab-btn[onclick*="'${name}'"]`);
+  if (btn) btn.classList.add('active');
+  const panel = document.getElementById('inv-sub-' + name);
+  if (panel) panel.classList.add('active');
+  if (name === 'raices') renderRealEstate();
+  if (name === 'calculadora') renderRealEstateCalc();
+}
+
+/* ============================================================
    FINANZAS: SUB-TABS
 ============================================================ */
 function switchFinSubtab(name) {
@@ -7559,15 +8730,22 @@ function switchFinSubtab(name) {
    FINANZAS: INCOME MODULE
 ============================================================ */
 function getMonthIncome(month) {
+  // El ingreso del restaurante sale de D.paychecks.checks — los cheques reales de ADP
+  // que se actualizan solos cuando Brian pide "actualiza mis cheques" (fuente completa
+  // y automática, ver CLAUDE.md). D.income.entries queda solo para ingreso que NO pasa
+  // por ADP (contenido, gigs sueltos) — los cheques del restaurante ya no se anotan ahí.
+  const checks = (D.paychecks?.checks || []).filter(c => c.date && c.date.startsWith(month));
+  let gross = 0, tips = 0, hours = 0;
+  checks.forEach(c => { gross += c.gross || 0; hours += c.hours || 0; });
+
   const entries = (D.income?.entries || []).filter(e => e.date && e.date.startsWith(month));
-  let gross = 0, tips = 0, hours = 0, hoursEntries = 0;
   entries.forEach(e => {
     gross += (e.grossAmount || 0) + (e.tips || 0);
     tips += (e.tips || 0);
-    if (e.hoursWorked > 0) { hours += e.hoursWorked; hoursEntries++; }
+    if (e.hoursWorked > 0) hours += e.hoursWorked;
   });
   const avgPerHour = hours > 0 ? gross / hours : 0;
-  return { gross, tips, taxes: 0, available: gross, hours, avgPerHour, count: entries.length };
+  return { gross, tips, taxes: 0, available: gross, hours, avgPerHour, count: checks.length + entries.length };
 }
 
 function getTopChannel(month) {
@@ -7794,6 +8972,13 @@ function renderIncomeBreakdown(month) {
   if (!el) return;
   const entries = (D.income?.entries || []).filter(e => e.date && e.date.startsWith(month));
   const byChannel = {};
+  // Los cheques del restaurante (ADP) van aparte — sin esto, esta tabla sumaría solo
+  // income.entries mientras que getMonthIncome() (que alimenta la barra de meta arriba)
+  // ya suma también D.paychecks.checks, y los dos números dejarían de cuadrar entre sí.
+  const checksGross = ((D.paychecks && D.paychecks.checks) || [])
+    .filter(c => c.date && c.date.startsWith(month))
+    .reduce((s, c) => s + (c.gross || 0), 0);
+  if (checksGross > 0) byChannel['🍽️ Restaurante (ADP)'] = checksGross;
   entries.forEach(e => {
     const ch = (D.income.channels || []).find(c => c.id === e.channelId);
     const name = ch ? ch.name : 'Sin canal';
@@ -8447,7 +9632,7 @@ function renderSurplus() {
   if (debitEl) {
     if (debitBal === 0) {
       debitEl.innerHTML = `<div style="text-align:center;padding:14px 0;color:var(--text-2);font-size:.85rem">
-        💳 <a onclick="switchFinSubTab('presupuesto')" style="color:var(--teal);cursor:pointer;text-decoration:underline">Ingresa tu saldo en banco en Presupuesto</a> para ver la comparación aquí.
+        💳 <a onclick="switchFinSubtab('presupuesto')" style="color:var(--teal);cursor:pointer;text-decoration:underline">Ingresa tu saldo en banco en Presupuesto</a> para ver la comparación aquí.
       </div>`;
     } else {
       const diffColor = diff >= 0 ? 'var(--green)' : 'var(--red)';
