@@ -7939,7 +7939,9 @@ function importBankTransactions() {
       pending: Boolean(t.pending),
       accountMask: (acc && acc.mask) || null   // últimos 4 dígitos de la tarjeta
     };
-    if (isIncome) entry.isIncome = true;       // Zelle que le entra: se muestra pero no resta del total
+    if (isIncome) entry.isIncome = true;       // Zelle que le entra: resta del total de SU categoría
+                                                // (por defecto cae en Familia/Apoyo Familiar — Brian la
+                                                // mueve con ✏️ a la categoría que en verdad reembolsa)
     entries.push(entry);
     byPlaid.set(t.id, entry);
     res.added++;
@@ -8147,11 +8149,14 @@ function setProjected(month, subId, amount) {
   saveFinance();
   renderBudgetTable();
 }
-/** Suma de gastos reales de una subcategoría en un mes. */
+/** Suma de gastos reales de una subcategoría en un mes. Un "Ingreso" (ej. un
+ *  Zelle que te reembolsa algo) RESTA del total en vez de ignorarse — así, si
+ *  mueves ese Zelle con el ✏️ a la misma categoría del gasto que te reembolsa,
+ *  el "Real" queda neto (lo que de verdad te costó a ti). */
 function realForSub(month, subId) {
   return (D.expenses.entries || [])
-    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month) && !e.isIncome)
-    .reduce((s,e) => s + (e.amount||0), 0);
+    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month))
+    .reduce((s,e) => s + (e.isIncome ? -(e.amount||0) : (e.amount||0)), 0);
 }
 /** Variación (proyectado - real), % de cumplimiento y estado de alerta. */
 function computeVariance(proj, real) {
@@ -8251,16 +8256,16 @@ function saldoBg(level) {
        : level === 'red'   ? 'rgba(255,82,82,.15)'
        : 'transparent';
 }
-/** Fila de detalle: lista los gastos de una subcategoría en el mes. */
+/** Fila de detalle: lista los gastos (y reembolsos) de una subcategoría en el mes. */
 function subDetailRow(month, subId) {
   const items = (D.expenses.entries || [])
-    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month) && !e.isIncome)
+    .filter(e => e.subcategoryId === subId && e.date && e.date.startsWith(month))
     .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const inner = items.length ? items.map(e => `
     <div class="fin-detail-item">
       <span class="fin-detail-date">${fShortDate(e.date)}</span>
-      <span class="fin-detail-desc">${esc(e.description || '—')}${e.fromBank ? ' <span title="Importado del banco" style="color:var(--green);font-size:10px">🏦</span>' : ''}</span>
-      <span class="fin-detail-amt">$${(e.amount || 0).toFixed(2)}</span>
+      <span class="fin-detail-desc">${esc(e.description || '—')}${e.fromBank ? ' <span title="Importado del banco" style="color:var(--green);font-size:10px">🏦</span>' : ''}${e.isIncome ? ' <span title="Te entró a ti — resta del total" style="color:var(--green);font-size:10px">💰 reembolso</span>' : ''}</span>
+      <span class="fin-detail-amt"${e.isIncome ? ' style="color:var(--green)"' : ''}>${e.isIncome ? '-' : ''}$${(e.amount || 0).toFixed(2)}</span>
     </div>`).join('') : '<div class="fin-detail-empty">Sin gastos aún este mes</div>';
   return `<tr class="fin-detail-row"><td colspan="5"><div class="fin-detail-wrap">${inner}</div></td></tr>`;
 }
@@ -8292,7 +8297,7 @@ function renderBudgetTable() {
         <td class="fin-sub-name"><span class="fin-caret sub">${subOpen ? '▾' : '▸'}</span>${esc(s.name)}</td>
         <td class="fin-num"><input type="number" class="fin-proj-input" min="0" step="1" value="${proj || ''}" placeholder="0"
             onclick="event.stopPropagation()" onchange="event.stopPropagation();setProjected('${month}','${s.id}', this.value)" aria-label="Proyectado ${esc(s.name)}"></td>
-        <td class="fin-num">$${real.toFixed(2)}</td>
+        <td class="fin-num">${real < 0 ? '−' : ''}$${Math.abs(real).toFixed(2)}</td>
         <td class="fin-num"><span class="fin-saldo-badge" style="color:${saldoColor(lvl)};background:${saldoBg(lvl)}">${saldo < 0 ? '−' : ''}$${Math.abs(saldo).toFixed(2)}</span></td>
         <td>
           <div class="fin-bar-track"><div class="fin-bar-fill" style="width:${Math.min(100,pct)}%;background:${bar}"></div></div>
@@ -8307,7 +8312,7 @@ function renderBudgetTable() {
     return `<tr class="fin-cat-row" onclick="toggleCat('${c.id}')">
       <td class="fin-cat-head"><span class="fin-caret">${open ? '▾' : '▸'}</span><span class="fin-cat-dot" style="background:${c.color}"></span>${c.emoji||''} ${esc(c.name)}</td>
       <td class="fin-num">$${cProj.toFixed(0)}</td>
-      <td class="fin-num">$${cReal.toFixed(2)}</td>
+      <td class="fin-num">${cReal < 0 ? '−' : ''}$${Math.abs(cReal).toFixed(2)}</td>
       <td class="fin-num"><span class="fin-saldo-badge" style="color:${saldoColor(cLvl)};background:${saldoBg(cLvl)}">${cVar < 0 ? '−' : ''}$${Math.abs(cVar).toFixed(0)}</span></td>
       <td></td>
     </tr>${subRows}`;
@@ -8332,7 +8337,7 @@ function renderBudgetTable() {
   const totals = document.getElementById('fin-totals');
   if (totals) totals.innerHTML = `
     <div class="fin-tcard"><div class="fin-tlabel">Proyectado</div><div class="fin-tval">$${gProj.toFixed(2)}</div></div>
-    <div class="fin-tcard"><div class="fin-tlabel">Real</div><div class="fin-tval" style="color:${gCol}">$${gReal.toFixed(2)}</div></div>
+    <div class="fin-tcard"><div class="fin-tlabel">Real</div><div class="fin-tval" style="color:${gCol}">${gReal<0?'−':''}$${Math.abs(gReal).toFixed(2)}</div></div>
     <div class="fin-tcard"><div class="fin-tlabel">Saldo disponible</div><div class="fin-tval" style="color:${gVar<0?'var(--red)':'var(--green)'}">${gVar<0?'−':''}$${Math.abs(gVar).toFixed(2)}</div></div>
     <div class="fin-tcard"><div class="fin-tlabel">Cumplimiento</div><div class="fin-tval" style="color:${gCol}">${gProj>0?gPct.toFixed(0)+'%':'—'}</div></div>`;
 
@@ -8648,9 +8653,9 @@ function renderExpenses() {
 
   filtered.sort((a,b) => (b.date||'').localeCompare(a.date||''));
 
-  const total = filtered.reduce((s, e) => s + (e.isIncome ? 0 : (e.amount || 0)), 0);
+  const total = filtered.reduce((s, e) => s + (e.isIncome ? -(e.amount||0) : (e.amount || 0)), 0);
   const totalEl = document.getElementById('fin-expenses-total');
-  if (totalEl) totalEl.textContent = `Total: $${total.toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `Total: ${total < 0 ? '-' : ''}$${Math.abs(total).toFixed(2)}`;
 
   const body = document.getElementById('fin-expenses-body');
   if (!body) return;
@@ -8661,7 +8666,7 @@ function renderExpenses() {
     const payBadge = e.paymentMethod ? `<span style="display:inline-block;margin-left:8px;font-size:10px;font-weight:700;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;vertical-align:middle">${payTags[e.paymentMethod] || ''}${e.accountMask ? ' •' + e.accountMask : ''}</span>` : '';
     // Insignias de los gastos que llegan solos desde el banco
     const bankBadge = e.fromBank ? `<span title="Importado automáticamente del banco" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">🏦 Auto</span>` : '';
-    const incomeBadge = e.isIncome ? `<span title="Esto te entró a ti — no se resta del total de Gastos" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">💰 Ingreso</span>` : '';
+    const incomeBadge = e.isIncome ? `<span title="Esto te entró a ti — resta del total de su categoría (muévelo con ✏️ a la categoría que te reembolsa)" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:6px;padding:1px 6px;vertical-align:middle">💰 Ingreso</span>` : '';
     const pendBadge = e.pending ? `<span title="El banco aún no confirma esta compra" style="display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--orange);border:1px solid var(--orange);border-radius:6px;padding:1px 6px;vertical-align:middle;opacity:.85">⏳ pendiente</span>` : '';
     const photoIcons = [
       e.receiptUrl      ? `<button class="photo-icon-btn" onclick="openPhotoModal('${e.receiptUrl}','Recibo — ${esc(e.description)}')" title="Ver recibo">🧾</button>` : '',
@@ -9755,8 +9760,8 @@ function runSimulator() {
 ============================================================ */
 function getMonthExpenses(month) {
   return (D.expenses?.entries || [])
-    .filter(e => e.date && e.date.startsWith(month) && !e.isIncome)
-    .reduce((s, e) => s + (e.amount || 0), 0);
+    .filter(e => e.date && e.date.startsWith(month))
+    .reduce((s, e) => s + (e.isIncome ? -(e.amount||0) : (e.amount || 0)), 0);
 }
 
 function getMonthRemittances(month) {
