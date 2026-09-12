@@ -435,6 +435,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .dca-badge.buy{background:rgba(0,200,120,.14);color:var(--green)}
 .dca-badge.sell{background:rgba(255,80,80,.14);color:var(--red)}
 .dca-badge.transfer{background:rgba(80,140,255,.14);color:var(--blue)}
+.dca-badge.pending{background:rgba(255,180,60,.14);color:var(--gold)}
 .plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin-bottom:20px}
 
 /* ================================================
@@ -789,6 +790,8 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
 .plan12-tactic-input.done{text-decoration:line-through;color:var(--text-3)}
 .plan12-week-input{width:52px;background:var(--bg-1);border:1px solid var(--border);border-radius:6px;color:var(--text-1);font-size:13px;text-align:center;padding:7px 4px;font-family:inherit;box-sizing:border-box}
 .plan12-week-input:focus{outline:none;border-color:var(--teal)}
+.plan12-week-select{width:auto;min-width:120px;background:var(--bg-1);border:1px solid var(--border);border-radius:6px;color:var(--text-1);font-size:13px;text-align:center;padding:7px 8px;font-family:inherit;box-sizing:border-box;cursor:pointer}
+.plan12-week-select:focus{outline:none;border-color:var(--teal)}
 .plan12-done-chk{width:22px;height:22px;border:2px solid var(--border-hover);border-radius:6px;background:var(--bg-1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;margin:0 auto;transition:var(--t)}
 .plan12-done-chk.done{background:var(--teal);border-color:var(--teal);color:#fff}
 .plan12-del{background:transparent;border:none;color:var(--text-3);cursor:pointer;font-size:15px;padding:4px;border-radius:6px;transition:var(--t)}
@@ -1684,7 +1687,7 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         <div id="dca-alloc-inner" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start"></div>
       </div>
 
-      <div class="card" style="margin-bottom:20px">
+      <div class="card" style="margin-bottom:20px" id="dca-form-card">
         <div class="card-title">Registrar Movimiento</div>
         <div class="dca-form-row">
           <div class="i-group"><label class="i-label">Tipo</label>
@@ -1735,7 +1738,10 @@ textarea{resize:vertical;min-height:80px;line-height:1.6}
         </div>
         <div class="dca-form-actions">
           <div class="dca-hint" id="dca-form-hint"></div>
-          <button class="btn-p" onclick="addDCA()">+ Agregar</button>
+          <div style="display:flex;gap:8px">
+            <button class="btn-s" id="dca-cancel-edit-btn" onclick="cancelEditDCA()" style="display:none">Cancelar</button>
+            <button class="btn-p" id="dca-submit-btn" onclick="addDCA()">+ Agregar</button>
+          </div>
         </div>
       </div>
 
@@ -2918,6 +2924,10 @@ function loadFile(e) {
 function setupTabs() {
   document.querySelectorAll('.tab-btn').forEach(btn => {
     const doSwitch = () => {
+      // Si Brian se va de Inversiones a medio completar un movimiento pendiente
+      // (✏️), se cancela la edición — si no, al volver el formulario seguiría en
+      // modo "Guardar" y una compra nueva sin relación podría pisar ese pendiente.
+      if (btn.dataset.tab !== 'dca' && typeof dcaEditingId !== 'undefined' && dcaEditingId) cancelEditDCA();
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
@@ -3307,6 +3317,7 @@ async function pushToCloud() {
       bancolombiaBalance: D.bancolombiaBalance || 0,
       capitalOne:   D.capitalOne   || { accounts: [] },
       remittancesIgnored: D.remittancesIgnored || [],
+      dcaIgnored:   D.dcaIgnored   || [],
       dca:          D.dca          || { transactions: [] },
       realEstate:   D.realEstate   || { properties: [], deals: [] },
       savedAt
@@ -3345,6 +3356,7 @@ async function pullFromCloud() {
     if (f.bancolombiaBalance != null) D.bancolombiaBalance = f.bancolombiaBalance;
     if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
     if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
+    if (Array.isArray(f.dcaIgnored)) D.dcaIgnored = f.dcaIgnored;
     if (f.realEstate && Array.isArray(f.realEstate.properties)) D.realEstate = f.realEstate;
     // Candado: usar la versión (nube vs. local) que tenga MÁS movimientos, nunca la más vacía.
     if (f.dca && Array.isArray(f.dca.transactions)) {
@@ -3925,6 +3937,7 @@ function saveFinance() {
       capitalOne: D.capitalOne || { accounts: [] },
       bankIgnored: D.bankIgnored || [],   // gastos del banco que Brian eliminó (no re-importar)
       remittancesIgnored: D.remittancesIgnored || [], // remesas del banco que Brian eliminó (no re-importar)
+      dcaIgnored: D.dcaIgnored || [], // movimientos de inversión del banco que Brian eliminó (no re-importar)
       dca: D.dca || { transactions: [] }, // bitácora de inversiones (compras/ventas/transferencias)
       realEstate: D.realEstate || { properties: [], deals: [] }, // casa(s), hipoteca(s), escenarios de la calculadora
       savedAt: new Date().toISOString()
@@ -3954,6 +3967,7 @@ function restoreFinance() {
     if (f.capitalOne && Array.isArray(f.capitalOne.accounts)) D.capitalOne = f.capitalOne;
     if (Array.isArray(f.bankIgnored)) D.bankIgnored = f.bankIgnored;
     if (Array.isArray(f.remittancesIgnored)) D.remittancesIgnored = f.remittancesIgnored;
+    if (Array.isArray(f.dcaIgnored)) D.dcaIgnored = f.dcaIgnored;
     if (f.realEstate && Array.isArray(f.realEstate.properties)) D.realEstate = f.realEstate;
     // Candado: solo usar la bitácora guardada en el navegador si tiene AL MENOS tantos
     // movimientos como la que acaba de venir del JSON. Si el JSON trae más (p. ej. porque
@@ -5220,8 +5234,10 @@ function dcaQtyFmt(q) { return parseFloat(q.toFixed(8)).toLocaleString('en-US', 
 function dcaPlatLabel(name) { return (DCA_PLAT_ICON[name] || '📦') + ' ' + name; }
 
 // Agregados globales: por activo y por plataforma
+// (los movimientos "needsReview" -- detectados del banco pero sin activo/cantidad
+// todavía -- no cuentan aquí, para no ensuciar los totales con datos incompletos)
 function dcaAggregates() {
-  const txs = D.dca.transactions || [];
+  const txs = (D.dca.transactions || []).filter(t => !t.needsReview);
   const byAsset = {}; // { buys, buyQty, sells, sellQty, fees, assetType }
   const byPlat  = {}; // { [platform]: { [asset]: qty } }
   const addQ = (plat, asset, q) => {
@@ -5246,7 +5262,7 @@ function dcaAggregates() {
 // lleva su costo consigo (si sale de Cash App a $60k, entra a Tangem a $60k), así
 // la plataforma que recibe no aparece con una ganancia falsa del 100%.
 function dcaPlatformBasis(globalAvgPx) {
-  const txs = (D.dca.transactions || []).slice()
+  const txs = (D.dca.transactions || []).filter(t => !t.needsReview).slice()
     .sort((a, b) => (a.date || '').localeCompare(b.date || '') || (a.id || '').localeCompare(b.id || ''));
   const pos = {}; // pos[plataforma][activo] = { qty, cost, realized, fees, invested }
   const slot = (plat, asset) => {
@@ -5356,6 +5372,11 @@ function renderDcaAllocation(byAsset, byPlat, avgPx) {
 function renderDCA() {
   if (!D) return;
   normalizeDCA();
+  // Puente banco → Inversiones: las transferencias a Robinhood detectadas por
+  // Plaid se agregan solas como movimiento "pendiente" (fecha + monto conocidos;
+  // el activo y la cantidad los completa Brian con el botón ✏️ de la tabla).
+  const _impInv = importBankInvestments();
+  if (_impInv.added || _impInv.updated) saveFinance();
   const txs = D.dca.transactions || [];
   const { byAsset, byPlat } = dcaAggregates();
 
@@ -5470,6 +5491,22 @@ function renderDCA() {
 
   const badge = { buy:'<span class="dca-badge buy">🟢 Compra</span>', sell:'<span class="dca-badge sell">🔴 Venta</span>', transfer:'<span class="dca-badge transfer">🔄 Transfer</span>' };
   document.getElementById('dca-body').innerHTML = rows.map(t => {
+    if (t.needsReview) {
+      return `
+      <tr>
+        <td>${esc(t.date||'—')}</td>
+        <td><span class="dca-badge pending">⏳ Pendiente</span></td>
+        <td style="font-size:12px">${esc(dcaPlatLabel(t.platform||'Robinhood'))}</td>
+        <td style="color:var(--gold)" title="El banco detectó la transferencia pero no sabe qué compraste — complétalo con ✏️">⚠️ Completar</td>
+        <td>—</td>
+        <td>${dcaMoney(t.amount || 0)}</td>
+        <td>—</td>
+        <td>$${(t.fee||0).toFixed(2)}</td>
+        <td>—</td>
+        <td>—</td>
+        <td style="white-space:nowrap"><button class="btn-d" onclick="editDCA('${t.id}')" title="Completar movimiento">✏️</button> <button class="btn-d" onclick="delDCA('${t.id}')">✕</button></td>
+      </tr>`;
+    }
     const curP2 = dcaCurPrice(t.asset, avgPx[t.asset] || t.price || 0);
     let platCell, amountCell, priceCell, pnlCell, curCell;
     if (t.type === 'transfer') {
@@ -5558,8 +5595,11 @@ function updateDcaHint() {
   el.textContent = `Tienes ${dcaQtyFmt(have)} ${asset} en ${plat}`;
 }
 
+let dcaEditingId = null; // id del movimiento "pendiente" que se está completando (null = agregando uno nuevo)
+
 function addDCA() {
   normalizeDCA();
+  const isEdit = Boolean(dcaEditingId);
   const type   = document.getElementById('dca-type').value;
   const date   = document.getElementById('dca-date').value;
   const plat   = document.getElementById('dca-platform').value;
@@ -5573,7 +5613,7 @@ function addDCA() {
 
   if (!date || !asset || !plat) { showToast('Completa fecha, plataforma y activo', true); return; }
 
-  let tx = { id:'d'+Date.now(), type, date, asset, assetType:aType, platform:plat, fee };
+  let tx = { id: dcaEditingId || ('d'+Date.now()), type, date, asset, assetType:aType, platform:plat, fee };
   if (type === 'buy') {
     if (isNaN(amount) || amount <= 0 || isNaN(price) || price <= 0) { showToast('Completa monto y precio de compra', true); return; }
     tx.amount = amount; tx.price = price;
@@ -5596,17 +5636,64 @@ function addDCA() {
     if (qtyIn > have + 1e-9) showToast(`⚠️ Transfieres ${dcaQtyFmt(qtyIn)} ${asset} pero solo hay ${dcaQtyFmt(have)} registrados en ${plat}`, true);
   }
 
-  D.dca.transactions.push(tx);
+  if (isEdit) {
+    const idx = D.dca.transactions.findIndex(x => x.id === dcaEditingId);
+    if (idx !== -1) D.dca.transactions[idx] = { ...D.dca.transactions[idx], ...tx, needsReview: false };
+    dcaEditingId = null;
+    const btn = document.getElementById('dca-submit-btn');
+    if (btn) btn.textContent = '+ Agregar';
+    document.getElementById('dca-cancel-edit-btn').style.display = 'none';
+  } else {
+    D.dca.transactions.push(tx);
+  }
   saveFinance();
   ['dca-asset','dca-amount','dca-qty','dca-price','dca-fee'].forEach(id => document.getElementById(id).value='');
   renderDCA();
   updatePrices(false); // por si es un activo nuevo, traer su precio
   const verb = type==='buy' ? 'Compra' : type==='sell' ? 'Venta' : 'Transferencia';
-  showToast(`${verb} de ${asset} registrada ✅`);
+  showToast(`${verb} de ${asset} ${isEdit ? 'completada' : 'registrada'} ✅`);
+}
+
+// Carga un movimiento "pendiente" (detectado del banco) en el formulario para
+// que Brian escriba qué compró — al guardar, ACTUALIZA ese movimiento en vez
+// de crear uno nuevo (ver rama isEdit de addDCA()).
+function editDCA(id) {
+  const t = (D.dca.transactions || []).find(x => x.id === id);
+  if (!t) return;
+  dcaEditingId = id;
+  document.getElementById('dca-type').value = t.type || 'buy';
+  onDcaTypeChange();
+  document.getElementById('dca-date').value = t.date || '';
+  document.getElementById('dca-platform').value = t.platform || '';
+  document.getElementById('dca-assettype').value = t.assetType || 'crypto';
+  document.getElementById('dca-asset').value = '';
+  document.getElementById('dca-amount').value = t.amount || '';
+  document.getElementById('dca-qty').value = '';
+  document.getElementById('dca-price').value = '';
+  document.getElementById('dca-fee').value = '';
+  updateDcaHint();
+  document.getElementById('dca-submit-btn').textContent = '💾 Guardar';
+  document.getElementById('dca-cancel-edit-btn').style.display = '';
+  document.getElementById('dca-form-hint').textContent = '✏️ Completando el movimiento detectado del banco — escribe qué compraste (activo, cantidad y precio) y guarda.';
+  document.getElementById('dca-form-card').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function cancelEditDCA() {
+  dcaEditingId = null;
+  ['dca-asset','dca-amount','dca-qty','dca-price','dca-fee'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('dca-submit-btn').textContent = '+ Agregar';
+  document.getElementById('dca-cancel-edit-btn').style.display = 'none';
+  document.getElementById('dca-form-hint').textContent = '';
 }
 
 function delDCA(id) {
-  D.dca.transactions = D.dca.transactions.filter(t => t.id !== id);
+  const t = (D.dca.transactions || []).find(x => x.id === id);
+  if (t && t.plaidId) {
+    if (!Array.isArray(D.dcaIgnored)) D.dcaIgnored = [];
+    if (!D.dcaIgnored.includes(t.plaidId)) D.dcaIgnored.push(t.plaidId);
+  }
+  if (dcaEditingId === id) cancelEditDCA();
+  D.dca.transactions = D.dca.transactions.filter(x => x.id !== id);
   saveFinance();
   renderDCA();
   showToast('Movimiento eliminado');
@@ -6610,8 +6697,15 @@ function renderPlan12() {
       <tr>
         <td><input class="plan12-tactic-input ${t.done ? 'done' : ''}" type="text" value="${esc(t.text || '')}"
               placeholder="Escribe una acción concreta…" onchange="editPlan12TacticText(${gi}, ${ti}, this)"></td>
-        <td><input class="plan12-week-input" type="number" min="1" max="12" value="${t.week || 1}"
-              onchange="editPlan12Week(${gi}, ${ti}, this)" title="Semana de plazo (1–12)"></td>
+        <td>${(() => {
+              const cur = (t.week === 'every') ? 'every' : String(t.week || 1);
+              const opts = ['<option value="every"'+(cur==='every'?' selected':'')+'>Cada semana</option>']
+                .concat(Array.from({length:12}, (_, i) => {
+                  const n = String(i + 1);
+                  return '<option value="'+n+'"'+(cur===n?' selected':'')+'>Semana '+n+'</option>';
+                })).join('');
+              return '<select class="plan12-week-select" title="Semana de plazo o cada semana" onchange="editPlan12Week('+gi+', '+ti+', this)">'+opts+'</select>';
+            })()}</td>
         <td style="text-align:center"><div class="plan12-done-chk ${t.done ? 'done' : ''}"
               onclick="togglePlan12Done(${gi}, ${ti})" title="Marcar como hecha">✓</div></td>
         <td style="text-align:center"><button class="plan12-del" onclick="deletePlan12Tactic(${gi}, ${ti})" title="Borrar táctica">🗑</button></td>
@@ -6661,9 +6755,11 @@ function editPlan12TacticText(gi, ti, input) {
 
 function editPlan12Week(gi, ti, input) {
   const g = findPlan12Goal(gi); if (!g || !g.tactics[ti]) return;
-  const v = Math.max(1, Math.min(12, parseInt(input.value, 10) || 1));
-  g.tactics[ti].week = v;
-  input.value = v;
+  if (input.value === 'every') {
+    g.tactics[ti].week = 'every';
+  } else {
+    g.tactics[ti].week = Math.max(1, Math.min(12, parseInt(input.value, 10) || 1));
+  }
   savePlan12();
 }
 
@@ -7592,9 +7688,10 @@ async function syncBankNow(quiet) {
 
     D.bank = { balances: j.balances, transactions: j.transactions, lastSync: j.lastSync };
 
-    // Puente banco → gastos: las transacciones nuevas entran al presupuesto
+    // Puente banco → gastos / remesas / inversiones: las transacciones nuevas entran solas
     const imp = importBankTransactions();
     const impRem = importBankRemittances();
+    const impInv = importBankInvestments();
 
     // Volcar las tarjetas de crédito del banco a la sección de Deudas
     const nCards = syncPlaidCardsToDebts();
@@ -7604,12 +7701,14 @@ async function syncBankNow(quiet) {
     renderBudgetTable();
     renderExpenses();
     renderRemittances();
+    renderDCA();
     renderPanorama();
 
-    if (!quiet || j.newCount || imp.added || imp.updated || impRem.added || impRem.updated) {
+    if (!quiet || j.newCount || imp.added || imp.updated || impRem.added || impRem.updated || impInv.added || impInv.updated) {
       showToast(`✓ Banco sincronizado · ${j.newCount} transacciones nuevas`
         + (imp.added ? ` · ${imp.added} gasto(s) al presupuesto` : '')
         + (impRem.added ? ` · ${impRem.added} remesa(s) detectada(s)` : '')
+        + (impInv.added ? ` · ${impInv.added} movimiento(s) de inversión pendiente(s)` : '')
         + (nCards ? ` · ${nCards} tarjeta(s) actualizada(s)` : ''));
     }
     // Si un banco falló (ej. pide re-conectar), avisar sin tumbar el otro
@@ -7913,6 +8012,81 @@ function importBankRemittances() {
       notes: 'Detectado automáticamente del banco (Felixpago) — ajusta el monto/comisión si hace falta y completa destinatario y tasa de cambio.',
       fromBank: true,
       pending: Boolean(t.pending)
+    };
+    entries.push(entry);
+    byPlaid.set(t.id, entry);
+    res.added++;
+  }
+  return res;
+}
+
+/**
+ * Detecta transferencias automáticas a Robinhood (las compras semanales de
+ * DCA de Brian) y las agrega solas a la Bitácora de Inversiones como
+ * movimiento "pendiente" (needsReview:true). El banco solo ve que salió
+ * dinero hacia Robinhood — no sabe qué compraste (BTC, una acción...) ni la
+ * cantidad, así que esos campos quedan vacíos para que Brian los complete
+ * con el botón ✏️ de la tabla (ver editDCA()). Mientras needsReview sea
+ * true, el movimiento NO cuenta en los totales del portafolio (dcaAggregates
+ * / dcaPlatformBasis lo excluyen) para no mostrar un "-100%" falso antes de
+ * completarlo. Sigue el mismo patrón de dedup/ignorados que
+ * importBankTransactions() / importBankRemittances().
+ */
+function importBankInvestments() {
+  const res = { added: 0, updated: 0 };
+  if (!D || !D.bank || !Array.isArray(D.bank.transactions)) return res;
+  normalizeDCA();
+  const entries = D.dca.transactions;
+  const ignored = new Set(D.dcaIgnored || []);
+  const byPlaid = new Map();
+  entries.forEach(t => { if (t.plaidId) byPlaid.set(t.plaidId, t); });
+
+  // Si la versión CONFIRMADA de una transferencia viene en la misma lista que
+  // su versión "pendiente", la pendiente se ignora (la confirmada manda).
+  const superseded = new Set();
+  for (const t of D.bank.transactions) { if (t && t.pendingId) superseded.add(t.pendingId); }
+
+  for (const t of D.bank.transactions) {
+    if (!t || !t.id || !(t.amount > 0)) continue;     // negativos = reversiones
+    if (t.slot === 'business' || t.slot === 'capitalone') continue; // negocio y Capital One no son DCA personal
+    if (superseded.has(t.id)) continue;                // ya viene su versión confirmada
+    if (!/ROBINHOOD/i.test(t.name || '')) continue;
+    if (ignored.has(t.id) || (t.pendingId && ignored.has(t.pendingId))) continue;
+
+    const prev = byPlaid.get(t.id) || (t.pendingId ? byPlaid.get(t.pendingId) : null);
+    if (prev) {
+      // Ya lo completó Brian (needsReview:false) → no tocarlo más, aunque el
+      // banco confirme la transacción o cambie de "pendiente" a definitiva.
+      if (prev.needsReview) {
+        const changed = prev.plaidId !== t.id || prev.amount !== t.amount
+                     || prev.date !== (t.date || prev.date) || prev.pending !== Boolean(t.pending);
+        if (changed) {
+          byPlaid.delete(prev.plaidId);
+          prev.plaidId = t.id;
+          prev.amount  = t.amount;
+          prev.date    = t.date || prev.date;
+          prev.pending = Boolean(t.pending);
+          byPlaid.set(t.id, prev);
+          res.updated++;
+        }
+      }
+      continue;
+    }
+
+    const entry = {
+      id: 'dca_' + t.id,
+      plaidId: t.id,
+      type: 'buy',
+      date: t.date || today(),
+      platform: 'Robinhood',
+      assetType: 'crypto',
+      asset: '',
+      qty: 0,
+      price: 0,
+      amount: t.amount,
+      fee: 0,
+      needsReview: true,
+      pending: Boolean(t.pending),
     };
     entries.push(entry);
     byPlaid.set(t.id, entry);
